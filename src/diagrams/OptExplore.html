@@ -1,0 +1,108 @@
+<div class="opt-explore" >
+  <figcaption style="margin-bottom:10px;">
+    <div style="width: {{(size + 20)*n_images-20}}px;">
+      <!--<div class="icons" style="float:left; padding-right: 60px; width: 145px;">
+        {{#each icon_ns as n}}
+          <div 
+              class="icon {{(selected == n)? 'selected' : ''}}"
+              on:click='set({selected: n})'
+            >
+          </div>
+        {{/each}}
+      </div>-->
+      <div style="float:left; padding-right: 60px;">
+        <div> Learning Rate ({{learning_rate_list[[learning_rate]]}})</div>
+        <div><input bind:value=learning_rate type="range" min=0 max={{learning_rate_list.length-1}}></div>
+      </div>
+      <div style="float:left; padding-right: 60px;">
+        <label><input bind:checked=jitter type="checkbox"> Jitter</label>
+        <label><input bind:checked=adam type="checkbox"> Adam</label>
+      </div>
+      <div style="float:left; padding-right: 60px;">
+        <label><input bind:checked=pyramid type="checkbox"> Laplacian Pyramid</label>
+        <label><input bind:checked=color type="checkbox"> Fancy Color Param</label>
+      </div>
+      <br style="clear:left;">
+    </div>
+  </figcaption>
+  <div class="images" style="width: 100%; height: {{size+20}}px; position: relative;">
+    {{#each image_ns as n}}
+      <div style="left: {{(size + 20)*n}}px; width: {{size}}px; height: {{size+20}}px;">
+        <div style="margin: {{(size-sprite_size)/2}}px; transform:scale({{size/sprite_size}});" >
+          <div class="opt-explore-sprites" style="width:{{sprite_size}}px; height:{{sprite_size}}px; background-position: -{{sprite_size*n}}px -{{sprite_size*y}}px;"></div>
+        </div>
+        <figcaption>{{{label_func(n)}}}</figcaption>
+      </div>
+    {{/each}}
+  </div>
+
+</div>
+
+<style>
+
+  .icons .icon {
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    background-color: #EEE;
+    filter: brightness(80%);
+  }
+
+  .icons .selected {
+    background-color: #AAA;
+    box-shadow: 1px 1px 3px gold, -1px -1px 3px gold, -1px 1px 3px gold, 1px -1px 3px gold;
+    filter: brightness(100%);
+  }
+
+  .images > div {
+    position: absolute;
+    top: 0px;
+    margin: 0px;
+  }
+
+  figcaption {
+    margin-top: 6px;
+  }
+
+  .opt-explore-sprites { background: url("images/explore_mixed4c_450_sprite_128.jpeg")}
+  
+  label{
+    display: block;
+  }
+</style>
+
+<script>
+  import Sprite from "./Sprite.html";
+  function range(n){
+    var ret = [];
+    for (var i = 0; i < n; ++i) ret.push(i);
+    return ret;
+  }
+  export default {
+    data() {
+      return {
+        n_images: 4,
+        sprite_size: 132,
+        size: 180,
+        jitter: false,
+        adam: false,
+        pyramid: false,
+        color: false,
+        learning_rate: 1,
+        learning_rate_list: [0.1, 0.01, 0.001, 0.0001],
+        label_func: n => "Step " + (8*Math.pow(4,n)),
+        selected: 0,
+        icon_ns: [0,1,2,3],
+      }
+    },
+    computed: {
+      y: (jitter, adam, pyramid, color, learning_rate, learning_rate_list) =>
+          1*color + 2*pyramid + 4*learning_rate
+          + 4*learning_rate_list.length*adam 
+          + 8*learning_rate_list.length*jitter,
+      image_ns: n_images => range(n_images)
+    },
+    components: {Sprite}
+  }
+</script>

@@ -1,0 +1,119 @@
+<div class="image-array">
+  <div class="icons">
+    {{#each icon_ns as n}}
+      <div class="icon {{(selected == n)? 'selected' : ''}}"
+           on:mouseover='set({selected: n})'
+        >
+          <Sprite bind:src_class=icon_src_class 
+          size=44 
+          sprite_size={{icon_scale*sprite_size}} 
+          y={{(1-icon_scale)/2 + n/icon_scale}} 
+          x={{(1-icon_scale)/2 + icon_x/icon_scale}} 
+          hover_scale={{44/sprite_size/icon_scale}} />
+
+      </div>
+    {{/each}}
+  </div>
+  <div class="images">
+    {{#each image_ns as n}}
+      <div>
+        <Sprite bind:src_class 
+        bind:size 
+        bind:sprite_size 
+        bind:y=selected 
+        x={{n}} 
+        hover={{false}}  />
+        <br style="clear:left">
+        <figcaption>{{{label_func(n)}}}</figcaption>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+<style>
+.image-array {
+  
+}
+
+.image-array .icons {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 2px;
+  margin-left: -3px;
+}
+
+.image-array .icons .icon {
+  padding: 0px;
+  background-color: #EEE;
+  border: 3px solid white;
+}
+
+.icon div {
+  filter: saturate(0%);
+  image-rendering: auto;
+}
+
+.icon.selected div {
+  filter: none;
+}
+
+.image-array .icons .selected {
+  background-color: #AAA;
+  border-color: #3497FF;
+}
+
+.image-array .images {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /*justify-content: space-between;*/
+  top: 0px;
+}
+.image-array .images > div {
+  width: 180px;
+  margin-right: 5px;
+}
+.image-array .images > div:last-child {
+  margin-right: 0;
+}
+.image-array .images div img {
+  width: 100%;
+  height: 100%;
+  background-color: #EEE;
+}
+
+figcaption {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+</style>
+
+<script>
+  import Sprite from "./Sprite.html";
+  function range(n){
+    var ret = [];
+    for (var i = 0; i < n; ++i) ret.push(i);
+    return ret;
+  }
+  export default {
+    data() {
+      return {
+        n_icons: 4,
+        n_images: 6,
+        selected: 0,
+        sprite_size: 128,
+        size: 160,
+        src_class: "",
+        label_func: n => "Image " + n,
+        icon_src_class: "",
+        icon_scale: 0.5,
+      }
+    },
+    computed: {
+      icon_ns: n_icons => range(n_icons),
+      image_ns: n_images => range(n_images)
+    },
+    components: {Sprite}
+  }
+</script>

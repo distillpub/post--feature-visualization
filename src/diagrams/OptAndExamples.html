@@ -1,0 +1,267 @@
+<div class="icons">
+  {{#each thumbnail_indices as i}}
+    <div class="icon {{(selected == i)? 'selected' : ''}}"
+         on:mouseover='set({selected: i})'
+      >
+      <Sprite src_class={{sprite_opt_class}} size=44 sprite_size=147 y={{i}} x=0 sprite_scale=0.5/>
+    </div>
+  {{/each}}
+</div>
+
+<figcaption>
+  <strong>{{neuron_name(neurons[selected])}}</strong>
+</figcaption>
+
+<div class="container">
+    
+  <div class="negative">
+    <div class="optimize">
+      <Sprite src_class={{sprite_opt_class}} size=146 sprite_size=147 y={{selected}} x=1 sprite_scale=1/>
+      <figcaption class="caption">
+        Negative optimized
+      </figcaption>
+    </div>
+    <div class="examples">
+      <div class="example-set">
+        <!-- <img src={{img_path + "0-min.jpg"}}> -->
+        <Sprite src_class={{sprite_class}} size=147 sprite_size=294 y={{selected}} x=0 sprite_scale=1/>
+        <figcaption class="caption">
+          Minimum activation examples
+        </figcaption>
+      </div>
+      <div class="example-set">
+        <Sprite src_class={{sprite_class}} size=147 sprite_size=294 y={{selected}} x=1 sprite_scale=1/>
+        <figcaption class="caption">
+          Slightly negative activation examples
+        </figcaption>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="positive">
+    <div class="optimize">
+      <Sprite src_class={{sprite_opt_class}} size=146 sprite_size=147 y={{selected}} x=0 sprite_scale=1/>
+      <figcaption class="caption">
+        Positive optimized
+      </figcaption>
+    </div>
+    <div class="examples">
+      <div class="example-set">
+        <Sprite src_class={{sprite_class}} size=147 sprite_size=294 y={{selected}} x=3 sprite_scale=1/>
+        <figcaption class="caption">
+          Slightly positive activation examples
+        </figcaption>
+      </div>
+      <div class="example-set">
+        <Sprite src_class={{sprite_class}} size={{147}} sprite_size={{294}} y={{selected}} x=4 sprite_scale=1 shift={{[0.5,0.5]}}/>
+        <figcaption class="caption">
+          Maximum activation examples
+        </figcaption>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<style>
+
+  .opt-and-examples-sprite {
+    background-image: url("images/examples.jpg");
+  }
+  
+  .opt-and-examples-optimized-sprite {
+    background-image: url("images/examples_optimized.png");
+  }
+  
+  .icons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-bottom: 12px;
+    margin-left: -3px;
+  }
+
+  .icons .icon {
+    padding: 0px;
+    border: 3px solid white;
+  }
+  
+  .icons .icon img {
+    height: 44px;
+    width: 44px;
+  }
+
+  .icons .selected {
+    border-color: #3497FF;
+  }
+
+  .container {
+    display: flex;
+    flex-flow: column;
+  }
+  
+  .positive, .negative, .divider {
+    display: flex;
+    flex-flow: row;
+  }
+  
+  .optimize figcaption {
+    padding: 5px;
+  }
+  
+  .divider {
+    display: none;
+  }
+  
+  .positive > div {
+    justify-content: flex-start;
+  }
+  
+  .optimize {
+    margin-bottom: 12px;
+  }
+  
+  .negative {
+    margin-bottom: 24px;
+  }
+  
+  .optimize figcaption {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .optimize {
+    display: flex;
+    flex-flow: column;
+  }
+  
+  .examples {
+    display: flex;
+    flex-flow: row;
+  }
+  
+  .example-set > *,
+  .optimize > * {
+    width: 147px;
+  }
+  
+  .example-set > img,
+  .optimize > img {
+    height: 147px;
+  }
+  
+  @media (min-width: 760px) {
+    
+    .divider {
+      display: inherit;
+      border-left: 1px solid #ccc;
+      /*margin-top: -10px;*/
+      position: relative;
+    }
+    
+    .divider::before {
+      content: "0";
+      position: absolute;
+      left: -4px;
+      top: -25px;
+      color: #ccc;
+      font-weight: 300;
+      font-size: 13px;
+    }
+    
+    
+    .example-set:first-child {
+      margin-right: 12px;
+    }
+    
+    .negative {
+      margin-bottom: 0;
+    }
+    
+    .negative .optimize {
+      flex-flow: column;
+      justify-content: flex-start;
+    }
+    
+    .container {
+      flex-flow: row;
+    }
+    
+    .positive {
+      flex-flow: row-reverse;
+    }
+    
+    .negative, .divider {
+      display: flex;
+      flex-flow: row;
+    }
+    
+    .optimize {
+      margin-bottom: 24px;
+    }
+    
+    .negative > div {
+      justify-content: flex-end;
+    }
+    
+    .examples {
+      margin-right: 12px;
+    }
+    
+    .positive {
+      margin-left: 12px;
+    }
+  }
+</style>
+
+
+<script>
+  import { setDeep } from 'svelte-extras';
+  import Sprite from './Sprite.html';
+  
+  function pad(num, size) {
+    var s = "00000" + num;
+    return s.substr(s.length-size);
+  }
+  
+  function range(n){
+    return Array(n).fill().map((_, i) => i);
+  }
+  
+  function neuron_name(neuron) {
+    return `Layer mixed ${neuron[0]}, unit ${neuron[1]}`;
+  }
+
+  export default {
+    data() {
+      return {
+        neurons: [
+          ["4a",   6],
+          ["4a",  41],
+          ["4a", 143],
+          ["4a", 240],
+          ["4a", 449],
+          ["4a", 492],
+          ["4a", 499],
+          ["4b", 482],
+          ["4d", 479],
+          ["4e", 718],
+          ["4e", 819]
+        ],
+        selected: 5,
+        sprite_class: 'opt-and-examples-sprite',
+        sprite_opt_class: 'opt-and-examples-optimized-sprite'
+      }
+    },
+    computed: {
+      number_of_neurons: neurons => neurons.length,
+      thumbnail_indices: number_of_neurons => range(number_of_neurons),
+    },
+    components: {Sprite},
+    methods: {},
+    helpers: {pad, neuron_name}
+  }
+</script>

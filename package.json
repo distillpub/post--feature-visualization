@@ -1,0 +1,26 @@
+{
+  "name": "saliency",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "d3": "^4.9.1",
+    "d3-scale-chromatic": "^1.1.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.29.0",
+    "numpy-loader": "^1.2.0",
+    "svelte": "1.38.0",
+    "svelte-extras": "^1.4.1",
+    "svelte-loader": "^2.1.0",
+    "webpack": "^3.1.0",
+    "webpack-dev-server": "^2.5.0"
+  }
+}

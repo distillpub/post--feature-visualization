@@ -1,0 +1,258 @@
+<div class="row header-row">
+  <div class="info"> </div>
+  <div class="spacer"></div>
+  <span>
+    <div>
+      <figcaption style="width: 200px; height: 60px;">
+        <b>Weak Regularization</b>
+        avoids misleading correlations, but is less connected to real use.
+      </figcaption>
+    </div>
+    <div class="sub-headers">
+      <figcaption><b>Unregularized</b></figcaption>
+      <figcaption><b><div>Frequency</div><div style="margin-top:0px;">Penalization</div></b></figcaption>
+      <figcaption><b><div>Transformation</div><div style="margin-top:0px;">Robustness</div></b></figcaption>
+    </div>
+  </span>
+  <div class="spacer"></div>
+  <span>
+    <div>
+      <figcaption style="width: 200px; height: 60px;">
+        <b>Strong Regularization</b>
+        gives more realistic examples at risk of misleading correlations.
+      </figcaption>
+    </div>
+    <div class="sub-headers">
+    <figcaption><b><div>Learned</div><div style="margin-top:0px;">Prior</div></b></figcaption>
+    <figcaption><b><div>Dataset</div><div style="margin-top:0px;">Examples</div></b></figcaption>
+    </div>
+  </span>
+</div>
+{{#each papers as paper }}
+  <div class="row">
+    
+    <div class="info">
+      <img src="{{paper.src}}">
+      <figcaption>
+        <p class="paper-title">{{{paper.short}}} <dt-cite key="{{paper.key}}"></dt-cite></p>
+        <p class="paper-text" >{{{paper.text}}}</p>
+      </figcaption>
+    </div>
+    
+    <div class="spacer"></div>
+    
+    {{#each paper.light_reg as is_cat}}
+      <div class="category-check-container">
+        <div class="category-check {{(is_cat == 1)? 'set': ''}}">
+        </div>
+      </div>
+    {{/each}}
+    
+    <div class="spacer"></div>
+    
+    {{#each paper.heavy_reg as is_cat}}
+      <div class="category-check-container">
+        <div class="category-check {{(is_cat == 1)? 'set': ''}}">
+        </div>
+      </div>
+    {{/each}}
+    
+  </div>
+  <div class="line"></div>
+{{/each}}
+
+
+<style>
+  .row {
+    width: 1000px;
+  }
+  .line {
+    width: 900px;
+  }
+  .row .info {
+    width: 290px;
+    height: 56px;
+    vertical-align: top;
+  }
+  .row .info img {
+    width: 56px;
+    height: 56px;
+    border-radius: 5px;
+    background: #EEE;
+  }
+  figcaption {
+    line-height: 16px;
+    vertical-align: top;
+  }
+  .row .info figcaption {
+    width: 210px;
+    margin-left: 8px;
+    display: inline-block;
+  }
+  .header-row .sub-headers {
+    margin-top: 16px;
+    margin-bottom: 10px;
+    vertical-align: top;
+  }
+  .header-row .sub-headers figcaption {
+    width: 100px; /*104px;*/
+    display: inline-block;
+    wrap: none;
+  }
+  
+  .row .spacer {
+    display: inline-block;
+    height: 48px;
+    width: 96px;
+  }
+  
+  .info p {
+    margin-bottom: 4px;
+  }
+  
+  .info .paper-title {
+    font-weight: bold;
+  } 
+  
+  .info .paper-text {
+    
+  }
+  
+  @media (max-width: 1100px) {
+    .row .spacer {
+      display: inline-block;
+      height: 48px;
+      width: 24px;
+    }
+    .line {
+      width: 750px;
+    }
+  }
+  
+  .row .category-check-container {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 8px;
+    margin-left: 0px;
+    margin-right: 70px;
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+  }
+  .row .category-check-container .category-check {
+    margin: 6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+  }
+  .row .category-check-container .set {
+    background: #909092;
+  }
+  .line {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 67px;
+    height: 1px;
+    background: #EAEAEA;
+  }
+
+</style>
+
+
+<script>
+
+  export default {
+    data() {
+      return {
+        papers: [
+          {
+            short: "Erhan, <i>et al.</i>, 2009",
+            key: "erhan2009visualizing",
+            text: "Introduced core idea. Minimal regularization.",
+            light_reg: [1,0,0],
+            heavy_reg: [0,0],
+            src: "images/prior_vis_icons/Erhan2009.png",
+          },
+          {
+            short: "Simonyan, <i>et al.</i>, 2013",
+            key: "simonyan2013deep",
+            text: "Tries total variation regularizer. Applied to ImageNet.",
+            light_reg: [0,1,0],
+            heavy_reg: [0,0],
+            src: "images/prior_vis_icons/Simonyan2013.png",
+          },
+          {
+            short: "Szegedy, <i>et al.</i>, 2013",
+            key: "szegedy2013intriguing",
+            text: "Adverserial counterexamples. Visualizes with dataset examples.",
+            light_reg: [1,0,0],
+            heavy_reg: [0,1],
+            src: "images/prior_vis_icons/Szegedy2013.png",
+          },
+          {
+            short: "Nguyen, <i>et al.</i>, 2015",
+            key: "nguyen2015deep",
+            text: "Explores counterexamples. Introduces image blurring.",
+            light_reg: [0,1,0],
+            heavy_reg: [0,0],
+            src: "images/prior_vis_icons/Nguyen2015.png",
+          },
+          {
+            short: "Mordvintsev, <i>et al.</i>, 2015",
+            key: "mordvintsev2015inceptionism",
+            text: "Introduced jitter & multi-scale. Explored GMM priors for classes.",
+            light_reg: [0,0,1],
+            heavy_reg: [1,0],
+            src: "images/prior_vis_icons/Mordvintsev2015.png",
+          },
+          {
+            short: "Øygard, <i>et al.</i>, 2015",
+            key: "oygard2015vis",
+            text: "Introduces gradient blurring. (Also uses jitter.)",
+            light_reg: [0,1,1],
+            heavy_reg: [0,0],
+            src: "images/prior_vis_icons/Oygard2015.png",
+          },
+          {
+            short: "Tyka, <i>et al.</i>, 2016",
+            key: "tyka2016bilateral",
+            text: "Regularizes with bilateral filters. (Also uses jitter.)",
+            light_reg: [0,1,1],
+            heavy_reg: [0,0],
+            src: "images/prior_vis_icons/Tyka2016.png",
+          },
+          {
+            short: "Mordvintsev, <i>et al.</i>, 2016",
+            key: "mordvintsev2016deepdreaming",
+            text: "Normalizes gradient frequencies. (Also uses jitter.)",
+            light_reg: [0,1,1],
+            heavy_reg: [0,0],
+            src: "images/prior_vis_icons/Mordvintsev2016.png",
+          },
+          {
+            short: "Nguyen, <i>et al.</i>, 2016",
+            key: "nguyen2016synthesizing",
+            text: "Paramaterizes images with GAN generator.",
+            light_reg: [0,0,0],
+            heavy_reg: [1,0],
+            src: "images/prior_vis_icons/Nguyen2016a.png",
+          },
+          {
+            short: "Nguyen, <i>et al.</i>, 2016",
+            key: "nguyen2016plug",
+            text: "Uses denoising autoencoder prior to make a generative model.",
+            light_reg: [0,0,0],
+            heavy_reg: [1,0],
+            src: "images/prior_vis_icons/Nguyen2016b.png",
+          },
+        ],
+
+      }
+    },
+    computed: { },
+    components: {},
+    methods: {},
+    helpers: {}
+  }
+</script>

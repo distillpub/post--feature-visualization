@@ -1,0 +1,114 @@
+
+* Do we want to somehow show real data examples for each visualization?
+** Integrated into the diagrams? Link to appendix?
+
+* Flip learning rate direction
+
+* Add plot of loss curves -- add special diagram?
+
+* Visualizing later neurons can be harder
+** Mention in diversity section?
+
+* Challenges with inceptionv3
+
+* "Frequency Penalization" -- maybe "Frequency prior?"
+
+* Total variation is absolute value differences?
+** Should preserve edges
+
+* gradient blurring; do we want saying further?
+
+* Do we want to mention style transfer?
+** Total variation often gets used
+** can run into checkerboarding
+
+
+* Interaction
+** Diversity and feature visualization?
+
+* Evolution?
+* Model comparison?
+* Appendices
+
+
+
+
+
+* t-SNE of feature vectors, classes
+
+
+
+
+===============
+
+
+What insights do we have:
+
+(1) Feature visualization makes neurons and activations meaningful
+(2) Attribution is more than just heatmaps on original image
+    - Can be applied to hidden units
+    - Attribution on higher-diemsnional outputs, counterfactuals
+(3) We can reduce neurons into groups for a particular example to make understanding more tractable
+
+Other things:
+* Graphs
+* Alex' t-sne vis of activations??
+* How feature get built up?
+** Could talk about how one would manually build a rotated square detector?
+
+
+
+
+====== Design ToDos
+
+-[x] hero larger and responsive
+-[x] redo worst static diagrams
+-[ ] sliders on mobile devices
+-[ ] optimize spritesheets
+-[ ] formula for diversity (gram-matrix one)
+-[ ] diversity: bad examples
+-[ ] link to site with all neuron visualizations?
+-[ ] diversity examples update (colab link?)
+-[ ] interpolation: merge into diversity
+  -[ ] colab link(?)
+-[ ] cite tags in regularization review table
+-[ ] frequency: l1, blur, tv
+-[ ] jitter explanation: footnote
+-[ ] optimization researcher
+-[ ] descent: appendix/footnote
+-[ ] citation: with frequencies scaled so that they all have equal energy
+-[ ] overview of techniques dide by side static diagrqam in conclusion
+-[ ] commen out practicality
+
+
+====== Neurons \o/
+[
+("mixed4a",   1), # right angles
+("mixed4a",   2), # black dots
+("mixed4a",   6), # hf checkerboard, curved
+("mixed4a",  13), # barcodes; white background
+("mixed4a",  41), # rectangles; frames
+("mixed4a",  50), # DOWNWARD arcs
+("mixed4a", 222), # snout
+("mixed4a", 295), # puppy eyes
+("mixed4a", 449), # plants and arch
+("mixed4a", 459), # plants
+("mixed4a", 496),
+("mixed4a", 499), # number pads
+("mixed4b", 464),
+("mixed4b", 465), # landscape
+("mixed4b", 466),
+("mixed4b", 475), # people shoulders
+("mixed4b", 482), # arc
+("mixed4c", 449), # round
+("mixed4c", 450), # shorts
+("mixed4c", 469),
+("mixed4c", 483),
+("mixed4d", 118),
+("mixed4d", 466),
+("mixed4d", 479), # thin beak birds
+("mixed4d", 484), # wheels
+("mixed4e", 785),
+("mixed4e", 804), # puppy floppy ears
+("mixed4e", 819),
+]

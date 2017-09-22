@@ -1,0 +1,35 @@
+{
+  "y_vars": [ 
+    {
+      "values": [
+        "mixed4a:6",
+        "mixed4a:240",
+        "mixed4a:41",
+        "mixed4a:449",
+        "mixed4a:499",
+        "mixed4b:482",
+        "mixed4d:479",
+        "mixed4e:819",
+      ], 
+      "name": "neurons", 
+      "type": "icon", 
+      "label": "neurons"
+    }
+  ], 
+  "x_vars": [
+    {
+      "values": [
+        "min",
+        "neg",
+        "zero",
+        "pos",
+        "max",
+      ], 
+      "name": "bucket", 
+      "default": 0, 
+      "type": "number", 
+      "label": "bucket"
+    }
+  ], 
+  "size": 294
+}

@@ -1,0 +1,113 @@
+
+<div ref:root class="outer {{hover_class}}" style="--default-size: {{final_sprite_size}}px;
+ --default-position: -{{offset_x}}px -{{offset_y}}px;
+ --hover-size: {{sprite_size}}px;
+ --hover-position: -{{corner_x}}px -{{corner_y}}px;
+ --container-size: {{size}}px; 
+ --default-ratio: {{ size / final_sprite_size }};
+ --hover-scale: {{hover_scale}};
+ --transition_css: {{transition_css}};
+ --border_css: {{border_css}};">
+  <div class="mid">
+    <div class="inner {{src_class}}">
+    </div>
+  </div>
+</div>
+
+<style>
+
+.outer {
+  position: relative;
+  float: left;
+  /*margin-right: 2px;
+  margin-bottom: 2px;*/
+  width: var(--container-size);
+  height: var(--container-size);
+}
+
+.mid, .inner {
+  transition: var(--transition_css);
+  pointer-events: none;
+}
+
+.mid {
+  transform: scale( var(--default-ratio) );
+  margin: calc( calc( var(--container-size) - var(--default-size) ) / 2 );
+}
+
+.inner {
+  image-rendering: pixelated;
+  background-position: var(--default-position);
+  width: var(--default-size);
+  height: var(--default-size);
+}
+
+.outer.hoverable:hover {
+  z-index: 100;
+}
+
+.outer.hoverable:hover .inner {
+  background-position: var(--hover-position);
+  width: var(--hover-size);
+  height: var(--hover-size);
+  /*transition: none;*/
+}
+
+.outer.hoverable:hover .mid {
+  transform: scale(var(--hover-scale));
+  margin: calc( calc( var(--container-size) - var(--hover-size) ) / 2 );
+  /*transition: none;*/
+  /*box-shadow: 0px 5px 20px rgba(0,0,0,0.667);*/
+  border: var(--border_css);
+  width: var(--hover-size);
+}
+
+</style>
+
+<script>
+  export default {
+    data() {
+      return {
+        src_class: "mixed4d",
+        sprite_size: 200,
+        sprite_scale: 1.0,
+        size: 100,
+        x: 0, // specified in Sprite subclasses
+        y: 0,
+        shift: [0.5,0.5],
+        hover: false,
+        hover_scale: 1,
+        transition_background: false,
+        border: false
+      }
+    },
+    computed: {
+      corner_x: (sprite_size, x, sprite_scale) => sprite_size*x,
+      corner_y: (sprite_size, y, sprite_scale) => sprite_size*y,
+      offset_x: (sprite_size, sprite_scale, corner_x, shift, size, ratio) => {
+        return corner_x + sprite_size * shift[0] * (1-sprite_scale);
+      },
+      offset_y: (sprite_size, sprite_scale, corner_y, shift, size, ratio) => {
+        return corner_y + sprite_size * shift[1] * (1-sprite_scale);
+      },
+      final_sprite_size: (sprite_scale, sprite_size) => sprite_scale * sprite_size,
+      ratio: (size, final_sprite_size) => size/final_sprite_size,
+      margin: (final_sprite_size, size) => -(final_sprite_size-size)/2,
+      transition_css: (transition_background) => {
+        let css = `width 0.1s ease-out, height 0.1s ease-out, margin 0.1s ease-out, transform 0.1s ease-out`;
+        if (transition_background) {
+          css += `, background-position 0.1s ease-out`;
+        }
+        return css;
+      },
+      border_css: (border) => border ? '2px solid white' : 'none',
+      hover_class: (hover) => hover ? 'hoverable' : ''
+    },
+    oncreate() {
+      if (this.get().src_class == 'opt-and-examples-sprite') {
+        console.log(this)
+      }
+      // this.observe('x', (x1, x2) => console.log(this))
+    }
+  }
+</script>

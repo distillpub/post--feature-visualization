@@ -1,0 +1,295 @@
+
+<figcaption>
+  {{#each config_var_groups as config_var_group}}
+    <div class="config-group">
+      {{#each config_var_group as config_var}}
+        <div class="config config-{{config_var.type}}" data-config-name={{config_var.name}}>
+      
+      
+          {{#if config_var.type == "icon"}}
+            {{#each range(config_var.values.length) as n}}
+              <div
+                class="icon {{(var_values_safe[config_var.name] == n)? 'selected' : ''}}"
+                on:click="setDeep('var_values.'+config_var.name, n)"
+                style="width: {{icon_size}}px; height: {{icon_size}}px;"
+                >
+                <div class="inner" style="margin: {{(icon_size-sprite_size)/2}}px; transform:scale({{icon_size/sprite_size}});">
+                  <div class="inner" style="
+                      background: {{sprite_background}};
+                      background-position: 
+                        {{icon_x_pos_after_override(keyvalue(config_var.name, n))}}px
+                        {{icon_y_pos_after_override(keyvalue(config_var.name, n))}}px;
+                      width: {{sprite_size}}px;
+                      height: {{sprite_size}}px;"
+                    >
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          {{/if}}
+      
+          {{#if config_var.type == "binary"}}
+            <label>
+              <input type="checkbox" on:change="setDeep('var_values.'+config_var.name, +this.checked)" checked="{{var_values_safe[config_var.name]}}">
+              {{config_var.label}}
+            </label>
+          {{/if}}
+          
+          {{#if config_var.type != "binary" && config_var.type != "icon" }}
+            <label>
+              <span>
+                {{config_var.label}}
+                ({{config_var.values[var_values_safe[config_var.name]]}})
+              </span>
+              <br>
+              <input type="range"
+                min=0 max={{config_var.values.length-1}}
+                value={{var_values_safe[config_var.name]}}
+                on:input="setDeep('var_values.'+config_var.name, this.value)">
+            </label>
+          {{/if}}
+        
+        </div>
+      {{/each}}
+    </div>
+  {{/each}}
+  {{#if explain_text != ""}}
+    <div class="explain">
+      {{explain_text}}
+    </div>
+  {{/if}}
+</figcaption>
+
+<div class="images">
+  {{#each display_offsets as offset}}
+    <div class="outer" style="width: {{size}}px; height: {{size}}px;">
+      <div class="inner" style="
+            background: {{sprite_background}};
+            background-position: {{offset.x}}px {{offset.y}}px;
+            width: {{sprite_size}}px; height: {{sprite_size}}px;
+            margin: {{(size-sprite_size)/2}}px;
+            transform:scale({{size/sprite_size}});"
+        >
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+<style>
+.config-group {
+  display: inline-block;
+  padding-right: 10px;
+}
+.config-group .config {
+  display: block;
+}
+
+.config-binary {
+  width: auto;
+}
+
+.config-range {
+  width: 140px;
+  overflow: visible;
+  white-space: nowrap;
+}
+.config-group .config input[type="range"] {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 3px;
+}
+
+.config-icon {
+  width: 280px;
+}
+
+.config-icon .inner {
+  image-rendering: auto;
+}
+
+.config-icon .icon {
+  border: 3px solid white;
+  float: left;
+  margin: 0px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+}
+.config-icon .selected {
+  border-color: #3497FF;
+  /*box-shadow: 3px 3px 1px #3497FF, -3px -3px 1px #3497FF, -3px 3px 1px #3497FF, 3px -3px 1px #3497FF;*/
+  /*filter: brightness(100%);*/
+}
+.config-icon .icon .inner {
+  filter: saturate(0%);
+}
+  
+.explain {
+  display: inline-block;
+  width: 200px;
+  vertical-align: top;
+}
+
+.images {
+  margin-top: 10px;
+}
+
+.images .outer {
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.inner {
+  image-rendering: pixelated;
+}
+</style>
+
+
+<script>
+  import { setDeep } from 'svelte-extras';
+  import * as d3 from "d3";
+
+  function range(n){
+    var ret = [];
+    for (var i = 0; i < n; ++i) ret.push(i);
+    return ret;
+  }
+  
+  function obj_update(a, b){
+    var ret = {};
+    for (var k in a) ret[k] = a[k];
+    for (var k in b) ret[k] = b[k];
+    return ret;
+  }
+
+  function vars_to_position(dim_vars, vals){
+    var sum = 0;
+    var dim_spacing = 1;
+    var dim_spacings = [];
+    for (var i = dim_vars.length-1; i >= 0; i--){
+      dim_spacings.push(dim_spacing);
+      dim_spacing *= dim_vars[i].values.length;
+    }
+    dim_spacings.reverse();
+    for (var i = 0; i < dim_vars.length; i++){
+      var dim_var = dim_vars[i];
+      var val = vals[dim_var.name] || 0;
+      sum += val * dim_spacings[i];
+    }
+    return sum;
+  }
+  
+  function select_obj_by_name(objs, name){
+    for (var obj of objs){
+      if (obj.name == name){
+        return obj
+      }
+    }
+  }
+  
+  function keyvalue(k,v){
+    var ret = {};
+    ret[k] = v;
+    return ret;
+  }
+
+
+  function load_spritemap(name, extra_config) {
+    var app = this;
+    app.set({sprite_path: "images/" + name + ".jpeg", });
+    d3.json("images/" + name + ".json", function(config) {
+      var all_vars = config.x_vars.concat(config.y_vars);
+      var step_var = all_vars.filter(v => v.name == "steps" || v.name == "step")[0];
+      app.set({
+        sprite_size: config.size,
+        x_vars: config.x_vars,
+        y_vars: config.y_vars,
+        configurable: all_vars
+          .filter(v => v.name != "steps" && v.values.length > 0)
+          .map(v => v.name),
+        display: step_var.values
+          .map((val, i) => keyvalue(step_var.name, i)),
+      })
+      app.set(extra_config);
+    })
+  }
+
+  export default {
+    data() {
+      return {
+        spritemap_name: "",
+        sprite_path: "",
+        size: 180,
+        sprite_size: 1,
+        x_vars: [],
+        y_vars: [],
+        var_values: {},
+        display: [{}],
+        configurable: [],
+        explain_text: "",
+        icon_size: 35,
+        icon_var_values: {}
+      }
+    },
+    computed: {
+      
+      sprite_background: sprite_path => 
+        (sprite_path == "")? "#DDD" : "url("+sprite_path+")",
+      
+      all_vars: (x_vars, y_vars) => x_vars.concat(y_vars),
+      
+      var_values_safe: (all_vars, var_values) => {
+        var defaults = [];
+        for (var config_var of all_vars){
+          defaults[config_var.name] = config_var.default || 0;
+        }
+        return obj_update(defaults, var_values);
+      },
+      
+      icon_var_values_safe: (all_vars, var_values, icon_var_values) => {
+        var values = {};
+        for (var config_var of all_vars){
+          var name = config_var.name;
+          values[name] = icon_var_values[name] || config_var.default || var_values[name] || 0;
+        }
+        return values;
+      },
+      
+      config_var_groups: (all_vars, configurable) => {
+        return configurable.map(group => {
+          if (!(group instanceof Array)) group = [group];
+          return group
+            .map(config_var_name => select_obj_by_name(all_vars, config_var_name));
+        })
+      },
+      
+      x_pos_after_override: (x_vars, var_values_safe, sprite_size) => (
+        (var_value_override) => -sprite_size*vars_to_position(x_vars, obj_update(var_values_safe, var_value_override))
+      ),
+      
+      y_pos_after_override: (y_vars, var_values_safe, sprite_size) => (
+        (var_value_override) => -sprite_size*vars_to_position(y_vars, obj_update(var_values_safe, var_value_override))
+      ),
+    
+      icon_x_pos_after_override: (x_vars, icon_var_values_safe, sprite_size) => (
+        (var_value_override) => -sprite_size*vars_to_position(x_vars, obj_update(icon_var_values_safe, var_value_override))
+      ),
+      
+      icon_y_pos_after_override: (y_vars, icon_var_values_safe, sprite_size) => (
+        (var_value_override) => -sprite_size*vars_to_position(y_vars, obj_update(icon_var_values_safe, var_value_override))
+      ),
+      
+      display_offsets: (x_pos_after_override, y_pos_after_override, display) => {
+        return display.map(display_values => ({
+          x:  x_pos_after_override(display_values),
+          y:  y_pos_after_override(display_values),
+        }))
+      },
+      
+
+    },
+    components: {},
+    methods: {setDeep, load_spritemap},
+    helpers: {range, keyvalue}
+  }
+</script>

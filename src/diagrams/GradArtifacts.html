@@ -1,0 +1,77 @@
+
+<div style="overflow: hidden; position: relative; height: 185px;">
+  <div style="left: {{(size+margin)*2-margin/2-3}}px; top: 0px; position: absolute;">
+    <figcaption style="line-height:1; max-width: 560px;">Each <b>strided convolution</b> creates checkerboard patterns when we backprop through it. <dt-cite key="odena2016deconvolution"></dt-cite></figcaption>
+  </div>
+  {{#each range(12) as n}}
+    {{#if n == 2 || n == 4 || n == 6 || n == 11}}
+      <!--<div style="left: {{122*n-8}}px; top: 0px; position: absolute;">
+        <figcaption style="line-height:1;"><b>strided conv</b></figcaption>
+      </div>-->
+      <div style="left: {{(size+margin)*n-margin/2-0.5}}px; top: 23px; position: absolute; width:1px; height: 15px; background: #AAA"></div>
+    {{/if}}
+    <div class="outer" style="position: absolute; left: {{(size+margin)*n}}px; top: 50px; width:{{size}}px; height:{{size}}px;">
+      <div class="grad" style="
+        background-position: -{{sprite_size*(n+1)}}px -{{sprite_size*0}}px;
+        transform: scale({{size/sprite_size}});
+        filter:  contrast(200%);
+        margin: {{(size-sprite_size)/2}}px;
+        width: {{sprite_size}}px;
+        height: {{sprite_size}}px; "></div>
+      <figcaption style="width: 400px;">
+        {{layers[n]}}
+        {{{(n==0)? '<div style="margin-top: 3px;">Gradient Magnitudes</div>' : ''}}}
+      </figcaption>
+    </div>
+    <div class="op" style="
+      position: absolute;
+      left: {{(size+margin)*n+size+4}}px;
+      top: 45px;
+      width:{{margin-8}}px;
+      height:{{size+10}}px;
+      background: {{(n == 1 || n == 3 || n == 5 || n == 10)? 'hsl(240, 64%, 66%)' : 'hsl(240, 50%, 90%)'}};
+      display: {{(n==11)? 'none' : 'block'}}; 
+      border-radius:4px;" data-n="{{n}}">
+    </div>
+  {{/each}}
+</div>
+
+
+
+<style>
+  .outer {
+    position: absolute;
+  }
+  .grad {
+    width: 224px;
+    height: 224px;
+    background: url("images/layer_gradients_spritemap_4.jpeg");
+  }
+  .outer figcaption {
+    margin-top: 10px;
+  }
+</style>
+
+
+<script>
+function range(n){
+  var ret = [];
+  for (var i = 0; i < n; ++i) ret.push(i);
+  return ret;
+}
+  export default {
+    data() {
+      return {
+        size: 70,
+        sprite_size: 224,
+        margin: 20,
+        layers: ["input", "conv2d0", "conv2d1", "conv2d2",
+               "mixed3a", "mixed3b",
+               "mixed4a", "mixed4b", "mixed4c", "mixed4d", "mixed4e",
+               "mixed5a", "mixed5b"],
+      }
+    },
+    computed: {   },
+    helpers: {range}
+  }
+</script>

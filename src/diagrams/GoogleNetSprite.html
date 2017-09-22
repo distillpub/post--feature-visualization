@@ -1,0 +1,54 @@
+
+<span class="GoogleNetSprite" ref:root data-neuron={{layer + ":" + neuron}}>
+  <Sprite
+    bind:src_class
+    bind:size
+    bind:sprite_size
+    bind:x 
+    bind:y 
+    bind:sprite_scale
+    bind:shift 
+    transition_background={{true}}
+    hover=true/>
+</span>
+
+<script>
+  import Sprite from "./Sprite.html";
+  export default {
+    data() {
+      return {
+        layer: "mixed4d",
+        neuron: 312,
+        sprite_size: 200,
+        sprite_scale: 1.0,
+        size: 100,
+        shift: [0.5,0.5],
+        transition_background: true,
+        border: true
+      }
+    },
+    computed: {
+      x: neuron => neuron % 100,
+      y: neuron => Math.floor(neuron/100),
+      src_class: layer => layer,
+      src: layer => "images/"+layer+"_sprite_200.jpeg"
+    },
+    oncreate() {
+      this.refs.root._ = this;
+    },
+    components: {Sprite}
+  }
+</script>
+
+<style>
+  .conv2d0 { background: url("images/conv2d0_sprite_200.jpeg")}
+  .conv2d1 { background: url("images/conv2d1_sprite_200.jpeg")}
+  .conv2d2 { background: url("images/conv2d2_sprite_200.jpeg")}
+  .mixed3a { background: url("images/mixed3a_sprite_200.jpeg")}
+  .mixed3b { background: url("images/mixed3b_sprite_200.jpeg")}
+  .mixed4a { background: url("images/mixed4a_sprite_200.jpeg")}
+  .mixed4b { background: url("images/mixed4b_sprite_200.jpeg")}
+  .mixed4c { background: url("images/mixed4c_sprite_200.jpeg")}
+  .mixed4d { background: url("images/mixed4d_sprite_200.jpeg")}
+  .mixed4e { background: url("images/mixed4e_sprite_200.jpeg")}
+</style>
