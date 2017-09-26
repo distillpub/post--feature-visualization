@@ -1,11 +1,12 @@
-import GoogleNetExamples from "./diagrams/GoogleNetExamples.html";
-import ImageArray        from "./diagrams/ImageArray.html";
-import OptExplore        from "./diagrams/OptExplore.html";
-import OptExplore2       from "./diagrams/OptExplore2.html";
-import OptExploreFlex    from "./diagrams/OptExploreFlex.html";
-import GradArtifacts     from "./diagrams/GradArtifacts.html";
-import RegReview         from "./diagrams/RegReview.html";
-import OptAndExamples    from "./diagrams/OptAndExamples.html";
+import GoogleNetExamples  from "./diagrams/GoogleNetExamples.html";
+import ImageArray         from "./diagrams/ImageArray.html";
+import OptExplore         from "./diagrams/OptExplore.html";
+import OptExplore2        from "./diagrams/OptExplore2.html";
+import OptExploreFlex     from "./diagrams/OptExploreFlex.html";
+import GradArtifacts      from "./diagrams/GradArtifacts.html";
+import RegReview          from "./diagrams/RegReview.html";
+import OptAndExamples     from "./diagrams/OptAndExamples.html";
+import LinearCombinations from "./diagrams/LinearCombinations.html";
 
 // const figure = document.querySelector("d-figure#last-figure");
 // figure.addEventListener("ready", function() {
@@ -13,6 +14,7 @@ import OptAndExamples    from "./diagrams/OptAndExamples.html";
 //   initTag.textContent = "ready"
 //   console.log('ready')
 // });
+new LinearCombinations({target: document.querySelector("#linear-combinations")});
 
 new GoogleNetExamples({target: document.querySelector("#googlenet-examples")});
 
