@@ -1,66 +1,16 @@
 <div class="googlenet-examples">
-  <div class="example">
-    <!--<span class="description">Edges</span>-->
-    <div class="images">
-      <Sprite src_class='sprite_hero' x=0 y=0 bind:size sprite_size=200 sprite_scale=1.0 hover=true/>
-      <Sprite src_class='sprite_hero' x=0 y=1 bind:size sprite_size=200 sprite_scale=1.0 hover=true/>
-      <Sprite src_class='sprite_hero' x=0 y=2 bind:size sprite_size=200 sprite_scale=1.0 hover=true/>
-      <Sprite src_class='sprite_hero' x=0 y=3 bind:size sprite_size=200 sprite_scale=1.0 hover=true/>
-      <Sprite src_class='sprite_hero' x=0 y=4 bind:size sprite_size=200 sprite_scale=1.0 hover=true/>
-      <Sprite src_class='sprite_hero' x=0 y=5 bind:size sprite_size=200 sprite_scale=1.0 hover=true/>
+  {{#each range(5) as x}}
+    <div class="example">
+      <!--<span class="description">Edges</span>-->
+      <div class="images">
+        {{#each range(6) as y}}
+          <Sprite src_class='sprite_hero' x={{x}} y={{y}} bind:size bind:sprite_scale hover=true/>
+        {{/each}}
+      </div>
+      <span class="description"><strong>{{descriptions[x]}}</strong> (layer {{names[x]}})</span>
     </div>
-    <span class="description">Edges</span>
-  </div>
-  <div class="example">
-    <!--<span class="description">Textures</span>-->
-    <div class="images">
-      <Sprite src_class='sprite_hero' x=1 y=0 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=1 y=1 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=1 y=2 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=1 y=3 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=1 y=4 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=1 y=5 bind:size sprite_size=200 hover=true/>
-    </div>
-    <span class="description">Textures</span>
-  </div>
-  <div class="example">
-    <!--<span class="description">Patterns</span>-->
-    <div class="images">
-      <Sprite src_class='sprite_hero' x=2 y=0 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=2 y=1 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=2 y=2 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=2 y=3 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=2 y=4 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=2 y=5 bind:size sprite_size=200 hover=true/>
-    </div>
-    <span class="description">Patterns</span>
-  </div>
-  <div class="example">
-    <!--<span class="description">Sub-Objects</span>-->
-    <div class="images">
-      <Sprite src_class='sprite_hero' x=3 y=0 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=3 y=1 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=3 y=2 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=3 y=3 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=3 y=4 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=3 y=5 bind:size sprite_size=200 hover=true/>
-    </div>
-    <span class="description">Sub-Objects</span>
-  </div>
-  <div class="example">
-    <!--<span class="description">Objects</span>-->
-    <div class="images">
-      <Sprite src_class='sprite_hero' x=4 y=0 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=4 y=1 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=4 y=2 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=4 y=3 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=4 y=4 bind:size sprite_size=200 hover=true/>
-      <Sprite src_class='sprite_hero' x=4 y=5 bind:size sprite_size=200 hover=true/>
-    </div>
-    <span class="description">Objects</span>
-  </div>
+  {{/each}}
 </div>
-<!--<span class="description">Feature visualization allows us to see how neural networks can progressively build up their understanding of images, among many other things. But the best methods can be a bit complicated. We find that simple techniques can be very effective -- and that one of the main challenges may be optimization.</span>-->
 
 <style>
 
@@ -84,9 +34,30 @@
     justify-content: flex-start;
   }
   
-  .googlenet-examples .example .images * {
+  .googlenet-examples .example .images > * {
     margin-bottom: 5px;
     margin-right: 5px;
+  }
+  
+  .googlenet-examples .inner {
+    image-rendering: auto;
+  }
+  
+  .googlenet-examples .example .images span:last-of-type {
+    margin-bottom: 0;
+  }
+  .googlenet-examples .example:last-of-type {
+    /*margin-right: 0;*/
+  }
+  .googlenet-examples > div:last-child {
+  }
+  
+  .description {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.8em;
   }
   
   @media (min-width: 1105px) {
@@ -97,6 +68,10 @@
     
     .googlenet-examples .example {
       margin-right: 10px;
+    }
+    
+    .googlenet-examples .example:last-of-type {
+      margin-right: 0;
     }
     
     .googlenet-examples .example .images {
@@ -116,43 +91,48 @@
     }
   }
   
-  .googlenet-examples .inner {
-    image-rendering: auto;
-  }
-  
-  .googlenet-examples .example .images span:last-of-type {
-    margin-bottom: 0;
-  }
-  .googlenet-examples .example:last-of-type {
-    /*margin-right: 0;*/
-  }
-  .googlenet-examples > div:last-child {
-  }
-  
-  .description {
-    width: 100%;
-    margin-top: 15px;
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 0.8em;
-  }
+
 </style>
 
 
 <script>
   import Sprite from "./Sprite.html";
   
+  function range(n){
+    return Array(n).fill().map((_, i) => i);
+  }
+  
   export default {
     data() {
       return {
         ns: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29],
-        size: 100
+        size: 100,
+        sprite_scale: 1.0,
+        names: [
+          "conv2d0",
+          "mixed3a",
+          "mixed4a",
+          "mixed4b,c",
+          "mixed4d,e",
+        ],
+        descriptions: [
+          "Edges",
+          "Textures",
+          "Patterns",
+          "Parts",
+          "Objects",
+        ]
       }
     },
     oncreate: function() {
       const mq = matchMedia("(min-width: 1400px)");
       mq.onchange = (event) => this.set({size: event.matches ? 125 : 100});
-      this.set({size: mq.matches ? 125 : 100});
+      this.set({
+        size: mq.matches ? 125 : 100,
+        // sprite_scale: mq.matches ? .625 : .5,
+      });
     },
-    components: { Sprite }
+    components: { Sprite },
+    helpers: { range },
   }
 </script>

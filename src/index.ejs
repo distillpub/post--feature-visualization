@@ -128,7 +128,7 @@
   <h1>Simple &amp; Flexible Feature Visualization</h1>
   <h2>Feature visualization allows us to see how neural networks progressively build up their understanding of images.</h2>
   
-  <figure id="googlenet-examples" style="min-height: 280px;"></figure>
+  <figure id="googlenet-examples" style="min-height: 438px;"></figure>
   <d-byline></d-byline>
 
   <!-- <aside>TODO: heroify! TODO: Could this visualization “expand” to let the user see more images? We should also link to lots more stuff here!!</aside> -->
@@ -207,6 +207,14 @@
   <img style="width: 100%; " src="images/vis_OptimizeProcess.svg">
   <figcaption>Starting with random noise, we optimize an image to activate a particular neuron (layer mixed4a, unit 11).</figcaption>
 </figure>
+
+<h3>Objectives</h3>
+
+<p>
+  - TODO: draft of first feature viz article
+</p>
+
+<h3>Why visualize by optimization?</h3>
 
 <p>
   So, optimization can give us an example input that causes the desired behavior.
@@ -288,15 +296,11 @@
 
 <p>
   Of course, there are also significant challenges to visualizing features with optimization.
-  
 </p>
 
 
-
-
-
 <!-- =================================================== -->
-<br>
+
 <h2>Diversity</h2>
 <p><i>
   Optimization tends to show only one facet of a feature.<br>
@@ -321,8 +325,9 @@
 <!-- <figure class="l-page-outset"><img src="images/vis_ActivationSpectrum.svg" style="min-height: 150px;"></img></figure> -->
 
 
-
-<figure class="l-page-outset" id="optimization-and-examples"></figure>
+<figure class="l-page-outset">
+  <d-figure id="optimization-and-examples"></d-figure>
+</figure>
 
 
 <!-- <figure class="l-page-outset row" id="tmptest">
@@ -417,7 +422,6 @@
   For example, one neuron seems responds to people's shoulders and arms.
 </p>
 
-
 <figure class="example-vis2 l-page">
   <div class="chunk">
     <img class="big" src="images/ball_5.jpeg">
@@ -458,15 +462,61 @@
   </div>
 </figure>
 
-<!-- =================================================== -->
-<h2>Interaction & Interpolation</h2>
-<p><i>
-  Neurons don't represent ideas in a vacuum -- they work together.
-  How can we understand their interactions?
-  Is it safe to reason about them independently?
-</i></p>
-<br>
+<p>
+  While the examples above mostly represent a coherent idea, there are also neurons that represent strange mixtures of ideas.
+  For example, below a neuron responds both to billiard tables and cats.
+</p>
 
+<figure>
+  <!-- images of weird diversity -->
+</figure>
+
+<p>
+  Examples like these suggest that neurons are not necessarily the right semantic units for understanding NNs.
+</p>
+
+<h2>Interaction between Neurons</h2>
+
+<p>
+  If neurons are not the right way to understand neural networks, what is?
+  In real life, combinations of neurons work together to represent images in neural networks. 
+  Individual neurons are the basis directions of activation space, and it is not clear that these should be any more special than any other direction.
+</p>
+
+<p>
+  In fact, <d-cite key="szegedy2013intriguing">Szegedy <i>et al.</i></d-cite> found that random directions seem just as meaningful as the basis directions.
+  We observe the same phenomenon: when we visualize random linear combinations of neurons, the resulting visualization also seem to carry meaning:
+</p>
+
+<figure>
+  <!-- random direction optimizations; dataset examples? -->
+</figure>
+
+<p>  
+  We can also define interesting directions (in activatino space) by doing arithmetic on neurons. (TODO:correct?)
+  For exampe, if we subtract a "plants" neuron from a "backyard" neuron, we are left with only buildings/fences.
+  This is reminiscient of semantic arithmetic of word embeddings as seen in Word2Vec or generative models' latent spaces.
+</p>
+
+<figure>
+  <!-- try "semantic" sums and differences -->
+</figure>
+
+<p>
+  These examples show us how neurons jointly represent images.
+  To better understand how neurons interact, we can interpolate between them. <d-footnote>TODO: shared input parameterization</d-footnote>
+  This is similar to interpolating in the latent space of generative models. 
+</p>
+
+<figure>
+  <!-- 1D interpolation, also optvis, but needs porting -->
+</figure>
+
+<p>
+  This is only starting to scratch the surface of how neurons interact. 
+  The truth is that we have almost no clue how to select meaningful directions, or whether there even exist particularly meaningful directions.
+  Independant of finding directions, there are also questions on how directions interact--for example, interpolation can show us how a small number of directions interact, but in reality there are hundreds of directions interacting.
+</p>
 
 
 <!-- =================================================== -->
@@ -661,23 +711,6 @@
   On the other hand, if you turn off all other regularizers, the preconditioner seems to reduce high-frequency patterns.
 </p>
 
-<h3>Practical Implications of Preconditioning</h3>
-
-<p>
-  Over the last few years, it's been observed that optimizing the inputs of
-  neural networks has significant artistic applications.
-  Building off DeepDream <d-cite key="mordvintsev2015inceptionism"></d-cite>
-  and artistic style transfer <d-cite key="gatys2015neural"></d-cite>,
-  a remarkable artistic community has flourished (see, eg. the work of Mario Klingemann).
-  It's even been used in professional videos <d-cite key="joshi2017bringing"></d-cite>.
-</p>
-
-<p>
-  This has lead to an increasing interest in performing neural style transfer on mobile devices.
-  However...
-</p>
-
-
 <h2>Conclusion</h2>
 
 <p>
@@ -699,11 +732,9 @@
 </p>
 
 
-
-
 </d-article>
 
-<d-appendix >
+<d-appendix>
   <h3>Acknowledgments</h3>
   <p>
     We are extremely grateful to Shan Carter for thoughtful feedback -- especially design advice.
@@ -732,7 +763,6 @@
     Chris did most of the distillation of prior work and made most of the interactive diagrams.
     Ludwig created the visualization of the spectrum of neuron activations.
   </p>
+  <d-bibliography src="bibliography.bib"></d-bibliography>
 </d-appendix>
-<d-footer></d-footer>
 
-<d-bibliography src="bibliography.bib"></d-bibliography>

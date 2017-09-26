@@ -16,7 +16,7 @@
     
   <div class="negative">
     <div class="optimize">
-      <Sprite src_class={{sprite_opt_class}} size=146 sprite_size=147 y={{selected}} x=1 sprite_scale=1/>
+      <Sprite src_class={{sprite_opt_class}} size=147 sprite_size=147 y={{selected}} x=1 sprite_scale=1/>
       <figcaption class="caption">
         Negative optimized
       </figcaption>
@@ -42,7 +42,7 @@
 
   <div class="positive">
     <div class="optimize">
-      <Sprite src_class={{sprite_opt_class}} size=146 sprite_size=147 y={{selected}} x=0 sprite_scale=1/>
+      <Sprite src_class={{sprite_opt_class}} size=147 sprite_size=147 y={{selected}} x=0 sprite_scale=1/>
       <figcaption class="caption">
         Positive optimized
       </figcaption>
@@ -80,6 +80,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    /*justify-content: center;*/
     margin-bottom: 12px;
     margin-left: -3px;
   }
@@ -108,12 +109,14 @@
     flex-flow: row;
   }
   
-  .optimize figcaption {
-    padding: 5px;
+  .container figcaption {
+    padding-top: 5px;
   }
   
   .divider {
     display: none;
+    margin-left: 12px;
+    margin-right: 12px;
   }
   
   .positive > div {
@@ -207,12 +210,20 @@
       justify-content: flex-end;
     }
     
-    .examples {
+    /*.examples {
       margin-right: 12px;
+    }*/
+    
+    /*.positive {
+      margin-left: 12px;
+    }*/
+    
+    .positive .optimize {
+      margin-left: 36px;
     }
     
-    .positive {
-      margin-left: 12px;
+    .negative .optimize {
+      margin-right: 36px;
     }
   }
 </style>

@@ -18,7 +18,13 @@ new GoogleNetExamples({target: document.querySelector("#googlenet-examples")});
 
 new RegReview({target: document.querySelector("#feature-vis-history")});
 
-new OptAndExamples({target: document.querySelector("#optimization-and-examples")});
+const figure = document.getElementById("optimization-and-examples");
+figure.addEventListener("ready", function() {
+  console.log('init opt and examples...')
+  new OptAndExamples({target: document.querySelector("#optimization-and-examples")});
+  console.log('inited opt and examples')
+});
+
 
 new ImageArray({target: document.querySelector("#steepest-descent"),
 data: {
