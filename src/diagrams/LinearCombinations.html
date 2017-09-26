@@ -1,15 +1,70 @@
+
+
 <div class="linear-combinations">
   
+  <div class="summand a">
+      <div class="icons">
+        {{#each range(5) as i}}
+        <div class="icon {{(x == i)? 'selected' : ''}}"
+        on:mouseover='set({x: i+1})'
+        >
+        <Sprite src_class={{sprite_class}} size=44 sprite_size=147 y=0 x={{i+1}} sprite_scale=0.5/>
+      </div>
+      {{/each}}
+    </div>
+    
+    <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y=0 x={{x}} sprite_scale=1/>
+  </div>
+  
+  <div>
+    +
+  </div>
+  
+  <div class="summand b">
+    <div class="icons">
+      {{#each range(6) as i}}
+        <div class="icon {{(y == i)? 'selected' : ''}}"
+             on:mouseover='set({y: i+1})'
+          >
+          <Sprite src_class={{sprite_class}} size=44 sprite_size=147 y={{i+1}} x=0 sprite_scale=0.5/>
+        </div>
+      {{/each}}
+    </div>
+    
+    <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y={{y}} x=0 sprite_scale=1/>
+  </div>
+  
+  <div>
+    =
+  </div>
+  
+  <div class="result c">
+    <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y={{y}} x={{x}} sprite_scale=1/>
+  </div>
 </div>
 
 
 <style>
+
+  .linear_combinations_sprite {
+    background-image: url('images/linear_combinations.jpg')
+  }
   
   .linear-combinations {
-    width: 100%;
-    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: bottom;
+    /*width: 100%;*/
+    /*height: 100%;*/
     background: #ccc;
   }
+  
+  .summand,
+  .result {
+    flex-flow: column;
+    align-items: flex-end;
+  }
+
   
 </style>
 
@@ -24,11 +79,14 @@
   export default {
     data() {
       return {
+        sprite_class: 'linear_combinations_sprite',
+        x: 1,
+        y: 1
       }
     },
     computed: {},
     components: {Sprite},
     methods: {},
-    helpers: {}
+    helpers: {range}
   }
 </script>
