@@ -68,7 +68,7 @@ Other things:
 -[ ] formula for diversity (gram-matrix one)
 -[ ] diversity: bad examples
 -[ ] link to site with all neuron visualizations?
--[ ] diversity examples update (colab link?)
+-[x] diversity examples update (colab link?)
 -[x] interpolation: merge into diversity
   -[ ] colab link(?)
 -[ ] cite tags in regularization review table
@@ -77,5 +77,41 @@ Other things:
 -[ ] optimization researcher
 -[ ] descent: appendix/footnote
 -[ ] citation: with frequencies scaled so that they all have equal energy
--[ ] overview of techniques dide by side static diagrqam in conclusion
+-[ ] overview of techniques side by side static diagrqam in conclusion
 -[x] comment out practicality
+-[x] check transforms example parameterization (maybe inadvertently more robust)
+
+## random direction examples
+
+# animal faces
+/cns/in-d/home/ludwigschubert/visualize_directions/mixed4a/direction-00005-negative.png
+
+
+# axels, 3/5
+/cns/in-d/home/ludwigschubert/visualize_directions/mixed5a/direction-00008-negative.png
+
+# dog and bird?
+/cns/in-d/home/ludwigschubert/visualize_directions/mixed5a/direction-00006-negative.png
+
+# apes, 4/5
+/cns/in-d/home/ludwigschubert/visualize_directions/mixed4d/direction-00009-negative.png
+
+# scales, 4/5
+/cns/in-d/home/ludwigschubert/visualize_directions/mixed4c/direction-00006-negative.png
+
+# fox/dog 4/5
+/cns/in-d/home/ludwigschubert/visualize_directions/mixed4c/direction-00004-negative.png
+
+# diagonla b/w, 3/5
+/cns/in-d/home/ludwigschubert/visualize_directions/mixed3a/direction-00001-negative.png
+
+### interpolate examples
+
+https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/optimize_interpolation_2/mixed3a-00145-mixed4e-00710.png
+https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/optimize_interpolation_2/mixed4d-00503-mixed5a-00791.png
+https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/optimize_interpolation_2/mixed4d-00503-mixed5a-00810.png
+https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/optimize_interpolation_2/mixed5a-00791-mixed4d-00503.png
+https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/optimize_interpolation_2/mixed5a-00810-mixed5a-00200.png
+https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/optimize_interpolation_2/mixed5a-00810-mixed5a-00791.png
+https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/optimize_interpolation_2/mixed4d-00503-mixed5a-00791.png
+

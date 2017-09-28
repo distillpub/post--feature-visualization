@@ -1,0 +1,54 @@
+<div class="container">
+
+  {{#each range(4) as x}}
+    <Sprite src_class='sprite_opt_progress' x={{x}} y=0 sprite_size=180 size=180/>
+    {{#if x != 3}}
+      <div class="arrowbox">→</div>
+    {{/if}}
+  {{/each}}
+  
+</div>
+<figcaption>Starting with random noise, we optimize an image to activate a particular neuron (layer mixed4a, unit 11).</figcaption>
+
+
+<style>
+
+  .sprite_opt_progress {
+    background-image: url("images/opt_progress_mixed4a-11.png");
+  }
+  
+  .container {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 5px;
+  }
+  
+  .arrowbox {
+    color: #888;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+</style>
+
+
+<script>
+  import Sprite from "./Sprite.html";
+  
+  function range(n){
+    return Array(n).fill().map((_, i) => i);
+  }
+  
+  export default {
+    data() {
+      return {
+        size: 180,
+        sprite_scale: 1.0,
+      }
+    },
+    components: { Sprite },
+    helpers: { range },
+  }
+</script>

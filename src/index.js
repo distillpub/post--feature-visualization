@@ -7,6 +7,8 @@ import GradArtifacts      from "./diagrams/GradArtifacts.html";
 import RegReview          from "./diagrams/RegReview.html";
 import OptAndExamples     from "./diagrams/OptAndExamples.html";
 import LinearCombinations from "./diagrams/LinearCombinations.html";
+import OptProgress from "./diagrams/OptProgress.html";
+import ExamplesOptComparison from "./diagrams/ExamplesOptComparison.html";
 
 // const figure = document.querySelector("d-figure#last-figure");
 // figure.addEventListener("ready", function() {
@@ -14,21 +16,26 @@ import LinearCombinations from "./diagrams/LinearCombinations.html";
 //   initTag.textContent = "ready"
 //   console.log('ready')
 // });
-new LinearCombinations({target: document.querySelector("#linear-combinations")});
 
-new GoogleNetExamples({target: document.querySelector("#googlenet-examples")});
+new ExamplesOptComparison({target: document.getElementById("example-optimization-comparison")});
 
-new RegReview({target: document.querySelector("#feature-vis-history")});
+new OptProgress({target: document.getElementById("opt-progress")});
+
+new LinearCombinations({target: document.getElementById("linear-combinations")});
+
+new GoogleNetExamples({target: document.getElementById("googlenet-examples")});
+
+new RegReview({target: document.getElementById("feature-vis-history")});
 
 const figure = document.getElementById("optimization-and-examples");
 figure.addEventListener("ready", function() {
   console.log('init opt and examples...')
-  new OptAndExamples({target: document.querySelector("#optimization-and-examples")});
+  new OptAndExamples({target: document.getElementById("optimization-and-examples")});
   console.log('inited opt and examples')
 });
 
 
-new ImageArray({target: document.querySelector("#steepest-descent"),
+new ImageArray({target: document.getElementById("steepest-descent"),
 data: {
   src_class: "steepst-dir-sprite",
   icon_src_class: "steepst-dir-sprite",
@@ -36,7 +43,7 @@ data: {
   label_func: n => [
     "<strong>Image</strong>",
     "<strong>L<sup>∞</sup> metric</strong><br> steepest direction <d-footnote>used in adverserial work</d-footnote>",
-    "<strong>L<sup>2</sup> metric</strong><br> steepest direction <d-footnote>normal gradient</d-footnote>",
+    "<strong>L<sup>2</sup> metric</strong> (= normal gradient)<br> steepest direction <d-footnote>normal gradient</d-footnote>",
     "<strong>spatially decorelated space</strong> steepest direction ",
     "<strong>fully decorelated space</strong> steepest direction "
     ][n],
@@ -46,7 +53,8 @@ data: {
   size: 180,
   icon_scale: 1,
   hover_scale: 1,
-  selected: 14
+  selected: 14,
+  backwards: true
 }});
 
 /*new OptExplore({target: document.querySelector("#opt-explore"),
@@ -55,19 +63,19 @@ data: {
   }});*/
 //new OptExplore2({target: document.querySelector("#opt-explore2")});
 
-new GradArtifacts({target: document.querySelector("#frequency-artifacts")});
+new GradArtifacts({target: document.getElementById("frequency-artifacts")});
 
 var OptExploreFlex_configs = {
   OptExploreNaive: {
     configurable: ["neurons", "learning_rate"],
-    icon_var_values: {jitter: 1, optimizer: 0, pyramid: 1, color: 0},
-    var_values: {jitter: 0, optimizer: 0, learning_rate: 2, pyramid: 0, color: 0},
+    icon_var_values: { default_transforms: 1, pyramid: 1, color: 0},
+    var_values: { default_transforms: 0, learning_rate: 3, pyramid: 0, color: 0},
     explain_text: "Even if you carefully tune learning rate, you'll get noise. "
   },
   OptExplore: {
-    configurable: ["neurons", "learning_rate", ["jitter", "otpimizer"], ["pyramid", "color"]],
-    icon_var_values: {jitter: 1, optimizer: 0, pyramid: 1, color: 0},
-    var_values: {jitter: 1, optimizer: 0, learning_rate: 2, pyramid: 1, color: 0},
+    configurable: ["neurons", "learning_rate", "default_transforms", "pyramid", "color"],
+    icon_var_values: {default_transforms: 1, pyramid: 1, color: 0},
+    var_values: {default_transforms: 1, learning_rate: 2, pyramid: 1, color: 1},
   },
   TransformExplore: {
     configurable: ["neurons", "jitter", "random_rotate", "random_scale"],
@@ -83,15 +91,15 @@ var OptExploreFlex_configs = {
 
 
 
-var app = new OptExploreFlex({target: document.querySelector("#optimize-naive")});
+var app = new OptExploreFlex({target: document.getElementById("optimize-naive")});
 app.load_spritemap("OptExplore", OptExploreFlex_configs["OptExploreNaive"])
 
-var app = new OptExploreFlex({target: document.querySelector("#opt-explore2")});
+var app = new OptExploreFlex({target: document.getElementById("opt-explore2")});
 app.load_spritemap("OptExplore", OptExploreFlex_configs["OptExplore"])
 
 
-var app = new OptExploreFlex({target: document.querySelector("#regularizer-playground-robust")});
+var app = new OptExploreFlex({target: document.getElementById("regularizer-playground-robust")});
 app.load_spritemap("TransformExplore", OptExploreFlex_configs["TransformExplore"])
 
-var app = new OptExploreFlex({target: document.querySelector("#regularizer-playground-freq")});
+var app = new OptExploreFlex({target: document.getElementById("regularizer-playground-freq")});
 app.load_spritemap("PenalizeFreq", OptExploreFlex_configs["PenalizeFreq"])

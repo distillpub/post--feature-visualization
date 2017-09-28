@@ -10,7 +10,7 @@
             {{#each range(config_var.values.length) as n}}
               <div
                 class="icon {{(var_values_safe[config_var.name] == n)? 'selected' : ''}}"
-                on:click="setDeep('var_values.'+config_var.name, n)"
+                on:mouseover="setDeep('var_values.'+config_var.name, n)"
                 style="width: {{icon_size}}px; height: {{icon_size}}px;"
                 >
                 <div class="inner" style="margin: {{(icon_size-sprite_size)/2}}px; transform:scale({{icon_size/sprite_size}});">
@@ -64,7 +64,7 @@
   {{#each display_offsets as offset}}
     <div class="outer" style="width: {{size}}px; height: {{size}}px;">
       <div class="inner" style="
-            background: {{sprite_background}};
+            background-image: {{sprite_background}};
             background-position: {{offset.x}}px {{offset.y}}px;
             width: {{sprite_size}}px; height: {{sprite_size}}px;
             margin: {{(size-sprite_size)/2}}px;
@@ -101,7 +101,7 @@
 }
 
 .config-icon {
-  width: 280px;
+  width: 320px;
 }
 
 .config-icon .inner {
@@ -185,6 +185,8 @@
         return obj
       }
     }
+    const names = objs.map( o => o.name )
+    console.error("Did not find "+ name + " in " + names + "!")
   }
   
   function keyvalue(k,v){
@@ -196,11 +198,11 @@
 
   function load_spritemap(name, extra_config) {
     var app = this;
-    app.set({sprite_path: "images/" + name + ".jpeg", });
+    app.set({sprite_path: "images/" + name + ".jpg", });
     d3.json("images/" + name + ".json", function(config) {
       var all_vars = config.x_vars.concat(config.y_vars);
       var step_var = all_vars.filter(v => v.name == "steps" || v.name == "step")[0];
-      app.set({
+      var config = {
         sprite_size: config.size,
         x_vars: config.x_vars,
         y_vars: config.y_vars,
@@ -209,7 +211,9 @@
           .map(v => v.name),
         display: step_var.values
           .map((val, i) => keyvalue(step_var.name, i)),
-      })
+      }
+      console.log(config, extra_config);
+      app.set(config);
       app.set(extra_config);
     })
   }
@@ -227,7 +231,7 @@
         display: [{}],
         configurable: [],
         explain_text: "",
-        icon_size: 35,
+        icon_size: 44,
         icon_var_values: {}
       }
     },
@@ -256,11 +260,13 @@
       },
       
       config_var_groups: (all_vars, configurable) => {
-        return configurable.map(group => {
+        const result =  configurable.map(group => {
           if (!(group instanceof Array)) group = [group];
           return group
             .map(config_var_name => select_obj_by_name(all_vars, config_var_name));
-        })
+        });
+        console.log(result);
+        return result;
       },
       
       x_pos_after_override: (x_vars, var_values_safe, sprite_size) => (

@@ -1,0 +1,93 @@
+<div class="row">
+  <Sprite src_class='sprite_examples_opt_comparison_examples' x=0 y=0 sprite_size=294 bind:size></Sprite>
+  <Sprite src_class='sprite_examples_opt_comparison_examples' x=1 y=0 sprite_size=294 bind:size></Sprite>
+  <Sprite src_class='sprite_examples_opt_comparison_examples' x=2 y=0 sprite_size=294 bind:size></Sprite>
+  <Sprite src_class='sprite_examples_opt_comparison_examples' x=3 y=0 sprite_size=294 bind:size></Sprite>
+  <figcaption><strong>Dataset Examples</strong> show us what neurons respond to in practice</figcaption>
+</div>
+<div class="row">
+  <Sprite src_class='sprite_examples_opt_comparison' x=0 y=0 sprite_size=180 bind:size></Sprite>
+  <Sprite src_class='sprite_examples_opt_comparison' x=1 y=0 sprite_size=180 bind:size></Sprite>
+  <Sprite src_class='sprite_examples_opt_comparison' x=2 y=0 sprite_size=180 bind:size></Sprite>
+  <Sprite src_class='sprite_examples_opt_comparison' x=3 y=0 sprite_size=180 bind:size></Sprite>
+  <figcaption>
+    <span>
+      <strong>Optimization</strong> isolates the causes of behavior from mere correlations. 
+    </span>
+    <span>
+      A neuron may not be detecting what you initially thought.
+    </span>
+  </figcaption>
+</div>
+<div class="row">
+  <figcaption>Baseballs—or striped curves? <br><em>mixed4a, Unit 6</em></figcaption>
+  <figcaption>Animal faces—or eyes? <br><em>mixed4a, Unit 240</em></figcaption>
+  <figcaption>Clouds—or fluffiness? <br><em>mixed4a, Unit 453</em></figcaption>
+  <figcaption>Buildings—or pointy lines? <br><em>mixed4a, Unit 492</em></figcaption>
+</div>
+
+<style>
+
+.sprite_examples_opt_comparison_examples {
+  background-image: url("images/why_optimization_examples.jpg");
+}
+
+.sprite_examples_opt_comparison {
+  background-image: url("images/why_optimization.png");
+}
+
+.row {
+  justify-content: start;
+}
+
+.row > div {
+  margin-right: 15px;
+  width: 147px;
+  height: 147px;
+  margin-bottom: 10px;
+}
+
+.row > figcaption {
+  margin-right: 15px;
+  width: 147px;
+}
+
+@media (min-width: 960px) {
+  .row > div {
+    margin-right: 20px;
+    width: 180px;
+    margin-bottom: 10px;
+    height: 180px;
+  }
+  
+  .row > figcaption {
+    margin-right: 20px;
+    width: 180px;
+  }
+}
+
+</style>
+
+<script>
+  import Sprite from "./Sprite.html";
+  
+  function range(n){
+    return Array(n).fill().map((_, i) => i);
+  }
+  
+  export default {
+    data() {
+      return {}
+    },
+    oncreate: function() {
+      const mq = matchMedia("(min-width: 960px)");
+      mq.onchange = (event) => this.set({size: event.matches ? 180 : 147});
+      this.set({
+        size: mq.matches ? 180 : 147,
+        // sprite_scale: mq.matches ? .625 : .5,
+      });
+    },
+    components: { Sprite },
+    helpers: { range },
+  }
+</script>

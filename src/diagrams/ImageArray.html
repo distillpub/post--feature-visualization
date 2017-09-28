@@ -91,9 +91,13 @@ figcaption {
 
 <script>
   import Sprite from "./Sprite.html";
-  function range(n){
+  function range(n, inverted){
     var ret = [];
-    for (var i = 0; i < n; ++i) ret.push(i);
+    if (inverted) {
+      for (var i = 0; i < n; ++i) ret.push(n-i-1);      
+    } else {
+      for (var i = 0; i < n; ++i) ret.push(i);
+    }
     return ret;
   }
   export default {
@@ -108,11 +112,12 @@ figcaption {
         label_func: n => "Image " + n,
         icon_src_class: "",
         icon_scale: 0.5,
+        backwards: false
       }
     },
     computed: {
-      icon_ns: n_icons => range(n_icons),
-      image_ns: n_images => range(n_images)
+      icon_ns: (n_icons, backwards) => range(n_icons, backwards),
+      image_ns: n_images => range(n_images, false)
     },
     components: {Sprite}
   }

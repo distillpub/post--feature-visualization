@@ -128,8 +128,8 @@
   <h1>Simple &amp; Flexible Feature Visualization</h1>
   <h2>Feature visualization allows us to see how neural networks progressively build up their understanding of images.</h2>
   
-  <figure id="googlenet-examples" style="min-height: 438px;"></figure>
-  <d-byline></d-byline>
+  <figure id="googlenet-examples" style="min-height: 363px; @media (min-width: 1400px) { min-height: 438px; };"></figure>
+  <d-byline style="min-height: 202px;"></d-byline>
 
   <!-- <aside>TODO: heroify! TODO: Could this visualization “expand” to let the user see more images? We should also link to lots more stuff here!!</aside> -->
   
@@ -203,15 +203,39 @@
   towards that goal <d-cite key="erhan2009visualizing"></d-cite>.
 </p>
 
-<figure class="l-body" style="min-height: 150px;">
-  <img style="width: 100%; " src="images/vis_OptimizeProcess.svg">
-  <figcaption>Starting with random noise, we optimize an image to activate a particular neuron (layer mixed4a, unit 11).</figcaption>
-</figure>
+<figure id="opt-progress" class="l-page-outset" style="min-height: 204px;"></figure>
 
-<h3>Objectives</h3>
+<h3>Optimization Objectives</h3>
 
 <p>
-  - TODO: draft of first feature viz article
+  What do we want examples of?
+  This is the core question in working with examples, regardless of whether we're searching through a dataset to find the examples, or optimizing images to create them from scratch.
+</p>
+
+<p>
+  We have a wide variety of options in what we search for.
+  If we want to understand individual features, we can search for examples where they have high values -- either at an individual point in an image, or over the entire thing.
+  If we want to understand a layer as a whole, we can use the DeepDream objective <dt-cite key="mordvintsev2015inceptionism"></dt-cite>, searching for images the layer finds "interesting."
+  And if we want to create examples of output classes from a classifier, we have two options.
+</p>
+
+<figure class="l-page-outset" >
+  <img src="images/vis_VisObjectives.svg">
+</figure>
+
+<p>
+  These two different objectives for output classes are a very important distinction between the pre-softmax logit objective and the post-softmax probabilities objective.
+  One can see the logits as the evidence for each class, and the probabilities as the likelihood of each class given the evidence.
+  Unfortunately, the easiest way to increase the probability softmax gives to a class is often to make the alternatives unlikely rather than to make the class of interest likely <dt-cite key="simonyan2013deep"></dt-cite>.
+  This can be fixed by very strong regularization with generative models, in which case the probabilities can be a very principled thing to optimize.
+  But unless you have a good reason not to, you should probably just optimize the pre-softmax logits.
+</p>
+
+<p>
+  Of course, there are many possible objectives -- it would be impossible to list all the things people have tried.
+  Of particular note are the objectives used in style transfer <dt-cite key="gatys2015neural"></dt-cite>, which can teach us about the kinds of style and content a network understands,
+  and objectives used in optimization-based model inversion <dt-cite key="mahendran2015understanding"></dt-cite>, which we discuss in more depth in another section.
+  
 </p>
 
 <h3>Why visualize by optimization?</h3>
@@ -226,65 +250,7 @@
   This optimization approach can be a powerful way to see what a model is really looking for, because it separates the things causing behavior from from things that merely correlate with the causes. For example, consider the following neurons visualized with dataset examples and optimization:
 </p>
 
-<style>
-  #example-optimization-comparison {
-    
-  }
-  
-  #example-optimization-comparison .row {
-    justify-content: start;
-  }
-  
-  #example-optimization-comparison .row > * {
-    padding-right: 15px;
-    width: 147px;
-  }
-  #example-optimization-comparison .row > img {
-    height: 147px;
-    padding-bottom: 10px;
-  }
-  
-  @media (min-width: 960px) {
-    #example-optimization-comparison .row > * {
-      padding-right: 20px;
-      width: 180px;
-    }
-    #example-optimization-comparison .row > img {
-      height: 180px;
-      padding-bottom: 10px;
-    }
-  }
-</style>
-
-<figure class="l-page-outset" id="example-optimization-comparison">
-  <div class="row">
-    <img src="https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/visualize_channels/diagrams/mixed4a-00006/4-max.jpg">
-    <img src="https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/visualize_channels/diagrams/mixed4a-00240/4-max.jpg">
-    <img src="https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/visualize_channels/diagrams/mixed4a-00453/4-max.jpg">
-    <img src="https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/visualize_channels/diagrams/mixed4a-00492/4-max.jpg">
-    <figcaption>Examples from the dataset show us what neurons respond to in practice</figcaption>
-  </div>
-  <div class="row">
-    <img src="https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/visualize_channels/diagrams/mixed4a-00006/optimized.jpg">
-    <img src="https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/visualize_channels/diagrams/mixed4a-00240/optimized.jpg">
-    <img src="https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/visualize_channels/diagrams/mixed4a-00453/optimized.jpg">
-    <img src="https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/visualize_channels/diagrams/mixed4a-00492/optimized.jpg">
-    <figcaption>
-      <span>
-        Optimization isolates the causes of behavior from mere correlations. 
-      </span>
-      <span>
-        A neuron may not be detecting what you initially thought.
-      </span>
-    </figcaption>
-  </div>
-  <div class="row">
-    <figcaption>XXX or just curved lines? <br><em>mixed4a, Unit 6</em></figcaption>
-    <figcaption>Dog faces or just eyes? <br><em>mixed4a, Unit 240</em></figcaption>
-    <figcaption>Clouds or just fluffiness? <br><em>mixed4a, Unit 453</em></figcaption>
-    <figcaption>Buildings or just pointy lines on sky? <br><em>mixed4a, Unit 492</em></figcaption>
-  </div>
-</figure>
+<figure class="l-page-outset" id="example-optimization-comparison"></figure>
 
 <p>
   Optimization can also be much more flexible.
@@ -422,63 +388,62 @@
   For example, one neuron seems responds to people's shoulders and arms.
 </p>
 
-<figure class="example-vis2 l-page">
-  <div class="chunk">
-    <img class="big" src="images/ball_5.jpeg">
-    <figcaption>Layer mixed5a, Unit 194</figcaption>
-    <!--<figcaption>Facet 2 (score: 1264)</figcaption>-->
+<figure style="display: flex; flex-flow: row-wrap;">
+  <div style="margin-right: 26px;">
+    <img style="height: 147px; width: 624px;" src="images/mixed4e_718_diversity.png" />
+    <figcaption>Shoulders & arms? <i>Layer mixed4e, Unit 718</i></figcaption>
   </div>
-  <div class="chunk">
-    <img class="big" src="images/ball_0.jpeg">
-    <!--<figcaption>Facet 1 (score: 1085)</figcaption>-->
-  </div>
-  <div class="chunk">
-    <img class="big" src="images/ball_2.jpeg">
-    <!--<figcaption>Facet 3 (score: 998)</figcaption>-->
-  </div>
-  <div class="chunk">
-    <img class="big" src="images/ball_4.jpeg">
-    <!--<figcaption>Facet 4 (score: 899)<br><i>layer mixed5a, Unit 194</i></figcaption>-->
+  <div>
+    <img style="width: 147px;" src="images/mixed4e_718_examples.jpg" />
+    <figcaption>
+      Dataset examples
+    </figcaption>
   </div>
 </figure>
 
-<figure class="example-vis2 l-page">
-  <div class="chunk">
-    <img class="big" src="images/zookeeper_3.jpeg">
-    <!--<figcaption>Facet 2 (score: )</figcaption>-->
-    <figcaption>Layer mixed4e, Unit 718</figcaption>
+<figure style="display: flex; flex-flow: row-wrap;">
+  <div style="margin-right: 26px;">
+    <img style="height: 147px; width: 624px;" src="images/mixed5a_9_diversity.png" />
+    <figcaption>Multiple types of balls?<i>Layer mixed5a, Unit 9</i></figcaption>
   </div>
-  <div class="chunk">
-    <img class="big" src="images/zookeeper_1.jpeg">
-    <!--<figcaption>Facet 1 (score: )</figcaption>-->
-  </div>
-  <div class="chunk">
-    <img class="big" src="images/zookeeper_4.jpeg">
-    <!--<figcaption>Facet 3 (score: )</figcaption>-->
-  </div>
-  <div class="chunk">
-    <img class="big" src="images/zookeeper_5.jpeg">
-    <!--<figcaption>Facet 4 (score: )<br><i>layer mixed4e, Unit 718</i></figcaption>-->
+  <div>
+    <img style="width: 147px;" src="images/mixed5a_9_examples.jpg" />
+    <figcaption>
+      Dataset examples
+    </figcaption>
   </div>
 </figure>
 
 <p>
   While the examples above mostly represent a coherent idea, there are also neurons that represent strange mixtures of ideas.
-  For example, below a neuron responds both to billiard tables and cats.
+  For example, below a neuron seems to responds to two types of animal faces, billiard tables, and car bodys.
 </p>
 
 <figure>
-  <!-- images of weird diversity -->
+  
+</figure>
+
+<figure style="display: flex; flex-flow: row-wrap;">
+  <div style="margin-right: 26px;">
+    <img style="height: 147px; width: 624px;" src="images/mixed4e_55_diversity.png" />
+    <figcaption>Layer mixed4e, Unit 55</figcaption>
+  </div>
+  <div>
+    <img style="width: 147px;" src="images/mixed4e_55_examples.jpg" />
+    <figcaption>
+      Dataset examples
+    </figcaption>
+  </div>
 </figure>
 
 <p>
-  Examples like these suggest that neurons are not necessarily the right semantic units for understanding NNs.
+  Examples like these suggest that neurons are not necessarily the right semantic units for understanding neural nets.
 </p>
 
 <h2>Interaction between Neurons</h2>
 
 <p>
-  If neurons are not the right way to understand neural networks, what is?
+  If neurons are not the right way to understand neural nets, what is?
   In real life, combinations of neurons work together to represent images in neural networks. 
   Individual neurons are the basis directions of activation space, and it is not clear that these should be any more special than any other direction.
 </p>
@@ -498,8 +463,8 @@
   This is reminiscient of semantic arithmetic of word embeddings as seen in Word2Vec or generative models' latent spaces.
 </p>
 
-<figure class="l-text">
-  <d-figure id="linear-combinations"></d-figure>
+<figure class="l-body">
+  <d-figure id="linear-combinations" style="height: 204px;"></d-figure>
 </figure>
 
 <p>

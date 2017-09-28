@@ -4,8 +4,8 @@
   
   <div class="summand a">
       <div class="icons">
-        {{#each range(5) as i}}
-        <div class="icon {{(x == i)? 'selected' : ''}}"
+        {{#each range(3) as i}}
+        <div class="icon {{(x == i+1)? 'selected' : ''}}"
         on:mouseover='set({x: i+1})'
         >
         <Sprite src_class={{sprite_class}} size=44 sprite_size=147 y=0 x={{i+1}} sprite_scale=0.5/>
@@ -16,14 +16,14 @@
     <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y=0 x={{x}} sprite_scale=1/>
   </div>
   
-  <div>
+  <div class="operator">
     +
   </div>
   
   <div class="summand b">
     <div class="icons">
-      {{#each range(6) as i}}
-        <div class="icon {{(y == i)? 'selected' : ''}}"
+      {{#each range(3) as i}}
+        <div class="icon {{(y == i+1)? 'selected' : ''}}"
              on:mouseover='set({y: i+1})'
           >
           <Sprite src_class={{sprite_class}} size=44 sprite_size=147 y={{i+1}} x=0 sprite_scale=0.5/>
@@ -34,7 +34,7 @@
     <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y={{y}} x=0 sprite_scale=1/>
   </div>
   
-  <div>
+  <div class="operator">
     =
   </div>
   
@@ -42,9 +42,42 @@
     <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y={{y}} x={{x}} sprite_scale=1/>
   </div>
 </div>
-
+<!-- <figcaption>
+  By jointly optimizing two neurons we can get a sense of how they interact.
+</figcaption> -->
 
 <style>
+
+ /* Icons */
+  .icons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-bottom: 7px;
+    margin-left: -3px;
+  }
+
+  .icons .icon {
+    padding: 0px;
+    background-color: #EEE;
+    border: 3px solid white;
+  }
+
+  .icon div {
+    filter: saturate(0%);
+    image-rendering: auto;
+  }
+
+  .icon.selected div {
+    filter: none;
+  }
+
+  .icons .selected {
+    background-color: #AAA;
+    border-color: #3497FF;
+  }
+  
+  /* linear Combinations */
 
   .linear_combinations_sprite {
     background-image: url('images/linear_combinations.jpg')
@@ -52,17 +85,36 @@
   
   .linear-combinations {
     display: flex;
-    justify-content: space-between;
-    align-content: bottom;
+    align-items: flex-end;
+    justify-content: center;
     /*width: 100%;*/
     /*height: 100%;*/
-    background: #ccc;
   }
   
   .summand,
   .result {
+    display: flex;
+    justify-content: space-between;
     flex-flow: column;
+  }
+  
+  .c {
+    display: flex;
+    flex-flow: row;
     align-items: flex-end;
+  }
+  
+  .summand .icons,
+  .result .icons {
+    
+  }
+  
+  .operator {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 147px;
   }
 
   

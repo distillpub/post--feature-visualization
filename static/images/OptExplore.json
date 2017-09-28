@@ -1,57 +1,63 @@
 {
   "y_vars": [
     {
-      "default": 1, 
-      "type": "binary", 
       "values": [
         0, 
-        8
+        1
       ], 
-      "name": "jitter", 
-      "label": "jitter"
-    }, 
-    {
-      "type": "binary", 
-      "values": [
-        "sgd", 
-        "adam"
-      ], 
-      "name": "otpimizer", 
-      "label": "otpimizer"
+      "name": "default_transforms", 
+      "label": "robustness transforms", 
+      "type": "binary"
     }, 
     {
       "default": 1, 
-      "type": "number", 
       "values": [
-        1.25, 
-        0.25, 
-        0.05, 
         0.01, 
-        0.002
+        0.025, 
+        0.05, 
+        0.1, 
+        0.25, 
+        0.5
       ], 
       "name": "learning_rate", 
-      "label": "learning rate"
+      "label": "learning rate", 
+      "type": "number"
     }, 
     {
-      "type": "binary", 
       "values": [
         0, 
         1
       ], 
       "name": "pyramid", 
-      "label": "pyramid"
+      "label": "spatially decorrelated", 
+      "type": "binary"
     }, 
     {
-      "type": "binary", 
       "values": [
         0, 
         1
       ], 
       "name": "color", 
-      "label": "color"
+      "label": "color decorrelated", 
+      "type": "binary"
+    }
+  ], 
+  "size": 60, 
+  "x_vars": [
+    {
+      "default": 4, 
+      "values": [
+        8, 
+        32, 
+        128, 
+        512, 
+        2048
+      ], 
+      "name": "steps", 
+      "label": "steps", 
+      "type": "number"
     }, 
     {
-      "type": "icon", 
       "values": [
         "mixed4b:452", 
         "mixed4b:465", 
@@ -61,23 +67,8 @@
         "mixed4d:479"
       ], 
       "name": "neurons", 
-      "label": "neurons"
+      "label": "neurons", 
+      "type": "icon"
     }
-  ], 
-  "x_vars": [
-    {
-      "default": 4, 
-      "type": "number", 
-      "values": [
-        8, 
-        32, 
-        128, 
-        512, 
-        2048
-      ], 
-      "name": "steps", 
-      "label": "steps"
-    }
-  ], 
-  "size": 64
+  ]
 }
