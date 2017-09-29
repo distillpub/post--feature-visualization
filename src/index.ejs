@@ -37,6 +37,9 @@
   .steepst-dir-sprite {
     background-image: url("images/steepest_dirs_sprite_224.jpeg");
   }
+  .interpolation-sprite {
+    background-image: url("images/interpolation.jpg");
+  }
   d-fn {
     line-height: 100%;
   }
@@ -359,7 +362,7 @@
   Take this optimization of layer 4a, unit 143:
 </p>
 
-<figure class="l-page-outset" style="display: flex; flex-flow: row-wrap; justify-content: space-between;">
+<figure class="l-page-outset" style="display: flex; flex-flow: row; flex-wrap: wrap; justify-content: space-between;">
   <div style="width: 147px;">
     <figcaption></figcaption>
     <img style="width: 147px;" src="images/mixed4a_143_optimized.png" />
@@ -388,7 +391,7 @@
   For example, one neuron seems responds to people's shoulders and arms.
 </p>
 
-<figure style="display: flex; flex-flow: row-wrap;">
+<figure class="l-page" style="display: flex; flex-flow: row; flex-wrap: wrap;">
   <div style="margin-right: 26px;">
     <img style="height: 147px; width: 624px;" src="images/mixed4e_718_diversity.png" />
     <figcaption>Shoulders & arms? <i>Layer mixed4e, Unit 718</i></figcaption>
@@ -401,10 +404,14 @@
   </div>
 </figure>
 
-<figure style="display: flex; flex-flow: row-wrap;">
+<p>
+  This neuron responds to different kinds of balls, even though they have a variety of appearances.
+</p>
+
+<figure class="l-page" style="display: flex; flex-flow: row; flex-wrap: wrap;">
   <div style="margin-right: 26px;">
     <img style="height: 147px; width: 624px;" src="images/mixed5a_9_diversity.png" />
-    <figcaption>Multiple types of balls?<i>Layer mixed5a, Unit 9</i></figcaption>
+    <figcaption>Multiple types of balls? <i>Layer mixed5a, Unit 9</i></figcaption>
   </div>
   <div>
     <img style="width: 147px;" src="images/mixed5a_9_examples.jpg" />
@@ -415,18 +422,14 @@
 </figure>
 
 <p>
-  While the examples above mostly represent a coherent idea, there are also neurons that represent strange mixtures of ideas.
-  For example, below a neuron seems to responds to two types of animal faces, billiard tables, and car bodys.
+  While the examples above represent a mostly coherent idea, there are also neurons that represent strange mixtures of ideas.
+  Below, a neuron to responds to two types of animal faces, and also to car bodys.
 </p>
 
-<figure>
-  
-</figure>
-
-<figure style="display: flex; flex-flow: row-wrap;">
+<figure class="l-page" style="display: flex; flex-flow: row; flex-wrap: wrap;">
   <div style="margin-right: 26px;">
     <img style="height: 147px; width: 624px;" src="images/mixed4e_55_diversity.png" />
-    <figcaption>Layer mixed4e, Unit 55</figcaption>
+    <figcaption>Cats, foxes and cars? <i>Layer mixed4e, Unit 55</i></figcaption>
   </div>
   <div>
     <img style="width: 147px;" src="images/mixed4e_55_examples.jpg" />
@@ -453,18 +456,18 @@
   We observe the same phenomenon: when we visualize random linear combinations of neurons, the resulting visualization also seem to carry meaning:
 </p>
 
-<figure>
-  <!-- random direction optimizations; dataset examples? -->
+<figure class="l-page-outset">
+  <d-figure id="random-optimization-and-examples"></d-figure>
 </figure>
 
 <p>  
-  We can also define interesting directions (in activatino space) by doing arithmetic on neurons. (TODO:correct?)
-  For exampe, if we subtract a "plants" neuron from a "backyard" neuron, we are left with only buildings/fences.
+  We can also define interesting directions (in activatino space) by doing arithmetic on neurons.
+  For exampe, if we add a "black and white" neuron to a "mosaic" neuron, we obtain a black and white version of the mosaic.
   This is reminiscient of semantic arithmetic of word embeddings as seen in Word2Vec or generative models' latent spaces.
 </p>
 
 <figure class="l-body">
-  <d-figure id="linear-combinations" style="height: 204px;"></d-figure>
+  <d-figure id="linear-combinations"></d-figure>
 </figure>
 
 <p>
@@ -473,9 +476,7 @@
   This is similar to interpolating in the latent space of generative models. 
 </p>
 
-<figure>
-  <!-- 1D interpolation, also optvis, but needs porting -->
-</figure>
+<figure id="interpolation" class="l-page-outset" style="/*min-height: 290px;*/"></figure>
 
 <p>
   This is only starting to scratch the surface of how neurons interact. 

@@ -2,7 +2,7 @@
   <div class="icons">
     {{#each icon_ns as n}}
       <div class="icon {{(selected == n)? 'selected' : ''}}"
-           on:mouseover='set({selected: n})'
+           on:click='set({selected: n})'
         >
           <Sprite bind:src_class=icon_src_class 
           size=44 
@@ -24,7 +24,7 @@
         x={{n}} 
         hover={{false}}  />
         <br style="clear:left">
-        <figcaption>{{{label_func(n)}}}</figcaption>
+        <figcaption>{{{label_func(n, selected)}}}</figcaption>
       </div>
     {{/each}}
   </div>
@@ -71,7 +71,7 @@
   top: 0px;
 }
 .image-array .images > div {
-  width: 180px;
+  /*width: 180px;*/
   margin-right: 5px;
 }
 .image-array .images > div:last-child {

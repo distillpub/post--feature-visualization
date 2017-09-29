@@ -2,51 +2,92 @@
 
 <div class="linear-combinations">
   
-  <div class="summand a">
+  <div class="frow">
+      
+    <div class="fcolumn">
       <div class="icons">
-        {{#each range(3) as i}}
-        <div class="icon {{(x == i+1)? 'selected' : ''}}"
-        on:mouseover='set({x: i+1})'
-        >
-        <Sprite src_class={{sprite_class}} size=44 sprite_size=147 y=0 x={{i+1}} sprite_scale=0.5/>
+        {{#each range(5) as i}}
+          <div class="icon {{(x == i+1)? 'selected' : ''}}" on:click='set({x: i+1})'>
+            <Sprite src_class={{sprite_class}} size=44 sprite_size=147 y=0 x={{i+1}} sprite_scale=0.5/>
+          </div>
+        {{/each}}
       </div>
-      {{/each}}
     </div>
     
-    <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y=0 x={{x}} sprite_scale=1/>
-  </div>
-  
-  <div class="operator">
-    +
-  </div>
-  
-  <div class="summand b">
-    <div class="icons">
-      {{#each range(3) as i}}
-        <div class="icon {{(y == i+1)? 'selected' : ''}}"
-             on:mouseover='set({y: i+1})'
-          >
-          <Sprite src_class={{sprite_class}} size=44 sprite_size=147 y={{i+1}} x=0 sprite_scale=0.5/>
-        </div>
-      {{/each}}
+    <div class="fcolumn">
+      <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y=0 x={{x}} sprite_scale=1/>
     </div>
     
-    <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y={{y}} x=0 sprite_scale=1/>
+    <div class="operator">
+      +
+    </div>
+    
+    <div class="fcolumn">
+      <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y={{y}} x=0 sprite_scale=1/>
+    </div>
+  
+    <div class="fcolumn">
+      <div class="icons">
+        {{#each range(6) as i}}
+          <div class="icon {{(y == i+1)? 'selected' : ''}}" on:click='set({y: i+1})' >
+            <Sprite src_class={{sprite_class}} size=44 sprite_size=147 y={{i+1}} x=0 sprite_scale=0.5/>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    
   </div>
   
-  <div class="operator">
-    =
+
+  
+  <div class="frow">
+    <!-- <figcaption id="caption">
+      By jointly optimizing two neurons we can get a sense of how they interact.
+    </figcaption> -->
+    
+    <div class="result c">
+      <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y={{y}} x={{x}} sprite_scale=1/>
+    </div>
   </div>
   
-  <div class="result c">
-    <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y={{y}} x={{x}} sprite_scale=1/>
-  </div>
 </div>
-<!-- <figcaption>
-  By jointly optimizing two neurons we can get a sense of how they interact.
-</figcaption> -->
+
 
 <style>
+
+  /* FRow & FColumn */
+
+  .frow {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .fcolumn {
+    display: flex;
+    flex-flow: column;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .fcolumn:first-of-type {
+    margin-left: 0;
+  }
+
+  .fcolumn:last-of-type {
+    margin-right: 0;
+  }
+
+  .fcolumn > * {
+    margin-bottom: 10px;
+  }
+
+  .fcolumn > *:last-child {
+    margin-bottom: 0;
+  }
+
+  /* -end FRow & FColumn end- */
 
  /* Icons */
   .icons {
@@ -55,6 +96,7 @@
     flex-direction: row;
     margin-bottom: 7px;
     margin-left: -3px;
+    max-width: 100px;
   }
 
   .icons .icon {
@@ -82,31 +124,18 @@
   .linear_combinations_sprite {
     background-image: url('images/linear_combinations.jpg')
   }
+
   
-  .linear-combinations {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    /*width: 100%;*/
-    /*height: 100%;*/
+  #caption {
+    max-width: 200px;
   }
   
-  .summand,
   .result {
-    display: flex;
-    justify-content: space-between;
-    flex-flow: column;
-  }
-  
-  .c {
-    display: flex;
-    flex-flow: row;
-    align-items: flex-end;
-  }
-  
-  .summand .icons,
-  .result .icons {
-    
+    align-self: center;
+    position: relative;
+    top: -51px;
+    border: 2px solid white;
+    box-shadow: 0px 5px 20px hsla(0,0%,0%,0.3);
   }
   
   .operator {

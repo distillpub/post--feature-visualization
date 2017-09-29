@@ -1,5 +1,5 @@
 
-<div style="overflow: hidden; position: relative; height: 185px;">
+<div style="position: relative; height: 185px;">
   <div style="left: {{(size+margin)*2-margin/2-3}}px; top: 0px; position: absolute;">
     <figcaption style="line-height:1; max-width: 560px;">Each <b>strided convolution</b> creates checkerboard patterns when we backprop through it. <dt-cite key="odena2016deconvolution"></dt-cite></figcaption>
   </div>
@@ -29,7 +29,7 @@
       top: 45px;
       width:{{margin-8}}px;
       height:{{size+10}}px;
-      background: {{(n == 1 || n == 3 || n == 5 || n == 10)? 'hsl(240, 64%, 66%)' : 'hsl(240, 50%, 90%)'}};
+      background: {{(n == 1 || n == 3 || n == 5 || n == 10)? 'hsl(350, 64%, 66%)' : 'hsl(240, 50%, 90%)'}};
       display: {{(n==11)? 'none' : 'block'}}; 
       border-radius:4px;" data-n="{{n}}">
     </div>

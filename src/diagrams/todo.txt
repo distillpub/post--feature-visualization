@@ -66,13 +66,12 @@ Other things:
 -[ ] sliders on mobile devices
 -[x] optimize spritesheets
 -[ ] formula for diversity (gram-matrix one)
--[ ] diversity: bad examples
+-[x] diversity: bad examples
 -[ ] link to site with all neuron visualizations?
 -[x] diversity examples update (colab link?)
 -[x] interpolation: merge into diversity
-  -[ ] colab link(?)
 -[ ] cite tags in regularization review table
--[ ] frequency: l1, blur, tv
+-[x] frequency: l1, blur, tv
 -[ ] jitter explanation: footnote
 -[ ] optimization researcher
 -[ ] descent: appendix/footnote
@@ -85,7 +84,6 @@ Other things:
 
 # animal faces
 /cns/in-d/home/ludwigschubert/visualize_directions/mixed4a/direction-00005-negative.png
-
 
 # axels, 3/5
 /cns/in-d/home/ludwigschubert/visualize_directions/mixed5a/direction-00008-negative.png

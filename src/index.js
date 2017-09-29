@@ -9,6 +9,7 @@ import OptAndExamples     from "./diagrams/OptAndExamples.html";
 import LinearCombinations from "./diagrams/LinearCombinations.html";
 import OptProgress from "./diagrams/OptProgress.html";
 import ExamplesOptComparison from "./diagrams/ExamplesOptComparison.html";
+import RandomExamplesOpt from "./diagrams/RandomExamplesOpt.html";
 
 // const figure = document.querySelector("d-figure#last-figure");
 // figure.addEventListener("ready", function() {
@@ -18,6 +19,8 @@ import ExamplesOptComparison from "./diagrams/ExamplesOptComparison.html";
 // });
 
 new ExamplesOptComparison({target: document.getElementById("example-optimization-comparison")});
+
+new RandomExamplesOpt({target: document.getElementById("random-optimization-and-examples")});
 
 new OptProgress({target: document.getElementById("opt-progress")});
 
@@ -29,9 +32,7 @@ new RegReview({target: document.getElementById("feature-vis-history")});
 
 const figure = document.getElementById("optimization-and-examples");
 figure.addEventListener("ready", function() {
-  console.log('init opt and examples...')
-  new OptAndExamples({target: document.getElementById("optimization-and-examples")});
-  console.log('inited opt and examples')
+  new OptAndExamples({target: figure});
 });
 
 
@@ -40,12 +41,12 @@ data: {
   src_class: "steepst-dir-sprite",
   icon_src_class: "steepst-dir-sprite",
   icon_x: 0,
-  label_func: n => [
+  label_func: (n, i) => [
     "<strong>Image</strong>",
     "<strong>L<sup>∞</sup> metric</strong><br> steepest direction <d-footnote>used in adverserial work</d-footnote>",
     "<strong>L<sup>2</sup> metric</strong> (= normal gradient)<br> steepest direction <d-footnote>normal gradient</d-footnote>",
-    "<strong>spatially decorelated space</strong> steepest direction ",
-    "<strong>fully decorelated space</strong> steepest direction "
+    "<strong>spatially decorelated space</strong><br> steepest direction ",
+    "<strong>fully decorelated space</strong><br> steepest direction "
     ][n],
   n_images: 5,
   n_icons: 16,
@@ -55,6 +56,42 @@ data: {
   hover_scale: 1,
   selected: 14,
   backwards: true
+}});
+
+new ImageArray({target: document.getElementById("interpolation"),
+data: {
+  src_class: "interpolation-sprite",
+  icon_src_class: "interpolation-sprite",
+  icon_x: 0,
+  label_func: (n, i) => {
+    if (n == 0) {
+      return [
+        "Layer 3a, Unit 145",
+        "Layer 4d, Unit 503",
+        "Layer 4d, Unit 503",
+        "Layer 5a, Unit 810",
+        "Layer 5a, Unit 810",
+      ][i];
+    } else if (n == 5) {
+      return [
+        "Layer 4e, Unit 710",
+        "Layer 5a, Unit 791",
+        "Layer 5a, Unit 810",
+        "Layer 5a, Unit 200",
+        "Layer 5a, Unit 791",
+      ][i];
+    } else {
+      return "";
+    }
+  },
+  n_images: 6,
+  n_icons: 5,
+  sprite_size: 128, 
+  size: 128,
+  icon_scale: 1,
+  hover_scale: 1,
+  selected: 1,
+  backwards: false
 }});
 
 /*new OptExplore({target: document.querySelector("#opt-explore"),
@@ -79,12 +116,13 @@ var OptExploreFlex_configs = {
   },
   TransformExplore: {
     configurable: ["neurons", "jitter", "random_rotate", "random_scale"],
-    icon_var_values: {jitter: 2, random_rotate: 0, random_scale: 0}
+    icon_var_values: {jitter: 3, random_rotate: 2, random_scale: 2},
+    var_values: {jitter: 3, random_rotate: 2, random_scale: 2}
   },
   PenalizeFreq: {
-    configurable: ["neurons", "L1", "L2", "total_variation"],
-    var_values: {L1: 0, L2: 0, total_variation: 2},
-    icon_var_values: {L1: 0, L2: 0, total_variation: 2}
+    configurable: ["neurons", "l1", "tv", "blur"],
+    var_values: {l1: 0, tv: 0, blur: 0},
+    icon_var_values: {l1: 2, tv: 2, blur: 2},
   }
 };
 

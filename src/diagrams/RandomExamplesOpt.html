@@ -1,0 +1,128 @@
+<div class="frow">
+  
+  <div class="fcolumn">
+    <Sprite src_class='sprite_random_opt_examples' x=0 y=0 sprite_size=294 bind:size></Sprite>
+    <Sprite src_class='sprite_random_opt' x=0 y=0 sprite_size=180 bind:size></Sprite>
+    <figcaption><em>mixed3a, random direction</em></figcaption>
+  </div>
+  
+  <div class="fcolumn">
+    <Sprite src_class='sprite_random_opt_examples' x=1 y=0 sprite_size=294 bind:size></Sprite>
+    <Sprite src_class='sprite_random_opt' x=1 y=0 sprite_size=180 bind:size></Sprite>
+    <figcaption><em>mixed4c, random direction</em></figcaption>
+  </div>
+    
+  <div class="fcolumn">
+    <Sprite src_class='sprite_random_opt_examples' x=2 y=0 sprite_size=294 bind:size></Sprite>
+    <Sprite src_class='sprite_random_opt' x=2 y=0 sprite_size=180 bind:size></Sprite>
+    <figcaption><em>mixed4d, random direction</em></figcaption>
+  </div>
+
+  <div class="fcolumn">
+    <Sprite src_class='sprite_random_opt_examples' x=3 y=0 sprite_size=294 bind:size></Sprite>
+    <Sprite src_class='sprite_random_opt' x=3 y=0 sprite_size=180 bind:size></Sprite>
+      <figcaption><em>mixed5a, random direction</em></figcaption>
+  </div>
+    
+</div>
+
+<style>
+
+figcaption {
+  display: block;
+}
+
+/* FRow & FColumn */
+
+.frow {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.fcolumn {
+  display: flex;
+  flex-flow: column;
+  margin-right: 15px;
+}
+
+.fcolumn:last-of-type {
+  margin-right: 0;
+}
+
+.fcolumn > * {
+  margin-bottom: 10px;
+}
+
+.fcolumn > *:last-child {
+  margin-bottom: 0;
+}
+
+/* -end FRow & FColumn end- */
+
+.sprite_random_opt_examples {
+  background-image: url("images/random_optimization_examples.jpg");
+}
+
+.sprite_random_opt {
+  background-image: url("images/random_optimization.png");
+}
+
+
+
+.column > div {
+  margin-bottom: 10px;
+}
+
+/*.row > div {
+  margin-right: 15px;
+  width: 147px;
+  height: 147px;
+  margin-bottom: 10px;
+}
+
+.row > figcaption {
+  margin-right: 15px;
+  width: 147px;
+}
+
+@media (min-width: 960px) {
+  .row > div {
+    margin-right: 20px;
+    width: 180px;
+    margin-bottom: 10px;
+    height: 180px;
+  }
+  
+  .row > figcaption {
+    margin-right: 20px;
+    width: 180px;
+  }
+}*/
+
+</style>
+
+<script>
+  import Sprite from "./Sprite.html";
+  
+  function range(n){
+    return Array(n).fill().map((_, i) => i);
+  }
+  
+  export default {
+    data() {
+      return {}
+    },
+    oncreate: function() {
+      const mq = matchMedia("(min-width: 960px)");
+      mq.onchange = (event) => this.set({size: event.matches ? 180 : 147});
+      this.set({
+        size: mq.matches ? 180 : 147,
+        // sprite_scale: mq.matches ? .625 : .5,
+      });
+    },
+    components: { Sprite },
+    helpers: { range },
+  }
+</script>
