@@ -1,9 +1,11 @@
 <!doctype html>
+<meta charset="utf-8">
 <script src="template.v2.js"></script>
 <d-front-matter>
   <script type="text/json">{
   "title": "Article Title",
   "description": "Description of the post",
+  "password": "clarity",
   "authors": [
     {
       "author":"Chris Olah",
@@ -105,10 +107,27 @@
   
   #googlenet-examples {
     grid-column: left / text;
+    min-height: 363px;
+  }
+  #example-optimization-comparison {
+    min-height: 368px;
+  }
+  #optimization-and-examples {
+    min-height: 276px;
+  }
+  @media (min-width: 960px) {
+    #example-optimization-comparison {
+      min-height: 418px;
+    }
   }
   @media (min-width: 1105px) {
     #googlenet-examples {
       grid-column: start / end;
+    }
+  }
+  @media (min-width: 1400px) {
+    #googlenet-examples {
+      min-height: 438px;
     }
   }
 </style>
@@ -122,8 +141,6 @@
   * What is the one sentence description of this piece?
   ** Neural network feature visualization is a powerful technique, but is often complicated. We find that simple techniques can produce state-of-the-art visualizations -- and that these visualizations are, surprisingly, often limited by optimization problems.
 -->
-   
-
 
 
 <d-article>
@@ -131,7 +148,7 @@
   <h1>Simple &amp; Flexible Feature Visualization</h1>
   <h2>Feature visualization allows us to see how neural networks progressively build up their understanding of images.</h2>
   
-  <figure id="googlenet-examples" style="min-height: 363px; @media (min-width: 1400px) { min-height: 438px; };"></figure>
+  <figure id="googlenet-examples"></figure>
   <d-byline style="min-height: 202px;"></d-byline>
 
   <!-- <aside>TODO: heroify! TODO: Could this visualization “expand” to let the user see more images? We should also link to lots more stuff here!!</aside> -->
@@ -206,7 +223,9 @@
   towards that goal <d-cite key="erhan2009visualizing"></d-cite>.
 </p>
 
-<figure id="opt-progress" class="l-page-outset" style="min-height: 204px;"></figure>
+<figure class="l-page-outset" style="min-height: 204px;">
+  <d-figure id="opt-progress"></d-figure>
+</figure>
 
 <h3>Optimization Objectives</h3>
 
@@ -253,7 +272,9 @@
   This optimization approach can be a powerful way to see what a model is really looking for, because it separates the things causing behavior from from things that merely correlate with the causes. For example, consider the following neurons visualized with dataset examples and optimization:
 </p>
 
-<figure class="l-page-outset" id="example-optimization-comparison"></figure>
+<figure class="l-page-outset">
+  <d-figure id="example-optimization-comparison"></d-figure>
+</figure>
 
 <p>
   Optimization can also be much more flexible.
@@ -472,11 +493,13 @@
 
 <p>
   These examples show us how neurons jointly represent images.
-  To better understand how neurons interact, we can interpolate between them. <d-footnote>TODO: shared input parameterization</d-footnote>
+  To better understand how neurons interact, we can interpolate between them. <d-footnote>The optimization objective is a linear interpolation between the individual channel objectives. To get the interpolations to look better, we also add a small alignment objective that encourages lower layer activations to be similar.</d-footnote>
   This is similar to interpolating in the latent space of generative models. 
 </p>
 
-<figure id="interpolation" class="l-page-outset" style="/*min-height: 290px;*/"></figure>
+<figure class="l-page-outset" style="/*min-height: 290px;*/">
+  <d-figure id="interpolation"></d-figure>
+</figure>
 
 <p>
   This is only starting to scratch the surface of how neurons interact. 
@@ -504,7 +527,9 @@
   -- an image full of noise and nonsensical high-frequency patterns that the network responds strongly to.
 </p>
 
-<figure id="optimize-naive" class="l-page-outset" style="min-height: 240px;"></figure>
+<figure  class="l-page-outset" style="min-height: 240px;">
+  <d-figure id="optimize-naive"></d-figure>
+</figure>
 
 <!-- TODO: Add caption encouraging user to fiddle with learning rate -->
 
@@ -520,7 +545,9 @@
   but an important part seems to be strided convolutions and pooling operations, which create high-frequency patterns in the gradient <d-cite key="odena2016deconvolution"></d-cite>.
 </p>
 
-<figure id="frequency-artifacts" class="l-page-outset"></figure>
+<figure class="l-page-outset">
+  <d-figure id="frequency-artifacts"></d-figure>
+</figure>
 
 
 <p>
@@ -548,7 +575,9 @@
   And in the middle we have three main families of regularization options.
 </p>
 
-<figure id="feature-vis-history" class="l-page-outset" style="min-height: 750px; padding-bottom: 10px;"></img></figure>
+<figure class="l-page-outset" style="min-height: 750px; padding-bottom: 10px;">
+  <d-figure id="feature-vis-history"></d-figure>
+</figure>
 
 
 <h3>Three Families of Regularization</h3>
@@ -570,7 +599,9 @@
   These techniques are in some ways very similar to the above and in some ways radically different -- we'll talk about them in much more depth later.)
 </p>
 
-<figure id="regularizer-playground-freq" class="l-page-outset" style="min-height: 240px;"></figure>
+<figure class="l-page-outset" style="min-height: 240px;">
+  <d-figure id="regularizer-playground-freq"></d-figure>
+</figure>
 <!--
   - none
   - Total variance
@@ -589,7 +620,9 @@
 
 <!--<figure id="optimize-jitter" class="l-page-outset"></figure>-->
 
-<figure id="regularizer-playground-robust" class="l-page-outset" style="min-height: 240px;"></figure>
+<figure class="l-page-outset" style="min-height: 240px;">
+  <d-figure id="regularizer-playground-robust"></d-figure>
+</figure>
 
 <!--TODO(colah): Make a diagram of unconstraint opt vs paramaterized opt vs prior? Discuss using an inverse model?-->
 
@@ -650,7 +683,9 @@
   Let's compare the direction of steepest descent in a decorelated parameterization to two other directions of steepest descent:
 </p>
 
-<figure id="steepest-descent" class="l-page-outset" style="/*min-height: 290px;*/"></figure>
+<figure class="l-page-outset" style="/*min-height: 290px;*/">
+  <d-figure id="steepest-descent"></d-figure>
+</figure>
 
 <p>
   All of these directions are valid descent directions for the same objective,
@@ -666,7 +701,9 @@
 </p>
 
 <!-- Figure out which descent directions to have in playground, explain them in the text. -->
-<figure id="opt-explore2" class="l-page-outset"></figure>
+<figure class="l-page-outset">
+  <d-figure id="opt-explore2"></d-figure>
+</figure>
 
 <p>
   Is the preconditioner merely accelerating descent, bringing us to the same place

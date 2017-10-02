@@ -53,6 +53,10 @@ module.exports = {
         options: {
           outputPath: 'images/'
         }
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       }
     ]
   },

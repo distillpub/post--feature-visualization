@@ -1,7 +1,7 @@
 <div class="icons">
   {{#each thumbnail_indices as i}}
     <div class="icon {{(selected == i)? 'selected' : ''}}"
-         on:mouseover='set({selected: i})'
+         on:click='set({selected: i})'
       >
       <Sprite src_class={{sprite_opt_class}} size=44 sprite_size=147 y={{i}} x=0 sprite_scale=0.5/>
     </div>

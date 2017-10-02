@@ -1,21 +1,19 @@
-
-
 <div class="linear-combinations">
   
   <div class="frow">
       
     <div class="fcolumn">
       <div class="icons">
-        {{#each range(5) as i}}
+        {{#each range(6) as i}}
           <div class="icon {{(x == i+1)? 'selected' : ''}}" on:click='set({x: i+1})'>
-            <Sprite src_class={{sprite_class}} size=44 sprite_size=147 y=0 x={{i+1}} sprite_scale=0.5/>
+            <Sprite src_class={{sprite_class}} size=44 sprite_size=180 y=0 x={{i+1}} sprite_scale=0.5/>
           </div>
         {{/each}}
       </div>
     </div>
     
     <div class="fcolumn">
-      <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y=0 x={{x}} sprite_scale=1/>
+      <Sprite src_class={{sprite_class}} size=180 sprite_size=180 y=0 x={{x}} sprite_scale=1/>
     </div>
     
     <div class="operator">
@@ -23,14 +21,14 @@
     </div>
     
     <div class="fcolumn">
-      <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y={{y}} x=0 sprite_scale=1/>
+      <Sprite src_class={{sprite_class}} size=180 sprite_size=180 y={{y}} x=0 sprite_scale=1/>
     </div>
   
     <div class="fcolumn">
       <div class="icons">
         {{#each range(6) as i}}
           <div class="icon {{(y == i+1)? 'selected' : ''}}" on:click='set({y: i+1})' >
-            <Sprite src_class={{sprite_class}} size=44 sprite_size=147 y={{i+1}} x=0 sprite_scale=0.5/>
+            <Sprite src_class={{sprite_class}} size=44 sprite_size=180 y={{i+1}} x=0 sprite_scale=0.5/>
           </div>
         {{/each}}
       </div>
@@ -46,7 +44,7 @@
     </figcaption> -->
     
     <div class="result c">
-      <Sprite src_class={{sprite_class}} size=147 sprite_size=147 y={{y}} x={{x}} sprite_scale=1/>
+      <Sprite src_class={{sprite_class}} size=180 sprite_size=180 y={{y}} x={{x}} sprite_scale=1/>
     </div>
   </div>
   
@@ -143,7 +141,7 @@
     align-items: center;
     margin-right: 10px;
     margin-left: 10px;
-    height: 147px;
+    height: 180px;
   }
 
   
@@ -152,6 +150,7 @@
 
 <script>
   import Sprite from './Sprite.html';
+  // const join_svg = require('svg-inline-loader?classPrefix!../join.svg');
   
   function range(n){
     return Array(n).fill().map((_, i) => i);
@@ -161,8 +160,9 @@
     data() {
       return {
         sprite_class: 'linear_combinations_sprite',
-        x: 1,
-        y: 1
+        x: 5,
+        y: 1,
+        // svg: join_svg
       }
     },
     computed: {},

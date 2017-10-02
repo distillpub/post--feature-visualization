@@ -198,26 +198,23 @@
   }
 
 
-  function load_spritemap(name, extra_config) {
-    var app = this;
-    app.set({sprite_path: "images/" + name + ".jpg", });
-    d3.json("images/" + name + ".json", function(config) {
-      var all_vars = config.x_vars.concat(config.y_vars);
-      var step_var = all_vars.filter(v => v.name == "steps" || v.name == "step")[0];
-      var config = {
-        sprite_size: config.size,
-        x_vars: config.x_vars,
-        y_vars: config.y_vars,
-        configurable: all_vars
-          .filter(v => v.name != "steps" && v.values.length > 0)
-          .map(v => v.name),
-        display: step_var.values
-          .map((val, i) => keyvalue(step_var.name, i)),
-      }
-      console.log(config, extra_config);
-      app.set(config);
-      app.set(extra_config);
-    })
+  function load_spritemap(name, settings) {
+    this.set({sprite_path: "images/" + name + ".jpg", });
+
+    const all_vars = settings.config.x_vars.concat(settings.config.y_vars);
+    const step_var = all_vars.filter(v => v.name == "steps" || v.name == "step")[0];
+    const adjusted_config = {
+      sprite_size: settings.config.size,
+      x_vars: settings.config.x_vars,
+      y_vars: settings.config.y_vars,
+      configurable: all_vars
+        .filter(v => v.name != "steps" && v.values.length > 0)
+        .map(v => v.name),
+      display: step_var.values
+        .map((val, i) => keyvalue(step_var.name, i)),
+    }
+    this.set(adjusted_config);
+    this.set(settings);
   }
 
   export default {
@@ -267,7 +264,6 @@
           return group
             .map(config_var_name => select_obj_by_name(all_vars, config_var_name));
         });
-        console.log(result);
         return result;
       },
       
