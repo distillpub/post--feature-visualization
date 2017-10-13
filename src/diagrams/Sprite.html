@@ -7,7 +7,8 @@
  --default-ratio: {{ size / final_sprite_size }};
  --hover-scale: {{hover_scale}};
  --transition_css: {{transition_css}};
- --border_css: {{border_css}};">
+ --border_css: {{border_css}};
+ --pixelated: {{pixelated ? 'pixelated' : 'auto'}}">
   <div class="mid">
     <div class="inner {{src_class}}">
     </div>
@@ -37,7 +38,7 @@
 }
 
 .inner {
-  image-rendering: pixelated;
+  image-rendering:  var(--pixelated);
   background-position: var(--default-position);
   width: var(--default-size);
   height: var(--default-size);
@@ -79,7 +80,8 @@
         hover: false,
         hover_scale: 1,
         transition_background: false,
-        border: false
+        border: false,
+        pixelated: true
       }
     },
     computed: {

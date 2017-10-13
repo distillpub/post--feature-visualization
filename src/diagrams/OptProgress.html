@@ -1,7 +1,7 @@
 <div class="container">
 
   {{#each range(4) as x}}
-    <Sprite src_class='sprite_opt_progress' x={{x}} y=0 sprite_size=180 size=180/>
+    <Sprite src_class='sprite_opt_progress' x={{x}} y=0 sprite_size=180 size=144 pixelated={{false}}/>
     {{#if x != 3}}
       <div class="arrowbox">→</div>
     {{/if}}
@@ -20,6 +20,7 @@
   .container {
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
     margin-bottom: 5px;
   }
   

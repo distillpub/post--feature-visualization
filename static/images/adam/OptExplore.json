@@ -6,7 +6,7 @@
         1
       ], 
       "name": "default_transforms", 
-      "label": "default_transforms", 
+      "label": "robustness transforms", 
       "type": "binary"
     }, 
     {
@@ -29,7 +29,7 @@
         1
       ], 
       "name": "pyramid", 
-      "label": "pyramid", 
+      "label": "spatially decorrelated", 
       "type": "binary"
     }, 
     {
@@ -38,7 +38,7 @@
         1
       ], 
       "name": "color", 
-      "label": "color", 
+      "label": "color decorrelated", 
       "type": "binary"
     }
   ], 

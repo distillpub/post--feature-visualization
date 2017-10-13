@@ -13,7 +13,7 @@
       </div>
       <div style="float:left; padding-right: 40px; width: 155px;">
         <div> Learning Rate ({{learning_rate_list[[learning_rate]]}})</div>
-        <div><input bind:value=learning_rate type="range" min=0 max={{learning_rate_list.length-1}} style="width:100%;"></div>
+        <div><d-slider value=learning_rate type="range" min=0 max={{learning_rate_list.length-1}} style="width: 100px;"></div>
       </div>
       <div style="float:left; padding-right: 0px; width: 70px;">
         <label><input bind:checked=jitter type="checkbox"> Jitter</label>

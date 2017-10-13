@@ -1,11 +1,11 @@
 <!doctype html>
 <meta charset="utf-8">
+<!-- <script src="http://localhost:8888/dist/template.v2.js"></script> -->
 <script src="template.v2.js"></script>
 <d-front-matter>
   <script type="text/json">{
-  "title": "Article Title",
+  "title": "Simple & Flexible Feature Visualization",
   "description": "Description of the post",
-  "password": "clarity",
   "authors": [
     {
       "author":"Chris Olah",
@@ -14,14 +14,14 @@
       "affiliationURL":"https://g.co/brain"
     },
     {
-      "author":"Chris Olah",
-      "authorURL":"https://colah.github.io/",
+      "author":"Alexander Mordvintsev",
+      "authorURL":"http://znah.net/",
       "affiliation":"Google Brain",
       "affiliationURL":"https://g.co/brain"
     },
     {
-      "author":"Chris Olah",
-      "authorURL":"https://colah.github.io/",
+      "author":"Ludwig Schubert",
+      "authorURL":"https://schubert.io/",
       "affiliation":"Google Brain",
       "affiliationURL":"https://g.co/brain"
     }
@@ -110,14 +110,14 @@
     min-height: 363px;
   }
   #example-optimization-comparison {
-    min-height: 368px;
+    /*min-height: 368px;*/
   }
   #optimization-and-examples {
     min-height: 276px;
   }
   @media (min-width: 960px) {
     #example-optimization-comparison {
-      min-height: 418px;
+      /*min-height: 418px;*/
     }
   }
   @media (min-width: 1105px) {
@@ -127,8 +127,15 @@
   }
   @media (min-width: 1400px) {
     #googlenet-examples {
-      min-height: 438px;
+      min-height: 412px;
     }
+  }
+  
+  .draft {
+    border-left: 2px solid orange;
+    padding-left: 5px;
+    font-family: "Comic Sans MS", fantasy;
+    color: orange;
   }
 </style>
 
@@ -142,70 +149,25 @@
   ** Neural network feature visualization is a powerful technique, but is often complicated. We find that simple techniques can produce state-of-the-art visualizations -- and that these visualizations are, surprisingly, often limited by optimization problems.
 -->
 
+<d-title>
+  <h1>Feature Visualization</h1>
+  <p style="grid-column: text;">Feature visualization shows how neural networks build up their understanding of images</p>
+  <figure style="grid-column: screen;" id="googlenet-examples"></figure>
+</d-title>
+
+<d-byline></d-byline>
 
 <d-article>
-  
-  <h1>Simple &amp; Flexible Feature Visualization</h1>
-  <h2>Feature visualization allows us to see how neural networks progressively build up their understanding of images.</h2>
-  
-  <figure id="googlenet-examples"></figure>
-  <d-byline style="min-height: 202px;"></d-byline>
 
-  <!-- <aside>TODO: heroify! TODO: Could this visualization “expand” to let the user see more images? We should also link to lots more stuff here!!</aside> -->
-  
-  <!-- <d-abstract>The best methods can be a bit complicated -- but we find that simple techniques can be very effective, and that one of the main challenges may be optimization.</d-abstract> -->
-  <d-abstract>Neural network feature visualization is a powerful technique, but is often complicated. We find that simple techniques can produce state-of-the-art visualizations -- and that these visualizations are, surprisingly, often limited by optimization problems.</d-abstract>
-  <!-- <d-toc></d-toc> -->
-
-  <p>What does this neuron mean? What does my network understand a dog to look like? Feature visualization answers these questions by generating examples of what a neuron is looking for.  We’ve had a great deal of success at doing this, but the best results have generally involved complicated priors, which can make these methods a bit finicky and their meaning unclear. 
-
-  <p>It turns out that we can make compelling feature visualizations with a very simple method -- the complicated priors seem to not be necessary!  This method can show us how neural networks used for vision progressively build up their understanding of images:
-
-
-  <p>It can also…
-
-  Show us class visualizations
-  Audio model????
-
-  <p>But how does this new technique for creating feature visualizations work?
-
-<!--
-
-  <h2>Optimization & Preconditioners</h2>
-
-  <p>Neural networks are, generally speaking, differentiable with respect to their inputs. If we want to change the behavior of the network -- whether that’s an internal neuron firing or the final output -- we can take the derivatives to figure out how to tweak the input in order to move towards that goal.
-
-  <figure id="optimize-naive_old" class="l-page-outset"></figure>
-
-  <p>If you simply optimize the images to get neurons to fire  as above, the images get filled by checkerboard artifacts and other high frequency patterns. These patterns seem to be the images kind of cheating by exploiting their alignment with strided convolutions and pooling operations.
-
-  <p>The solution to this is to optimize for an image that robustly activates the network. The most common solution is to jitter the image, shifting the way the image exactly aligns with the network. If we do this, we get much better examples:
-
-  <figure id="optimize-jitter_old" class="l-page-outset"></figure>
-
-  <p>While this is certainly better than before, it’s still slow and we continue to see significant changes if we really crank the optimization crank, exponentially increasing the training time. Continuing this increase isn’t sustainable, but it makes one wonder what would happen if we could optimize much better. 
-
-  <p>If one thinks about it, turning random noise into a good image seems like it could be a hard optimization problem. Creating large scale structure requires us to move many pixels in concert. Achieving particular colors requires coordination between RGB channels. These kind of relationships are a recipe for pathological curvature and tricky optimization. 
-
-  <p>So, could it be that we’re running into a hard optimization problem? Well, it seems plausible and a few things point in that direction. If we look at the gradient, it’s dominated by high spatial frequencies -- there’s very little movement in the lower frequency directions that would be essential for creating larger scale structure. Of course, the results keep improving, if very slowly, as we continue optimizing seems like a pretty big clue.
-
-  <p>When we run into optimization problems, there are a plethora of powerful tools one can bring to bare, but an easy starting point is to try whitening transformations. Many optimization problems become a lot easier if we can find a change of basis that makes the variables being optimized more independent. In the case of images, decorrelating or “whitening” them is a well studied problem, with well known transformations for natural images that we can simply apply.
-
-  <p>[vis]
-
-  <p>Of course, transformations that decorrelate image space as a whole may not be the right transformation to decorrelate the local curvature of our optimization problem. Ideally, we’d use a second order 
-
-
-
-  <p>High-frequency gradients
-  <span>Orders of magnitude training time
-
-  <figure id="opt-explore" class="l-page-outset"></figure>
-  
--->
-  
-  
-  
+<p>
+  Neural network feature visualization is a powerful technique. It can answer questions about what a network -- or parts of a network -- are looking for by generating idealized examples of what the network is trying to find.
+</p>
+<p>
+  Over the last few years, the field has made great strides in feature visualization. Actually getting it to work, however, involves a number of details. In this article, we examine the major issues and explore common approaches to solving them.
+</p>
+<p>
+  We find that remarkably simple methods can produce state-of-the-art visualizations -- and that, surprisingly, these visualizations are often limited by optimization problems that can be solved with standard techniques.
+</p>
 
 <!-- =================================================== -->
 <h2>Feature Visualization by Optimization</h2>
@@ -223,7 +185,7 @@
   towards that goal <d-cite key="erhan2009visualizing"></d-cite>.
 </p>
 
-<figure class="l-page-outset" style="min-height: 204px;">
+<figure class="" style="min-height: 168px; grid-column: text;">
   <d-figure id="opt-progress"></d-figure>
 </figure>
 
@@ -237,26 +199,79 @@
 <p>
   We have a wide variety of options in what we search for.
   If we want to understand individual features, we can search for examples where they have high values -- either at an individual point in an image, or over the entire thing.
-  If we want to understand a layer as a whole, we can use the DeepDream objective <dt-cite key="mordvintsev2015inceptionism"></dt-cite>, searching for images the layer finds "interesting."
+  If we want to understand a layer as a whole, we can use the DeepDream objective <d-cite key="mordvintsev2015inceptionism"></d-cite>, searching for images the layer finds "interesting."
   And if we want to create examples of output classes from a classifier, we have two options.
 </p>
 
-<figure class="l-page-outset" >
-  <img src="images/vis_VisObjectives.svg">
+<figure class="base-grid" id="optimization-objectives">
+  <style>
+    .objectives {
+      grid-column: text;
+      display: flex;
+      flex-flow: row;
+    }
+    
+    .objectives .objective {
+      display: flex;
+      flex-flow: column;
+      flex: 1 1 auto;
+      align-items: center;
+    }
+    
+    .objective .objective-icon {
+      /*min-height: 128px;*/
+      margin: 8px;
+      max-width: 64px;
+    }
+    
+    .objective .objective-opt {
+      max-width: 144px;
+      max-height: 144px;
+    }
+    
+  </style>
+  
+  <figcaption style="grid-column: kicker;"><strong>Optimization Objectives</strong> are currently missing post-softmax class visualization.</figcaption>
+  <div class="objectives">
+    <div class="objective">
+      <img class="objective-icon" src="images/objectives/objectives_neuron.svg">
+      <img class="objective-opt" src="images/objectives/neuron.png">
+      <figcaption>Baseballs—or stripes? <br><em>mixed4a, Unit 6</em></figcaption>
+    </div>
+    
+    <div class="objective">
+      <img class="objective-icon" src="images/objectives/objectives_channel.svg">
+      <img class="objective-opt" src="images/objectives/channel.png">
+      <figcaption>Baseballs—or stripes? <br><em>mixed4a, Unit 6</em></figcaption>
+    </div>
+    
+    <div class="objective">
+      <img class="objective-icon" src="images/objectives/objectives_layer.svg">
+      <img class="objective-opt" src="images/objectives/layer.png">
+      <figcaption>Baseballs—or stripes? <br><em>mixed4a, Unit 6</em></figcaption>
+    </div>
+    
+    <div class="objective">
+      <img class="objective-icon" src="images/objectives/objectives_logits.svg">
+      <img class="objective-opt" src="images/objectives/logits.png">
+      <figcaption>Baseballs—or stripes? <br><em>mixed4a, Unit 6</em></figcaption>
+    </div>
+  </div>
+  <!-- <img style="width: 700px;" src="images/vis_objectives.svg"> -->
 </figure>
 
 <p>
   These two different objectives for output classes are a very important distinction between the pre-softmax logit objective and the post-softmax probabilities objective.
   One can see the logits as the evidence for each class, and the probabilities as the likelihood of each class given the evidence.
-  Unfortunately, the easiest way to increase the probability softmax gives to a class is often to make the alternatives unlikely rather than to make the class of interest likely <dt-cite key="simonyan2013deep"></dt-cite>.
+  Unfortunately, the easiest way to increase the probability softmax gives to a class is often to make the alternatives unlikely rather than to make the class of interest likely <d-cite key="simonyan2013deep"></d-cite>.
   This can be fixed by very strong regularization with generative models, in which case the probabilities can be a very principled thing to optimize.
-  But unless you have a good reason not to, you should probably just optimize the pre-softmax logits.
+  From our experience, optimizing pre-softmax logits produces images of better visual quality.
 </p>
 
 <p>
   Of course, there are many possible objectives -- it would be impossible to list all the things people have tried.
-  Of particular note are the objectives used in style transfer <dt-cite key="gatys2015neural"></dt-cite>, which can teach us about the kinds of style and content a network understands,
-  and objectives used in optimization-based model inversion <dt-cite key="mahendran2015understanding"></dt-cite>, which we discuss in more depth in another section.
+  Of particular note are the objectives used in style transfer <d-cite key="gatys2015neural"></d-cite>, which can teach us about the kinds of style and content a network understands,
+  and objectives used in optimization-based model inversion <d-cite key="mahendran2015understanding"></d-cite>, which we discuss in more depth in another section.
   
 </p>
 
@@ -272,9 +287,7 @@
   This optimization approach can be a powerful way to see what a model is really looking for, because it separates the things causing behavior from from things that merely correlate with the causes. For example, consider the following neurons visualized with dataset examples and optimization:
 </p>
 
-<figure class="l-page-outset">
-  <d-figure id="example-optimization-comparison"></d-figure>
-</figure>
+<d-figure class="base-grid" id="example-optimization-comparison"></d-figure>
 
 <p>
   Optimization can also be much more flexible.
@@ -290,7 +303,7 @@
 
 
 <!-- =================================================== -->
-
+<hr>
 <h2>Diversity</h2>
 <p><i>
   Optimization tends to show only one facet of a feature.<br>
@@ -350,7 +363,7 @@
   In lower level neurons, this can reveal the different facets a feature represents:
 </p>
 
-<figure class="example-vis2 l-page" style="display: flex; flex-flow: row-wrap;">
+<figure class="example-vis2" style="grid-column: text-start / screen-end; display: flex; flex-flow: row-wrap;">
   <div style="width: 624px; margin-right: 26px;">
     <img style="width: 624px;" src="images/mixed4a_97_diversity.png" />
     <figcaption>
@@ -412,7 +425,7 @@
   For example, one neuron seems responds to people's shoulders and arms.
 </p>
 
-<figure class="l-page" style="display: flex; flex-flow: row; flex-wrap: wrap;">
+<figure style="grid-column: text-start / screen-end; display: flex; flex-flow: row; flex-wrap: wrap;">
   <div style="margin-right: 26px;">
     <img style="height: 147px; width: 624px;" src="images/mixed4e_718_diversity.png" />
     <figcaption>Shoulders & arms? <i>Layer mixed4e, Unit 718</i></figcaption>
@@ -429,7 +442,7 @@
   This neuron responds to different kinds of balls, even though they have a variety of appearances.
 </p>
 
-<figure class="l-page" style="display: flex; flex-flow: row; flex-wrap: wrap;">
+<figure style="grid-column: text-start / screen-end;  display: flex; flex-flow: row; flex-wrap: wrap;">
   <div style="margin-right: 26px;">
     <img style="height: 147px; width: 624px;" src="images/mixed5a_9_diversity.png" />
     <figcaption>Multiple types of balls? <i>Layer mixed5a, Unit 9</i></figcaption>
@@ -447,7 +460,7 @@
   Below, a neuron to responds to two types of animal faces, and also to car bodys.
 </p>
 
-<figure class="l-page" style="display: flex; flex-flow: row; flex-wrap: wrap;">
+<figure style="grid-column: text-start / screen-end; display: flex; flex-flow: row; flex-wrap: wrap;">
   <div style="margin-right: 26px;">
     <img style="height: 147px; width: 624px;" src="images/mixed4e_55_diversity.png" />
     <figcaption>Cats, foxes and cars? <i>Layer mixed4e, Unit 55</i></figcaption>
@@ -473,21 +486,22 @@
 </p>
 
 <p>
-  In fact, <d-cite key="szegedy2013intriguing">Szegedy <i>et al.</i></d-cite> found that random directions seem just as meaningful as the basis directions.
-  We observe the same phenomenon: when we visualize random linear combinations of neurons, the resulting visualization also seem to carry meaning:
+  <d-cite key="szegedy2013intriguing">Szegedy <i>et al.</i></d-cite> found that random directions seem just as meaningful as the basis directions.
+  More recently <d-cite key="netdissect2017">Bau, Zhou <i>et al.</i></d-cite> found basis directions to be interpretable more often than random directions.
+  Our experience is broadly consistent with both results; we find that random directions often seem interpretable, but appear to be so at a lower rate than basis directions.
 </p>
 
-<figure class="l-page-outset">
+<figure style="grid-column: text-start / page-end; ">
   <d-figure id="random-optimization-and-examples"></d-figure>
 </figure>
 
 <p>  
-  We can also define interesting directions (in activatino space) by doing arithmetic on neurons.
+  We can also define interesting directions in activation space by doing arithmetic on neurons.
   For exampe, if we add a "black and white" neuron to a "mosaic" neuron, we obtain a black and white version of the mosaic.
   This is reminiscient of semantic arithmetic of word embeddings as seen in Word2Vec or generative models' latent spaces.
 </p>
 
-<figure class="l-body">
+<figure style="grid-column: screen">
   <d-figure id="linear-combinations"></d-figure>
 </figure>
 
@@ -497,7 +511,7 @@
   This is similar to interpolating in the latent space of generative models. 
 </p>
 
-<figure class="l-page-outset" style="/*min-height: 290px;*/">
+<figure style="grid-column: text-start / page-end; /*min-height: 290px;*/">
   <d-figure id="interpolation"></d-figure>
 </figure>
 
@@ -509,6 +523,7 @@
 
 
 <!-- =================================================== -->
+<hr>
 <h2>The Enemy of Feature Visualization</h2>
 <p><i>
   Naively optimizing images doesn't work.<br>
@@ -575,7 +590,7 @@
   And in the middle we have three main families of regularization options.
 </p>
 
-<figure class="l-page-outset" style="min-height: 750px; padding-bottom: 10px;">
+<figure style="grid-column: page-start / screen-end; min-height: 750px; padding-bottom: 10px;">
   <d-figure id="feature-vis-history"></d-figure>
 </figure>
 
@@ -715,14 +730,14 @@
 </p>
 
 <h2>Conclusion</h2>
-
-<p>
+  
+<p class="draft">
   Neural feature visualization has made great progress over the last few years.
   As a community, we've developed principled ways to create compelling visualizations. 
   We've mapped out a number of important challenges and found ways of a addressing them.
 </p>
 
-<p>
+<p class="draft">
   In the quest to make neural networks interpretable, feature visualization
   stands out as one of the most promising and developed research directions.
   By itself, feature visualization will never give a completely satisfactory
@@ -730,7 +745,7 @@
   combined with other tools, will empower humans to understand these systems.
 </p>
 
-<p>
+<p class="draft">
   There remains much work to do. 
 </p>
 
@@ -766,6 +781,10 @@
     Chris did most of the distillation of prior work and made most of the interactive diagrams.
     Ludwig created the visualization of the spectrum of neuron activations.
   </p>
-  <d-bibliography src="bibliography.bib"></d-bibliography>
+  <d-footnote-list></d-footnote-list>
+  <d-citation-list></d-citation-list>
+  <distill-appendix></distill-appendix>
 </d-appendix>
+
+<d-bibliography src="bibliography.bib"></d-bibliography>
 

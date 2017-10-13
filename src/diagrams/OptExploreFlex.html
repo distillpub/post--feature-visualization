@@ -41,12 +41,14 @@
                 {{config_var.label}}
                 ({{config_var.values[var_values_safe[config_var.name]]}})
               </span>
-              <br>
-              <input type="range"
-                min=0 max={{config_var.values.length-1}}
-                value={{var_values_safe[config_var.name]}}
-                on:input="setDeep('var_values.'+config_var.name, this.value)">
             </label>
+            <div style="width: 100px;">
+              <d-slider type="range"
+                min=1 max={{config_var.values.length}} step={{1}}
+                value={{var_values_safe[config_var.name]+1}}
+                on:input="setDeep('var_values.'+config_var.name, this.value-1)">
+              </d-slider>
+            </div>
           {{/if}}
         
         </div>
