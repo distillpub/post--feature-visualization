@@ -1,11 +1,12 @@
 <!doctype html>
 <meta charset="utf-8">
-<!-- <script src="http://localhost:8888/dist/template.v2.js"></script> -->
+<script src="http://localhost:8888/dist/template.v2.js"></script>
 <script src="template.v2.js"></script>
 <d-front-matter>
   <script type="text/json">{
   "title": "Simple & Flexible Feature Visualization",
   "description": "Description of the post",
+  "password": "clarity",
   "authors": [
     {
       "author":"Chris Olah",
@@ -15,7 +16,7 @@
     },
     {
       "author":"Alexander Mordvintsev",
-      "authorURL":"http://znah.net/",
+      "authorURL":"https://znah.net/",
       "affiliation":"Google Brain",
       "affiliationURL":"https://g.co/brain"
     },
@@ -137,6 +138,10 @@
     font-family: "Comic Sans MS", fantasy;
     color: orange;
   }
+  
+  d-slider {
+    width: 100%;
+  }
 </style>
 
 
@@ -151,7 +156,7 @@
 
 <d-title>
   <h1>Feature Visualization</h1>
-  <p style="grid-column: text;">Feature visualization shows how neural networks build up their understanding of images</p>
+  <p style="grid-column: text;">How neural networks build up their understanding of images</p>
   <figure style="grid-column: screen;" id="googlenet-examples"></figure>
 </d-title>
 
@@ -185,7 +190,8 @@
   towards that goal <d-cite key="erhan2009visualizing"></d-cite>.
 </p>
 
-<figure class="" style="min-height: 168px; grid-column: text;">
+<!-- <figcaption style="grid-column: kicker;">Starting with random noise, we optimize an image to activate a particular neuron (layer mixed4a, unit 11).</figcaption> -->
+<figure class="" style="min-height: 168px;">
   <d-figure id="opt-progress"></d-figure>
 </figure>
 
@@ -198,65 +204,73 @@
 
 <p>
   We have a wide variety of options in what we search for.
-  If we want to understand individual features, we can search for examples where they have high values -- either at an individual point in an image, or over the entire thing.
+  If we want to understand individual features, we can search for examples where they have high values -- either at an individual neuron, or for an entire channel.
   If we want to understand a layer as a whole, we can use the DeepDream objective <d-cite key="mordvintsev2015inceptionism"></d-cite>, searching for images the layer finds "interesting."
-  And if we want to create examples of output classes from a classifier, we have two options.
+  And if we want to create examples of output classes from a classifier, we have two options:
 </p>
 
-<figure class="base-grid" id="optimization-objectives">
+<figcaption style="grid-column: kicker;">Different <strong>optimization objectives</strong> show what different parts of a network are looking for.</figcaption>
+<figure class="grid" id="optimization-objectives">
   <style>
-    .objectives {
-      grid-column: text;
-      display: flex;
-      flex-flow: row;
+    #optimization-objectives {
+      grid-template-columns: repeat(5, 1fr);
     }
-    
-    .objectives .objective {
+    #optimization-objectives .objective {
       display: flex;
       flex-flow: column;
-      flex: 1 1 auto;
-      align-items: center;
     }
     
-    .objective .objective-icon {
-      /*min-height: 128px;*/
-      margin: 8px;
-      max-width: 64px;
+    #optimization-objectives figcaption {
+      padding-top: 4px;
+      word-wrap: break-word;
+      word-break: break-word;
     }
     
-    .objective .objective-opt {
-      max-width: 144px;
-      max-height: 144px;
+    #optimization-objectives .objective .objective-icon {
+      padding: 8px;    
     }
-    
   </style>
-  
-  <figcaption style="grid-column: kicker;"><strong>Optimization Objectives</strong> are currently missing post-softmax class visualization.</figcaption>
-  <div class="objectives">
+  <!-- <div class="objectives"> -->
     <div class="objective">
-      <img class="objective-icon" src="images/objectives/objectives_neuron.svg">
+      <div class="objective-icon">
+        <img inline src="static/images/objectives/objectives_neuron.svg">
+      </div>
       <img class="objective-opt" src="images/objectives/neuron.png">
-      <figcaption>Baseballs—or stripes? <br><em>mixed4a, Unit 6</em></figcaption>
+      <figcaption><strong>Neuron</strong><br/><code>layer<sub>n</sub>[x,y,z]</code></figcaption>
     </div>
     
     <div class="objective">
-      <img class="objective-icon" src="images/objectives/objectives_channel.svg">
+      <div class="objective-icon">
+        <img inline src="static/images/objectives/objectives_channel.svg">
+      </div>
       <img class="objective-opt" src="images/objectives/channel.png">
-      <figcaption>Baseballs—or stripes? <br><em>mixed4a, Unit 6</em></figcaption>
+      <figcaption><strong>Channel</strong><br/><code>layer<sub>n</sub>[:,:,z]</code></figcaption>
     </div>
     
     <div class="objective">
-      <img class="objective-icon" src="images/objectives/objectives_layer.svg">
+      <div class="objective-icon">
+        <img inline src="static/images/objectives/objectives_layer.svg">
+      </div>
       <img class="objective-opt" src="images/objectives/layer.png">
-      <figcaption>Baseballs—or stripes? <br><em>mixed4a, Unit 6</em></figcaption>
+      <figcaption><strong>Layer</strong>/DeepDream<br/><code>layer<sub>n</sub>[:,:,:]<sup>2</sup></code></figcaption>
     </div>
     
     <div class="objective">
-      <img class="objective-icon" src="images/objectives/objectives_logits.svg">
+      <div class="objective-icon">
+        <img inline src="static/images/objectives/objectives_logits_pre.svg">
+      </div>
       <img class="objective-opt" src="images/objectives/logits.png">
-      <figcaption>Baseballs—or stripes? <br><em>mixed4a, Unit 6</em></figcaption>
+      <figcaption><strong>Class Logits</strong><br/><code>pre_softmax[n]</code></figcaption>
     </div>
-  </div>
+    
+    <div class="objective">
+      <div class="objective-icon">
+        <img inline src="static/images/objectives/objectives_logits_post.svg">
+      </div>
+      <img class="objective-opt" src="images/objectives/logits_post.png">
+      <figcaption><strong>Class Probability</strong><br/><code>softmax[n]</code></figcaption>
+    </div>
+  <!-- </div> -->
   <!-- <img style="width: 700px;" src="images/vis_objectives.svg"> -->
 </figure>
 
@@ -269,7 +283,7 @@
 </p>
 
 <p>
-  Of course, there are many possible objectives -- it would be impossible to list all the things people have tried.
+  There are many possible objectives -- it would be impossible to list all the things people have tried.
   Of particular note are the objectives used in style transfer <d-cite key="gatys2015neural"></d-cite>, which can teach us about the kinds of style and content a network understands,
   and objectives used in optimization-based model inversion <d-cite key="mahendran2015understanding"></d-cite>, which we discuss in more depth in another section.
   
@@ -287,7 +301,9 @@
   This optimization approach can be a powerful way to see what a model is really looking for, because it separates the things causing behavior from from things that merely correlate with the causes. For example, consider the following neurons visualized with dataset examples and optimization:
 </p>
 
-<d-figure class="base-grid" id="example-optimization-comparison"></d-figure>
+<figure style="grid-column: screen;">
+  <d-figure class="base-grid" id="example-optimization-comparison"></d-figure>
+</figure>
 
 <p>
   Optimization can also be much more flexible.
@@ -298,12 +314,12 @@
 </p>
 
 <p>
-  Of course, there are also significant challenges to visualizing features with optimization.
+  On the other hand, there are also significant challenges to visualizing features with optimization.
 </p>
 
 
 <!-- =================================================== -->
-<hr>
+<hr/>
 <h2>Diversity</h2>
 <p><i>
   Optimization tends to show only one facet of a feature.<br>
@@ -328,8 +344,8 @@
 <!-- <figure class="l-page-outset"><img src="images/vis_ActivationSpectrum.svg" style="min-height: 150px;"></img></figure> -->
 
 
-<figure class="l-page-outset">
-  <d-figure id="optimization-and-examples"></d-figure>
+<figure style="grid-column: screen;">
+  <d-figure class="base-grid" id="optimization-and-examples"></d-figure>
 </figure>
 
 
@@ -396,27 +412,28 @@
   Take this optimization of layer 4a, unit 143:
 </p>
 
-<figure class="l-page-outset" style="display: flex; flex-flow: row; flex-wrap: wrap; justify-content: space-between;">
-  <div style="width: 147px;">
+<figure class="base-grid" style="">
+  <div style="grid-column: kicker;">
     <figcaption></figcaption>
     <img style="width: 147px;" src="images/mixed4a_143_optimized.png" />
     <figcaption>
-      <strong>Optimization</strong>: Optimizing only the channel shows what looks like red-brown fur, eyes, and rounded shapes.
+      <strong>Optimized</strong> channel shows both fur and eyes.
     </figcaption>
   </div>
-  <div style="width: 624px;">
-    <figcaption></figcaption>
-    <img style="width: 624px; height: 147px;" src="images/mixed4a_143_diversity.png" />
-    <figcaption>
-      <strong>Adding Diversity</strong>: Optimizing for diversity shows many different features. The only feature common to all visualizations is the red-brown fur. Note that eyes, for example, only appear in the third visualization.
-    </figcaption>
-  </div>
-  <div style="width: 147px; ">
-    <figcaption></figcaption>
-    <img style="width: 147px;" src="images/mixed4a_143_dataset_max.jpg" />
-    <figcaption>
-      <strong>Dataset Examples</strong>: As predicted, the channel activates strongly on images of red-brown fur.
-    </figcaption>
+  <div style="grid-column: text-start / screen-end; display: flex; flex-flow: row; flex-wrap: wrap;">
+    <div style="margin-right: 36px;">
+      <figcaption></figcaption>
+      <img style="width: 614px; height: 147px;" src="images/mixed4a_143_diversity.png" />
+      <figcaption style="max-width: 614px">
+        <strong>Adding Diversity</strong>: Optimizing for diversity shows many different features. The only feature common to all visualizations is the red-brown fur. Note that eyes, for example, only appear in the third visualization.
+      </figcaption>
+    </div>
+    <div>
+      <img style="width: 147px;" src="images/mixed4a_143_dataset_max.jpg" />
+      <figcaption style="max-width: 147px">
+        <strong>Dataset Examples</strong>: As predicted, the channel activates strongly on images of red-brown fur.
+      </figcaption>
+    </div>
   </div>
 </figure>
 
@@ -477,6 +494,8 @@
   Examples like these suggest that neurons are not necessarily the right semantic units for understanding neural nets.
 </p>
 
+<!-- =================================================== -->
+<hr/>
 <h2>Interaction between Neurons</h2>
 
 <p>
@@ -488,9 +507,12 @@
 <p>
   <d-cite key="szegedy2013intriguing">Szegedy <i>et al.</i></d-cite> found that random directions seem just as meaningful as the basis directions.
   More recently <d-cite key="netdissect2017">Bau, Zhou <i>et al.</i></d-cite> found basis directions to be interpretable more often than random directions.
-  Our experience is broadly consistent with both results; we find that random directions often seem interpretable, but appear to be so at a lower rate than basis directions.
+  Our experience is broadly consistent with both results; we find that random directions often seem interpretable, but at a lower rate than basis directions.
 </p>
 
+<figcaption style="grid-column: kicker;">
+  Dataset examples and optimized examples of <strong>random directions</strong> in activation space. The directions shown here were hand-picked for interpretability.
+</figcaption>
 <figure style="grid-column: text-start / page-end; ">
   <d-figure id="random-optimization-and-examples"></d-figure>
 </figure>
@@ -523,7 +545,7 @@
 
 
 <!-- =================================================== -->
-<hr>
+<hr/>
 <h2>The Enemy of Feature Visualization</h2>
 <p><i>
   Naively optimizing images doesn't work.<br>
@@ -542,7 +564,7 @@
   -- an image full of noise and nonsensical high-frequency patterns that the network responds strongly to.
 </p>
 
-<figure  class="l-page-outset" style="min-height: 240px;">
+<figure style="min-height: 240px;">
   <d-figure id="optimize-naive"></d-figure>
 </figure>
 
@@ -560,7 +582,8 @@
   but an important part seems to be strided convolutions and pooling operations, which create high-frequency patterns in the gradient <d-cite key="odena2016deconvolution"></d-cite>.
 </p>
 
-<figure class="l-page-outset">
+<figcaption>Each <b>strided convolution</b> creates checkerboard patterns in the gradient magnitudes when we backprop through it. <dt-cite key="odena2016deconvolution"></dt-cite></figcaption>
+<figure style="grid-column: page;">
   <d-figure id="frequency-artifacts"></d-figure>
 </figure>
 
@@ -614,7 +637,7 @@
   These techniques are in some ways very similar to the above and in some ways radically different -- we'll talk about them in much more depth later.)
 </p>
 
-<figure class="l-page-outset" style="min-height: 240px;">
+<figure style="min-height: 240px;">
   <d-figure id="regularizer-playground-freq"></d-figure>
 </figure>
 <!--
@@ -635,7 +658,7 @@
 
 <!--<figure id="optimize-jitter" class="l-page-outset"></figure>-->
 
-<figure class="l-page-outset" style="min-height: 240px;">
+<figure style="min-height: 240px;">
   <d-figure id="regularizer-playground-robust"></d-figure>
 </figure>
 
@@ -663,6 +686,7 @@
 
 
 <!-- =================================================== -->
+<hr/>
 <h2>Preconditioning and Parameterization</h2>
 <p><i>
   Not all "regularizers" are really regularizers.<br>
@@ -693,12 +717,12 @@
   How should we chose a good one that will give us these benefits?
   A good first guess is one that makes your data decorrelated and whitened.<d-footnote>
     In the case of images, this means doing gradient descent in the Fourier transform,
-    with frequencies scaled so that they all have equal energy. This decorelates images spatially, but doesn't handle correlations between colors. 
-    To address this, we explicitly measure the correlation between colors in the training set and use a Cholesky decomposition to decorelate them.</d-footnote>
+    with frequencies scaled so that they all have equal energy. This decorrelates images spatially, but doesn't handle correlations between colors. 
+    To address this, we explicitly measure the correlation between colors in the training set and use a Cholesky decomposition to decorrelate them.</d-footnote>
   Let's compare the direction of steepest descent in a decorelated parameterization to two other directions of steepest descent:
 </p>
 
-<figure class="l-page-outset" style="/*min-height: 290px;*/">
+<figure style="grid-column: text / screen; /*min-height: 290px;*/">
   <d-figure id="steepest-descent"></d-figure>
 </figure>
 
@@ -716,7 +740,7 @@
 </p>
 
 <!-- Figure out which descent directions to have in playground, explain them in the text. -->
-<figure class="l-page-outset">
+<figure>
   <d-figure id="opt-explore2"></d-figure>
 </figure>
 
@@ -729,6 +753,8 @@
   On the other hand, if you turn off all other regularizers, the preconditioner seems to reduce high-frequency patterns.
 </p>
 
+<!-- =================================================== -->
+<hr/>
 <h2>Conclusion</h2>
   
 <p class="draft">
@@ -783,7 +809,6 @@
   </p>
   <d-footnote-list></d-footnote-list>
   <d-citation-list></d-citation-list>
-  <distill-appendix></distill-appendix>
 </d-appendix>
 
 <d-bibliography src="bibliography.bib"></d-bibliography>

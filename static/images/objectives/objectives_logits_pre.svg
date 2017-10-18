@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="144px" height="144px" viewBox="0 0 144 144" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>objectives_logits_pre</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="objectives_logits_pre">
+            <g transform="translate(9.000000, 9.000000)">
+                <circle id="Oval-Copy-17" stroke="#D7D7D7" fill="#FFFFFF" transform="translate(115.000000, 29.000000) scale(-1, 1) translate(-115.000000, -29.000000) " cx="115" cy="29" r="11"></circle>
+                <circle id="Oval-Copy-18" stroke="#D7D7D7" fill="#FFFFFF" transform="translate(115.000000, 64.000000) scale(-1, 1) translate(-115.000000, -64.000000) " cx="115" cy="64" r="11"></circle>
+                <circle id="Oval-Copy-19" stroke="#D7D7D7" fill="#FFFFFF" transform="translate(115.000000, 99.000000) scale(-1, 1) translate(-115.000000, -99.000000) " cx="115" cy="99" r="11"></circle>
+                <path d="M61.6357143,97.5 L11.3642857,11.5" id="Line-3-Copy-15" stroke="#979797" opacity="0.427762681" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <path d="M61.6357143,97.5 L11.3642857,44.5" id="Line-3-Copy-16" stroke="#979797" opacity="0.427762681" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <path d="M61.6357143,97.5 L11.3642857,79.5" id="Line-3-Copy-17" stroke="#979797" opacity="0.427762681" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <path d="M61.6357143,97.5 L11.3642857,114.5" id="Line-3-Copy-18" stroke="#979797" opacity="0.427762681" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <g id="Group-2-Copy" transform="translate(36.500000, 63.000000) scale(1, -1) translate(-36.500000, -63.000000) translate(11.000000, 11.000000)" stroke="#979797" stroke-linecap="square" stroke-dasharray="1,2" opacity="0.427762681">
+                    <path d="M50.6357143,86.5 L0.364285714,0.5" id="Line-3-Copy-8"></path>
+                    <path d="M50.6357143,86.5 L0.364285714,33.5" id="Line-3-Copy-7"></path>
+                    <path d="M50.6357143,86.5 L0.364285714,68.5" id="Line-3-Copy-3"></path>
+                    <path d="M50.6357143,86.5 L0.364285714,103.5" id="Line-3-Copy-6"></path>
+                </g>
+                <path d="M61.6357143,64.5 L11.3642857,11.5" id="Line-3-Copy-19" stroke="#9B9B9B" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <path d="M61.6357143,64.5 L11.3642857,46.5" id="Line-3-Copy-20" stroke="#979797" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <path d="M61.6357143,64.5 L11.3642857,81.5" id="Line-3-Copy-21" stroke="#979797" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <path d="M60.6376812,64.5 L11.3623188,117.5" id="Line-3-Copy-22" stroke="#979797" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <circle id="Oval-Copy-5" stroke="#D7D7D7" fill="#FFFFFF" cx="11" cy="11" r="11"></circle>
+                <circle id="Oval-Copy-20" fill="#D8D8D8" cx="59" cy="29" r="11"></circle>
+                <circle id="Oval-Copy-6" stroke="#D7D7D7" fill="#FFFFFF" cx="11" cy="46" r="11"></circle>
+                <circle id="Oval-Copy-21" fill="#F5A623" cx="59" cy="64" r="11"></circle>
+                <circle id="Oval-Copy-7" stroke="#D7D7D7" fill="#FFFFFF" cx="11" cy="81" r="11"></circle>
+                <circle id="Oval-Copy-22" fill="#D8D8D8" cx="59" cy="99" r="11"></circle>
+                <circle id="Oval-Copy-8" stroke="#D7D7D7" fill="#FFFFFF" cx="11" cy="116" r="11"></circle>
+                <path d="M74.9576036,29.5 L69.0840659,29.5" id="Line-3-Copy-23" stroke="#979797" opacity="0.427762681" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <path d="M102.957604,29.5 L97.0840659,29.5" id="Line-3-Copy-24" stroke="#979797" opacity="0.427762681" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <path d="M74.9576036,64.5 L69.0840659,64.5" id="Line-3-Copy-25" stroke="#9B9B9B" opacity="0.4" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <path d="M102.957604,64.5 L97.0840659,64.5" id="Line-3-Copy-26" stroke="#9B9B9B" opacity="0.4" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <path d="M74.9576036,99.5 L69.0840659,99.5" id="Line-3-Copy-27" stroke="#979797" opacity="0.427762681" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <path d="M102.957604,99.5 L97.0840659,99.5" id="Line-3-Copy-28" stroke="#979797" opacity="0.427762681" stroke-linecap="square" stroke-dasharray="1,2"></path>
+                <rect id="Rectangle-3-Copy" stroke="#9B9B9B" opacity="0.4" x="76.5" y="13.5" width="21" height="103" rx="3"></rect>
+                <text id="softmax-copy" opacity="0.67261096" transform="translate(86.000000, 64.500000) rotate(-90.000000) translate(-86.000000, -64.500000) " font-family="SFProText-Light, SF Pro Text" font-size="14" font-weight="300" fill="#979797">
+                    <tspan x="59.8183594" y="69.5">softmax</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

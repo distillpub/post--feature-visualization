@@ -158,7 +158,7 @@ const OptExploreFlex_configs = {
     config: require('../static/images/OptExplore.json')
   },
   OptExplore: {
-    configurable: ["neurons", "learning_rate", "default_transforms", "pyramid", "color"],
+    configurable: ["neurons", "learning_rate", ["pyramid", "color"], "default_transforms"],
     icon_var_values: {default_transforms: 1, pyramid: 1, color: 0},
     var_values: {default_transforms: 1, learning_rate: 2, pyramid: 1, color: 1},
     config: require('../static/images/OptExplore.json')

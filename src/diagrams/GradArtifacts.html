@@ -1,16 +1,6 @@
-
-<div style="position: relative; height: 185px;">
-  <div style="left: {{(size+margin)*2-margin/2-3}}px; top: 0px; position: absolute;">
-    <figcaption style="line-height:1; max-width: 560px;">Each <b>strided convolution</b> creates checkerboard patterns when we backprop through it. <dt-cite key="odena2016deconvolution"></dt-cite></figcaption>
-  </div>
+<div class="layers">
   {{#each range(12) as n}}
-    {{#if n == 2 || n == 4 || n == 6 || n == 11}}
-      <!--<div style="left: {{122*n-8}}px; top: 0px; position: absolute;">
-        <figcaption style="line-height:1;"><b>strided conv</b></figcaption>
-      </div>-->
-      <div style="left: {{(size+margin)*n-margin/2-0.5}}px; top: 23px; position: absolute; width:1px; height: 15px; background: #AAA"></div>
-    {{/if}}
-    <div class="outer" style="position: absolute; left: {{(size+margin)*n}}px; top: 50px; width:{{size}}px; height:{{size}}px;">
+    <div class="outer">
       <div class="grad" style="
         background-position: -{{sprite_size*(n+1)}}px -{{sprite_size*0}}px;
         transform: scale({{size/sprite_size}});
@@ -18,37 +8,54 @@
         margin: {{(size-sprite_size)/2}}px;
         width: {{sprite_size}}px;
         height: {{sprite_size}}px; "></div>
-      <figcaption style="width: 400px;">
-        {{layers[n]}}
-        {{{(n==0)? '<div style="margin-top: 3px;">Gradient Magnitudes</div>' : ''}}}
-      </figcaption>
+      <figcaption>{{layers[n]}}</figcaption>
     </div>
-    <div class="op" style="
-      position: absolute;
-      left: {{(size+margin)*n+size+4}}px;
+    <div class="{{(n == 1 || n == 3 || n == 5 || n == 10)? 'op highlight' : 'op'}}" style="
       top: 45px;
-      width:{{margin-8}}px;
+      width:{{margin-12}}px;
       height:{{size+10}}px;
-      background: {{(n == 1 || n == 3 || n == 5 || n == 10)? 'hsl(350, 64%, 66%)' : 'hsl(240, 50%, 90%)'}};
-      display: {{(n==11)? 'none' : 'block'}}; 
+      background: {{(n == 1 || n == 3 || n == 5 || n == 10)? '#ff6600' : (n == 11)? 'white' : 'hsl(240, 50%, 90%)'}};
       border-radius:4px;" data-n="{{n}}">
     </div>
   {{/each}}
 </div>
 
 
-
 <style>
+  .layers {
+    margin-top: 25px;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+  }
   .outer {
-    position: absolute;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  .outer:first-of-type {
+    margin-left: 0;
+  }
+  .outer:last-of-type {
+    margin-right: 0;
   }
   .grad {
-    width: 224px;
-    height: 224px;
+    /*width: 224px;*/
+    /*height: 224px;*/
     background: url("images/layer_gradients_spritemap_4.jpeg");
   }
   .outer figcaption {
     margin-top: 10px;
+  }
+  .highlight::before {
+    content: "←";
+    position: relative;
+    left: -3px;
+    top: -25px;
+    color: #888;
   }
 </style>
 

@@ -1,83 +1,92 @@
-<div class="image-array">
-  <div class="icons">
-    {{#each icon_ns as n}}
-      <div class="icon {{(selected == n)? 'selected' : ''}}"
-           on:click='set({selected: n})'
-        >
-          <Sprite bind:src_class=icon_src_class 
-          size=44 
-          sprite_size={{icon_scale*sprite_size}} 
-          y={{(1-icon_scale)/2 + n/icon_scale}} 
-          x={{(1-icon_scale)/2 + icon_x/icon_scale}} 
-          hover_scale={{44/sprite_size/icon_scale}} />
 
-      </div>
-    {{/each}}
-  </div>
-  <div class="images">
-    {{#each image_ns as n}}
-      <div>
-        <Sprite bind:src_class 
-        bind:size 
-        bind:sprite_size 
-        bind:y=selected 
-        x={{n}} 
+<div class="icons">
+  {{#each icon_ns as n}}
+    <div class="icon {{(selected == n)? 'selected' : ''}}"
+         on:click='set({selected: n})'
+      >
+        <Sprite bind:src_class=icon_src_class 
+        size=44 
+        sprite_size={{icon_scale*sprite_size}} 
+        y={{(1-icon_scale)/2 + n/icon_scale}} 
+        x={{(1-icon_scale)/2 + icon_x/icon_scale}} 
+        hover_scale={{44/sprite_size/icon_scale}} />
+
+    </div>
+  {{/each}}
+</div>
+<div class="images">
+  {{#each image_ns as n}}
+    <div>
+      <Sprite bind:src_class 
+      bind:size 
+      bind:sprite_size 
+      bind:y=selected 
+      x={{n}} 
         hover={{false}}  />
-        <br style="clear:left">
-        <figcaption>{{{label_func(n, selected)}}}</figcaption>
-      </div>
-    {{/each}}
-  </div>
+      <br style="clear:left">
+      <figcaption>{{{label_func(n, selected)}}}</figcaption>
+    </div>
+  {{/each}}
 </div>
 
-<style>
-.image-array {
-  padding-left: 3px;
-}
 
-.image-array .icons {
-  display: flex;
+<style>
+
+
+.icons {
+  display: inline-flex;
   flex-wrap: wrap;
   flex-direction: row;
-  margin-bottom: 2px;
-  margin-left: -3px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #dddddd;
 }
 
-.image-array .icons .icon {
-  padding: 0px;
-  background-color: #EEE;
-  border: 3px solid white;
+.icons .icon {
+  cursor: pointer;
+  padding-bottom: 5px;
+  margin-bottom: -1px;
+  
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.icons .icon:first-of-type {
+  margin-left: 0px;
+}
+
+.icons .icon:last-of-type {
+  margin-right: 0px;
+}
+
+.icons .icon.selected {
+  opacity: 100%;
+  border-bottom: 3px solid #ff6600;
 }
 
 .icon div {
-  filter: saturate(0%);
+  opacity: 0.666;
   image-rendering: auto;
 }
 
 .icon.selected div {
-  filter: none;
+  opacity: 1;
 }
 
-.image-array .icons .selected {
-  background-color: #AAA;
-  border-color: #3497FF;
-}
-
-.image-array .images {
+.images {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   /*justify-content: space-between;*/
   top: 0px;
 }
-.image-array .images > div {
+.images > div {
   /*width: 180px;*/
   margin-right: 5px;
 }
-.image-array .images > div:last-child {
+.images > div:last-child {
   margin-right: 0;
 }
-.image-array .images div img {
+.images div img {
   width: 100%;
   height: 100%;
   background-color: #EEE;

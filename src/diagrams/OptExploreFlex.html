@@ -1,5 +1,5 @@
 
-<figcaption>
+<div class="controls">
   {{#each config_var_groups as config_var_group}}
     <div class="config-group">
       {{#each config_var_group as config_var}}
@@ -7,10 +7,11 @@
       
       
           {{#if config_var.type == "icon"}}
+            <div class="icons">
             {{#each range(config_var.values.length) as n}}
               <div
                 class="icon {{(var_values_safe[config_var.name] == n)? 'selected' : ''}}"
-                on:mouseover="setDeep('var_values.'+config_var.name, n)"
+                on:click="setDeep('var_values.'+config_var.name, n)"
                 style="width: {{icon_size}}px; height: {{icon_size}}px;"
                 >
                 <div class="inner" style="margin: {{(icon_size-sprite_size)/2}}px; transform:scale({{icon_size/sprite_size}});">
@@ -26,25 +27,26 @@
                 </div>
               </div>
             {{/each}}
+          </div>
           {{/if}}
       
           {{#if config_var.type == "binary"}}
             <label>
               <input type="checkbox" on:change="setDeep('var_values.'+config_var.name, +this.checked)" checked="{{var_values_safe[config_var.name]}}">
-              {{config_var.label}}
+              {{{human_readable(config_var.label, strings)}}}
             </label>
           {{/if}}
           
           {{#if config_var.type != "binary" && config_var.type != "icon" }}
             <label>
               <span>
-                {{config_var.label}}
-                ({{config_var.values[var_values_safe[config_var.name]]}})
+                {{{human_readable(config_var.label, strings)}}}
+                <span class="value">({{config_var.values[var_values_safe[config_var.name]] + (units.get(config_var.name) || '') }})</span>
               </span>
             </label>
             <div style="width: 100px;">
               <d-slider type="range"
-                min=1 max={{config_var.values.length}} step={{1}}
+                min=1 max={{config_var.values.length}} step={{1}} ticks
                 value={{var_values_safe[config_var.name]+1}}
                 on:input="setDeep('var_values.'+config_var.name, this.value-1)">
               </d-slider>
@@ -60,7 +62,7 @@
       {{explain_text}}
     </div>
   {{/if}}
-</figcaption>
+</div>
 
 <div class="images">
   {{#each display_offsets as offset}}
@@ -78,10 +80,66 @@
 </div>
 
 <style>
+
+.controls {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+/* Icons */
+
+.icons {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-bottom: 1px solid #dddddd;
+}
+
+.icons .icon {
+  cursor: pointer;
+  padding-bottom: 5px;
+  margin-bottom: -1px;
+  
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.icons .icon:first-of-type {
+  margin-left: 0px;
+}
+
+.icons .icon:last-of-type {
+  margin-right: 0px;
+}
+
+.icons .icon.selected {
+  opacity: 100%;
+  border-bottom: 3px solid #ff6600;
+}
+
+.icon div {
+  opacity: 0.666;
+  image-rendering: auto;
+}
+
+.icon.selected div {
+  opacity: 1;
+}
+
+/* Config Group */
+
 .config-group {
   display: inline-block;
-  padding-right: 10px;
+  margin-right: 20px;
 }
+
+.config-group:last-of-type {
+  margin-right: 0;
+}
+
 .config-group .config {
   display: block;
 }
@@ -102,30 +160,9 @@
   margin-top: 3px;
 }
 
-.config-icon {
-  width: 320px;
-}
-
-.config-icon .inner {
-  image-rendering: auto;
-}
-
-.config-icon .icon {
-  border: 3px solid white;
-  float: left;
-  margin: 0px;
-  margin-right: 2px;
-  margin-bottom: 2px;
-}
-.config-icon .selected {
-  border-color: #3497FF;
-}
-.config-icon .icon .inner {
-  filter: saturate(0%);
-}
-
-.config-icon .icon.selected .inner {
-  filter: none;
+.config-group span.value {
+  display: inline-block;
+  width: 35px;
 }
   
 .explain {
@@ -135,7 +172,6 @@
 }
 
 .images {
-  margin-top: 10px;
 }
 
 .images .outer {
@@ -218,13 +254,21 @@
     this.set(adjusted_config);
     this.set(settings);
   }
+  
+  function human_readable(key, strings) {
+    if (strings.has(key)) {
+      return strings.get(key);
+    } else {
+      return key.split('_').map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
+    }
+  }
 
   export default {
     data() {
       return {
         spritemap_name: "",
         sprite_path: "",
-        size: 180,
+        size: 134,
         sprite_size: 1,
         x_vars: [],
         y_vars: [],
@@ -233,7 +277,21 @@
         configurable: [],
         explain_text: "",
         icon_size: 44,
-        icon_var_values: {}
+        icon_var_values: {},
+        strings: new Map([
+          ['default_transforms', 'Transforms'],
+          ['pyramid', 'Decorrelate'],
+          ['tv', 'Total Variation'],
+          ['l1', 'L<sub>1</sub>'],
+          ['random_rotate', 'Rotate'],
+          ['random_scale', 'Scale'],
+          ['learning rate', 'LR'],
+        ]),
+        units: new Map([
+          ['jitter', 'px'],
+          ['random_rotate', '°'],
+          ['random_scale', '×'],
+        ]),
       }
     },
     computed: {
@@ -296,6 +354,6 @@
     },
     components: {},
     methods: {setDeep, load_spritemap},
-    helpers: {range, keyvalue}
+    helpers: {range, keyvalue, human_readable}
   }
 </script>

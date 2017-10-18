@@ -24,6 +24,7 @@
     "webpack-dev-server": "^2.5.0"
   },
   "devDependencies": {
+    "html-webpack-inline-svg-plugin": "^0.2.2",
     "svg-inline-loader": "^0.8.0"
   }
 }

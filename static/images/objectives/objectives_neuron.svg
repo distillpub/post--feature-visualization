@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="70px" height="144px" viewBox="0 0 70 144" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="144px" height="144px" viewBox="0 0 144 144" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
     <title>objectives_neuron</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard" transform="translate(-26.000000, -156.000000)">
-            <g id="objectives_neuron" transform="translate(26.000000, 156.000000)">
-                <polygon id="Rectangle-Copy-3" fill="#888888" opacity="0.2" points="20 0 70 28.8 70 144 20 115.2"></polygon>
-                <polygon id="Rectangle-Copy-2" fill="#888888" opacity="0.4" points="10 0 60 28.8 60 144 10 115.2"></polygon>
-                <polygon id="Rectangle-Copy" fill="#AAAAAA" points="0 0 50 28.8 50 144 0 115.2"></polygon>
-                <polygon id="Rectangle-Copy-4" fill="#F5A623" points="25 83.52 34 88.4736 34 108.288 25 103.3344"></polygon>
-            </g>
-        </g>
+    <g id="Page-1-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(27.000000, 0)">
+      <polygon id="Rectangle-Copy-3" fill="#888888" opacity="0.2" points="40 0 90 28.8 90 144 40 115.2"></polygon>
+      <polygon id="Rectangle-Copy-2" fill="#888888" opacity="0.4" points="20 0 70 28.8 70 144 20 115.2"></polygon>
+      <polygon id="Rectangle-Copy" fill="#AAAAAA" points="0 0 50 28.8 50 144 0 115.2"></polygon>
+      <polygon id="Rectangle-Copy-4" fill="#F5A623" points="25 83.52 34 88.4736 34 108.288 25 103.3344"></polygon>
     </g>
 </svg>
