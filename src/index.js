@@ -177,7 +177,6 @@ const OptExploreFlex_configs = {
   }
 };
 
-console.log(OptExploreFlex_configs)
 {
   const figure = document.getElementById("optimize-naive");
   figure.addEventListener("ready", function() {

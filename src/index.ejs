@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <script src="http://localhost:8888/dist/template.v2.js"></script>
-<script src="template.v2.js"></script>
+<!-- <script src="template.v2.js"></script> -->
 <d-front-matter>
   <script type="text/json">{
   "title": "Simple & Flexible Feature Visualization",
@@ -171,7 +171,7 @@
   Over the last few years, the field has made great strides in feature visualization. Actually getting it to work, however, involves a number of details. In this article, we examine the major issues and explore common approaches to solving them.
 </p>
 <p>
-  We find that remarkably simple methods can produce state-of-the-art visualizations -- and that, surprisingly, these visualizations are often limited by optimization problems that can be solved with standard techniques.
+  We find that remarkably simple methods can produce state-of-the-art visualizations. Along the way we introduce a few tricks for exploring variation in what neurons react to, how they interact, and how to improve the optimization process.
 </p>
 
 <hr />
@@ -365,14 +365,13 @@
 <h3>Achieving Diversity with Optimization</h3>
 
 <p>
-  As is often the case in visualizing neural networks, this problem was initially recognized and addressed by Nguyen and collaborators.
   Their initial approach was to search through the dataset for diverse examples and use those as starting points for the optimization process <d-cite key="nguyen2016multifaceted"></d-cite>.
   The idea is that this initiates optimization in different facets of the feature so that the resulting example from optimization will demonstrate that facet.
   In more recent work, they combine visualizing classes with a generative model, which they can sample for diverse examples <d-cite key="nguyen2016plug"></d-cite>.
 </p>
 
 <p>
-  The first approach had limited success, and the generative model approach -- which we'll discuss in more depth later -- is a bit tricky and has drawbacks. 
+  The first approach had limited success, and while the generative model approach works very well -- we'll discuss it in more depth later -- it's a bit tricky and has drawbacks. 
 </p>
 
 <p>
@@ -398,10 +397,17 @@
 <p>
   The diversity term can take a variety of forms, and we don't have much understanding of their benefits yet.
   One possibility is to penalize the cosine similarity of different examples.
-  <d-footnote>
-    
-  </d-footnote>
   Another is to use ideas from style transfer <d-cite key="gatys2015neural"></d-cite> to force the feature to be displayed in different styles.
+  <d-footnote>
+    For this article we use an approach based on ideas from artistic style transfer. Following that work, we begin by computing the Gram matrix of the channels.
+    <d-math block>
+      G_{i,j} = \text{layer}_n\text{[:, :, i]} \cdot \text{layer}_n\text{[:, :, j]}
+    </d-math>
+    From this, we compute the pairwise cosine similarity of pairs of visualizations:
+    <d-math block>
+      C_{\text{diversity}} = - \sum_{a} \sum_{b\neq a} ~ \frac{G_a \cdot G_b}{||G_a||~||G_b||} 
+    </d-math>
+  </d-footnote>
 </p>
 
 
@@ -417,23 +423,19 @@
   <div style="grid-column: kicker;">
     <figcaption></figcaption>
     <img style="width: 147px;" src="images/mixed4a_143_optimized.png" />
-    <figcaption>
-      <strong>Optimized</strong> channel shows both fur and eyes.
-    </figcaption>
+    <figcaption>Optimization</figcaption>
   </div>
   <div style="grid-column: text-start / screen-end; display: flex; flex-flow: row; flex-wrap: wrap;">
     <div style="margin-right: 36px;">
       <figcaption></figcaption>
       <img style="width: 614px; height: 147px;" src="images/mixed4a_143_diversity.png" />
       <figcaption style="max-width: 614px">
-        <strong>Adding Diversity</strong>: Optimizing for diversity shows many different features. The only feature common to all visualizations is the red-brown fur. Note that eyes, for example, only appear in the third visualization.
+        <strong>Optimization with diversity</strong> shows different facets of the feature.
       </figcaption>
     </div>
     <div>
       <img style="width: 147px;" src="images/mixed4a_143_dataset_max.jpg" />
-      <figcaption style="max-width: 147px">
-        <strong>Dataset Examples</strong>: As predicted, the channel activates strongly on images of red-brown fur.
-      </figcaption>
+      <figcaption style="max-width: 147px">Dataset examples</figcaption>
     </div>
   </div>
 </figure>
@@ -783,7 +785,7 @@
   <p>
     We're also grateful for the comments, thoughts and support of
     Greg Corrado, Blaise Aguera y Arcas,
-    Katherine Ye, Michael Nielsen, Dario Amodei, Ian Goodfellow,
+    Katherine Ye, Michael Nielsen, Emma Pierson, Dario Amodei, Ian Goodfellow,
     Mike Tyka,
     Been Kim, Martin Wattenberg, and Fernanda Viegas.
   </p>
