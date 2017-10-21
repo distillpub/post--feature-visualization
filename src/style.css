@@ -1,0 +1,118 @@
+.optimize-nojitter-sprite {
+  background-image: url("images/optimize_nojitter_sprite_128.jpeg");
+}
+.optimize-jitter-sprite {
+  background-image: url("images/optimize_jitter_sprite_128.jpeg");
+}
+.steepst-dir-sprite {
+  background-image: url("images/steepest_dirs_sprite_224.jpeg");
+}
+.interpolation-sprite {
+  background-image: url("images/interpolation.jpg");
+}
+d-fn {
+  line-height: 100%;
+}
+.example-vis {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row;
+  /*align-items: center;*/
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 240px;
+}
+.example-vis > .chunk {
+  /*width: calc(3 * 64px + 3 * 2px);*/
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  /*--padding-right: 46px;*/
+  /*padding-right: 24px;*/
+}
+.example-vis > .chunk:last-child {
+  padding-right: 0px;
+}
+.example-vis > .chunk > img {
+  width: 64px;
+  height: 64px;
+  padding-right: 1px;
+  padding-bottom: 1px;
+  display: block;
+}
+.example-vis > .chunk > img:first {
+  padding-bottom: 10px;
+}
+.example-vis > .chunk > .big {
+  width: 147px;
+  height: 147px;
+}
+.example-vis > .chunk > figcaption {
+  margin-top: 15px;
+}
+
+.example-vis2 {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  /*align-items: center;*/
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.example-vis2 > .chunk > img {
+  width: 170px;
+  height: 170px;
+  padding-right: 10px;
+}
+.example-vis2 > .chunk > figcaption {
+  margin-top: 5px;
+}
+
+.draft {
+  border-left: 2px solid orange;
+  padding-left: 5px;
+  /*font-family: "Comic Sans MS", fantasy;*/
+  color: orange;
+}
+
+d-slider {
+  width: 100%;
+}
+
+
+/* Min-Height anti-reflow opgtimizations */
+
+/*
+#googlenet-examples {
+  grid-column: left / text;
+  min-height: 363px;
+}
+#example-optimization-comparison {
+  min-height: 368px;
+}
+#optimization-and-examples {
+  min-height: 276px;
+}
+
+@media (min-width: 960px) {
+  #example-optimization-comparison {
+    min-height: 418px;
+  }
+}
+
+@media (min-width: 1105px) {
+  #googlenet-examples {
+    grid-column: start / end;
+  }
+}
+
+@media (min-width: 1400px) {
+  #googlenet-examples {
+    min-height: 412px;
+  }
+}*/

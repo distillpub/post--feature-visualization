@@ -1,7 +1,15 @@
 <!doctype html>
-<meta charset="utf-8">
-<script src="http://localhost:8888/dist/template.v2.js"></script>
-<!--<script src="//drafts.distill.pub/feature-visualization/template.v2.js"></script>-->
+
+<head>
+  <meta charset="utf-8">
+  <script src="template.v2.js"></script>
+  <style>
+    <%= require("./style.css") %>
+  </style>
+</head>
+
+<body>
+
 <d-front-matter>
   <script type="text/json">{
   "title": "Simple & Flexible Feature Visualization",
@@ -30,137 +38,12 @@
   }</script>
 </d-front-matter>
 
-<style>
-  .optimize-nojitter-sprite {
-    background-image: url("images/optimize_nojitter_sprite_128.jpeg");
-  }
-  .optimize-jitter-sprite {
-    background-image: url("images/optimize_jitter_sprite_128.jpeg");
-  }
-  .steepst-dir-sprite {
-    background-image: url("images/steepest_dirs_sprite_224.jpeg");
-  }
-  .interpolation-sprite {
-    background-image: url("images/interpolation.jpg");
-  }
-  d-fn {
-    line-height: 100%;
-  }
-  .example-vis {
-    display: flex;
-    flex-wrap: wrap;
-    flex-flow: row;
-    /*align-items: center;*/
-    justify-content: space-between;
-    align-items: flex-start;
-    min-height: 240px;
-  }
-  .example-vis > .chunk {
-    /*width: calc(3 * 64px + 3 * 2px);*/
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex-flow: column;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    /*--padding-right: 46px;*/
-    /*padding-right: 24px;*/
-  }
-  .example-vis > .chunk:last-child {
-    padding-right: 0px;
-  }
-  .example-vis > .chunk > img {
-    width: 64px;
-    height: 64px;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    display: block;
-  }
-  .example-vis > .chunk > img:first {
-    padding-bottom: 10px;
-  }
-  .example-vis > .chunk > .big {
-    width: 147px;
-    height: 147px;
-  }
-  .example-vis > .chunk > figcaption {
-    margin-top: 15px;
-  }
-
-  .example-vis2 {
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex-wrap: wrap;
-    /*align-items: center;*/
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-
-  .example-vis2 > .chunk > img {
-    width: 170px;
-    height: 170px;
-    padding-right: 10px;
-  }
-  .example-vis2 > .chunk > figcaption {
-    margin-top: 5px;
-  }
-  
-  #googlenet-examples {
-    grid-column: left / text;
-    min-height: 363px;
-  }
-  #example-optimization-comparison {
-    /*min-height: 368px;*/
-  }
-  #optimization-and-examples {
-    min-height: 276px;
-  }
-  @media (min-width: 960px) {
-    #example-optimization-comparison {
-      /*min-height: 418px;*/
-    }
-  }
-  @media (min-width: 1105px) {
-    #googlenet-examples {
-      grid-column: start / end;
-    }
-  }
-  @media (min-width: 1400px) {
-    #googlenet-examples {
-      min-height: 412px;
-    }
-  }
-  
-  .draft {
-    border-left: 2px solid orange;
-    padding-left: 5px;
-    font-family: "Comic Sans MS", fantasy;
-    color: orange;
-  }
-  
-  d-slider {
-    width: 100%;
-  }
-</style>
-
-
-
-
-
-
-  <!--
-  * What is the one sentence description of this piece?
-  ** Neural network feature visualization is a powerful technique, but is often complicated. We find that simple techniques can produce state-of-the-art visualizations -- and that these visualizations are, surprisingly, often limited by optimization problems.
--->
 
 <d-title>
   <h1>Feature Visualization</h1>
   <p style="grid-column: text;">How neural networks build up their understanding of images</p>
   <figure style="grid-column: screen;" id="googlenet-examples"></figure>
 </d-title>
-
-<d-byline></d-byline>
 
 <d-article>
 
@@ -815,3 +698,5 @@
 </d-appendix>
 
 <d-bibliography src="bibliography.bib"></d-bibliography>
+
+</body>

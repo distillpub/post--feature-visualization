@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackBundleSizeAnalyzerPlugin = require('webpack-bundle-size-analyzer').WebpackBundleSizeAnalyzerPlugin;
+// const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -60,13 +61,17 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: 'svg-inline-loader'
+      },
+      {
+        test: /\.css$/,
+        use: 'raw-loader'
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.ejs", 
       filename: "index.html", 
+      template: "./src/index.ejs", 
       chunks: ["index"],
       svgoConfig: {
         removeViewBox: false,
@@ -75,7 +80,14 @@ module.exports = {
     }),
     new HtmlWebpackInlineSVGPlugin(),
     new CopyWebpackPlugin([ { from: 'static/' } ]),
-    new WebpackBundleSizeAnalyzerPlugin('../bundle-size-report.txt')
+    new WebpackBundleSizeAnalyzerPlugin('../bundle-size-report.txt'),
+    // new CompressionPlugin({
+    //   asset: "[path].gz[query]",
+    //   algorithm: "gzip",
+    //   test: /\.js$|\.css$|\.html$/,
+    //   threshold: 10240, // 10KB
+    //   minRatio: 0.8 
+    // })
   ],
   devServer: {
     historyApiFallback: true,
