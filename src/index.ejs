@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <script src="http://localhost:8888/dist/template.v2.js"></script>
-<!-- <script src="template.v2.js"></script> -->
+<!--<script src="//drafts.distill.pub/feature-visualization/template.v2.js"></script>-->
 <d-front-matter>
   <script type="text/json">{
   "title": "Simple & Flexible Feature Visualization",
@@ -178,7 +178,7 @@
 <!-- =================================================== -->
 <h2>Feature Visualization by Optimization</h2>
 <p><i>
-  There's a growing sense that neural networks need to be interpretable.
+  There's a growing sense that neural networks need to be interpretable.<br>
   Optimization based feature visualization is one of our best tools to date.
 </i></p>
 <br>
@@ -186,8 +186,8 @@
 <p>
   Neural networks are, generally speaking, differentiable with respect to their inputs.
   If we want to find out what kind of input would cause a certain behavior
-  -- whether that’s an internal neuron or the final output firing --
-  we can use derivatives to figure out how to iteratively tweak the input
+  -- whether that’s an internal neuron firing or the final output behavior --
+  we can use derivatives to iteratively tweak the input
   towards that goal <d-cite key="erhan2009visualizing"></d-cite>.
 </p>
 
@@ -280,26 +280,30 @@
   One can see the logits as the evidence for each class, and the probabilities as the likelihood of each class given the evidence.
   Unfortunately, the easiest way to increase the probability softmax gives to a class is often to make the alternatives unlikely rather than to make the class of interest likely <d-cite key="simonyan2013deep"></d-cite>.
   This can be fixed by very strong regularization with generative models, in which case the probabilities can be a very principled thing to optimize.
-  From our experience, optimizing pre-softmax logits produces images of better visual quality.
+  From our experience, optimizing pre-softmax logits produces images of better visual quality.<d-footnote>
+    While the standard explanation is that maximizing probability doesn't work very well because you can just push down evidence for other classes, an alternate hypothesis is that it's just harder to optimize through the softmax function. We understand this has sometimes been an issue in adversarial examples, and the solution is to optimize the LogSumExp of the logits instead. This is equivalent to optimizing softmax but generally more tractable. Our experience was that the LogSumExp trick doesn't seem better than dealing with the raw probabilities.
+  </d-footnote>
 </p>
 
 <p>
-  There are many possible objectives -- it would be impossible to list all the things people have tried.
+  The objectives we've mentioned barely scratch the surface of the possibilities
+  -- it would be impossible to list all the things people have tried.
   Of particular note are the objectives used in style transfer <d-cite key="gatys2015neural"></d-cite>, which can teach us about the kinds of style and content a network understands,
-  and objectives used in optimization-based model inversion <d-cite key="mahendran2015understanding"></d-cite>, which we discuss in more depth in another section.
-  
+  and objectives used in optimization-based model inversion <d-cite key="mahendran2015understanding"></d-cite>, which help us understand what information a model keeps and what it throws away.
 </p>
 
 <h3>Why visualize by optimization?</h3>
 
 <p>
-  So, optimization can give us an example input that causes the desired behavior.
-  But why bother with that?
+  Optimization can give us an example input that causes the desired behavior
+  -- but why bother with that?
   Couldn't we just look through the dataset for examples that cause the desired behavior?
 </p>
 
 <p>
-  This optimization approach can be a powerful way to see what a model is really looking for, because it separates the things causing behavior from from things that merely correlate with the causes. For example, consider the following neurons visualized with dataset examples and optimization:
+  It turns out that optimization approach can be a powerful way to understand what a model is really looking for,
+  because it separates the things causing behavior from from things that merely correlate with the causes.
+  For example, consider the following neurons visualized with dataset examples and optimization:
 </p>
 
 <figure style="grid-column: screen;">
@@ -307,10 +311,10 @@
 </figure>
 
 <p>
-  Optimization can also be much more flexible.
-  For example, if we want to study how neurons mutually represent information,
+  Optimization also has the advantage of flexibility.
+  For example, if we want to study how neurons jointly represent information,
   we can easily ask how a particular example would need to be different for an additional neuron to activate.
-  This flexibility also allows us to visualize how features evolve as the network trains.
+  This flexibility can also be helpful in visualizing how features evolve as the network trains.
   If we were limited to understanding the model on the fixed examples in our dataset, topics like these ones would be much harder to explore.
 </p>
 
@@ -332,7 +336,7 @@
 <p>
   Do our examples show us the full picture? 
   When we create examples by optimization, this is something we need to be very careful of.
-  It's entirely possible for genuine examples to still mislead us by only showing us one facet of the many things a feature represents.
+  It's entirely possible for genuine examples to still mislead us by only showing us one facet of what a feature represents.
 </p>
 
 <p>
@@ -358,25 +362,42 @@
   <img class="column" src="https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/visualize_channels/diagrams/mixed4a-00492/4-max.jpg">
 </figure> -->
 <p>
-  In contrast, optimization generally gives us one extremely positive example -- and if we're creative, a very negative example as well. 
+  In contrast, optimization generally gives us just one extremely positive example -- and if we're creative, a very negative example as well. 
   Is there some way that optimization could also give us this diversity?
 </p>
 
 <h3>Achieving Diversity with Optimization</h3>
 
 <p>
+  As is often the case in visualizing neural networks, this problem was initially recognized and addressed by Nguyen, Yosinski, and collaborators.
   Their initial approach was to search through the dataset for diverse examples and use those as starting points for the optimization process <d-cite key="nguyen2016multifaceted"></d-cite>.
   The idea is that this initiates optimization in different facets of the feature so that the resulting example from optimization will demonstrate that facet.
   In more recent work, they combine visualizing classes with a generative model, which they can sample for diverse examples <d-cite key="nguyen2016plug"></d-cite>.
 </p>
 
 <p>
-  The first approach had limited success, and while the generative model approach works very well -- we'll discuss it in more depth later -- it's a bit tricky and has drawbacks. 
+  The first approach had limited success, and while the generative model approach works very well -- we'll discuss it in more depth later -- it can be a bit tricky. 
 </p>
 
 <p>
-  We find there's a very simple pure optimization approach by adding a diversity term to one's objective.
-  In lower level neurons, this can reveal the different facets a feature represents:
+  We find there's a very simple way to achieve diversity: adding a "diversity term" to one's objective that pushes multiple examples to be different from each other.
+  The diversity term can take a variety of forms, and we don't have much understanding of their benefits yet.
+  One possibility is to penalize the cosine similarity of different examples.
+  Another is to use ideas from style transfer <d-cite key="gatys2015neural"></d-cite> to force the feature to be displayed in different styles.
+  <d-footnote>
+    For this article we use an approach based on ideas from artistic style transfer. Following that work, we begin by computing the Gram matrix of the channels.
+    <d-math block>
+      G_{i,j} = \text{layer}_n\text{[:, :, i]} \cdot \text{layer}_n\text{[:, :, j]}
+    </d-math>
+    From this, we compute the pairwise cosine similarity of pairs of visualizations:
+    <d-math block>
+      C_{\text{diversity}} = - \sum_{a} \sum_{b\neq a} ~ \frac{G_a \cdot G_b}{||G_a||~||G_b||} 
+    </d-math>
+  </d-footnote>
+</p>
+
+<p>
+  In lower level neurons, a diversity term can reveal the different facets a feature represents:
 </p>
 
 <figure class="example-vis2" style="grid-column: text-start / screen-end; display: flex; flex-flow: row-wrap;">
@@ -394,25 +415,6 @@
   </div>
 </figure>
 
-<p>
-  The diversity term can take a variety of forms, and we don't have much understanding of their benefits yet.
-  One possibility is to penalize the cosine similarity of different examples.
-  Another is to use ideas from style transfer <d-cite key="gatys2015neural"></d-cite> to force the feature to be displayed in different styles.
-  <d-footnote>
-    For this article we use an approach based on ideas from artistic style transfer. Following that work, we begin by computing the Gram matrix of the channels.
-    <d-math block>
-      G_{i,j} = \text{layer}_n\text{[:, :, i]} \cdot \text{layer}_n\text{[:, :, j]}
-    </d-math>
-    From this, we compute the pairwise cosine similarity of pairs of visualizations:
-    <d-math block>
-      C_{\text{diversity}} = - \sum_{a} \sum_{b\neq a} ~ \frac{G_a \cdot G_b}{||G_a||~||G_b||} 
-    </d-math>
-  </d-footnote>
-</p>
-
-
-<!-- TODO(colah): Add example where they are very different. -->
-<!-- TODO(colah, moralex): Should we make real data diversity available here? -->
 
 <p>
   Diverse feature visualizations allow us to more closely pinpoint what activates a neuron, to the degree that we can make, and -- by looking at dataset examples -- <em>check</em> predictions about what inputs will activate the neuron.
@@ -442,7 +444,7 @@
 
 <p>
   The effect of diversity can be even more striking in higher level neurons, where it can show us different types of objects that stimulate a neuron.
-  For example, one neuron seems responds to people's shoulders and arms.
+  For example, one neuron seems to responds to people's shoulders and arms.
 </p>
 
 <figure style="grid-column: text-start / screen-end; display: flex; flex-flow: row; flex-wrap: wrap;">
@@ -522,8 +524,8 @@
 
 <p>  
   We can also define interesting directions in activation space by doing arithmetic on neurons.
-  For exampe, if we add a "black and white" neuron to a "mosaic" neuron, we obtain a black and white version of the mosaic.
-  This is reminiscient of semantic arithmetic of word embeddings as seen in Word2Vec or generative models' latent spaces.
+  For example, if we add a "black and white" neuron to a "mosaic" neuron, we obtain a black and white version of the mosaic.
+  This is reminiscent of semantic arithmetic of word embeddings as seen in Word2Vec or generative models' latent spaces.
 </p>
 
 <figure style="grid-column: text">
@@ -813,4 +815,3 @@
 </d-appendix>
 
 <d-bibliography src="bibliography.bib"></d-bibliography>
-
