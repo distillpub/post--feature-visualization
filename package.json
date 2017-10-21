@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "html-webpack-inline-svg-plugin": "^0.2.2",
-    "svg-inline-loader": "^0.8.0"
+    "svg-inline-loader": "^0.8.0",
+    "webpack-bundle-size-analyzer": "^2.7.0"
   }
 }

@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WebpackBundleSizeAnalyzerPlugin = require('webpack-bundle-size-analyzer').WebpackBundleSizeAnalyzerPlugin;
 
 module.exports = {
   entry: {
@@ -73,7 +74,8 @@ module.exports = {
       },
     }),
     new HtmlWebpackInlineSVGPlugin(),
-    new CopyWebpackPlugin([ { from: 'static/' } ])
+    new CopyWebpackPlugin([ { from: 'static/' } ]),
+    new WebpackBundleSizeAnalyzerPlugin('../bundle-size-report.txt')
   ],
   devServer: {
     historyApiFallback: true,
