@@ -1,14 +1,13 @@
 <div class="container">
 
   {{#each range(4) as x}}
-    <Sprite src_class='sprite_opt_progress' x={{x}} y=0 sprite_size=180 size=144 pixelated={{false}}/>
-    {{#if x != 3}}
-      <div class="arrowbox">→</div>
-    {{/if}}
+    <Sprite src_class='sprite_opt_progress' x={{x}} y=0 sprite_size=180 size=140 pixelated={{false}}/>
+    <div class="arrowbox">
+      {{#if x != 3}}→{{/if}}
+    </div>
   {{/each}}
   
 </div>
-<figcaption>Starting with random noise, we optimize an image to activate a particular neuron (layer mixed4a, unit 11).</figcaption>
 
 
 <style>
@@ -19,17 +18,28 @@
   
   .container {
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: stretch;
     margin-bottom: 5px;
   }
   
-  .arrowbox {
+  .container > div {
+    margin-bottom: 28px;
+  }
+  
+  .container .sprite {
+    flex: 1 1 50px;
+    align-self: stretch;
+  }
+  
+  .container .arrowbox {
     color: #888;
     display: flex;
     align-items: center;
     margin-left: 5px;
     margin-right: 5px;
+    width: 14px;
   }
 
 </style>
@@ -45,7 +55,6 @@
   export default {
     data() {
       return {
-        size: 180,
         sprite_scale: 1.0,
       }
     },

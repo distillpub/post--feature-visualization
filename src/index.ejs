@@ -2,7 +2,9 @@
 
 <head>
   <meta charset="utf-8">
-  <script src="template.v2.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <script src="template.v2.js"></script> -->
+  <script src="http://localhost:8888/dist/template.v2.js"></script>
   <style>
     <%= require("./style.css") %>
   </style>
@@ -42,7 +44,7 @@
 <d-title>
   <h1>Feature Visualization</h1>
   <p style="grid-column: text;">How neural networks build up their understanding of images</p>
-  <figure style="grid-column: screen;" id="googlenet-examples"></figure>
+  <figure class="base-grid" style="grid-column: screen;" id="googlenet-examples"></figure>
 </d-title>
 
 <d-article>
@@ -74,9 +76,9 @@
   towards that goal <d-cite key="erhan2009visualizing"></d-cite>.
 </p>
 
-<!-- <figcaption style="grid-column: kicker;">Starting with random noise, we optimize an image to activate a particular neuron (layer mixed4a, unit 11).</figcaption> -->
-<figure class="" style="min-height: 168px;">
-  <d-figure id="opt-progress"></d-figure>
+<figure class="base-grid" style="min-height: 168px;">
+  <figcaption style="grid-column: kicker;">Starting with random noise, we optimize an image to activate a particular neuron (layer mixed4a, unit 11).</figcaption>
+  <d-figure id="opt-progress" style="grid-column: text;"></d-figure>
 </figure>
 
 <h3>Optimization Objectives</h3>
@@ -93,10 +95,10 @@
   And if we want to create examples of output classes from a classifier, we have two options:
 </p>
 
-<figcaption style="grid-column: kicker;">Different <strong>optimization objectives</strong> show what different parts of a network are looking for.</figcaption>
-<figure class="grid" id="optimization-objectives">
+<figure class="base-grid" id="optimization-objectives">
   <style>
-    #optimization-objectives {
+    #optimization-objectives .objectives {
+      grid-column: text;
       grid-template-columns: repeat(5, 1fr);
     }
     #optimization-objectives .objective {
@@ -106,6 +108,7 @@
     
     #optimization-objectives figcaption {
       padding-top: 4px;
+      padding-bottom: 4px;
       word-wrap: break-word;
       word-break: break-word;
     }
@@ -114,7 +117,10 @@
       padding: 8px;    
     }
   </style>
-  <!-- <div class="objectives"> -->
+  
+  <figcaption style="grid-column: kicker;">Different <strong>optimization objectives</strong> show what different parts of a network are looking for.</figcaption>
+  
+  <div class="objectives grid">
     <div class="objective">
       <div class="objective-icon">
         <img inline src="static/images/objectives/objectives_neuron.svg">
@@ -154,8 +160,7 @@
       <img class="objective-opt" src="images/objectives/logits_post.png">
       <figcaption><strong>Class Probability</strong><br/><code>softmax[n]</code></figcaption>
     </div>
-  <!-- </div> -->
-  <!-- <img style="width: 700px;" src="images/vis_objectives.svg"> -->
+  </div>
 </figure>
 
 <p>
@@ -284,8 +289,8 @@
 </p>
 
 <figure class="example-vis2" style="grid-column: text-start / screen-end; display: flex; flex-flow: row-wrap;">
-  <div style="width: 624px; margin-right: 26px;">
-    <img style="width: 624px;" src="images/mixed4a_97_diversity.png" />
+  <div style="margin-right: 26px;">
+    <img src="images/mixed4a_97_diversity.png" />
     <figcaption>
       Four different, curvy facets of layer mixed4a, unit 97.
     </figcaption>
@@ -313,7 +318,7 @@
   <div style="grid-column: text-start / screen-end; display: flex; flex-flow: row; flex-wrap: wrap;">
     <div style="margin-right: 36px;">
       <figcaption></figcaption>
-      <img style="width: 614px; height: 147px;" src="images/mixed4a_143_diversity.png" />
+      <img src="images/mixed4a_143_diversity.png" />
       <figcaption style="max-width: 614px">
         <strong>Optimization with diversity</strong> shows different facets of the feature.
       </figcaption>
@@ -332,7 +337,7 @@
 
 <figure style="grid-column: text-start / screen-end; display: flex; flex-flow: row; flex-wrap: wrap;">
   <div style="margin-right: 26px;">
-    <img style="height: 147px; width: 624px;" src="images/mixed4e_718_diversity.png" />
+    <img src="images/mixed4e_718_diversity.png" />
     <figcaption>Shoulders & arms? <i>Layer mixed4e, Unit 718</i></figcaption>
   </div>
   <div>
@@ -349,7 +354,7 @@
 
 <figure style="grid-column: text-start / screen-end;  display: flex; flex-flow: row; flex-wrap: wrap;">
   <div style="margin-right: 26px;">
-    <img style="height: 147px; width: 624px;" src="images/mixed5a_9_diversity.png" />
+    <img src="images/mixed5a_9_diversity.png" />
     <figcaption>Multiple types of balls? <i>Layer mixed5a, Unit 9</i></figcaption>
   </div>
   <div>
@@ -367,7 +372,7 @@
 
 <figure style="grid-column: text-start / screen-end; display: flex; flex-flow: row; flex-wrap: wrap;">
   <div style="margin-right: 26px;">
-    <img style="height: 147px; width: 624px;" src="images/mixed4e_55_diversity.png" />
+    <img src="images/mixed4e_55_diversity.png" />
     <figcaption>Cats, foxes and cars? <i>Layer mixed4e, Unit 55</i></figcaption>
   </div>
   <div>
@@ -398,11 +403,11 @@
   Our experience is broadly consistent with both results; we find that random directions often seem interpretable, but at a lower rate than basis directions.
 </p>
 
-<figcaption style="grid-column: kicker;">
-  Dataset examples and optimized examples of <strong>random directions</strong> in activation space. The directions shown here were hand-picked for interpretability.
-</figcaption>
-<figure style="grid-column: text-start / page-end; ">
-  <d-figure id="random-optimization-and-examples"></d-figure>
+<figure class="base-grid" >
+  <figcaption style="grid-column: kicker;">
+    Dataset examples and optimized examples of <strong>random directions</strong> in activation space. The directions shown here were hand-picked for interpretability.
+  </figcaption>
+  <d-figure style="grid-column: text-start / page-end;" id="random-optimization-and-examples"></d-figure>
 </figure>
 
 <p>  

@@ -22,6 +22,7 @@
     font-size: 16px;
     display: flex;
     flex-flow: column;
+    grid-column: text-start / screen-end;
   }
   
   .googlenet-examples .example {
@@ -31,8 +32,9 @@
   
   .googlenet-examples .example .images {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row;
     justify-content: flex-start;
+    overflow: hidden;
   }
   
   .googlenet-examples .example .images > * {
@@ -56,6 +58,7 @@
   .description {
     width: 100%;
     margin-top: 0;
+    margin-bottom: 1em;
     color: rgba(0, 0, 0, 0.6);
     line-height: normal;
     font-size: 0.9em;
@@ -63,8 +66,13 @@
   
   @media (min-width: 1105px) {
     .googlenet-examples {
+      grid-column: screen;
       flex-flow: row;
       justify-content: center;
+    }
+    
+    .googlenet-examples .example .images {
+      flex-wrap: wrap;
     }
     
     .googlenet-examples .example {
@@ -77,18 +85,18 @@
     
     .googlenet-examples .example .images {
       max-width:  calc((100px * 2) + 10px);
-      min-height: calc((100px * 3) + 10px*2);
+      min-height: calc((100px * 3) + 10px);
     }
   }
   
-  @media (min-width: 1400px) {
+  @media (min-width: 1400px) {    
     .googlenet-examples .example {
       margin-right: 15px;
     }
     
     .googlenet-examples .example .images {
       max-width:  calc((125px * 2) + 10px);
-      min-height: calc((125px * 3) + 10px*2);
+      min-height: calc((125px * 3) + 10px);
     }
   }
   
@@ -126,11 +134,10 @@
       }
     },
     oncreate: function() {
-      const mq = matchMedia("(min-width: 1400px)");
-      mq.onchange = (event) => this.set({size: event.matches ? 125 : 100});
+      this.mq = matchMedia("(min-width: 1400px)");
+      this.mq.onchange = (event) => this.set({size: event.matches ? 125 : 100});
       this.set({
-        size: mq.matches ? 125 : 100,
-        // sprite_scale: mq.matches ? .625 : .5,
+        size: this.mq.matches ? 125 : 100,
       });
     },
     components: { Sprite },

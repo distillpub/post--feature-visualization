@@ -10,13 +10,13 @@
   </div>
 </div>
 
-<div class="container" style="grid-column: page;">
+<div class="container">
     
   <div class="negative">
     <div class="optimize">
       <Sprite src_class={{sprite_opt_class}} size=147 sprite_size=147 y={{selected}} x=1 sprite_scale=1 pixelated={{false}}/>
       <figcaption class="caption">
-        Negative optimized
+        <strong>Negative</strong> optimized
       </figcaption>
     </div>
     <div class="examples">
@@ -24,7 +24,7 @@
         <!-- <img src={{img_path + "0-min.jpg"}}> -->
         <Sprite src_class={{sprite_class}} size=147 sprite_size=294 y={{selected}} x=0 sprite_scale=1/>
         <figcaption class="caption">
-          Minimum activation examples
+          <strong>Minimum</strong> activation examples
         </figcaption>
       </div>
       <div class="example-set">
@@ -42,7 +42,7 @@
     <div class="optimize">
       <Sprite src_class={{sprite_opt_class}} size=147 sprite_size=147 y={{selected}} x=0 sprite_scale=1/>
       <figcaption class="caption">
-        Positive optimized
+        <strong>Positive</strong> optimized
       </figcaption>
     </div>
     <div class="examples">
@@ -55,7 +55,7 @@
       <div class="example-set">
         <Sprite src_class={{sprite_class}} size={{147}} sprite_size={{294}} y={{selected}} x=4 sprite_scale=1 shift={{[0.5,0.5]}} pixelated={{undefined}}/>
         <figcaption class="caption">
-          Maximum activation examples
+          <strong>Maximum</strong> activation examples
         </figcaption>
       </div>
     </div>
@@ -92,8 +92,9 @@
     padding-bottom: 5px;
     margin-bottom: -1px;
     
-    margin-left: 3px;
-    margin-right: 3px;
+    /*margin-left: 3px;*/
+    margin-right: 4px;
+    margin-top: 3px;
   }
 
   .icons .icon:first-of-type {
@@ -120,9 +121,12 @@
   /* OptAndExamples */
 
   .container {
+    grid-column: text;
     margin-top: 25px;
     display: flex;
     flex-flow: column;
+    flex-direction: column-reverse;
+    overflow: hidden;
   }
   
   .positive, .negative, .divider {
@@ -145,10 +149,10 @@
   }
   
   .optimize {
-    margin-bottom: 12px;
+    
   }
   
-  .negative {
+  .positive {
     margin-bottom: 24px;
   }
   
@@ -160,6 +164,7 @@
   .optimize {
     display: flex;
     flex-flow: column;
+    margin-bottom: 12px;
   }
   
   .examples {
@@ -167,17 +172,35 @@
     flex-flow: row;
   }
   
+  .example-set {
+    display: flex;
+    flex-flow: column;
+    margin-right: 12px;
+  }
+  
   .example-set > *,
   .optimize > * {
     width: 147px;
   }
   
-  .example-set > img,
-  .optimize > img {
+  .example-set > div,
+  .optimize > div {
     height: 147px;
   }
   
-  @media (min-width: 760px) {
+  .positive .examples {
+    flex-flow: row-reverse;
+  }
+  
+  .positive .optimize {
+    margin-right: 24px;
+  }
+  
+  .negative .optimize {
+    margin-right: 24px;
+  }
+  
+  @media (min-width: 1280px) {
     
     .divider {
       display: inherit;
@@ -196,6 +219,9 @@
       font-size: 13px;
     }
     
+    .example-set {
+      margin-right: 0;
+    }
     
     .example-set:first-child {
       margin-right: 12px;
@@ -211,11 +237,16 @@
     }
     
     .container {
+      grid-column: page;
       flex-flow: row;
     }
     
     .positive {
       flex-flow: row-reverse;
+    }
+    
+    .positive .examples {
+      flex-flow: row;
     }
     
     .negative, .divider {
@@ -230,14 +261,6 @@
     .negative > div {
       justify-content: flex-end;
     }
-    
-    /*.examples {
-      margin-right: 12px;
-    }*/
-    
-    /*.positive {
-      margin-left: 12px;
-    }*/
     
     .positive .optimize {
       margin-left: 36px;

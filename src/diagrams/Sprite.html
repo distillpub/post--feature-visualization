@@ -1,5 +1,5 @@
 
-<div ref:root class="outer {{hover_class}}" style="--default-size: {{final_sprite_size}}px;
+<div ref:root class="sprite outer {{hover_class}}" style="--default-size: {{final_sprite_size}}px;
  --default-position: -{{offset_x}}px -{{offset_y}}px;
  --hover-size: {{sprite_size}}px;
  --hover-position: -{{corner_x}}px -{{corner_y}}px;
@@ -34,7 +34,6 @@
 .mid {
   transform: scale( var(--default-ratio) );
   margin: calc( calc( var(--container-size) - var(--default-size) ) / 2 );
-  background-color: #aaa;
 }
 
 .inner {
