@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <script src="template.v2.js"></script> -->
-  <script src="http://localhost:8888/dist/template.v2.js"></script>
+  <script src="https://distill.pub/template.v2.js"></script>
+  <!-- <script src="http://localhost:8888/dist/template.v2.js"></script> -->
   <style>
     <%= require("./style.css") %>
   </style>
@@ -44,7 +44,7 @@
 <d-title>
   <h1>Feature Visualization</h1>
   <p style="grid-column: text;">How neural networks build up their understanding of images</p>
-  <figure class="base-grid" style="grid-column: screen;" id="googlenet-examples"></figure>
+  <figure class="base-grid" style="grid-column: screen; contain:" id="googlenet-examples"></figure>
 </d-title>
 
 <d-article>
@@ -99,22 +99,41 @@
   <style>
     #optimization-objectives .objectives {
       grid-column: text;
-      grid-template-columns: repeat(5, 1fr);
-    }
-    #optimization-objectives .objective {
-      display: flex;
-      flex-flow: column;
+      grid-template-columns: repeat(1, 1fr);
     }
     
-    #optimization-objectives figcaption {
-      padding-top: 4px;
-      padding-bottom: 4px;
+    #optimization-objectives .objective {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr) 1.1fr;
+    }
+    
+    #optimization-objectives .objectives figcaption {
+      padding: 4px 8px;
       word-wrap: break-word;
       word-break: break-word;
     }
     
     #optimization-objectives .objective .objective-icon {
       padding: 8px;    
+    }
+    
+    @media (min-width: 512px) {
+      #optimization-objectives .objectives {
+        grid-template-columns: repeat(5, 1fr);
+        grid-column-gap: 16px;
+      }
+      
+      #optimization-objectives .objective {
+        display: flex;
+        flex-flow: column;
+      }
+      
+      #optimization-objectives .objectives figcaption {
+        padding: 0;
+        padding-top: 4px;
+        word-wrap: break-word;
+        word-break: break-word;
+      }
     }
   </style>
   
@@ -288,45 +307,42 @@
   In lower level neurons, a diversity term can reveal the different facets a feature represents:
 </p>
 
-<figure class="example-vis2" style="grid-column: text-start / screen-end; display: flex; flex-flow: row-wrap;">
-  <div style="margin-right: 26px;">
-    <img src="images/mixed4a_97_diversity.png" />
+<figure class="grid l-page" style="grid-template-columns: repeat(6, 1fr)">
+  <div style="">
+    <img style="max-width: 147px;" src="images/diversity/mixed4a_97_optimized.png" />
+    <figcaption>Optimization</figcaption>
+  </div>
+  <div style="grid-column-end: span 4">
+    <img src="images/diversity/mixed4a_97_diversity.png" />
     <figcaption>
-      Four different, curvy facets of layer mixed4a, unit 97.
+      Four different, curvy facets. <i>Layer mixed4a, Unit 97</i>
     </figcaption>
   </div>
-  <div style="width: 147px; ">
-    <img style="width: 147px;" src="images/mixed4a_97_dataset_max.jpg" />
-    <figcaption>
-      Dataset examples
-    </figcaption>
+  <div style="">
+    <img style="max-width: 147px;"src="images/diversity/mixed4a_97_examples.jpg" />
+    <figcaption>Dataset examples</figcaption>
   </div>
 </figure>
 
 
 <p>
   Diverse feature visualizations allow us to more closely pinpoint what activates a neuron, to the degree that we can make, and -- by looking at dataset examples -- <em>check</em> predictions about what inputs will activate the neuron.
-  Take this optimization of layer 4a, unit 143:
 </p>
 
-<figure class="base-grid" style="">
-  <div style="grid-column: kicker;">
-    <figcaption></figcaption>
-    <img style="width: 147px;" src="images/mixed4a_143_optimized.png" />
+<figure class="grid l-page" style="grid-template-columns: repeat(6, 1fr)">
+  <div style="">
+    <img style="max-width: 147px;" src="images/diversity/mixed4a_143_optimized.png" />
     <figcaption>Optimization</figcaption>
   </div>
-  <div style="grid-column: text-start / screen-end; display: flex; flex-flow: row; flex-wrap: wrap;">
-    <div style="margin-right: 36px;">
-      <figcaption></figcaption>
-      <img src="images/mixed4a_143_diversity.png" />
-      <figcaption style="max-width: 614px">
-        <strong>Optimization with diversity</strong> shows different facets of the feature.
-      </figcaption>
-    </div>
-    <div>
-      <img style="width: 147px;" src="images/mixed4a_143_dataset_max.jpg" />
-      <figcaption style="max-width: 147px">Dataset examples</figcaption>
-    </div>
+  <div style="grid-column-end: span 4">
+    <img src="images/diversity/mixed4a_143_diversity.png" />
+    <figcaption>
+      Optimization with diversity shows different facets of the feature. <i>Layer mixed4a, Unit 143</i>
+    </figcaption>
+  </div>
+  <div style="">
+    <img style="max-width: 147px;"src="images/diversity/mixed4a_143_examples.jpg" />
+    <figcaption>Dataset examples</figcaption>
   </div>
 </figure>
 
@@ -335,16 +351,18 @@
   For example, one neuron seems to responds to people's shoulders and arms.
 </p>
 
-<figure style="grid-column: text-start / screen-end; display: flex; flex-flow: row; flex-wrap: wrap;">
-  <div style="margin-right: 26px;">
-    <img src="images/mixed4e_718_diversity.png" />
+<figure class="grid l-page" style="grid-template-columns: repeat(6, 1fr)">
+  <div style="">
+    <img style="max-width: 147px;" src="images/diversity/mixed4e_718_optimized.png" />
+    <figcaption>Optimization</figcaption>
+  </div>
+  <div style="grid-column-end: span 4">
+    <img src="images/diversity/mixed4e_718_diversity.png" />
     <figcaption>Shoulders & arms? <i>Layer mixed4e, Unit 718</i></figcaption>
   </div>
-  <div>
-    <img style="width: 147px;" src="images/mixed4e_718_examples.jpg" />
-    <figcaption>
-      Dataset examples
-    </figcaption>
+  <div style="">
+    <img style="max-width: 147px;"src="images/diversity/mixed4e_718_examples.jpg" />
+    <figcaption>Dataset examples</figcaption>
   </div>
 </figure>
 
@@ -352,16 +370,18 @@
   This neuron responds to different kinds of balls, even though they have a variety of appearances.
 </p>
 
-<figure style="grid-column: text-start / screen-end;  display: flex; flex-flow: row; flex-wrap: wrap;">
-  <div style="margin-right: 26px;">
-    <img src="images/mixed5a_9_diversity.png" />
+<figure class="grid l-page" style="grid-template-columns: repeat(6, 1fr)">
+  <div style="">
+    <img style="max-width: 147px;" src="images/diversity/mixed5a_9_optimized.png" />
+    <figcaption>Optimization</figcaption>
+  </div>
+  <div style="grid-column-end: span 4">
+    <img src="images/diversity/mixed5a_9_diversity.png" />
     <figcaption>Multiple types of balls? <i>Layer mixed5a, Unit 9</i></figcaption>
   </div>
-  <div>
-    <img style="width: 147px;" src="images/mixed5a_9_examples.jpg" />
-    <figcaption>
-      Dataset examples
-    </figcaption>
+  <div style="">
+    <img style="max-width: 147px;"src="images/diversity/mixed5a_9_examples.jpg" />
+    <figcaption>Dataset examples</figcaption>
   </div>
 </figure>
 
@@ -370,16 +390,18 @@
   Below, a neuron to responds to two types of animal faces, and also to car bodys.
 </p>
 
-<figure style="grid-column: text-start / screen-end; display: flex; flex-flow: row; flex-wrap: wrap;">
-  <div style="margin-right: 26px;">
-    <img src="images/mixed4e_55_diversity.png" />
+<figure class="grid l-page" style="grid-template-columns: repeat(6, 1fr)">
+  <div style="">
+    <img style="max-width: 147px;" src="images/diversity/mixed4e_55_optimized.png" />
+    <figcaption>Optimization</figcaption>
+  </div>
+  <div style="grid-column-end: span 4">
+    <img src="images/diversity/mixed4e_55_diversity.png" />
     <figcaption>Cats, foxes and cars? <i>Layer mixed4e, Unit 55</i></figcaption>
   </div>
-  <div>
-    <img style="width: 147px;" src="images/mixed4e_55_examples.jpg" />
-    <figcaption>
-      Dataset examples
-    </figcaption>
+  <div style="">
+    <img style="max-width: 147px;"src="images/diversity/mixed4e_55_examples.jpg" />
+    <figcaption>Dataset examples</figcaption>
   </div>
 </figure>
 
@@ -509,7 +531,7 @@
   And in the middle we have three main families of regularization options.
 </p>
 
-<figure style="grid-column: page-start / screen-end; min-height: 750px; padding-bottom: 10px;">
+<figure style="grid-column: page; min-height: 750px; padding-bottom: 10px;">
   <d-figure id="feature-vis-history"></d-figure>
 </figure>
 

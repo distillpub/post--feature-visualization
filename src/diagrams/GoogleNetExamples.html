@@ -23,6 +23,8 @@
     display: flex;
     flex-flow: column;
     grid-column: text-start / screen-end;
+    /*overflow-x: hidden;*/
+    /*overflow-y: visible;*/
   }
   
   .googlenet-examples .example {
@@ -33,8 +35,8 @@
   .googlenet-examples .example .images {
     display: flex;
     flex-flow: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
-    overflow: hidden;
   }
   
   .googlenet-examples .example .images > * {
