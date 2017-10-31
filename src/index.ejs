@@ -61,7 +61,7 @@
 
 <hr />
 <!-- =================================================== -->
-<h2>Feature Visualization by Optimization</h2>
+<h2 id="optimization">Feature Visualization by Optimization</h2>
 <p><i>
   There's a growing sense that neural networks need to be interpretable.<br>
   Optimization based feature visualization is one of our best tools to date.
@@ -77,11 +77,15 @@
 </p>
 
 <figure class="base-grid" style="min-height: 168px;">
-  <figcaption style="grid-column: kicker;">Starting with random noise, we optimize an image to activate a particular neuron (layer mixed4a, unit 11).</figcaption>
+  <figcaption style="grid-column: kicker;">Starting from random noise, we optimize an image to activate a particular neuron (layer mixed4a, unit 11).</figcaption>
   <d-figure id="opt-progress" style="grid-column: text;"></d-figure>
 </figure>
 
-<h3>Optimization Objectives</h3>
+<p>
+  While conceptually simple, we had to use additional tricks to generate the example above. We will explore challenges that make those necessary, as well as common approaches to tackle them in the section "<a href="#enemy-of-feature-vis">The Enemy of Feature Visualization</a>".
+</p>
+
+<h3 id="optimization-objectives">Optimization Objectives</h3>
 
 <p>
   What do we want examples of?
@@ -137,7 +141,10 @@
     }
   </style>
   
-  <figcaption style="grid-column: kicker;">Different <strong>optimization objectives</strong> show what different parts of a network are looking for.</figcaption>
+  <figcaption style="grid-column: kicker;">
+    <p>Different <strong>optimization objectives</strong> show what different parts of a network are looking for.</p>
+    <p>"<code>n</code>" specifies the layer, "<code>x, y</code>" are spatial coordinates of a neuron, and "<code>z</code>" specifies the channel. "<code>k</code>" corresponds to the index of the output class.</p>
+  </figcaption>
   
   <div class="objectives grid">
     <div class="objective">
@@ -169,7 +176,7 @@
         <img inline src="static/images/objectives/objectives_logits_pre.svg">
       </div>
       <img class="objective-opt" src="images/objectives/logits.png">
-      <figcaption><strong>Class Logits</strong><br/><code>pre_softmax[n]</code></figcaption>
+      <figcaption><strong>Class Logits</strong><br/><code>pre_softmax[k]</code></figcaption>
     </div>
     
     <div class="objective">
@@ -177,7 +184,7 @@
         <img inline src="static/images/objectives/objectives_logits_post.svg">
       </div>
       <img class="objective-opt" src="images/objectives/logits_post.png">
-      <figcaption><strong>Class Probability</strong><br/><code>softmax[n]</code></figcaption>
+      <figcaption><strong>Class Probability</strong><br/><code>softmax[k]</code></figcaption>
     </div>
   </div>
 </figure>
@@ -199,7 +206,7 @@
   and objectives used in optimization-based model inversion <d-cite key="mahendran2015understanding"></d-cite>, which help us understand what information a model keeps and what it throws away.
 </p>
 
-<h3>Why visualize by optimization?</h3>
+<h3 id="why-optimization">Why visualize by optimization?</h3>
 
 <p>
   Optimization can give us an example input that causes the desired behavior
@@ -232,7 +239,7 @@
 
 <!-- =================================================== -->
 <hr/>
-<h2>Diversity</h2>
+<h2 id="diversity">Diversity</h2>
 <p><i>
   Optimization tends to show only one facet of a feature.<br>
   If we're clever it will show us more.
@@ -273,7 +280,7 @@
   Is there some way that optimization could also give us this diversity?
 </p>
 
-<h3>Achieving Diversity with Optimization</h3>
+<h3 id="diversity-with-optimization">Achieving Diversity with Optimization</h3>
 
 <p>
   As is often the case in visualizing neural networks, this problem was initially recognized and addressed by Nguyen, Yosinski, and collaborators.
@@ -411,7 +418,7 @@
 
 <!-- =================================================== -->
 <hr/>
-<h2>Interaction between Neurons</h2>
+<h2 id="interaction">Interaction between Neurons</h2>
 
 <p>
   If neurons are not the right way to understand neural nets, what is?
@@ -465,7 +472,7 @@
 
 <!-- =================================================== -->
 <hr/>
-<h2>The Enemy of Feature Visualization</h2>
+<h2 id="enemy-of-feature-vis">The Enemy of Feature Visualization</h2>
 <p><i>
   Naively optimizing images doesn't work.<br>
   Regularization is necessary, but cuts both ways.
@@ -474,7 +481,7 @@
 
 
 
-<h3>High Frequency Patterns</h3>  
+<h3 id="high-frequency">High Frequency Patterns</h3>  
 
 <p>
   If you want to visualize features, you might just optimize an image to make neurons fire.
@@ -513,7 +520,7 @@
   These are certainly interesting, but if we want to understand how these models work in real life, we need to somehow move past them...
 </p>
 
-<h3>The Spectrum of Regularization</h3>
+<h3 id="regularization">The Spectrum of Regularization</h3>
 
 <p>
   Dealing with these high frequency noise has been one of the primary challenges and overarching threads of feature visualization research.
@@ -537,7 +544,7 @@
 </figure>
 
 
-<h3>Three Families of Regularization</h3>
+<h3 id="regularization-families">Three Families of Regularization</h3>
 
 <p>
   Let's consider these three intermediate categories of regularization in more depth.
@@ -606,7 +613,7 @@
 
 <!-- =================================================== -->
 <hr/>
-<h2>Preconditioning and Parameterization</h2>
+<h2 id="preconditioning">Preconditioning and Parameterization</h2>
 <p><i>
   Not all "regularizers" are really regularizers.<br>
   What if the optimization problem is genuinely hard?
@@ -674,7 +681,7 @@
 
 <!-- =================================================== -->
 <hr/>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
   
 <p class="">
   Neural feature visualization has made great progress over the last few years.
@@ -693,7 +700,7 @@
 </d-article>
 
 <d-appendix>
-  <h3>Acknowledgments</h3>
+  <h3 id="acknowledgements">Acknowledgments</h3>
   <p>
     We are extremely grateful to Shan Carter for thoughtful feedback -- especially design advice.
   </p>
@@ -708,7 +715,7 @@
     Been Kim, Martin Wattenberg, and Fernanda Viegas.
   </p>
 
-  <h3>Author Contributions</h3>
+  <h3 id="author-contributions">Author Contributions</h3>
   <p>
     The biggest technical contribution of this work is likely the section on preconditioning.
     Alex discovered in prior work that normalizing gradient frequencies had a radical effect on visualizing neurons.

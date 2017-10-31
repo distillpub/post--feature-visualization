@@ -45,16 +45,26 @@
 .images {
   display: flex;
   flex-flow: row;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .images > div {
   margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.images > div:last-of-type {
+  margin-right: 0;
 }
 
 .captions > figcaption {
   display: inline-block;
   width: 147px;
+  margin-right: 10px;
+}
+
+.captions > figcaption:last-of-type {
+  margin-right: 0;
 }
 
 @media (min-width: 1280px) {
