@@ -7,12 +7,19 @@
           <Sprite src_class='sprite_hero' x={{x}} y={{y}} bind:size bind:sprite_scale hover=true/>
         {{/each}}
       </div>
-      <span class="description"><strong>{{descriptions[x]}}</strong> (layer {{names[x]}})</span>
+      <span class="description"><strong>{{descriptions[x]}}</strong> ({{names[x]}})</span>
     </div>
   {{/each}}
 </div>
+<figcaption>
+  Feature visualization allows us to see how GoogLeNet, trained on the ImageNet dataset, builds up its understanding of images over many layers.
+</figcaption>
 
 <style>
+
+  figcaption {
+    grid-column: text;
+  }
 
   .sprite_hero {
     background-image: url("images/sprite_hero.png");
@@ -59,11 +66,11 @@
   
   .description {
     width: 100%;
-    margin-top: 0;
-    margin-bottom: 1em;
-    color: rgba(0, 0, 0, 0.6);
+    margin-top: 0.25em;
+    margin-bottom: 1.5em;
+    color: rgba(0, 0, 0, 0.9);
     line-height: normal;
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
   
   @media (min-width: 1105px) {
@@ -120,11 +127,11 @@
         size: 100,
         sprite_scale: 1.0,
         names: [
-          "conv2d0",
-          "mixed3a",
-          "mixed4a",
-          "mixed4b,c",
-          "mixed4d,e",
+          "layer conv2d0",
+          "layer mixed3a",
+          "layer mixed4a",
+          "layers mixed4b & mixed4c",
+          "layers mixed4d & mixed4e",
         ],
         descriptions: [
           "Edges",

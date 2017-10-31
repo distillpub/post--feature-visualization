@@ -84,6 +84,10 @@ d-slider {
   width: 100%;
 }
 
+d-title figure {
+  margin: 0;
+}
+
 
 /* Min-Height anti-reflow opgtimizations */
 
