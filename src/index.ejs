@@ -447,7 +447,8 @@
 
 <p>
   These examples show us how neurons jointly represent images.
-  To better understand how neurons interact, we can interpolate between them. <d-footnote>The optimization objective is a linear interpolation between the individual channel objectives. To get the interpolations to look better, we also add a small alignment objective that encourages lower layer activations to be similar.</d-footnote>
+  To better understand how neurons interact, we can also interpolate between them. 
+  <d-footnote>The optimization objective is a linear interpolation between the individual channel objectives. To get the interpolations to look better, we also add a small alignment objective that encourages lower layer activations to be similar. We additionally use a combination of separate and shared image parameterizations to make it easier for the optimization algorithms to cause objects to line up, while still giving it the freedom to create any image it needs to.</d-footnote>
   This is similar to interpolating in the latent space of generative models. 
 </p>
 
