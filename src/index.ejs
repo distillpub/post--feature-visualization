@@ -43,7 +43,7 @@
 
 <d-title>
   <h1>Feature Visualization</h1>
-  <p style="grid-column: text;">How neural networks build up their understanding of images</p>
+  <!-- <p style="grid-column: text;">How neural networks build up their understanding of images</p> -->
   <figure class="base-grid" id="googlenet-examples"></figure>
 </d-title>
 
@@ -82,7 +82,7 @@
 </figure>
 
 <p>
-  While conceptually simple, we had to use additional tricks to generate the example above. We will explore challenges that make those necessary, as well as common approaches to tackle them in the section "<a href="#enemy-of-feature-vis">The Enemy of Feature Visualization</a>".
+  While conceptually simple, there are subtle challenges in getting the optimization to work. We will explore them, as well as common approaches to tackle them in the section "<a href="#enemy-of-feature-vis">The Enemy of Feature Visualization</a>".
 </p>
 
 <h3 id="optimization-objectives">Optimization Objectives</h3>
@@ -143,7 +143,11 @@
   
   <figcaption style="grid-column: kicker;">
     <p>Different <strong>optimization objectives</strong> show what different parts of a network are looking for.</p>
-    <p>"<code>n</code>" specifies the layer, "<code>x, y</code>" are spatial coordinates of a neuron, and "<code>z</code>" specifies the channel. "<code>k</code>" corresponds to the index of the output class.</p>
+    <br>
+    <p><code><strong>n</strong></code> layer index <br />
+      <code><strong>x,y</strong></code> spatial position<br />
+      <code><strong>z</strong></code> channel index <br />
+      <code><strong>k</strong></code> class index</p>
   </figcaption>
   
   <div class="objectives grid">
@@ -234,6 +238,7 @@
 
 <p>
   On the other hand, there are also significant challenges to visualizing features with optimization.
+  In the following sections we'll examine techniques to get diverse visualizations, understand how neurons interact, and avoid high frequency artefacts.
 </p>
 
 
@@ -263,7 +268,7 @@
 <!-- <figure class="l-page-outset"><img src="images/vis_ActivationSpectrum.svg" style="min-height: 150px;"></img></figure> -->
 
 
-<figure style="grid-column: screen;">
+<figure style="grid-column: screen;" class="shaded-figure">
   <d-figure class="base-grid" id="optimization-and-examples"></d-figure>
 </figure>
 
@@ -445,22 +450,22 @@
   This is reminiscent of semantic arithmetic of word embeddings as seen in Word2Vec or generative models' latent spaces.
 </p>
 
-<figure style="grid-column: text">
-  <d-figure id="linear-combinations"></d-figure>
-  <figcaption>
+<figure class="base-grid shaded-figure">
+  <figcaption style="grid-column: kicker;">
     By jointly optimizing two neurons we can get a sense of how they interact.
   </figcaption>
+  <d-figure style="grid-column: text; overflow: visible;" id="linear-combinations"></d-figure>
 </figure>
 
 <p>
   These examples show us how neurons jointly represent images.
   To better understand how neurons interact, we can also interpolate between them. 
-  <d-footnote>The optimization objective is a linear interpolation between the individual channel objectives. To get the interpolations to look better, we also add a small alignment objective that encourages lower layer activations to be similar. We additionally use a combination of separate and shared image parameterizations to make it easier for the optimization algorithms to cause objects to line up, while still giving it the freedom to create any image it needs to.</d-footnote>
+  <d-footnote>The optimization objective is a linear interpolation between the individual channel objectives. To get the interpolations to look better, we also add a small alignment objective that encourages lower layer activations to be similar. We additionally use a combination of separate and shared image parameterizations to make it easier for the optimization algorithm to cause objects to line up, while still giving it the freedom to create any image it needs to.</d-footnote>
   This is similar to interpolating in the latent space of generative models. 
 </p>
 
-<figure style="grid-column: text-start / page-end; /*min-height: 290px;*/">
-  <d-figure id="interpolation"></d-figure>
+<figure class="base-grid shaded-figure">
+  <d-figure style="grid-column: text-start / page-end;" id="interpolation"></d-figure>
 </figure>
 
 <p>
@@ -490,8 +495,12 @@
   -- an image full of noise and nonsensical high-frequency patterns that the network responds strongly to.
 </p>
 
-<figure style="min-height: 240px;">
-  <d-figure id="optimize-naive"></d-figure>
+<figure class="shaded-figure base-grid">
+  <figcaption style="grid-column: kicker;">
+    <p>Even if you carefully tune learning rate, you'll get noise.</p><br />
+    <p>In this and the following figures the optimization result is enlarged to show detail.</p>
+  </figcaption>
+  <d-figure style="grid-column: text;" id="optimize-naive"></d-figure>
 </figure>
 
 <!-- TODO: Add caption encouraging user to fiddle with learning rate -->
@@ -563,8 +572,8 @@
   These techniques are in some ways very similar to the above and in some ways radically different -- we'll talk about them in much more depth later.)
 </p>
 
-<figure style="min-height: 240px;">
-  <d-figure id="regularizer-playground-freq"></d-figure>
+<figure class="shaded-figure base-grid">
+  <d-figure style="grid-column: text;" id="regularizer-playground-freq"></d-figure>
 </figure>
 <!--
   - none
@@ -584,8 +593,8 @@
 
 <!--<figure id="optimize-jitter" class="l-page-outset"></figure>-->
 
-<figure style="min-height: 240px;">
-  <d-figure id="regularizer-playground-robust"></d-figure>
+<figure class="shaded-figure base-grid">
+  <d-figure style="grid-column: text;" id="regularizer-playground-robust"></d-figure>
 </figure>
 
 <!--TODO(colah): Make a diagram of unconstraint opt vs paramaterized opt vs prior? Discuss using an inverse model?-->
@@ -648,8 +657,11 @@
   Let's compare the direction of steepest descent in a decorelated parameterization to two other directions of steepest descent:
 </p>
 
-<figure style="grid-column: text / screen; /*min-height: 290px;*/">
-  <d-figure id="steepest-descent"></d-figure>
+<figure class="shaded-figure base-grid">
+  <figcaption style="grid-column: kicker">
+    Three directions of steepest descent under different notions of distance
+  </figcaption>
+  <d-figure style="grid-column: text-start / screen-end;" id="steepest-descent"></d-figure>
 </figure>
 
 <p>
@@ -666,8 +678,8 @@
 </p>
 
 <!-- Figure out which descent directions to have in playground, explain them in the text. -->
-<figure>
-  <d-figure id="opt-explore2"></d-figure>
+<figure class="shaded-figure base-grid">
+  <d-figure style="grid-column: text;" id="opt-explore2"></d-figure>
 </figure>
 
 <p>

@@ -1,7 +1,12 @@
 <div class="container">
 
-  {{#each range(4) as x}}
-    <Sprite src_class='sprite_opt_progress' x={{x}} y=0 sprite_size=180 size=140 pixelated={{false}}/>
+  {{#each range(4) as x, index}}
+    <div>
+      <Sprite src_class='sprite_opt_progress' x={{x}} y=0 sprite_size=180 size=140 pixelated={{false}}/>
+      <figcaption>
+        Step {{steps[index]}}
+      </figcaption>
+    </div>
     <div class="arrowbox">
       {{#if x != 3}}→{{/if}}
     </div>
@@ -25,7 +30,7 @@
   }
   
   .container > div {
-    margin-bottom: 28px;
+    /*margin-bottom: 28px;*/
   }
   
   .container .sprite {
@@ -56,6 +61,7 @@
     data() {
       return {
         sprite_scale: 1.0,
+        steps: [0,4,48,2048]
       }
     },
     components: { Sprite },

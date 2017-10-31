@@ -79,16 +79,15 @@ new GoogleNetExamples({target: document.getElementById("googlenet-examples")});
         icon_src_class: "steepst-dir-sprite",
         icon_x: 0,
         label_func: (n, i) => [
-          "<strong>Image</strong>",
-          "<strong>L<sup>∞</sup> metric</strong><br> steepest direction <d-footnote>used in adverserial work</d-footnote>",
-          "<strong>L<sup>2</sup> metric</strong> (= normal gradient)<br> steepest direction <d-footnote>normal gradient</d-footnote>",
-          "<strong>spatially decorelated space</strong><br> steepest direction ",
-          "<strong>fully decorelated space</strong><br> steepest direction "
+          "Image",
+          "<strong>L<sup>∞</sup> metric</strong> <br>used in adverserial work",
+          "<strong>L<sup>2</sup> metric</strong> <br>normal gradient",
+          "<strong>decorrelated space</strong>"
           ][n],
-        n_images: 5,
+        n_images: 4,
         n_icons: 16,
         sprite_size: 224, 
-        size: 180,
+        size: 170,
         icon_scale: 1,
         hover_scale: 1,
         selected: 14,
@@ -154,7 +153,7 @@ const OptExploreFlex_configs = {
     configurable: ["neurons", "learning_rate"],
     icon_var_values: { default_transforms: 1, pyramid: 1, color: 0},
     var_values: { default_transforms: 0, learning_rate: 3, pyramid: 0, color: 0},
-    explain_text: "Even if you carefully tune learning rate, you'll get noise.",
+    // explain_text: "Even if you carefully tune learning rate, you'll get noise.",
     config: require('../static/images/OptExplore.json')
   },
   OptExplore: {
@@ -166,7 +165,7 @@ const OptExploreFlex_configs = {
   TransformExplore: {
     configurable: ["neurons", "jitter", "random_rotate", "random_scale"],
     icon_var_values: {jitter: 3, random_rotate: 2, random_scale: 2},
-    var_values: {jitter: 3, random_rotate: 2, random_scale: 2},
+    var_values: {jitter: 2, random_rotate: 1, random_scale: 2},
     config: require('../static/images/TransformExplore.json')
   },
   PenalizeFreq: {

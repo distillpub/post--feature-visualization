@@ -52,7 +52,7 @@
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
   }
 
   .fcolumn {
@@ -93,7 +93,7 @@
   .icons .icon {
     cursor: pointer;
     padding-bottom: 6px;
-    margin-bottom: 5px;
+    margin-bottom: 11px;
     
     margin-left: 3px;
     margin-right: 3px;
@@ -114,6 +114,10 @@
   .icon.selected div {
     opacity: 1;
   }
+  
+  .linear-combinations {
+    margin-bottom: -26px;
+  }
 
   
   /* linear Combinations */
@@ -127,12 +131,11 @@
     max-width: 200px;
   }
   
-  .result {
+  .result.c {
+    top: -26px;
     margin-right: auto;
     margin-left: auto;
     position: relative;
-    top: -26px;
-    left: -26px;
     border: 2px solid white;
     box-shadow: 0px 5px 20px hsla(0,0%,0%,0.3);
   }
