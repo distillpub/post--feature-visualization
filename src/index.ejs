@@ -85,13 +85,7 @@
 <p>
   What do we want examples of?
   This is the core question in working with examples, regardless of whether we're searching through a dataset to find the examples, or optimizing images to create them from scratch.
-</p>
-
-<p>
-  We have a wide variety of options in what we search for.
-  If we want to understand individual features, we can search for examples where they have high values -- either at an individual neuron, or for an entire channel.
-  If we want to understand a layer as a whole, we can use the DeepDream objective <d-cite key="mordvintsev2015inceptionism"></d-cite>, searching for images the layer finds "interesting."
-  And if we want to create examples of output classes from a classifier, we have two options:
+  We have a wide variety of options in what we search for:
 </p>
 
 <figure class="base-grid" id="optimization-objectives">
@@ -187,6 +181,17 @@
     </div>
   </div>
 </figure>
+
+<p>
+  If we want to understand individual features, we can search for examples where they have high values -- either for a <em>neuron</em> at an individual position, or for an entire <em>channel</em>.
+</p>
+    
+<p>
+  If we want to understand a <em>layer</em> as a whole, we can use the DeepDream objective <d-cite key="mordvintsev2015inceptionism"></d-cite>, searching for images the layer finds "interesting."
+</p>
+<p>
+  And if we want to create examples of output classes from a classifier, we have two options -- optimizing <em>class logits</em> before the softmax or optimizing <em>class probabilities</em> after the softmax.
+</p>
 
 <p>
   These two different objectives for output classes are a very important distinction between the pre-softmax logit objective and the post-softmax probabilities objective.
