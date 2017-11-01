@@ -204,10 +204,10 @@
 </p>
 
 <p>
-  The objectives we've mentioned barely scratch the surface of the possibilities
-  -- it would be impossible to list all the things people have tried.
+  The objectives we've mentioned only scratch the surface of all possibilities -- there are a lot more that one could try.
   Of particular note are the objectives used in style transfer <d-cite key="gatys2015neural"></d-cite>, which can teach us about the kinds of style and content a network understands,
   and objectives used in optimization-based model inversion <d-cite key="mahendran2015understanding"></d-cite>, which help us understand what information a model keeps and what it throws away.
+  We are only at the beginning of understanding which objectives are interesting, and there is a lot of room for more work in this area.
 </p>
 
 <h3 id="why-optimization">Why visualize by optimization?</h3>
@@ -283,7 +283,7 @@
 <h3 id="diversity-with-optimization">Achieving Diversity with Optimization</h3>
 
 <p>
-  As is often the case in visualizing neural networks, this problem was initially recognized and addressed by Nguyen, Yosinski, and collaborators.
+  This problem was initially recognized and addressed by Nguyen, Yosinski, and collaborators. (As is often the case with problems in visualizing neural networks.)
   Their initial approach was to search through the dataset for diverse examples and use those as starting points for the optimization process <d-cite key="nguyen2016multifaceted"></d-cite>.
   The idea is that this initiates optimization in different facets of the feature so that the resulting example from optimization will demonstrate that facet.
   In more recent work, they combine visualizing classes with a generative model, which they can sample for diverse examples <d-cite key="nguyen2016plug"></d-cite>.
@@ -487,7 +487,7 @@
 <figure class="shaded-figure base-grid">
   <figcaption style="grid-column: kicker;">
     <p>Even if you carefully tune learning rate, you'll get noise.</p><br />
-    <p>In this and the following figures the optimization result is enlarged to show detail.</p>
+    <p>Optimization results are enlarged to show detail.</p>
   </figcaption>
   <d-figure style="grid-column: text;" id="optimize-naive"></d-figure>
 </figure>
@@ -575,8 +575,7 @@
   <b>Transformation robustness</b> tries to find examples that still work if we slightly transform them.
   Even a small amount seems to be very effective in the case of images <d-cite key="mordvintsev2015inceptionism"></d-cite>, 
   especially when combined with a more general regularizer for high-frequencies <d-cite key="oygard2015vis,mordvintsev2016deepdreaming"></d-cite>.
-  This usually means that we "jitter" the image, applying the model at slight random offsets every optimization step,
-  but other kinds of transformations also help.
+  Concretely, this means that we stochastically jitter, rotate or scale the image before applying the optimization step.
 </p>
 
 
@@ -619,27 +618,38 @@
   In the previous section, we saw a few methods <d-cite key="oygard2015vis,mordvintsev2016deepdreaming"></d-cite> that reduced high frequencies <i>in the gradient</i> rather than the visualization itself.
   It's not clear this is really a regularizer:
   it resists high frequencies, but still allows them to form when the gradient consistently pushes for it.
+  If it isn't a regularizer, what does transforming the gradient like this do?
 </p>
 
 <p>
-  Transforming the gradient like this is a powerful tool.
-  Optimizers call it preconditioning.
+  Transforming the gradient like this is actually quite a powerful tool -- it's called "preconditioning" in optimization.
   You can think of it as doing steepest descent to optimize the same objective, 
-  but in another parameterization of the space or under a different notion of distance.<d-footnote>
+  but in another parameterization of the space or under a different notion of distance.
+  <d-footnote>
     Gradient blurring<d-cite key="oygard2015vis"></d-cite> is equivalent to gradient descent in a different paramaterization of image space, where high frequency dimensions are stretched to make moving in those directions slower. Gradient Laplacian Pyramid normalization <d-cite key="mordvintsev2016deepdreaming"></d-cite> is some kind of adaptive learning rate approach in the same space.
   </d-footnote>
-  It changes how fast you move in each direction, but doesn't change what the minimums are.
-  Using the right preconditioner can make an optimization problem radically easier.
-  And if there are many local minima, it can stretch and shrink their basins of attraction, changing which ones you fall into.
+  This changes which direction of descent will be steepest, and how fast the optimization moves in each direction, but it does not change what the minimums are.
+  If there are many local minima, it can stretch and shrink their basins of attraction, changing which ones the optimization process falls into.
+  As a result, using the right preconditioner can make an optimization problem radically easier.
 </p>
 <p>
-  Of course, there are infinitely many possible preconditioners.
-  How should we chose a good one that will give us these benefits?
-  A good first guess is one that makes your data decorrelated and whitened.<d-footnote>
-    In the case of images, this means doing gradient descent in the Fourier transform,
-    with frequencies scaled so that they all have equal energy. This decorrelates images spatially, but doesn't handle correlations between colors. 
-    To address this, we explicitly measure the correlation between colors in the training set and use a Cholesky decomposition to decorrelate them.</d-footnote>
-  Let's compare the direction of steepest descent in a decorelated parameterization to two other directions of steepest descent:
+  How can we chose a preconditioner that will give us these benefits?
+  A good first guess is one that makes your data decorrelated and whitened.
+  In the case of images this means doing gradient descent in the Fourier basis,
+  <d-footnote>
+    This points to a profound fact about the Fourier transform.
+    As long as a correlation is consistent across spatial positions -- such as the correlation between a pixel and its left neighbor being the same across all positions of an image -- the Fourier coefficients will be independant variables.
+    To see this, note that such a spatially consistent correlation can be expressed as a convolution, and by the convolution theorem becomes pointwise multiplication after the Fourier transform.
+  </d-footnote>
+  with frequencies scaled so that they all have equal energy.
+  <d-footnote>
+    Note that we have to be careful to get the colors to be decorrelated, too. The Fourier transforms decorrelates spatially, but a correlation will still exist between colors.
+    To address this, we explicitly measure the correlation between colors in the training set and use a Cholesky decomposition to decorrelate them.
+  </d-footnote>
+</p>
+<p>
+  Let's see how using different measures of distance changes the direction of steepest descent. 
+  The regular L<sup>2</sup> gradient can be quite different from the directions of steepest descent in the L<sup>∞</sup> metric or in the decorrelated space:
 </p>
 
 <figure class="shaded-figure base-grid">
@@ -662,10 +672,23 @@
   resulting visualizations seem a lot better -- and develop faster, too.
 </p>
 
-<!-- Figure out which descent directions to have in playground, explain them in the text. -->
 <figure class="shaded-figure base-grid">
   <d-figure style="grid-column: text;" id="opt-explore2"></d-figure>
 </figure>
+
+<p>
+  (Unless otherwise noted, the images in this article were optimizing in the decorrelated space and a suite of transformation robustness techniques.
+  <d-footnote>
+    Images were optimized for 2560 steps in a color-decorrelated fourier-transformed space, using Adam at a learning rate of 0.05.
+    We used each of following transformations in the given order at each step of the optimization:<br /><br />
+    • Padding the input by 16 pixels to avoid edge artefacts<br />
+    • Jittering by up to 16 pixels<br />
+    • Scaling by a factor randomly selected from this list: 1, 0.975, 1.025, 0.95, 1.05<br />
+    • Rotating by an angle randomly selected from this list; in degrees: -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5<br />
+    • Jittering a second time by up to 8 pixels<br />
+    • Cropping the padding<br />
+  </d-footnote>)
+</p>
 
 <p>
   Is the preconditioner merely accelerating descent, bringing us to the same place
