@@ -65,7 +65,7 @@
 </div>
 
 <div class="images">
-  {{#each display_offsets as offset}}
+  {{#each display_offsets as offset, index}}
     <div class="outer" style="width: {{size}}px; height: {{size}}px;">
       <div class="inner" style="
             background-image: {{sprite_background}};
@@ -75,6 +75,9 @@
             transform:scale({{size/sprite_size}});"
         >
       </div>
+      <figcaption>
+        Step {{steps[index]}}
+      </figcaption>
     </div>
   {{/each}}
 </div>
@@ -291,6 +294,9 @@
           ['random_rotate', '°'],
           ['random_scale', '×'],
         ]),
+        steps: [
+          1, 32, 128, 256, 2048
+        ]
       }
     },
     computed: {

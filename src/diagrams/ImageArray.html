@@ -24,7 +24,7 @@
       x={{n}} 
         hover={{false}}  />
       <br style="clear:left">
-      <figcaption>{{{label_func(n, selected)}}}</figcaption>
+      <figcaption style="max-width: {{size}}px;" >{{{label_func(n, selected)}}}</figcaption>
     </div>
   {{/each}}
 </div>
@@ -94,7 +94,7 @@
 
 figcaption {
   margin-top: 6px;
-  margin-bottom: 6px;
+  /*margin-bottom: 6px;*/
 }
 </style>
 

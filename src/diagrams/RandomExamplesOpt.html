@@ -38,12 +38,17 @@ figcaption {
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .fcolumn {
   display: flex;
   flex-flow: column;
+  margin-right: 10px;
+}
+
+.fcolumn:last-of-type {
+  margin-right: 0;
 }
 
 .fcolumn > * {

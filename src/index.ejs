@@ -43,8 +43,8 @@
 
 <d-title>
   <h1>Feature Visualization</h1>
-  <p style="grid-column: text;">How neural networks build up their understanding of images</p>
-  <figure class="base-grid" style="grid-column: screen; contain:" id="googlenet-examples"></figure>
+  <!-- <p style="grid-column: text;">How neural networks build up their understanding of images</p> -->
+  <figure class="base-grid" id="googlenet-examples"></figure>
 </d-title>
 
 <d-article>
@@ -61,12 +61,7 @@
 
 <hr />
 <!-- =================================================== -->
-<h2>Feature Visualization by Optimization</h2>
-<p><i>
-  There's a growing sense that neural networks need to be interpretable.<br>
-  Optimization based feature visualization is one of our best tools to date.
-</i></p>
-<br>
+<h2 id="optimization">Feature Visualization by Optimization</h2>
 
 <p>
   Neural networks are, generally speaking, differentiable with respect to their inputs.
@@ -77,22 +72,20 @@
 </p>
 
 <figure class="base-grid" style="min-height: 168px;">
-  <figcaption style="grid-column: kicker;">Starting with random noise, we optimize an image to activate a particular neuron (layer mixed4a, unit 11).</figcaption>
+  <figcaption style="grid-column: kicker;">Starting from random noise, we optimize an image to activate a particular neuron (layer mixed4a, unit 11).</figcaption>
   <d-figure id="opt-progress" style="grid-column: text;"></d-figure>
 </figure>
 
-<h3>Optimization Objectives</h3>
+<p>
+  While conceptually simple, there are subtle challenges in getting the optimization to work. We will explore them, as well as common approaches to tackle them in the section "<a href="#enemy-of-feature-vis">The Enemy of Feature Visualization</a>".
+</p>
+
+<h3 id="optimization-objectives">Optimization Objectives</h3>
 
 <p>
   What do we want examples of?
   This is the core question in working with examples, regardless of whether we're searching through a dataset to find the examples, or optimizing images to create them from scratch.
-</p>
-
-<p>
-  We have a wide variety of options in what we search for.
-  If we want to understand individual features, we can search for examples where they have high values -- either at an individual neuron, or for an entire channel.
-  If we want to understand a layer as a whole, we can use the DeepDream objective <d-cite key="mordvintsev2015inceptionism"></d-cite>, searching for images the layer finds "interesting."
-  And if we want to create examples of output classes from a classifier, we have two options:
+  We have a wide variety of options in what we search for:
 </p>
 
 <figure class="base-grid" id="optimization-objectives">
@@ -137,7 +130,14 @@
     }
   </style>
   
-  <figcaption style="grid-column: kicker;">Different <strong>optimization objectives</strong> show what different parts of a network are looking for.</figcaption>
+  <figcaption style="grid-column: kicker;">
+    <p>Different <strong>optimization objectives</strong> show what different parts of a network are looking for.</p>
+    <br>
+    <p><code><strong>n</strong></code> layer index <br />
+      <code><strong>x,y</strong></code> spatial position<br />
+      <code><strong>z</strong></code> channel index <br />
+      <code><strong>k</strong></code> class index</p>
+  </figcaption>
   
   <div class="objectives grid">
     <div class="objective">
@@ -169,7 +169,7 @@
         <img inline src="static/images/objectives/objectives_logits_pre.svg">
       </div>
       <img class="objective-opt" src="images/objectives/logits.png">
-      <figcaption><strong>Class Logits</strong><br/><code>pre_softmax[n]</code></figcaption>
+      <figcaption><strong>Class Logits</strong><br/><code>pre_softmax[k]</code></figcaption>
     </div>
     
     <div class="objective">
@@ -177,29 +177,49 @@
         <img inline src="static/images/objectives/objectives_logits_post.svg">
       </div>
       <img class="objective-opt" src="images/objectives/logits_post.png">
-      <figcaption><strong>Class Probability</strong><br/><code>softmax[n]</code></figcaption>
+      <figcaption><strong>Class Probability</strong><br/><code>softmax[k]</code></figcaption>
     </div>
   </div>
 </figure>
 
 <p>
-  These two different objectives for output classes are a very important distinction between the pre-softmax logit objective and the post-softmax probabilities objective.
+  If we want to understand individual features, we can search for examples where they have high values -- either for a <em>neuron</em> at an individual position, or for an entire <em>channel</em>.
+</p>
+    
+<p>
+  If we want to understand a <em>layer</em> as a whole, we can use the DeepDream objective <d-cite key="mordvintsev2015inceptionism"></d-cite>, searching for images the layer finds "interesting."
+</p>
+<!-- <p>
+  And if we want to create examples of output classes from a classifier, we have two options -- optimizing <em>class logits</em> before the softmax or optimizing <em>class probabilities</em> after the softmax.
   One can see the logits as the evidence for each class, and the probabilities as the likelihood of each class given the evidence.
   Unfortunately, the easiest way to increase the probability softmax gives to a class is often to make the alternatives unlikely rather than to make the class of interest likely <d-cite key="simonyan2013deep"></d-cite>.
   This can be fixed by very strong regularization with generative models, in which case the probabilities can be a very principled thing to optimize.
   From our experience, optimizing pre-softmax logits produces images of better visual quality.<d-footnote>
     While the standard explanation is that maximizing probability doesn't work very well because you can just push down evidence for other classes, an alternate hypothesis is that it's just harder to optimize through the softmax function. We understand this has sometimes been an issue in adversarial examples, and the solution is to optimize the LogSumExp of the logits instead. This is equivalent to optimizing softmax but generally more tractable. Our experience was that the LogSumExp trick doesn't seem better than dealing with the raw probabilities.
   </d-footnote>
+</p> -->
+
+<p>
+  And if we want to create examples of output classes from a classifier, we have two options -- optimizing <em>class logits</em> before the softmax or optimizing <em>class probabilities</em> after the softmax.
+  One can see the logits as the evidence for each class, and the probabilities as the likelihood of each class given the evidence.
+  Unfortunately, the easiest way to increase the probability softmax gives to a class is often to make the alternatives unlikely rather than to make the class of interest likely <d-cite key="simonyan2013deep"></d-cite>.
+  From our experience, optimizing pre-softmax logits produces images of better visual quality.
+  <d-footnote>
+    While the standard explanation is that maximizing probability doesn't work very well because you can just push down evidence for other classes, an alternate hypothesis is that it's just harder to optimize through the softmax function. We understand this has sometimes been an issue in adversarial examples, and the solution is to optimize the LogSumExp of the logits instead. This is equivalent to optimizing softmax but generally more tractable. Our experience was that the LogSumExp trick doesn't seem better than dealing with the raw probabilities.
+    <br />
+    <br />
+    Regardless of why that happens, it can be fixed by very strong regularization with generative models. In this case the probabilities can be a very principled thing to optimize.
+  </d-footnote>
 </p>
 
 <p>
-  The objectives we've mentioned barely scratch the surface of the possibilities
-  -- it would be impossible to list all the things people have tried.
+  The objectives we've mentioned only scratch the surface of possibile objectives -- there are a lot more that one could try.
   Of particular note are the objectives used in style transfer <d-cite key="gatys2015neural"></d-cite>, which can teach us about the kinds of style and content a network understands,
   and objectives used in optimization-based model inversion <d-cite key="mahendran2015understanding"></d-cite>, which help us understand what information a model keeps and what it throws away.
+  We are only at the beginning of understanding which objectives are interesting, and there is a lot of room for more work in this area.
 </p>
 
-<h3>Why visualize by optimization?</h3>
+<h3 id="why-optimization">Why visualize by optimization?</h3>
 
 <p>
   Optimization can give us an example input that causes the desired behavior
@@ -227,17 +247,13 @@
 
 <p>
   On the other hand, there are also significant challenges to visualizing features with optimization.
+  In the following sections we'll examine techniques to get diverse visualizations, understand how neurons interact, and avoid high frequency artefacts.
 </p>
 
 
 <!-- =================================================== -->
 <hr/>
-<h2>Diversity</h2>
-<p><i>
-  Optimization tends to show only one facet of a feature.<br>
-  If we're clever it will show us more.
-</i></p>
-<br>
+<h2 id="diversity">Diversity</h2>
 
 <!-- TODO: improve las sentence -->
 <p>
@@ -256,7 +272,7 @@
 <!-- <figure class="l-page-outset"><img src="images/vis_ActivationSpectrum.svg" style="min-height: 150px;"></img></figure> -->
 
 
-<figure style="grid-column: screen;">
+<figure style="grid-column: screen;" class="shaded-figure">
   <d-figure class="base-grid" id="optimization-and-examples"></d-figure>
 </figure>
 
@@ -273,10 +289,10 @@
   Is there some way that optimization could also give us this diversity?
 </p>
 
-<h3>Achieving Diversity with Optimization</h3>
+<h3 id="diversity-with-optimization">Achieving Diversity with Optimization</h3>
 
 <p>
-  As is often the case in visualizing neural networks, this problem was initially recognized and addressed by Nguyen, Yosinski, and collaborators.
+  This problem was initially recognized and addressed by Nguyen, Yosinski, and collaborators. (As is often the case with problems in visualizing neural networks.)
   Their initial approach was to search through the dataset for diverse examples and use those as starting points for the optimization process <d-cite key="nguyen2016multifaceted"></d-cite>.
   The idea is that this initiates optimization in different facets of the feature so that the resulting example from optimization will demonstrate that facet.
   In more recent work, they combine visualizing classes with a generative model, which they can sample for diverse examples <d-cite key="nguyen2016plug"></d-cite>.
@@ -411,7 +427,7 @@
 
 <!-- =================================================== -->
 <hr/>
-<h2>Interaction between Neurons</h2>
+<h2 id="interaction">Interaction between Neurons</h2>
 
 <p>
   If neurons are not the right way to understand neural nets, what is?
@@ -438,21 +454,22 @@
   This is reminiscent of semantic arithmetic of word embeddings as seen in Word2Vec or generative models' latent spaces.
 </p>
 
-<figure style="grid-column: text">
-  <d-figure id="linear-combinations"></d-figure>
-  <figcaption>
+<figure class="base-grid shaded-figure">
+  <figcaption style="grid-column: kicker;">
     By jointly optimizing two neurons we can get a sense of how they interact.
   </figcaption>
+  <d-figure style="grid-column: text; overflow: visible;" id="linear-combinations"></d-figure>
 </figure>
 
 <p>
   These examples show us how neurons jointly represent images.
-  To better understand how neurons interact, we can interpolate between them. <d-footnote>The optimization objective is a linear interpolation between the individual channel objectives. To get the interpolations to look better, we also add a small alignment objective that encourages lower layer activations to be similar.</d-footnote>
+  To better understand how neurons interact, we can also interpolate between them. 
+  <d-footnote>The optimization objective is a linear interpolation between the individual channel objectives. To get the interpolations to look better, we also add a small alignment objective that encourages lower layer activations to be similar. We additionally use a combination of separate and shared image parameterizations to make it easier for the optimization algorithm to cause objects to line up, while still giving it the freedom to create any image it needs to.</d-footnote>
   This is similar to interpolating in the latent space of generative models. 
 </p>
 
-<figure style="grid-column: text-start / page-end; /*min-height: 290px;*/">
-  <d-figure id="interpolation"></d-figure>
+<figure class="base-grid shaded-figure">
+  <d-figure style="grid-column: text-start / page-end;" id="interpolation"></d-figure>
 </figure>
 
 <p>
@@ -464,16 +481,7 @@
 
 <!-- =================================================== -->
 <hr/>
-<h2>The Enemy of Feature Visualization</h2>
-<p><i>
-  Naively optimizing images doesn't work.<br>
-  Regularization is necessary, but cuts both ways.
-</i></p>
-
-
-
-
-<h3>High Frequency Patterns</h3>  
+<h2 id="enemy-of-feature-vis">The Enemy of Feature Visualization</h2>
 
 <p>
   If you want to visualize features, you might just optimize an image to make neurons fire.
@@ -482,17 +490,19 @@
   -- an image full of noise and nonsensical high-frequency patterns that the network responds strongly to.
 </p>
 
-<figure style="min-height: 240px;">
-  <d-figure id="optimize-naive"></d-figure>
+<figure class="shaded-figure base-grid">
+  <figcaption style="grid-column: kicker;">
+    <p>Even if you carefully tune learning rate, you'll get noise.</p><br />
+    <p>Optimization results are enlarged to show detail and artifacts.</p>
+  </figcaption>
+  <d-figure style="grid-column: text;" id="optimize-naive"></d-figure>
 </figure>
-
-<!-- TODO: Add caption encouraging user to fiddle with learning rate -->
 
 <p>
   These patterns seem to be the images kind of cheating, finding ways to activate neurons that don't occur in real life.
   If you optimize long enough, you'll tend to see some of what the neuron genuinely detects as well,
   but the image is dominated by these high frequency patterns.
-  These patterns seem to be closely related to the phenomenon of adversarial counterexamples <d-cite key="szegedy2013intriguing"></d-cite>.
+  These patterns seem to be closely related to the phenomenon of adversarial examples <d-cite key="szegedy2013intriguing"></d-cite>.
 </p>
 
 <p>
@@ -500,7 +510,7 @@
   but an important part seems to be strided convolutions and pooling operations, which create high-frequency patterns in the gradient <d-cite key="odena2016deconvolution"></d-cite>.
 </p>
 
-<figcaption>Each <b>strided convolution</b> creates checkerboard patterns in the gradient magnitudes when we backprop through it. <dt-cite key="odena2016deconvolution"></dt-cite></figcaption>
+<figcaption>Each <b>strided convolution or pooling</b> creates checkerboard patterns in the gradient magnitudes when we backprop through it. <dt-cite key="odena2016deconvolution"></dt-cite></figcaption>
 <figure style="grid-column: page;">
   <d-figure id="frequency-artifacts"></d-figure>
 </figure>
@@ -508,11 +518,11 @@
 
 <p>
   These high-frequency patterns show us that, while optimization based visualization's freedom from constraints is appealing, it's a double-edged sword.
-  Without any constraints on images, we end up with adversarial counterexamples.
+  Without any constraints on images, we end up with adversarial examples.
   These are certainly interesting, but if we want to understand how these models work in real life, we need to somehow move past them...
 </p>
 
-<h3>The Spectrum of Regularization</h3>
+<h3 id="regularization">The Spectrum of Regularization</h3>
 
 <p>
   Dealing with these high frequency noise has been one of the primary challenges and overarching threads of feature visualization research.
@@ -526,7 +536,7 @@
 
 <p>
   We can think of all of these approaches as living on a spectrum, based on how strongly they regularize the model.
-  On one extreme, if we don't regularize at all, we end up with adversarial counterexamples.
+  On one extreme, if we don't regularize at all, we end up with adversarial examples.
   On the opposite end, we search over examples in our dataset and run into all the limitations we discussed earlier.
   And in the middle we have three main families of regularization options.
 </p>
@@ -536,7 +546,7 @@
 </figure>
 
 
-<h3>Three Families of Regularization</h3>
+<h3 id="regularization-families">Three Families of Regularization</h3>
 
 <p>
   Let's consider these three intermediate categories of regularization in more depth.
@@ -555,8 +565,8 @@
   These techniques are in some ways very similar to the above and in some ways radically different -- we'll talk about them in much more depth later.)
 </p>
 
-<figure style="min-height: 240px;">
-  <d-figure id="regularizer-playground-freq"></d-figure>
+<figure class="shaded-figure base-grid">
+  <d-figure style="grid-column: text;" id="regularizer-playground-freq"></d-figure>
 </figure>
 <!--
   - none
@@ -569,15 +579,14 @@
   <b>Transformation robustness</b> tries to find examples that still work if we slightly transform them.
   Even a small amount seems to be very effective in the case of images <d-cite key="mordvintsev2015inceptionism"></d-cite>, 
   especially when combined with a more general regularizer for high-frequencies <d-cite key="oygard2015vis,mordvintsev2016deepdreaming"></d-cite>.
-  This usually means that we "jitter" the image, applying the model at slight random offsets every optimization step,
-  but other kinds of transformations also help.
+  Concretely, this means that we stochastically jitter, rotate or scale the image before applying the optimization step.
 </p>
 
 
 <!--<figure id="optimize-jitter" class="l-page-outset"></figure>-->
 
-<figure style="min-height: 240px;">
-  <d-figure id="regularizer-playground-robust"></d-figure>
+<figure class="shaded-figure base-grid">
+  <d-figure style="grid-column: text;" id="regularizer-playground-robust"></d-figure>
 </figure>
 
 <!--TODO(colah): Make a diagram of unconstraint opt vs paramaterized opt vs prior? Discuss using an inverse model?-->
@@ -605,11 +614,7 @@
 
 <!-- =================================================== -->
 <hr/>
-<h2>Preconditioning and Parameterization</h2>
-<p><i>
-  Not all "regularizers" are really regularizers.<br>
-  What if the optimization problem is genuinely hard?
-</i></p>
+<h2 id="preconditioning">Preconditioning and Parameterization</h2>
 
 <br>
 
@@ -617,31 +622,45 @@
   In the previous section, we saw a few methods <d-cite key="oygard2015vis,mordvintsev2016deepdreaming"></d-cite> that reduced high frequencies <i>in the gradient</i> rather than the visualization itself.
   It's not clear this is really a regularizer:
   it resists high frequencies, but still allows them to form when the gradient consistently pushes for it.
+  If it isn't a regularizer, what does transforming the gradient like this do?
 </p>
 
 <p>
-  Transforming the gradient like this is a powerful tool.
-  Optimizers call it preconditioning.
+  Transforming the gradient like this is actually quite a powerful tool -- it's called "preconditioning" in optimization.
   You can think of it as doing steepest descent to optimize the same objective, 
-  but in another parameterization of the space or under a different notion of distance.<d-footnote>
+  but in another parameterization of the space or under a different notion of distance.
+  <d-footnote>
     Gradient blurring<d-cite key="oygard2015vis"></d-cite> is equivalent to gradient descent in a different paramaterization of image space, where high frequency dimensions are stretched to make moving in those directions slower. Gradient Laplacian Pyramid normalization <d-cite key="mordvintsev2016deepdreaming"></d-cite> is some kind of adaptive learning rate approach in the same space.
   </d-footnote>
-  It changes how fast you move in each direction, but doesn't change what the minimums are.
-  Using the right preconditioner can make an optimization problem radically easier.
-  And if there are many local minima, it can stretch and shrink their basins of attraction, changing which ones you fall into.
+  This changes which direction of descent will be steepest, and how fast the optimization moves in each direction, but it does not change what the minimums are.
+  If there are many local minima, it can stretch and shrink their basins of attraction, changing which ones the optimization process falls into.
+  As a result, using the right preconditioner can make an optimization problem radically easier.
 </p>
 <p>
-  Of course, there are infinitely many possible preconditioners.
-  How should we chose a good one that will give us these benefits?
-  A good first guess is one that makes your data decorrelated and whitened.<d-footnote>
-    In the case of images, this means doing gradient descent in the Fourier transform,
-    with frequencies scaled so that they all have equal energy. This decorrelates images spatially, but doesn't handle correlations between colors. 
-    To address this, we explicitly measure the correlation between colors in the training set and use a Cholesky decomposition to decorrelate them.</d-footnote>
-  Let's compare the direction of steepest descent in a decorelated parameterization to two other directions of steepest descent:
+  How can we chose a preconditioner that will give us these benefits?
+  A good first guess is one that makes your data decorrelated and whitened.
+  In the case of images this means doing gradient descent in the Fourier basis,
+  <d-footnote>
+    This points to a profound fact about the Fourier transform.
+    As long as a correlation is consistent across spatial positions -- such as the correlation between a pixel and its left neighbor being the same across all positions of an image -- the Fourier coefficients will be independant variables.
+    To see this, note that such a spatially consistent correlation can be expressed as a convolution, and by the convolution theorem becomes pointwise multiplication after the Fourier transform.
+  </d-footnote>
+  with frequencies scaled so that they all have equal energy.
+  <d-footnote>
+    Note that we have to be careful to get the colors to be decorrelated, too. The Fourier transforms decorrelates spatially, but a correlation will still exist between colors.
+    To address this, we explicitly measure the correlation between colors in the training set and use a Cholesky decomposition to decorrelate them.
+  </d-footnote>
+</p>
+<p>
+  Let's see how using different measures of distance changes the direction of steepest descent. 
+  The regular L<sup>2</sup> gradient can be quite different from the directions of steepest descent in the L<sup>∞</sup> metric or in the decorrelated space:
 </p>
 
-<figure style="grid-column: text / screen; /*min-height: 290px;*/">
-  <d-figure id="steepest-descent"></d-figure>
+<figure class="shaded-figure base-grid">
+  <figcaption style="grid-column: kicker">
+    Three directions of steepest descent under different notions of distance
+  </figcaption>
+  <d-figure style="grid-column: text-start / screen-end;" id="steepest-descent"></d-figure>
 </figure>
 
 <p>
@@ -657,10 +676,23 @@
   resulting visualizations seem a lot better -- and develop faster, too.
 </p>
 
-<!-- Figure out which descent directions to have in playground, explain them in the text. -->
-<figure>
-  <d-figure id="opt-explore2"></d-figure>
+<figure class="shaded-figure base-grid">
+  <d-figure style="grid-column: text;" id="opt-explore2"></d-figure>
 </figure>
+
+<p>
+  (Unless otherwise noted, the images in this article were optimizing in the decorrelated space and a suite of transformation robustness techniques.
+  <d-footnote>
+    Images were optimized for 2560 steps in a color-decorrelated fourier-transformed space, using Adam at a learning rate of 0.05.
+    We used each of following transformations in the given order at each step of the optimization:<br /><br />
+    • Padding the input by 16 pixels to avoid edge artefacts<br />
+    • Jittering by up to 16 pixels<br />
+    • Scaling by a factor randomly selected from this list: 1, 0.975, 1.025, 0.95, 1.05<br />
+    • Rotating by an angle randomly selected from this list; in degrees: -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5<br />
+    • Jittering a second time by up to 8 pixels<br />
+    • Cropping the padding<br />
+  </d-footnote>)
+</p>
 
 <p>
   Is the preconditioner merely accelerating descent, bringing us to the same place
@@ -673,7 +705,7 @@
 
 <!-- =================================================== -->
 <hr/>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
   
 <p class="">
   Neural feature visualization has made great progress over the last few years.
@@ -692,7 +724,7 @@
 </d-article>
 
 <d-appendix>
-  <h3>Acknowledgments</h3>
+  <h3 id="acknowledgements">Acknowledgments</h3>
   <p>
     We are extremely grateful to Shan Carter for thoughtful feedback -- especially design advice.
   </p>
@@ -702,10 +734,12 @@
     Greg Corrado, Blaise Aguera y Arcas,
     Katherine Ye, Michael Nielsen, Emma Pierson, Dario Amodei, Ian Goodfellow,
     Mike Tyka,
+    Andrea Vedaldi, Ruth Fong, 
+    Timon Ruban,
     Been Kim, Martin Wattenberg, and Fernanda Viegas.
   </p>
 
-  <h3>Author Contributions</h3>
+  <h3 id="author-contributions">Author Contributions</h3>
   <p>
     The biggest technical contribution of this work is likely the section on preconditioning.
     Alex discovered in prior work that normalizing gradient frequencies had a radical effect on visualizing neurons.
