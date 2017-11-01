@@ -189,22 +189,31 @@
 <p>
   If we want to understand a <em>layer</em> as a whole, we can use the DeepDream objective <d-cite key="mordvintsev2015inceptionism"></d-cite>, searching for images the layer finds "interesting."
 </p>
-<p>
+<!-- <p>
   And if we want to create examples of output classes from a classifier, we have two options -- optimizing <em>class logits</em> before the softmax or optimizing <em>class probabilities</em> after the softmax.
-</p>
-
-<p>
-  These two different objectives for output classes are a very important distinction between the pre-softmax logit objective and the post-softmax probabilities objective.
   One can see the logits as the evidence for each class, and the probabilities as the likelihood of each class given the evidence.
   Unfortunately, the easiest way to increase the probability softmax gives to a class is often to make the alternatives unlikely rather than to make the class of interest likely <d-cite key="simonyan2013deep"></d-cite>.
   This can be fixed by very strong regularization with generative models, in which case the probabilities can be a very principled thing to optimize.
   From our experience, optimizing pre-softmax logits produces images of better visual quality.<d-footnote>
     While the standard explanation is that maximizing probability doesn't work very well because you can just push down evidence for other classes, an alternate hypothesis is that it's just harder to optimize through the softmax function. We understand this has sometimes been an issue in adversarial examples, and the solution is to optimize the LogSumExp of the logits instead. This is equivalent to optimizing softmax but generally more tractable. Our experience was that the LogSumExp trick doesn't seem better than dealing with the raw probabilities.
   </d-footnote>
+</p> -->
+
+<p>
+  And if we want to create examples of output classes from a classifier, we have two options -- optimizing <em>class logits</em> before the softmax or optimizing <em>class probabilities</em> after the softmax.
+  One can see the logits as the evidence for each class, and the probabilities as the likelihood of each class given the evidence.
+  Unfortunately, the easiest way to increase the probability softmax gives to a class is often to make the alternatives unlikely rather than to make the class of interest likely <d-cite key="simonyan2013deep"></d-cite>.
+  From our experience, optimizing pre-softmax logits produces images of better visual quality.
+  <d-footnote>
+    While the standard explanation is that maximizing probability doesn't work very well because you can just push down evidence for other classes, an alternate hypothesis is that it's just harder to optimize through the softmax function. We understand this has sometimes been an issue in adversarial examples, and the solution is to optimize the LogSumExp of the logits instead. This is equivalent to optimizing softmax but generally more tractable. Our experience was that the LogSumExp trick doesn't seem better than dealing with the raw probabilities.
+    <br />
+    <br />
+    Regardless of why that happens, it can be fixed by very strong regularization with generative models. In this case the probabilities can be a very principled thing to optimize.
+  </d-footnote>
 </p>
 
 <p>
-  The objectives we've mentioned only scratch the surface of all possibilities -- there are a lot more that one could try.
+  The objectives we've mentioned only scratch the surface of possibile objectives -- there are a lot more that one could try.
   Of particular note are the objectives used in style transfer <d-cite key="gatys2015neural"></d-cite>, which can teach us about the kinds of style and content a network understands,
   and objectives used in optimization-based model inversion <d-cite key="mahendran2015understanding"></d-cite>, which help us understand what information a model keeps and what it throws away.
   We are only at the beginning of understanding which objectives are interesting, and there is a lot of room for more work in this area.
@@ -474,9 +483,6 @@
 <hr/>
 <h2 id="enemy-of-feature-vis">The Enemy of Feature Visualization</h2>
 
-
-<h3 id="high-frequency">High Frequency Patterns</h3>  
-
 <p>
   If you want to visualize features, you might just optimize an image to make neurons fire.
   Unfortunately, this doesn't really work.
@@ -487,12 +493,10 @@
 <figure class="shaded-figure base-grid">
   <figcaption style="grid-column: kicker;">
     <p>Even if you carefully tune learning rate, you'll get noise.</p><br />
-    <p>Optimization results are enlarged to show detail.</p>
+    <p>Optimization results are enlarged to show detail and artifacts.</p>
   </figcaption>
   <d-figure style="grid-column: text;" id="optimize-naive"></d-figure>
 </figure>
-
-<!-- TODO: Add caption encouraging user to fiddle with learning rate -->
 
 <p>
   These patterns seem to be the images kind of cheating, finding ways to activate neurons that don't occur in real life.
@@ -506,7 +510,7 @@
   but an important part seems to be strided convolutions and pooling operations, which create high-frequency patterns in the gradient <d-cite key="odena2016deconvolution"></d-cite>.
 </p>
 
-<figcaption>Each <b>strided convolution</b> creates checkerboard patterns in the gradient magnitudes when we backprop through it. <dt-cite key="odena2016deconvolution"></dt-cite></figcaption>
+<figcaption>Each <b>strided convolution or pooling</b> creates checkerboard patterns in the gradient magnitudes when we backprop through it. <dt-cite key="odena2016deconvolution"></dt-cite></figcaption>
 <figure style="grid-column: page;">
   <d-figure id="frequency-artifacts"></d-figure>
 </figure>
