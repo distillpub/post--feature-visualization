@@ -81,17 +81,17 @@ new GoogleNetExamples({target: document.getElementById("googlenet-examples")});
         label_func: (n, i) => [
           "Image",
           "<strong>L<sup>∞</sup> metric</strong> <br>used in adverserial work",
-          "<strong>L<sup>2</sup> metric</strong> <br>normal gradient",
+          "<strong>L<sup>2</sup> metric</strong> <br>regular gradient",
           "<strong>decorrelated space</strong>"
           ][n],
         n_images: 4,
-        n_icons: 16,
+        n_icons: 14,
         sprite_size: 224, 
         size: 170,
         icon_scale: 1,
         hover_scale: 1,
-        selected: 14,
-        backwards: true
+        selected: 9,
+        backwards: false
       }
     });
   });
