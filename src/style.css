@@ -95,6 +95,43 @@ d-title figure {
   padding: 30px 0;
 }
 
+code,
+tt {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 90%;
+  background-color: hsl(0, 0%, 96%);
+  border-radius: 3px;
+}
+
+figcaption code,
+figcaption tt {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+code::before, 
+code::after,
+tt::before, 
+tt::after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+figcaption,
+.figcaption {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+@media(min-width: 1024px) {
+figcaption,
+.figcaption {
+    font-size: 13px;
+  }
+}
 
 /* Min-Height anti-reflow opgtimizations */
 
