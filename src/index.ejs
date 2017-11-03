@@ -14,8 +14,8 @@
 
 <d-front-matter>
   <script type="text/json">{
-  "title": "Simple & Flexible Feature Visualization",
-  "description": "Description of the post",
+  "title": "Feature Visualization",
+  "description": "How neural networks build up their understanding of images",
   "password": "clarity",
   "authors": [
     {
@@ -27,8 +27,8 @@
     {
       "author":"Alexander Mordvintsev",
       "authorURL":"https://znah.net/",
-      "affiliation":"Google Brain",
-      "affiliationURL":"https://g.co/brain"
+      "affiliation":"Google Research",
+      "affiliationURL":"https://research.google.com/"
     },
     {
       "author":"Ludwig Schubert",
@@ -43,21 +43,65 @@
 
 <d-title>
   <h1>Feature Visualization</h1>
-  <!-- <p style="grid-column: text;">How neural networks build up their understanding of images</p> -->
+  <p style="grid-column: text;">How neural networks build up their understanding of images</p>
   <figure class="base-grid" id="googlenet-examples"></figure>
 </d-title>
 
 <d-article>
+  
+<p>
+  There is a growing sense that neural networks need to be interpretable to humans.
+  The field of neural network interpretability has formed in response to these concerns.
+  <!-- Over the recent years we have seen a new field of research form in response to this concern. -->
+  As it matures, two major threads of research have begun to coalesce: feature visualization and attribution.
+</p>
+
+
+<figure id="fv-vs-attribution" class="grid" style="">
+  <div>
+    <div class="images">
+      <img src="images/objectives/neuron.png">
+      <img src="images/objectives/channel.png">
+    </div>
+    <figcaption>
+      <strong>Feature visualization</strong> answers questions about what a network -- or parts of a network -- are looking for by generating examples.
+    </figcaption>
+  </div>
+  <div>
+    <div class="images">
+      <img src="images/attribution-1.png"/>
+      <img src="images/attribution-2.jpg" style/>
+    </div>
+    <figcaption>
+    <strong>Attribution</strong>
+      <d-footnote>
+        As a young field, neural network interpretability does not yet have standardized terminology. 
+        Attribution has gone under many different names in the literature -- including "feature visualization"! -- but recent work seems to prefer terms like "attribution" and "saliency maps".
+      </d-footnote>
+    studies what part of an example is responsible for the network activating a particular way.
+    </figcaption>
+  </div>
+</figure>
 
 <p>
-  Neural network feature visualization is a powerful technique. It can answer questions about what a network -- or parts of a network -- are looking for by generating idealized examples of what the network is trying to find.
+  This article focusses on feature visualization. 
+  While feature visualization is a powerful tool, actually getting it to work involves a number of details. 
+  In this article, we examine the major issues and explore common approaches to solving them.
+  We find that remarkably simple methods can produce high-quality visualizations. Along the way we introduce a few tricks for exploring variation in what neurons react to, how they interact, and how to improve the optimization process.
 </p>
+
+<!-- 
+<p>
+  Neural network feature visualization is a powerful technique. It can answer questions about what a network -- or parts of a network -- are looking for by generating idealized examples of what the network is trying to find.
+  Along with attribution it forms one of the two main threads of research in neural network interpretability.
+</p> -->
+<!-- 
 <p>
   Over the last few years, the field has made great strides in feature visualization. Actually getting it to work, however, involves a number of details. In this article, we examine the major issues and explore common approaches to solving them.
 </p>
 <p>
   We find that remarkably simple methods can produce high-quality visualizations. Along the way we introduce a few tricks for exploring variation in what neurons react to, how they interact, and how to improve the optimization process.
-</p>
+</p> -->
 
 <hr />
 <!-- =================================================== -->
@@ -563,7 +607,7 @@
 
 <p>
   (Some work uses similar techniques to reduce high frequencies in the gradient before they accumulate in the visualization <d-cite key="oygard2015vis,mordvintsev2016deepdreaming"></d-cite>.
-  These techniques are in some ways very similar to the above and in some ways radically different -- we'll talk about them in much more depth later.)
+  These techniques are in some ways very similar to the above and in some ways radically different -- we'll examine them in the next section, <a href="#preconditioning">Preconditioning and Parameterization</a>.)
 </p>
 
 <figure class="shaded-figure base-grid">
@@ -639,7 +683,7 @@
   You can think of it as doing steepest descent to optimize the same objective, 
   but in another parameterization of the space or under a different notion of distance.
   <d-footnote>
-    Gradient blurring<d-cite key="oygard2015vis"></d-cite> is equivalent to gradient descent in a different paramaterization of image space, where high frequency dimensions are stretched to make moving in those directions slower. Gradient Laplacian Pyramid normalization <d-cite key="mordvintsev2016deepdreaming"></d-cite> is some kind of adaptive learning rate approach in the same space.
+    Gradient blurring<d-cite key="oygard2015vis"></d-cite> is equivalent to gradient descent in a different paramaterization of image space, where high frequency dimensions are stretched to make moving in those directions slower. Gradient Laplacian Pyramid normalization <d-cite key="mordvintsev2016deepdreaming"></d-cite> is a kind of adaptive learning rate approach in the same space.
   </d-footnote>
   This changes which direction of descent will be steepest, and how fast the optimization moves in each direction, but it does not change what the minimums are.
   If there are many local minima, it can stretch and shrink their basins of attraction, changing which ones the optimization process falls into.
@@ -743,34 +787,40 @@
 <d-appendix>
   <h3 id="acknowledgements">Acknowledgments</h3>
   <p>
-    We are extremely grateful to Shan Carter for thoughtful feedback -- especially design advice.
+    We are extremely grateful to Shan Carter and Ian Goodfellow.
+    Shan gave thoughtful feedback, especially on the design of the article.
+    Ian generously stepped in to handle the review process of this article -- we would not have been able to publish it without him.
   </p>
   
   <p>
     We're also grateful for the comments, thoughts and support of
+    Arvind Satyanarayan, Ian Johnson,
     Greg Corrado, Blaise Aguera y Arcas,
-    Katherine Ye, Michael Nielsen, Emma Pierson, Dario Amodei, Ian Goodfellow,
+    Katherine Ye, Michael Nielsen, Emma Pierson, Dario Amodei, 
     Mike Tyka,
     Andrea Vedaldi, Ruth Fong, 
-    Timon Ruban,
+    Timon Ruban, Jason Freidenfelds, 
     Been Kim, Martin Wattenberg, and Fernanda Viegas.
   </p>
 
   <h3 id="author-contributions">Author Contributions</h3>
   <p>
-    The biggest technical contribution of this work is likely the section on preconditioning.
-    Alex discovered in prior work that normalizing gradient frequencies had a radical effect on visualizing neurons.
-    Chris reframed this as adaptive gradient descent in a different basis.
-    Together, they iterated on a number of ways of paramaterizing images.
-    Similarly, Alex originally introduced the use of diversity term, and Chris refined using it.
-    Chris did the exploration of interpolating between neurons.
-    All experiments were based on code written by Alex.
+    <strong>Writing, Exposition, and Diagram Contributions.</strong> Chris drafted most of the text of the article and made the original version of most interactive diagrams. Ludwig made the neuron addition, dataset examples, and interpolation diagrams, as well as refined the others.
   </p>
   <p>
-    We see another important part of this work as its expository value.
-    Chris did most of the distillation of prior work and made most of the interactive diagrams.
-    Ludwig created the visualization of the spectrum of neuron activations.
+    <strong>Research Contributions.</strong> The biggest technical contribution of this work is likely the section on preconditioning. Alex discovered in prior work that normalizing gradient frequencies had a radical effect on visualizing neurons. Chris reframed this as adaptive gradient descent in a different basis. Together, they iterated on a number of ways of parameterizing images. Similarly, Alex originally introduced the use of diversity term, and Chris reﬁned using it. Chris did the exploration of interpolating between neurons. 
   </p>
+  <p>
+    <strong>Infrastructure Contributions.</strong> All experiments are based on code written by Alex, some of which was <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/deepdream/deepdream.ipynb">published previously</a>. Alex, Chris and Ludwig all contributed significantly to refining this into the present code base. Alex and Chris introduced particularly important abstractions. Ludwig created the appendix that visualizes all of GoogLeNet.
+  </p>
+  
+  <h3 id="discussion-review">Discussion and Review</h3>
+  <p>
+    <a href="https://github.com/distillpub/post--feature-visualization/issues/1">Review 1 - Anonymous</a><br>
+    <a href="https://github.com/distillpub/post--feature-visualization/issues/4">Review 2 - Anonymous</a><br>
+    <a href="https://github.com/distillpub/post--feature-visualization/issues/6">Review 3 - Anonymous</a><br>
+  </p>
+
   <d-footnote-list></d-footnote-list>
   <d-citation-list></d-citation-list>
 </d-appendix>
