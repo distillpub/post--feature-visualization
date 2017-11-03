@@ -18,10 +18,10 @@
 </figcaption>
 
 <div class="images" style="grid-column: text-start / page-end;">
-  <Sprite src_class='sprite_examples_opt_comparison' x=0 y=0 sprite_size=180 bind:size></Sprite>
-  <Sprite src_class='sprite_examples_opt_comparison' x=1 y=0 sprite_size=180 bind:size></Sprite>
-  <Sprite src_class='sprite_examples_opt_comparison' x=2 y=0 sprite_size=180 bind:size></Sprite>
-  <Sprite src_class='sprite_examples_opt_comparison' x=3 y=0 sprite_size=180 bind:size></Sprite>
+  <Sprite src_class='sprite_examples_opt_comparison' x=0 y=0 sprite_size=170 bind:size></Sprite>
+  <Sprite src_class='sprite_examples_opt_comparison' x=1 y=0 sprite_size=170 bind:size></Sprite>
+  <Sprite src_class='sprite_examples_opt_comparison' x=2 y=0 sprite_size=170 bind:size></Sprite>
+  <Sprite src_class='sprite_examples_opt_comparison' x=3 y=0 sprite_size=170 bind:size></Sprite>
 </div>
 
 <div class="captions" style="grid-column: text-start / page-end;">
@@ -38,7 +38,7 @@
 }
 
 .sprite_examples_opt_comparison {
-  background-image: url("images/why_optimization.png");
+  background-image: url("images/why_optimization_neuron.png");
 }
 
 .captions,
@@ -70,7 +70,7 @@
 @media (min-width: 1280px) {
   
   .captions > figcaption {
-    width: 180px;
+    width: 170px;
   }
 }
 
@@ -89,9 +89,9 @@
     },
     oncreate: function() {
       const mq = matchMedia("(min-width: 1280px)");
-      mq.onchange = (event) => this.set({size: event.matches ? 180 : 147});
+      mq.onchange = (event) => this.set({size: event.matches ? 170 : 147});
       this.set({
-        size: mq.matches ? 180 : 147,
+        size: mq.matches ? 170 : 147,
         // sprite_scale: mq.matches ? .625 : .5,
       });
     },

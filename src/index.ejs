@@ -56,7 +56,7 @@
   Over the last few years, the field has made great strides in feature visualization. Actually getting it to work, however, involves a number of details. In this article, we examine the major issues and explore common approaches to solving them.
 </p>
 <p>
-  We find that remarkably simple methods can produce state-of-the-art visualizations. Along the way we introduce a few tricks for exploring variation in what neurons react to, how they interact, and how to improve the optimization process.
+  We find that remarkably simple methods can produce high-quality visualizations. Along the way we introduce a few tricks for exploring variation in what neurons react to, how they interact, and how to improve the optimization process.
 </p>
 
 <hr />
@@ -184,6 +184,7 @@
 
 <p>
   If we want to understand individual features, we can search for examples where they have high values -- either for a <em>neuron</em> at an individual position, or for an entire <em>channel</em>.
+  We used the channel objective to create most of the images in this article.
 </p>
     
 <p>
@@ -229,7 +230,7 @@
 
 <p>
   It turns out that optimization approach can be a powerful way to understand what a model is really looking for,
-  because it separates the things causing behavior from from things that merely correlate with the causes.
+  because it separates the things causing behavior from things that merely correlate with the causes.
   For example, consider the following neurons visualized with dataset examples and optimization:
 </p>
 
@@ -259,7 +260,7 @@
 <p>
   Do our examples show us the full picture? 
   When we create examples by optimization, this is something we need to be very careful of.
-  It's entirely possible for genuine examples to still mislead us by only showing us one facet of what a feature represents.
+  It's entirely possible for genuine examples to still mislead us by only showing us one "facet" of what a feature represents.
 </p>
 
 <p>
@@ -292,31 +293,34 @@
 <h3 id="diversity-with-optimization">Achieving Diversity with Optimization</h3>
 
 <p>
-  This problem was initially recognized and addressed by Nguyen, Yosinski, and collaborators. (As is often the case with problems in visualizing neural networks.)
-  Their initial approach was to search through the dataset for diverse examples and use those as starting points for the optimization process <d-cite key="nguyen2016multifaceted"></d-cite>.
+  A given feature of a network may respond to a wide range of inputs. 
+  On the class level, for example, a classifier that has been trained to recognize dogs should recognize both closeups of their faces as well as wider profile images -- even though those have quite different visual appearances.
+  Early work by <d-cite key="mneuron2015">Wei <i>et al.</i></d-cite> attempts to demonstrate this "intra-class" diversity by recording activations over the entire training set, clustering them and optimizing for the cluster centroids, revealing the different facets of a class that were learned.
+</p>
+
+<p>
+  A different approach by Nguyen, Yosinski, and collaborators was to search through the dataset for diverse examples and use those as starting points for the optimization process <d-cite key="nguyen2016multifaceted"></d-cite>.
   The idea is that this initiates optimization in different facets of the feature so that the resulting example from optimization will demonstrate that facet.
   In more recent work, they combine visualizing classes with a generative model, which they can sample for diverse examples <d-cite key="nguyen2016plug"></d-cite>.
+  Their first approach had limited success, and while the generative model approach works very well -- we'll discuss it more in the section on regularization under <a href="#learned-priors">learned priors</a> -- it can be a bit tricky. 
 </p>
 
 <p>
-  The first approach had limited success, and while the generative model approach works very well -- we'll discuss it in more depth later -- it can be a bit tricky. 
-</p>
-
-<p>
-  We find there's a very simple way to achieve diversity: adding a "diversity term" to one's objective that pushes multiple examples to be different from each other.
+  We find there's a very simple way to achieve diversity: adding a "diversity term"
+  <d-footnote>
+      For this article we use an approach based on ideas from artistic style transfer. Following that work, we begin by computing the Gram matrix <d-math>G</d-math> of the channels, where:
+      <d-math block>
+        G_{i,j} = \text{layer}_n\text{[:, :, i]} \cdot \text{layer}_n\text{[:, :, j]}
+      </d-math>
+      From this, we compute the diveristy term: the negative pairwise cosine similarity of pairs of visualizations.
+      <d-math block>
+        C_{\text{diversity}} = - \sum_{a} \sum_{b\neq a} ~ \frac{\text{vec}(G_a) \cdot \text{vec}(G_b)}{||\text{vec}(G_a)||~||\text{vec}(G_b)||} 
+      </d-math>
+      We then maximize the diversity term jointly with the regular optimization objective.
+    </d-footnote> to one's objective that pushes multiple examples to be different from each other.
   The diversity term can take a variety of forms, and we don't have much understanding of their benefits yet.
   One possibility is to penalize the cosine similarity of different examples.
   Another is to use ideas from style transfer <d-cite key="gatys2015neural"></d-cite> to force the feature to be displayed in different styles.
-  <d-footnote>
-    For this article we use an approach based on ideas from artistic style transfer. Following that work, we begin by computing the Gram matrix of the channels.
-    <d-math block>
-      G_{i,j} = \text{layer}_n\text{[:, :, i]} \cdot \text{layer}_n\text{[:, :, j]}
-    </d-math>
-    From this, we compute the pairwise cosine similarity of pairs of visualizations:
-    <d-math block>
-      C_{\text{diversity}} = - \sum_{a} \sum_{b\neq a} ~ \frac{G_a \cdot G_b}{||G_a||~||G_b||} 
-    </d-math>
-  </d-footnote>
 </p>
 
 <p>
@@ -326,12 +330,12 @@
 <figure class="grid l-page" style="grid-template-columns: repeat(6, 1fr)">
   <div style="">
     <img style="max-width: 147px;" src="images/diversity/mixed4a_97_optimized.png" />
-    <figcaption>Optimization</figcaption>
+    <figcaption>Simple Optimization</figcaption>
   </div>
   <div style="grid-column-end: span 4">
     <img src="images/diversity/mixed4a_97_diversity.png" />
     <figcaption>
-      Four different, curvy facets. <i>Layer mixed4a, Unit 97</i>
+      Optimization with diversity reveals four different, curvy facets. <i>Layer mixed4a, Unit 97</i>
     </figcaption>
   </div>
   <div style="">
@@ -344,19 +348,27 @@
 <p>
   Diverse feature visualizations allow us to more closely pinpoint what activates a neuron, to the degree that we can make, and -- by looking at dataset examples -- <em>check</em> predictions about what inputs will activate the neuron.
 </p>
+<p>
+  For example, let's examine this simple optimization result. 
+</p>
 
-<figure class="grid l-page" style="grid-template-columns: repeat(6, 1fr)">
-  <div style="">
-    <img style="max-width: 147px;" src="images/diversity/mixed4a_143_optimized.png" />
-    <figcaption>Optimization</figcaption>
-  </div>
-  <div style="grid-column-end: span 4">
+<p>  
+  <span style="display: block; float: left; width: 147px; margin-right: 1em; margin-bottom: 0.5em; margin-top: 3px">
+    <img src="images/diversity/mixed4a_143_optimized.png" />
+    <span class="figcaption">Simple optimization</span>
+  </span>
+  Looking at it in isolation one might infer that this neuron activates on the top of dog heads, as the optimization shows both eyes and only downward curved edges.
+  Looking at the optimization with diversity however, we see optimization results which don't include eyes, and also one which includes upward curved edges. We thus have to broaden our expectation of what this neuron activates on to be mostly about the fur texture. Checking this hypothesis against dataset examples shows that is broadly correct. Note the spoon with a texture and color similar enough to dog fur for the neuron to activate.
+</p>
+
+<figure class="base-grid">
+  <div style="grid-column: text;">
     <img src="images/diversity/mixed4a_143_diversity.png" />
     <figcaption>
-      Optimization with diversity shows different facets of the feature. <i>Layer mixed4a, Unit 143</i>
+      Optimization with diversity. <i>Layer mixed4a, Unit 143</i>
     </figcaption>
   </div>
-  <div style="">
+  <div style="grid-column: gutter;">
     <img style="max-width: 147px;"src="images/diversity/mixed4a_143_examples.jpg" />
     <figcaption>Dataset examples</figcaption>
   </div>
@@ -364,36 +376,17 @@
 
 <p>
   The effect of diversity can be even more striking in higher level neurons, where it can show us different types of objects that stimulate a neuron.
-  For example, one neuron seems to responds to people's shoulders and arms.
-</p>
-
-<figure class="grid l-page" style="grid-template-columns: repeat(6, 1fr)">
-  <div style="">
-    <img style="max-width: 147px;" src="images/diversity/mixed4e_718_optimized.png" />
-    <figcaption>Optimization</figcaption>
-  </div>
-  <div style="grid-column-end: span 4">
-    <img src="images/diversity/mixed4e_718_diversity.png" />
-    <figcaption>Shoulders & arms? <i>Layer mixed4e, Unit 718</i></figcaption>
-  </div>
-  <div style="">
-    <img style="max-width: 147px;"src="images/diversity/mixed4e_718_examples.jpg" />
-    <figcaption>Dataset examples</figcaption>
-  </div>
-</figure>
-
-<p>
-  This neuron responds to different kinds of balls, even though they have a variety of appearances.
+  For example, one neuron responds to different kinds of balls, even though they have a variety of appearances.
 </p>
 
 <figure class="grid l-page" style="grid-template-columns: repeat(6, 1fr)">
   <div style="">
     <img style="max-width: 147px;" src="images/diversity/mixed5a_9_optimized.png" />
-    <figcaption>Optimization</figcaption>
+    <figcaption>Simple Optimization</figcaption>
   </div>
   <div style="grid-column-end: span 4">
     <img src="images/diversity/mixed5a_9_diversity.png" />
-    <figcaption>Multiple types of balls? <i>Layer mixed5a, Unit 9</i></figcaption>
+    <figcaption>Optimization with diversity reveals multiple types of balls. <i>Layer mixed5a, Unit 9</i></figcaption>
   </div>
   <div style="">
     <img style="max-width: 147px;"src="images/diversity/mixed5a_9_examples.jpg" />
@@ -402,18 +395,26 @@
 </figure>
 
 <p>
-  While the examples above represent a mostly coherent idea, there are also neurons that represent strange mixtures of ideas.
+  This simpler approach has a number of shortcomings:
+  For one, the pressure to make examples different can cause unrelated artifacts (such as eyes) to appear.
+  Additionally, the optimisation may make examples be different in an unnatural way.
+  For example, in the above example one might want to see examples of soccer balls clearly separated from other types of balls like golf or tennis balls.
+  Dataset based approaches such as <d-cite key="mneuron2015">Wei <i>et al.</i></d-cite> can split features apart more naturally -- however they may not be as helpful in understanding how the model will behave on different data.
+</p>
+
+<p>
+  Diversity also starts to brush on a more fundamental issue: while the examples above represent a mostly coherent idea, there are also neurons that represent strange mixtures of ideas.
   Below, a neuron to responds to two types of animal faces, and also to car bodys.
 </p>
 
 <figure class="grid l-page" style="grid-template-columns: repeat(6, 1fr)">
   <div style="">
     <img style="max-width: 147px;" src="images/diversity/mixed4e_55_optimized.png" />
-    <figcaption>Optimization</figcaption>
+    <figcaption>Simple Optimization</figcaption>
   </div>
   <div style="grid-column-end: span 4">
     <img src="images/diversity/mixed4e_55_diversity.png" />
-    <figcaption>Cats, foxes and cars? <i>Layer mixed4e, Unit 55</i></figcaption>
+    <figcaption>Optimization with diversity show cats, foxes, but also cars. <i>Layer mixed4e, Unit 55</i></figcaption>
   </div>
   <div style="">
     <img style="max-width: 147px;"src="images/diversity/mixed4e_55_examples.jpg" />
@@ -530,7 +531,7 @@
 </p>
 
 <p>
-  In fact, if you look at most notable papers on feature visualization, some approach to regularization will be one of their main points.
+  In fact, if you look at most notable papers on feature visualization, one of their main points will usually be an approach to regularization.
   Researchers have tried a lot of different things!
 </p>
 
@@ -566,6 +567,9 @@
 </p>
 
 <figure class="shaded-figure base-grid">
+  <figcaption style="grid-column: kicker;">
+    <p>Frequency penalization directly targets high frequency noise</p>
+  </figcaption>
   <d-figure style="grid-column: text;" id="regularizer-playground-freq"></d-figure>
 </figure>
 <!--
@@ -576,7 +580,7 @@
 
 
 <p>
-  <b>Transformation robustness</b> tries to find examples that still work if we slightly transform them.
+  <b>Transformation robustness</b> tries to find examples that still activate the optimization target highly even if we slightly transform them.
   Even a small amount seems to be very effective in the case of images <d-cite key="mordvintsev2015inceptionism"></d-cite>, 
   especially when combined with a more general regularizer for high-frequencies <d-cite key="oygard2015vis,mordvintsev2016deepdreaming"></d-cite>.
   Concretely, this means that we stochastically jitter, rotate or scale the image before applying the optimization step.
@@ -586,6 +590,9 @@
 <!--<figure id="optimize-jitter" class="l-page-outset"></figure>-->
 
 <figure class="shaded-figure base-grid">
+  <figcaption style="grid-column: kicker;">
+    <p>Stochastically transforming the image before applying the optimization step suppresses noise</p>
+  </figcaption>
   <d-figure style="grid-column: text;" id="regularizer-playground-robust"></d-figure>
 </figure>
 
@@ -594,7 +601,7 @@
 <!-- technically most challenging -->
 
 <p>
-  <b>Learned priors.</b>
+  <b id="learned-priors">Learned priors.</b>
   Our previous regularizers use very simple heuristics to keep examples reasonable.
   A natural next step is to actually learn a model of the real data and try to enforce that.
   With a strong model, this becomes similar to searching over the dataset.
@@ -608,7 +615,9 @@
   An alternative approach is to learn a prior that gives you access to the gradient of probability;
   this allows you to jointly optimize for the prior along with your objective <d-cite key="nguyen2016plug,mordvintsev2015inceptionism"></d-cite>.
   When one optimizes for the prior and the probability of a class, one recovers a generative model of the data conditioned on that particular class.
+  Finally, <d-cite key="mneuron2015">Wei <i>et al.</i></d-cite> approximate a generative model prior, at least for the color distribution, by penalizing distance between patches of the output and the nearest patches retrieved from a database of image patches collected from the training data. 
 </p>
+
 
 
 
@@ -677,6 +686,9 @@
 </p>
 
 <figure class="shaded-figure base-grid">
+  <figcaption style="grid-column: kicker;">
+    <p>Combining the preconditioning and transformation robustness improves quality even further</p>
+  </figcaption>
   <d-figure style="grid-column: text;" id="opt-explore2"></d-figure>
 </figure>
 
@@ -719,6 +731,11 @@
   By itself, feature visualization will never give a completely satisfactory
   understanding. We see it as one of the fundamental building blocks that,
   combined with additional tools, will empower humans to understand these systems.
+</p>
+
+<p>
+  There remains still a lot of important work to be done in improving feature visualization.
+  Some issues that stand out include understanding neuron interaction, finding which units are most meaningful for understanding neural net activations, and giving a holistic view of the facets of a feature.
 </p>
 
 </d-article>
