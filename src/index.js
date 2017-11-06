@@ -151,16 +151,15 @@ new GoogleNetExamples({target: document.getElementById("googlenet-examples")});
 const OptExploreFlex_configs = {
   OptExploreNaive: {
     configurable: ["neurons", "learning_rate"],
-    icon_var_values: { default_transforms: 1, pyramid: 1, color: 0},
-    var_values: { default_transforms: 0, learning_rate: 3, pyramid: 0, color: 0},
-    // explain_text: "Even if you carefully tune learning rate, you'll get noise.",
-    config: require('../static/images/OptExplore.json')
+    icon_var_values: {decorrelate: 1, transforms: 1},
+    var_values: {decorrelate: 0, learning_rate: 2, transforms: 0},
+    config: require('../static/images/Preconditioner.json')
   },
   OptExplore: {
-    configurable: ["neurons", "learning_rate", ["pyramid", "color"], "default_transforms"],
-    icon_var_values: {default_transforms: 1, pyramid: 1, color: 0},
-    var_values: {default_transforms: 1, learning_rate: 2, pyramid: 1, color: 1},
-    config: require('../static/images/OptExplore.json')
+    configurable: ["neurons", "learning_rate", ["decorrelate", "transforms"]],
+    icon_var_values: {decorrelate: 1, transforms: 1},
+    var_values: {decorrelate: 1, learning_rate: 2, transforms: 1},
+    config: require('../static/images/Preconditioner.json')
   },
   TransformExplore: {
     configurable: ["neurons", "jitter", "random_rotate", "random_scale"],
@@ -180,7 +179,7 @@ const OptExploreFlex_configs = {
   const figure = document.getElementById("optimize-naive");
   figure.addEventListener("ready", function() {
     const app = new OptExploreFlex({target: figure});
-    app.load_spritemap("OptExplore", OptExploreFlex_configs.OptExploreNaive)
+    app.load_spritemap("Preconditioner", OptExploreFlex_configs.OptExploreNaive)
   });
 }
 
@@ -188,7 +187,7 @@ const OptExploreFlex_configs = {
   const figure = document.getElementById("opt-explore2");
   figure.addEventListener("ready", function() {
     const app = new OptExploreFlex({target: figure});
-    app.load_spritemap("OptExplore", OptExploreFlex_configs.OptExplore)
+    app.load_spritemap("Preconditioner", OptExploreFlex_configs.OptExplore)
   });
 }
 
@@ -204,6 +203,6 @@ const OptExploreFlex_configs = {
   const figure = document.getElementById("regularizer-playground-freq");
   figure.addEventListener("ready", function() {
     const app = new OptExploreFlex({target: figure});
-    app.load_spritemap("PenalizeFreq", OptExploreFlex_configs.PenalizeFreq)
+    app.load_spritemap("PenalizeFreq2", OptExploreFlex_configs.PenalizeFreq)
   });
 }

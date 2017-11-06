@@ -41,19 +41,6 @@
   ], 
   "x_vars": [
     {
-      "name": "steps", 
-      "label": "steps", 
-      "type": "number", 
-      "default": 4, 
-      "values": [
-        1, 
-        32, 
-        128, 
-        256, 
-        2048
-      ]
-    }, 
-    {
       "name": "neurons", 
       "label": "neurons", 
       "type": "icon", 
@@ -65,7 +52,20 @@
         "mixed4c:450", 
         "mixed4d:479"
       ]
+    },
+    {
+      "name": "steps", 
+      "label": "steps", 
+      "type": "number", 
+      "default": 4, 
+      "values": [
+        1, 
+        32, 
+        128, 
+        256, 
+        2048
+      ]
     }
   ], 
-  "size": 60
+  "size": 68
 }
