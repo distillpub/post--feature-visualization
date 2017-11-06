@@ -2,7 +2,7 @@
   
   <div class="frow">
       
-    <div class="fcolumn">
+    <div id="icons-first" class="fcolumn">
       <div class="icons">
         {{#each range(6) as i}}
           <div class="icon {{(x == i+1)? 'selected' : ''}}" on:click='set({x: i+1})'>
@@ -12,19 +12,20 @@
       </div>
     </div>
     
-    <div class="fcolumn">
+    <div id="sprite-first" class="fcolumn">
       <Sprite src_class={{sprite_class}} size=180 sprite_size=180 y=0 x={{x}} sprite_scale=1/>
+      <span class="figcaption">Neuron 1</span>
     </div>
     
     <div class="operator">
-      <img src="images/join_arrow.svg">
     </div>
     
-    <div class="fcolumn">
+    <div id="sprite-second" class="fcolumn">
       <Sprite src_class={{sprite_class}} size=180 sprite_size=180 y={{y}} x=0 sprite_scale=1/>
+      <span class="figcaption">Neuron 2</span>
     </div>
   
-    <div class="fcolumn">
+    <div id="icons-second" class="fcolumn">
       <div class="icons">
         {{#each range(6) as i}}
           <div class="icon {{(y == i+1)? 'selected' : ''}}" on:click='set({y: i+1})' >
@@ -37,8 +38,9 @@
   </div>
   
   <div class="frow" style="">
-    <div class="result c">
+    <div class="result c fcolumn">
       <Sprite src_class={{sprite_class}} size=180 sprite_size=180 y={{y}} x={{x}} sprite_scale=1/>
+      <span class="figcaption">Jointly optimized</span>
     </div>
   </div>
 </div>
@@ -52,31 +54,24 @@
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   .fcolumn {
     display: flex;
     flex-flow: column;
-    margin-left: 10px;
     margin-right: 10px;
-  }
-  
-  .fcolumn:first-of-type {
-    margin-left: 0;
-  }
-
-  .fcolumn:last-of-type {
-    margin-right: 0;
-  }
-
-  .fcolumn > * {
     margin-bottom: 10px;
+    z-index: 2;
   }
 
-  .fcolumn > *:last-child {
+  /*.fcolumn > * {
+    margin-bottom: 10px;
+  }*/
+
+  /*.fcolumn > *:last-child {
     margin-bottom: 0;
-  }
+  }*/
 
   /* -end FRow & FColumn end- */
 
@@ -95,8 +90,8 @@
     padding-bottom: 6px;
     margin-bottom: 11px;
     
-    margin-left: 3px;
-    margin-right: 3px;
+    /*margin-left: 3px;*/
+    margin-right: 6px;
     border-bottom: 1px solid #dddddd;
   }
 
@@ -114,10 +109,6 @@
   .icon.selected div {
     opacity: 1;
   }
-  
-  .linear-combinations {
-    margin-bottom: -26px;
-  }
 
   
   /* linear Combinations */
@@ -131,32 +122,87 @@
     max-width: 200px;
   }
   
-  .result.c {
-    top: -26px;
-    margin-right: auto;
-    margin-left: auto;
-    position: relative;
-    border: 2px solid white;
-    box-shadow: 0px 5px 20px hsla(0,0%,0%,0.3);
+  #icons-first {
+    order: 1
+  }
+  #sprite-first {
+    order: 2
+  }
+  #sprite-second {
+    order: 5
+  }
+  #icons-second {
+    order: 4
+  }
+  
+  .result {
+    z-index: 3;
   }
   
   .operator {
-    display: flex;
-    align-items: center;
-    margin-right: 0px;
-    margin-left: 0px;
-    width: 40px;
-    height: 180px;
+    display: none;
   }
   
-  .operator img {
-    width: 204px !important;
-    height: 67px !important;
-    position: relative;
-    z-index: -1;
-    left: -82px;
-    opacity: 0.3;
-    top: 28px;
+  @media (min-width: 1024px) {
+    
+    .fcolumn {
+      margin-left: 10px;
+    }
+    
+    .fcolumn:first-of-type {
+      margin-left: 0;
+    }
+
+    .fcolumn:last-of-type {
+      margin-right: 0;
+    }
+    
+    #icons-first {
+      order: 1
+    }
+    #sprite-first {
+      order: 2;
+      margin-right: 0;
+    }
+    #sprite-second {
+      order: 4;
+      margin-left: 0;
+    }
+    #icons-second {
+      order: 5
+    }
+    
+    .operator {
+      display: block;
+      background-image: url(images/join_arrow.svg);
+      background-position: center 70%;
+      background-repeat: no-repeat;
+      background-size: 280%;
+      min-width: 60px;
+      height: 180px;
+      overflow: visible;
+      order: 3;
+      opacity: 0.33;
+    }
+    
+    .result.c {
+      top: -64px;
+      margin-left: 240px;
+      position: relative;
+    }
+    
+    .result.c > div {
+      border: 2px solid white;
+      box-shadow: 0px 5px 20px hsla(0,0%,0%,0.3);
+    }
+    
+    #sprite-second > span {
+      text-align: right;
+    }
+    
+    .linear-combinations {
+      margin-bottom: -84px;
+    }
   }
 
   

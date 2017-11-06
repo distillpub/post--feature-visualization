@@ -503,7 +503,7 @@
   <figcaption style="grid-column: kicker;">
     By jointly optimizing two neurons we can get a sense of how they interact.
   </figcaption>
-  <d-figure style="grid-column: text; overflow: visible;" id="linear-combinations"></d-figure>
+  <d-figure style="grid-column: text-start / screen-end; overflow: visible; contain: unset;" id="linear-combinations"></d-figure>
 </figure>
 
 <p>
@@ -586,10 +586,7 @@
   And in the middle we have three main families of regularization options.
 </p>
 
-<figure style="grid-column: page; min-height: 750px; padding-bottom: 10px;">
-  <d-figure id="feature-vis-history"></d-figure>
-</figure>
-
+<%= require('raw-loader!./diagrams/RegReviewRendered.txt') %>
 
 <h3 id="regularization-families">Three Families of Regularization</h3>
 
@@ -700,8 +697,23 @@
   </d-footnote>
   with frequencies scaled so that they all have equal energy.
   <d-footnote>
-    Note that we have to be careful to get the colors to be decorrelated, too. The Fourier transforms decorrelates spatially, but a correlation will still exist between colors.
-    To address this, we explicitly measure the correlation between colors in the training set and use a Cholesky decomposition to decorrelate them.
+      Note that we have to be careful to get the colors to be decorrelated, too. The Fourier transforms decorrelates spatially, but a correlation will still exist between colors.
+      To address this, we explicitly measure the correlation between colors in the training set and use a Cholesky decomposition to decorrelate them. Compare the directions of steepest decent before and after decorrelating colors:
+      <br />
+      <span style="display: block; padding-top: 1em;">
+        <span style="display: inline-block;">
+          <img style="height: 112px; width: 112px; display: block;" src="images/correlated_colors.jpeg"/>
+          <span class="figcaption">
+            Correlated Colors
+          </span>
+        </span>
+        <span style="display: inline-block;">
+          <img style="height: 112px; width: 112px; display: block;" src="images/decorrelated_colors.jpeg"/>    
+          <span class="figcaption">
+            Decorrelated Colors
+          </span>  
+        </span>
+      </span>
   </d-footnote>
 </p>
 <p>

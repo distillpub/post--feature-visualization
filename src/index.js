@@ -4,7 +4,7 @@ import OptExplore            from "./diagrams/OptExplore.html";
 import OptExplore2           from "./diagrams/OptExplore2.html";
 import OptExploreFlex        from "./diagrams/OptExploreFlex.html";
 import GradArtifacts         from "./diagrams/GradArtifacts.html";
-import RegReview             from "./diagrams/RegReview.html";
+// import RegReview             from "./diagrams/RegReview.html";
 import OptAndExamples        from "./diagrams/OptAndExamples.html";
 import LinearCombinations    from "./diagrams/LinearCombinations.html";
 import OptProgress           from "./diagrams/OptProgress.html";
@@ -47,12 +47,12 @@ new GoogleNetExamples({target: document.getElementById("googlenet-examples")});
   });
 }
 
-{
-  const figure = document.getElementById("feature-vis-history")
-  figure.addEventListener("ready", function() {
-    new RegReview({target: figure});
-  });
-}
+// {
+//   const figure = document.getElementById("feature-vis-history")
+//   figure.addEventListener("ready", function() {
+//     new RegReview({target: figure});
+//   });
+// }
 
 {
   const figure = document.getElementById("optimization-and-examples");
@@ -149,29 +149,33 @@ new GoogleNetExamples({target: document.getElementById("googlenet-examples")});
 // optimization explore widgets
 
 const OptExploreFlex_configs = {
+  
   OptExploreNaive: {
     configurable: ["neurons", "learning_rate"],
     icon_var_values: {decorrelate: 1, transforms: 1},
     var_values: {decorrelate: 0, learning_rate: 2, transforms: 0},
     config: require('../static/images/Preconditioner.json')
   },
+  
+  PenalizeFreq: {
+    configurable: ["neurons", "l1", "tv", "blur"],
+    var_values: {l1: 1, tv: 2, blur: 2},
+    icon_var_values: {l1: 1, tv: 3, blur: 3},
+    config: require('../static/images/PenalizeFreq.json')
+  },
+  
+  TransformExplore: {
+    configurable: ["neurons", "jitter", "random_rotate", "random_scale"],
+    icon_var_values: {jitter: 3, random_rotate: 2, random_scale: 2},
+    var_values: {jitter: 1, random_rotate: 1, random_scale: 1},
+    config: require('../static/images/TransformExplore.json')
+  },
+  
   OptExplore: {
     configurable: ["neurons", "learning_rate", ["decorrelate", "transforms"]],
     icon_var_values: {decorrelate: 1, transforms: 1},
     var_values: {decorrelate: 1, learning_rate: 2, transforms: 1},
     config: require('../static/images/Preconditioner.json')
-  },
-  TransformExplore: {
-    configurable: ["neurons", "jitter", "random_rotate", "random_scale"],
-    icon_var_values: {jitter: 3, random_rotate: 2, random_scale: 2},
-    var_values: {jitter: 2, random_rotate: 1, random_scale: 2},
-    config: require('../static/images/TransformExplore.json')
-  },
-  PenalizeFreq: {
-    configurable: ["neurons", "l1", "tv", "blur"],
-    var_values: {l1: 1, tv: 3, blur: 3},
-    icon_var_values: {l1: 1, tv: 3, blur: 3},
-    config: require('../static/images/PenalizeFreq.json')
   }
 };
 
