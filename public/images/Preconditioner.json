@@ -1,0 +1,66 @@
+{
+  "y_vars": [
+    {
+      "name": "decorrelate", 
+      "label": "Decorrelated Space", 
+      "type": "binary", 
+      "default": 0, 
+      "values": [
+        0, 
+        1
+      ]
+    }, 
+    {
+      "name": "transforms", 
+      "label": "Transformation Robustness", 
+      "type": "binary", 
+      "default": 0, 
+      "values": [
+        0, 
+        1
+      ]
+    }, 
+    {
+      "name": "learning_rate", 
+      "label": "Learning Rate", 
+      "type": "number", 
+      "default": 0.1, 
+      "values": [
+        0.01, 
+        0.025, 
+        0.05, 
+        0.1, 
+        0.25
+      ]
+    }
+  ], 
+  "x_vars": [
+    {
+      "name": "neurons", 
+      "label": "neurons", 
+      "type": "icon", 
+      "values": [
+        "mixed4b:452", 
+        "mixed4b:465", 
+        "mixed4b:475", 
+        "mixed4b:464", 
+        "mixed4c:450", 
+        "mixed4d:479"
+      ]
+    },
+    {
+      "name": "steps", 
+      "label": "steps", 
+      "type": "number", 
+      "default": 4, 
+      "values": [
+        1, 
+        48, 
+        128, 
+        256, 
+        2048
+      ]
+    }
+  ], 
+  "size": 68
+}

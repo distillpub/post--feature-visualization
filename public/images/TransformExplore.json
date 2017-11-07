@@ -1,0 +1,68 @@
+{
+  "y_vars": [
+    {
+      "type": "number", 
+      "name": "jitter", 
+      "values": [
+        0, 
+        1, 
+        8, 
+        32
+      ], 
+      "label": "jitter", 
+      "default": 2
+    }, 
+    {
+      "type": "number", 
+      "name": "random_rotate", 
+      "values": [
+        0, 
+        5, 
+        15, 
+        45, 
+        180
+      ], 
+      "label": "random_rotate"
+    }, 
+    {
+      "type": "number", 
+      "name": "random_scale", 
+      "values": [
+        1, 
+        1.1, 
+        1.2, 
+        1.8
+      ], 
+      "label": "random_scale"
+    }
+  ], 
+  "x_vars": [
+    {
+      "type": "icon", 
+      "name": "neurons", 
+      "values": [
+        "mixed4b:452", 
+        "mixed4b:465", 
+        "mixed4b:475", 
+        "mixed4b:464", 
+        "mixed4c:450", 
+        "mixed4d:479"
+      ], 
+      "label": "neurons"
+    },
+    {
+      "type": "number", 
+      "name": "steps", 
+      "values": [
+        1, 
+        32, 
+        128, 
+        256, 
+        2048
+      ], 
+      "label": "steps", 
+      "default": 4
+    }
+  ], 
+  "size": 68
+}

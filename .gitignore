@@ -61,5 +61,4 @@ typings/
 .DS_Store
 
 # don't need the built files
-public
 bundle-size-report.txt
