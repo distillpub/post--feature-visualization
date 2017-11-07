@@ -1,0 +1,353 @@
+<!doctype html>
+
+<head>
+  <meta name="viewport" content="width=1280">
+  <meta charset="utf8">
+  <script src="https://distill.pub/template.v2.js"></script>
+  <style>
+  
+    d-article {
+      line-height: 1em;
+    }
+    
+    d-byline,
+    d-appendix {
+      display: none;
+    }
+  
+    h4 {
+      display: block;
+      width: 100%;
+    }
+    
+    d-figure {
+      display: flex;
+      flex-flow: row;
+      padding-left: 2em;
+      padding-right: 2em;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      justify-content: center;
+    }
+    
+    .positive,
+    .negative {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      max-width: 370px;
+    }
+    
+    .positive {
+      padding-left: 1em;
+      padding-right: 1em;
+      margin-left: 1em;
+      margin-right: 1em;
+      border-left: 1px solid rgba(0,0,0,0.1);
+      border-right: 1px solid rgba(0,0,0,0.1);
+      justify-content: space-between;
+    }
+    
+    .figcaption {
+      display: block;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 12px;
+      line-height: 1.5em;
+    }
+    
+    .diversity {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      width: 148px;
+      height: 147px
+    }
+    
+    .diversity > div {
+      zoom: 0.496598639;
+    }
+    
+    .channel {
+      margin-right: 1em;
+    }
+    
+    .channels {
+      grid-column: screen;
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .channels li {
+      contain: content;
+      overflow: hidden;
+    }
+    
+    .sprite {
+      display: inline-block;
+      margin: 1px;
+      width: 147px;
+      height: 147px;
+    }
+    
+    .sprite.neuron {
+      background-position-x: 0px;
+    }
+    
+    .sprite.channel {
+      background-position-x: -147px;
+    }
+    
+    .sprite.channel-negative {
+      background-position-x: -294px;
+    }
+    
+    .sprite.channel-diversity-0 {
+      background-position-x: -441px;
+    }
+    
+    .sprite.channel-diversity-1 {
+      background-position-x: -588px;
+    }
+    
+    .sprite.channel-diversity-2 {
+      background-position-x: -735px;
+    }
+    
+    .sprite.channel-diversity-3 {
+      background-position-x: -882px;
+    }
+    
+    .dataset-examples {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      width: 375px;
+      height: 147px
+    }
+    
+    .dataset-examples .sprite {
+      height: 73px;
+      width: 73px;
+      margin-top: 1px;
+      margin-left: 1px;
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+    
+    
+      .channels .sprite.dataset-index-0 {
+        background-position-x: -1029px !important;
+      }
+      
+      .channels .sprite.index-0 {
+        background-position-y: -0px;
+      }
+      
+      .channels .dataset-negative .sprite.index-0 {
+        background-position-y: -74px !important;
+      }
+
+      .channels .sprite.dataset-index-1 {
+        background-position-x: -1103px !important;
+      }
+      
+      .channels .sprite.index-1 {
+        background-position-y: -147px;
+      }
+      
+      .channels .dataset-negative .sprite.index-1 {
+        background-position-y: -221px !important;
+      }
+
+      .channels .sprite.dataset-index-2 {
+        background-position-x: -1177px !important;
+      }
+      
+      .channels .sprite.index-2 {
+        background-position-y: -294px;
+      }
+      
+      .channels .dataset-negative .sprite.index-2 {
+        background-position-y: -368px !important;
+      }
+
+      .channels .sprite.dataset-index-3 {
+        background-position-x: -1251px !important;
+      }
+      
+      .channels .sprite.index-3 {
+        background-position-y: -441px;
+      }
+      
+      .channels .dataset-negative .sprite.index-3 {
+        background-position-y: -515px !important;
+      }
+
+      .channels .sprite.dataset-index-4 {
+        background-position-x: -1325px !important;
+      }
+      
+      .channels .sprite.index-4 {
+        background-position-y: -588px;
+      }
+      
+      .channels .dataset-negative .sprite.index-4 {
+        background-position-y: -662px !important;
+      }
+
+      .channels .sprite.dataset-index-5 {
+        background-position-x: -1399px !important;
+      }
+      
+      .channels .sprite.index-5 {
+        background-position-y: -735px;
+      }
+      
+      .channels .dataset-negative .sprite.index-5 {
+        background-position-y: -809px !important;
+      }
+
+      .channels .sprite.dataset-index-6 {
+        background-position-x: -1473px !important;
+      }
+      
+      .channels .sprite.index-6 {
+        background-position-y: -882px;
+      }
+      
+      .channels .dataset-negative .sprite.index-6 {
+        background-position-y: -956px !important;
+      }
+
+      .channels .sprite.dataset-index-7 {
+        background-position-x: -1547px !important;
+      }
+      
+      .channels .sprite.index-7 {
+        background-position-y: -1029px;
+      }
+      
+      .channels .dataset-negative .sprite.index-7 {
+        background-position-y: -1103px !important;
+      }
+
+      .channels .sprite.dataset-index-8 {
+        background-position-x: -1621px !important;
+      }
+      
+      .channels .sprite.index-8 {
+        background-position-y: -1176px;
+      }
+      
+      .channels .dataset-negative .sprite.index-8 {
+        background-position-y: -1250px !important;
+      }
+
+      .channels .sprite.dataset-index-9 {
+        background-position-x: -1695px !important;
+      }
+      
+      .channels .sprite.index-9 {
+        background-position-y: -1323px;
+      }
+      
+      .channels .dataset-negative .sprite.index-9 {
+        background-position-y: -1397px !important;
+      }
+    
+    
+    .article-nav {
+      grid-column: page;
+    }
+    
+    .navlist li {
+      display: inline;
+      list-style-type: none;
+      padding-right: 2em;
+      line-height: 2em;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      const figures = document.querySelectorAll('d-figure');
+      for (const figure of figures) {
+        figure.addEventListener("ready", function() {
+          const styleTag = figure.querySelector('style');
+          const source = styleTag.getAttribute('data-img-src');
+          const channel = styleTag.getAttribute('data-channel');
+          const css = "#channel-" + channel + " .sprite {\nbackground-image: url(" + source + ");\n}";
+          styleTag.innerHTML = css;
+          console.log(css);
+        });
+      }
+    });
+  </script>
+</head>
+
+<body>
+<d-front-matter>
+<script type="text/json">{
+"title": "",
+"description": "",
+"authors": []
+}</script>
+</d-front-matter>
+  <distill-header></distill-header>
+  <d-title>
+    <h1>Layer to</h1>
+  </d-title>
+  <d-article>
+  
+  <nav class="article-nav">
+  
+    
+    <ul class="navlist">
+      <li><a href="https://distill.pub/2017/feature-visualization/appendix/">Appendix overview</a></li>
+      <li><a href="https://distill.pub/2017/feature-visualization/">Main article</a></li>
+    </ul>
+    <ul class="navlist">
+      <li>
+        <a href="3a.html">Layer 3a</a>
+      </li>
+      <li>
+        <a href="3b.html">Layer 3b</a>
+      </li>
+      <li>
+        <a href="4a.html">Layer 4a</a>
+      </li>
+      <li>
+        <a href="4b.html">Layer 4b</a>
+      </li>
+      <li>
+        <a href="4c.html">Layer 4c</a>
+      </li>
+      <li>
+        <a href="4d.html">Layer 4d</a>
+      </li>
+      <li>
+        <a href="4e.html">Layer 4e</a>
+      </li>
+      <li>
+        <a href="5a.html">Layer 5a</a>
+      </li>
+      <li>
+        <a href="5b.html">Layer 5b</a>
+      </li>
+    </ul>
+  
+  </nav>
+  
+  <hr style="margin-top: 20px;"/>
+  
+  <ul class="channels">
+    <!--.DS_Store-->
+    
+  
+  </ul>
+  </d-article>
+  <distill-footer></distill-footer>
+</body>
+  
