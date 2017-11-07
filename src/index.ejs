@@ -794,6 +794,10 @@
   Some issues that stand out include understanding neuron interaction, finding which units are most meaningful for understanding neural net activations, and giving a holistic view of the facets of a feature.
 </p>
 
+<p>
+  In the meantime, curious readers are invited to explore <a href="appendix/">visualizations of all GoogLeNet channels</a>.
+</p>
+
 </d-article>
 
 <d-appendix>
@@ -810,20 +814,21 @@
     Greg Corrado, Blaise Aguera y Arcas,
     Katherine Ye, Michael Nielsen, Emma Pierson, Dario Amodei, 
     Mike Tyka,
-    Andrea Vedaldi, Ruth Fong, 
-    Timon Ruban, Jason Freidenfelds, 
+    Andrea Vedaldi, Ruth Fong, Jason Freidenfelds,
+    Geoffrey Hinton,
+    Timon Ruban, 
     Been Kim, Martin Wattenberg, and Fernanda Viegas.
   </p>
 
   <h3 id="author-contributions">Author Contributions</h3>
   <p>
-    <strong>Writing, Exposition, and Diagram Contributions.</strong> Chris drafted most of the text of the article and made the original version of most interactive diagrams. Ludwig made the neuron addition, dataset examples, and interpolation diagrams, as well as refined the others.
+    <strong>Writing, Exposition, and Diagram Contributions.</strong> Chris drafted most of the text of the article and made the original version of most interactive diagrams. Ludwig made the neuron addition, dataset examples, and interpolation diagrams, as well as refined the others. Ludwig also created the appendix that visualizes all of GoogLeNet.
   </p>
   <p>
     <strong>Research Contributions.</strong> The biggest technical contribution of this work is likely the section on preconditioning. Alex discovered in prior work that normalizing gradient frequencies had a radical effect on visualizing neurons. Chris reframed this as adaptive gradient descent in a different basis. Together, they iterated on a number of ways of parameterizing images. Similarly, Alex originally introduced the use of diversity term, and Chris reﬁned using it. Chris did the exploration of interpolating between neurons. 
   </p>
   <p>
-    <strong>Infrastructure Contributions.</strong> All experiments are based on code written by Alex, some of which was <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/deepdream/deepdream.ipynb">published previously</a>. Alex, Chris and Ludwig all contributed significantly to refining this into the present code base. Alex and Chris introduced particularly important abstractions. Ludwig created the appendix that visualizes all of GoogLeNet.
+    <strong>Infrastructure Contributions.</strong> All experiments are based on code written by Alex, some of which was <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/deepdream/deepdream.ipynb">published previously</a>. Alex, Chris and Ludwig all contributed significantly to refining this into the present code base. Alex and Chris introduced particularly important abstractions.
   </p>
   
   <h3 id="discussion-review">Discussion and Review</h3>
