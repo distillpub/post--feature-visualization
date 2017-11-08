@@ -11,16 +11,8 @@
     </div>
   {{/each}}
 </div>
-<figcaption>
-  Feature visualization allows us to see how GoogLeNet, trained on the ImageNet dataset, builds up its understanding of images over many layers.
-  Visualizations of all channel are available in the <a href="appendix/">appendix</a>.
-</figcaption>
 
 <style>
-
-  figcaption {
-    grid-column: text;
-  }
 
   .sprite_hero {
     background-image: url("images/sprite_hero.png");
@@ -30,7 +22,8 @@
     font-size: 16px;
     display: flex;
     flex-flow: column;
-    grid-column: text-start / screen-end;
+    /*grid-column: text-start / screen-end;*/
+    align-items: center;
     /*overflow-x: hidden;*/
     /*overflow-y: visible;*/
   }

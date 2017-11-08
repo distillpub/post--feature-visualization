@@ -39,10 +39,16 @@
 </d-front-matter>
 
 
-<d-title>
+<d-title style="contain: style; overflow: visible;">
   <h1>Feature Visualization</h1>
   <p style="grid-column: text;">How neural networks build up their understanding of images</p>
-  <figure class="base-grid" id="googlenet-examples"></figure>
+  <figure class="base-grid">
+    <div style="grid-column: screen; padding-left: 16px; padding-right: 16px;" id="googlenet-examples"></div>
+    <figcaption style="grid-column: text;">
+      Feature visualization allows us to see how GoogLeNet<d-cite key="szegedy2015going"></d-cite>, trained on the ImageNet<d-cite key="deng2009imagenet"></d-cite> dataset, builds up its understanding of images over many layers.
+      Visualizations of all channel are available in the <a href="appendix/">appendix</a>.
+    </figcaption>
+  </figure>
 </d-title>
 
 <d-article>
@@ -50,7 +56,6 @@
 <p>
   There is a growing sense that neural networks need to be interpretable to humans.
   The field of neural network interpretability has formed in response to these concerns.
-  <!-- Over the recent years we have seen a new field of research form in response to this concern. -->
   As it matures, two major threads of research have begun to coalesce: feature visualization and attribution.
 </p>
 
@@ -585,6 +590,7 @@
 </p>
 
 <%= require('raw-loader!./diagrams/RegReviewRendered.txt') %>
+<!-- <d-figure id="feature-vis-history"></d-figure> -->
 
 <h3 id="regularization-families">Three Families of Regularization</h3>
 
@@ -816,6 +822,11 @@
     Geoffrey Hinton,
     Timon Ruban, 
     Been Kim, Martin Wattenberg, and Fernanda Viegas.
+  </p>
+  
+  <p>
+    This work was made possible by many open source tools, for which we are grateful. 
+    In particular, all of our experiments were based on Tensorflow<d-cite key="abadi2016tensorflow"></d-cite>.
   </p>
 
   <h3 id="author-contributions">Author Contributions</h3>

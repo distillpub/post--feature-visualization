@@ -7,7 +7,7 @@
   }
   #feature-vis-history .row .info {
     display: inline-block;
-    width: 280px;
+    width: 320px;
     height: 56px;
     vertical-align: top;
   }
@@ -22,7 +22,7 @@
     vertical-align: top;
   }
   #feature-vis-history .row .info figcaption {
-    width: 210px;
+    width: 250px;
     margin-left: 8px;
     display: inline-block;
   }
@@ -45,7 +45,7 @@
   #feature-vis-history .row .spacer {
     display: inline-block;
     height: 48px;
-    width: 90px;
+    width: 45px;
   }
   
   #feature-vis-history .info p {
@@ -101,129 +101,129 @@
 
 </style>
 
-<figure style="grid-column: page; min-height: 750px; padding-bottom: 10px;" id="feature-vis-history">
-  <div class="row header-row"><div class="info"></div>
-  <div class="spacer"></div>
-  <div style="display: inline-block;"><div class="info" style="display: block;"><figcaption style="width: 200px; height: 60px;"><b>Weak Regularization</b>
-        avoids misleading correlations, but is less connected to real use.</figcaption></div>
-    <div class="sub-headers" style="display: block;"><figcaption><b>Unregularized</b></figcaption>
-      <figcaption><b><div>Frequency</div><div style="margin-top: 0px;">Penalization</div></b></figcaption>
-      <figcaption><b><div>Transformation</div><div style="margin-top: 0px;">Robustness</div></b></figcaption></div></div>
-  <div class="spacer"></div>
-  <div style="display: inline-block;"><div class="info" style="display: block;"><figcaption style="width: 200px; height: 60px;"><b>Strong Regularization</b>
-        gives more realistic examples at risk of misleading correlations.</figcaption></div>
-    <div class="sub-headers" style="display: block;"><figcaption><b><div>Learned</div><div style="margin-top: 0px;">Prior</div></b></figcaption>
-    <figcaption><b><div>Dataset</div><div style="margin-top: 0px;">Examples</div></b></figcaption></div></div></div>
+<figure style="grid-column: page-start / screen-end; min-height: 750px; padding-bottom: 10px;" id="feature-vis-history">
+<div svelte-1206690277="" class="row header-row"><div class="info"></div>
+<div class="spacer"></div>
+<div style="display: inline-block;"><div class="info" style="display: block; width: 300px;"><figcaption style="width: 200px; height: 60px;"><b>Weak Regularization</b>
+      avoids misleading correlations, but is less connected to real use.</figcaption></div>
+  <div class="sub-headers" style="display: block;"><figcaption><b>Unregularized</b></figcaption>
+    <figcaption><b><div>Frequency</div><div style="margin-top: 0px;">Penalization</div></b></figcaption>
+    <figcaption><b><div>Transformation</div><div style="margin-top: 0px;">Robustness</div></b></figcaption></div></div>
+<div class="spacer"></div>
+<div style="display: inline-block;"><div class="info" style="display: block;"><figcaption style="width: 200px; height: 60px;"><b>Strong Regularization</b>
+      gives more realistic examples at risk of misleading correlations.</figcaption></div>
+  <div class="sub-headers" style="display: block;"><figcaption><b><div>Learned</div><div style="margin-top: 0px;">Prior</div></b></figcaption>
+  <figcaption><b><div>Dataset</div><div style="margin-top: 0px;">Examples</div></b></figcaption></div></div></div>
 
-<div class="row"><div class="info"><img src="images/prior_vis_icons/Erhan2009.png">
-      <figcaption><p class="paper-title">Erhan, <i>et al.</i>, 2009<noscript></noscript> <d-cite key="erhan2009visualizing"></d-cite></p>
-        <p class="paper-text">Introduced core idea. Minimal regularization.</p></figcaption></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
-  <div class="line"></div><div class="row"><div class="info"><img src="images/prior_vis_icons/Simonyan2013.png">
-      <figcaption><p class="paper-title">Simonyan, <i>et al.</i>, 2013<noscript></noscript> <d-cite key="simonyan2013deep"></d-cite></p>
-        <p class="paper-text">Tries total variation regularizer. Applied to ImageNet.</p></figcaption></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
-  <div class="line"></div><div class="row"><div class="info"><img src="images/prior_vis_icons/Szegedy2013.png">
-      <figcaption><p class="paper-title">Szegedy, <i>et al.</i>, 2013<noscript></noscript> <d-cite key="szegedy2013intriguing"></d-cite></p>
-        <p class="paper-text">Adverserial counterexamples. Visualizes with dataset examples.</p></figcaption></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div></div>
-  <div class="line"></div><div class="row"><div class="info"><img src="images/prior_vis_icons/Nguyen2015.png">
-      <figcaption><p class="paper-title">Nguyen, <i>et al.</i>, 2015<noscript></noscript> <d-cite key="nguyen2015deep"></d-cite></p>
-        <p class="paper-text">Explores counterexamples. Introduces image blurring.</p></figcaption></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
-  <div class="line"></div><div class="row"><div class="info"><img src="images/prior_vis_icons/Mordvintsev2015.png">
-      <figcaption><p class="paper-title">Mordvintsev, <i>et al.</i>, 2015<noscript></noscript> <d-cite key="mordvintsev2015inceptionism"></d-cite></p>
-        <p class="paper-text">Introduced jitter &amp; multi-scale. Explored GMM priors for classes.</p></figcaption></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
-  <div class="line"></div><div class="row"><div class="info"><img src="images/prior_vis_icons/Oygard2015.png">
-      <figcaption><p class="paper-title">Øygard, <i>et al.</i>, 2015<noscript></noscript> <d-cite key="oygard2015vis"></d-cite></p>
-        <p class="paper-text">Introduces gradient blurring. (Also uses jitter.)</p></figcaption></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check set"></div></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
-  <div class="line"></div><div class="row"><div class="info"><img src="images/prior_vis_icons/Tyka2016.png">
-      <figcaption><p class="paper-title">Tyka, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="tyka2016bilateral"></d-cite></p>
-        <p class="paper-text">Regularizes with bilateral filters. (Also uses jitter.)</p></figcaption></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check set"></div></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
-  <div class="line"></div><div class="row"><div class="info"><img src="images/prior_vis_icons/Mordvintsev2016.png">
-      <figcaption><p class="paper-title">Mordvintsev, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="mordvintsev2016deepdreaming"></d-cite></p>
-        <p class="paper-text">Normalizes gradient frequencies. (Also uses jitter.)</p></figcaption></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check set"></div></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
-  <div class="line"></div><div class="row"><div class="info"><img src="images/prior_vis_icons/Nguyen2016a.png">
-      <figcaption><p class="paper-title">Nguyen, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="nguyen2016synthesizing"></d-cite></p>
-        <p class="paper-text">Paramaterizes images with GAN generator.</p></figcaption></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
-  <div class="line"></div><div class="row"><div class="info"><img src="images/prior_vis_icons/Nguyen2016b.png">
-      <figcaption><p class="paper-title">Nguyen, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="nguyen2016plug"></d-cite></p>
-        <p class="paper-text">Uses denoising autoencoder prior to make a generative model.</p></figcaption></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
-    
-    <div class="spacer"></div>
-    
-    <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
-  <div class="line"></div><!---->
+<div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Erhan2009.png">
+    <figcaption><p class="paper-title">Erhan, <i>et al.</i>, 2009<noscript></noscript> <d-cite key="erhan2009visualizing"></d-cite></p>
+      <p class="paper-text">Introduced core idea. Minimal regularization.</p></figcaption></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
+<div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Szegedy2013.png">
+    <figcaption><p class="paper-title">Szegedy, <i>et al.</i>, 2013<noscript></noscript> <d-cite key="szegedy2013intriguing"></d-cite></p>
+      <p class="paper-text">Adversarial examples. Visualizes with dataset examples.</p></figcaption></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div></div>
+<div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Mahendran2015.png">
+    <figcaption><p class="paper-title">Mahendran &amp; Vedaldi, 2015<noscript></noscript> <d-cite key="mahendran2015understanding"></d-cite></p>
+      <p class="paper-text">Introduces total variation regularizer. Reconstructs input from representation.</p></figcaption></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
+<div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Nguyen2015.png">
+    <figcaption><p class="paper-title">Nguyen, <i>et al.</i>, 2015<noscript></noscript> <d-cite key="nguyen2015deep"></d-cite></p>
+      <p class="paper-text">Explores counterexamples. Introduces image blurring.</p></figcaption></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
+<div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Mordvintsev2015.png">
+    <figcaption><p class="paper-title">Mordvintsev, <i>et al.</i>, 2015<noscript></noscript> <d-cite key="mordvintsev2015inceptionism"></d-cite></p>
+      <p class="paper-text">Introduced jitter &amp; multi-scale. Explored GMM priors for classes.</p></figcaption></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
+<div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Oygard2015.png">
+    <figcaption><p class="paper-title">Øygard, <i>et al.</i>, 2015<noscript></noscript> <d-cite key="oygard2015vis"></d-cite></p>
+      <p class="paper-text">Introduces gradient blurring. <br />(Also uses jitter.)</p></figcaption></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check set"></div></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
+<div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Tyka2016.png">
+    <figcaption><p class="paper-title">Tyka, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="tyka2016bilateral"></d-cite></p>
+      <p class="paper-text">Regularizes with bilateral filters. <br />(Also uses jitter.)</p></figcaption></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check set"></div></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
+<div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Mordvintsev2016.png">
+    <figcaption><p class="paper-title">Mordvintsev, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="mordvintsev2016deepdreaming"></d-cite></p>
+      <p class="paper-text">Normalizes gradient frequencies. <br />(Also uses jitter.)</p></figcaption></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check set"></div></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
+<div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Nguyen2016a.png">
+    <figcaption><p class="paper-title">Nguyen, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="nguyen2016synthesizing"></d-cite></p>
+      <p class="paper-text">Paramaterizes images with GAN generator.</p></figcaption></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
+<div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Nguyen2016b.png">
+    <figcaption><p class="paper-title">Nguyen, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="nguyen2016plug"></d-cite></p>
+      <p class="paper-text">Uses denoising autoencoder prior to make a generative model.</p></figcaption></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
+  
+  <div class="spacer"></div>
+  
+  <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
+<div svelte-1206690277="" class="line"></div><!---->
 </figure>
