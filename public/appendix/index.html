@@ -5,178 +5,224 @@
   <meta charset="utf8">
   <script src="https://distill.pub/template.v2.js"></script>
   <style>
-    .navlist {
-      padding-left: 0;
-    }
-    .navlist li {
-      list-style-type: none;
-      line-height: 2em;
-    }
-    .figcaption {
-      display: block;
-      color: rgba(0, 0, 0, 0.6);
-      font-size: 12px;
-      line-height: 1.5em;
-    }
+  .navlist {
+    padding-left: 0;
+  }
+  .navlist li {
+    list-style-type: none;
+    line-height: 2em;
+  }
+  .figcaption {
+    display: block;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .example-images {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .example-images a {
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: none;
     
-    .example-images a {
-      display: inline-block;
-      text-decoration: none;
-      border-bottom: none;
-      
-      color: rgba(0, 0, 0, 0.6);
-      font-size: 0.8em;
-      line-height: 1.5em;
-    }
-    
-    .example-images a:hover {
-      text-decoration: none;
-      border-bottom: none;
-    }
-    
-    .example-images a img {
-      display: block;
-    }
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.8em;
+    line-height: 1.5em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .example-images a:hover {
+    text-decoration: none;
+    border-bottom: none;
+  }
+  
+  .example-images a img {
+    display: block;
+  }
+  
+  d-article > h2 {
+    grid-column: kicker;
+    border-bottom: none;
+    margin: 0;
+    margin-top: 20px;
+  }
   </style>
 </head>
 
 <body>
   
-<distill-header></distill-header>
-
-<d-front-matter>
-  <script id='distill-front-matter' type="text/json"></script>
-</d-front-matter>
-
-<d-title>
-  <h1>Feature Visualization — Appendix</h1>
-</d-title>
-
-<d-article>
-  <p>
-    After reading <a href="https://distill.pub/2017/feature-visualization/">"Feature Visualization"</a> you may be curious what other channels of GoogLeNet look like.
-  </p>
+  <distill-header></distill-header>
   
-  <figure class="base-grid"> 
-    <img style="grid-column: page;" src="googlenet.svg"/>
-    <figcaption style="grid-column: text;">
-      This appendix contains layers 3a through 5b of GoogLeNet.
-    </figcaption>
-  </figure>
+  <d-front-matter>
+    <script id='distill-front-matter' type="text/json"></script>
+  </d-front-matter>
   
-  <p class="">
-    Below, you can click on the layer names to see all units of that layer. You can learn more about individual examples by clicking on them, too. Or just browse this overview first to get a sense of which layers you'd like to explore.
-  </p>
+  <d-title>
+    <h1>Feature Visualization — Appendix</h1>
+  </d-title>
   
-  <ul class="navlist">
-    <li id="3a">
-      <a href="googlenet/3a.html"><strong>Layer 3a</strong></a> <br />
+  <d-article>
+    <p>
+      After reading <a href="https://distill.pub/2017/feature-visualization/">"Feature Visualization"</a> you may be curious what other channels of GoogLeNet look like.
+    </p>
+    
+    <figure class="base-grid"> 
+      <img style="grid-column: page;" src="googlenet.svg"/>
+      <figcaption style="grid-column: text;">
+        This appendix contains layers 3a through 5b of GoogLeNet.
+      </figcaption>
+    </figure>
+    
+    <p class="">
+      <em>
+        Below, you can click on the layer names to see all units of that layer. You can learn more about individual examples by clicking on them, too. Or just browse this overview first to get a sense of which layers you'd like to explore. We recommend <a href="#4c">layer 4c</a>!
+      </em>
+    </p>
+    
+    <h2 id="3a">
+      <a href="googlenet/3a.html"><strong>Layer 3a</strong><br /></a> 
+    </h2>
+    <div class="example-images">
+      <a href="googlenet/3a.html#channel-43"><img src="handpicked/mixed3a-00043.png"/></a>
+      <a href="googlenet/3a.html#channel-61"><img src="handpicked/mixed3a-00061.png"/></a>
+      <a href="googlenet/3a.html#channel-230"><img src="handpicked/mixed3a-00230.png"/></a>
+      <a href="googlenet/3a.html#channel-239"><img src="handpicked/mixed3a-00239.png"/></a>
+    </div>
+    <p>
       This first inception layer already shows some quite interesting textures.
       Each neuron only looks at a small receptive field, so these channel visualizations show you a tiling of them.
-      <div class="example-images">
-        <a href="googlenet/3a.html#channel-43"><img src="handpicked/mixed3a-00043.png"/></a>
-        <a href="googlenet/3a.html#channel-61"><img src="handpicked/mixed3a-00061.png"/></a>
-        <a href="googlenet/3a.html#channel-230"><img src="handpicked/mixed3a-00230.png"/></a>
-        <a href="googlenet/3a.html#channel-239"><img src="handpicked/mixed3a-00239.png"/></a>
-      </div>
-      
-    </li>
-    <li id="3b">
+    </p>
+    
+    <h2 id="3b">
       <a href="googlenet/3b.html"><strong>Layer 3b</strong></a> <br />
+    </h2>
+    <div class="example-images">
+      <a href="googlenet/3b.html#channel-7"><img src="handpicked/mixed3b-00007.png"/></a>
+      <a href="googlenet/3b.html#channel-462"><img src="handpicked/mixed3b-00462.png"/></a>
+      <a href="googlenet/3b.html#channel-470"><img src="handpicked/mixed3b-00470.png"/></a>
+      <a href="googlenet/3b.html#channel-472"><img src="handpicked/mixed3b-00472.png"/></a>
+    </div>
+    <p>
       Textures become more complex, but are still very local.
-      <div class="example-images">
-        <a href="googlenet/3b.html#channel-7"><img src="handpicked/mixed3b-00007.png"/></a>
-        <a href="googlenet/3b.html#channel-462"><img src="handpicked/mixed3b-00462.png"/></a>
-        <a href="googlenet/3b.html#channel-470"><img src="handpicked/mixed3b-00470.png"/></a>
-        <a href="googlenet/3b.html#channel-472"><img src="handpicked/mixed3b-00472.png"/></a>
-      </div>
-    </li>
-    <li id="4a">
+    </p>
+    
+    <h2 id="4a">
       <a href="googlenet/4a.html"><strong>Layer 4a</strong></a> <br />
+    </h2>
+    <div class="example-images">
+      <a href="googlenet/4a.html#channel-500"><img src="handpicked/mixed4a-00500.png"/>Bookshelves</a>
+      <a href="googlenet/4a.html#channel-501"><img src="handpicked/mixed4a-00501.png"/>Dog eyes</a>
+      <a href="googlenet/4a.html#channel-503"><img src="handpicked/mixed4a-00503.png"/>Text, rivets</a>
+      <a href="googlenet/4a.html#channel-505"><img src="handpicked/mixed4a-00505.png"/>Birds</a>
+    </div>
+    <p>
       In this layer, which follows a pooling step, we see a signficant increase in complexity.
       We begin to see more complex patterns, and even parts of objects.
-      <div class="example-images">
-        <a href="googlenet/4a.html#channel-500"><img src="handpicked/mixed4a-00500.png"/>Bookshelves</a>
-        <a href="googlenet/4a.html#channel-501"><img src="handpicked/mixed4a-00501.png"/>Dog eyes</a>
-        <a href="googlenet/4a.html#channel-503"><img src="handpicked/mixed4a-00503.png"/>Text, rivets</a>
-        <a href="googlenet/4a.html#channel-505"><img src="handpicked/mixed4a-00505.png"/>Birds</a>
-      </div>
-    </li>
-    <li id="4b">
+    </p>
+    
+    <h2 id="4b">
       <a href="googlenet/4b.html"><strong>Layer 4b</strong></a> <br />
+    </h2>
+    <div class="example-images">
+      <a href="googlenet/4b.html#channel-4"><img src="handpicked/mixed4b-00004.png"/>Architecture</a>
+      <a href="googlenet/4b.html#channel-9"><img src="handpicked/mixed4b-00009.png"/>Fluffy rope</a>
+      <a href="googlenet/4b.html#channel-465"><img src="handpicked/mixed4b-00465.png"/>Trees</a>
+      <a href="googlenet/4b.html#channel-504"><img src="handpicked/mixed4b-00504.png"/>Billiard balls</a>
+    </div>
+    <p>
       Already you can begin to make out parts of objects — such as the billiard ball detector on the right here. 
       Visualizations start having more context, like the neuron on the second from the right which responds to trees in front of sky and ground.
-      <div class="example-images">
-        <a href="googlenet/4b.html#channel-4"><img src="handpicked/mixed4b-00004.png"/>Architecture</a>
-        <a href="googlenet/4b.html#channel-9"><img src="handpicked/mixed4b-00009.png"/>Fluffy rope</a>
-        <a href="googlenet/4b.html#channel-465"><img src="handpicked/mixed4b-00465.png"/>Trees</a>
-        <a href="googlenet/4b.html#channel-504"><img src="handpicked/mixed4b-00504.png"/>Billiard balls</a>
-      </div>
-    </li>
-    <li id="4c">
+    </p>
+    
+    <h2 id="4c">
       <a href="googlenet/4c.html"><strong>Layer 4c</strong></a> <br />
+    </h2>
+    <div class="example-images">
+      <a href="googlenet/4c.html#channel-211"><img src="handpicked/mixed4c-00211.png"/>Palm trees</a>
+      <a href="googlenet/4c.html#channel-449"><img src="handpicked/mixed4c-00449.png"/>Wheels</a>
+      <a href="googlenet/4c.html#channel-484"><img src="handpicked/mixed4c-00484.png"/>Dogs on leash</a>
+      <a href="googlenet/4c.html#channel-509"><img src="handpicked/mixed4c-00509.png"/>Houses</a>
+    </div>
+    <p>
       In this layer things get complex enough that it can often help to look at the neuron objective rather than the channel objective.
       You can find neurons responding to dogs on leashes only, many wheel detectors, and a lot of other fun neurons.
       <br /><em>This is likely the most rewarding layer to start exploring!</em>
-      <div class="example-images">
-        <a href="googlenet/4c.html#channel-211"><img src="handpicked/mixed4c-00211.png"/>Palm trees</a>
-        <a href="googlenet/4c.html#channel-449"><img src="handpicked/mixed4c-00449.png"/>Wheels</a>
-        <a href="googlenet/4c.html#channel-484"><img src="handpicked/mixed4c-00484.png"/>Dogs on leash</a>
-        <a href="googlenet/4c.html#channel-509"><img src="handpicked/mixed4c-00509.png"/>Houses</a>
-      </div>
-    </li>
-    <li id="4d">
+    </p>
+    
+    <h2 id="4d">
       <a href="googlenet/4d.html"><strong>Layer 4d</strong></a> <br />
+    </h2>
+    <div class="example-images">
+      <a href="googlenet/4d.html#channel-28"><img src="handpicked/mixed4d-00028.png"/>Dog snouts</a>
+      <a href="googlenet/4d.html#channel-146"><img src="handpicked/mixed4d-00146.png"/>Primates</a>
+      <a href="googlenet/4d.html#channel-229"><img src="handpicked/mixed4d-00229.png"/>Snake heads</a>
+      <a href="googlenet/4d.html#channel-516"><img src="handpicked/mixed4d-00516.png"/>Restaurant dishes</a>
+    </div>
+    <p>
       By this layer we find more sophisticated concepts, like a particular kind of animal snout. 
       On the other hand, we also start to see neurons that react to multiple unrelated concepts.
       It helps to look at the diversity and dataset examples to double check what a neuron reacts to.
-      <div class="example-images">
-        <a href="googlenet/4d.html#channel-28"><img src="handpicked/mixed4d-00028.png"/>Dog snouts</a>
-        <a href="googlenet/4d.html#channel-146"><img src="handpicked/mixed4d-00146.png"/>Primates</a>
-        <a href="googlenet/4d.html#channel-229"><img src="handpicked/mixed4d-00229.png"/>Snake heads</a>
-        <a href="googlenet/4d.html#channel-516"><img src="handpicked/mixed4d-00516.png"/>Restaurant dishes</a>
-      </div>
-    </li>
-    <li id="4e">
+    </p>
+    
+    <h2 id="4e">
       <a href="googlenet/4e.html"><strong>Layer 4e</strong></a> <br />
+    </h2>
+    <div class="example-images">
+      <a href="googlenet/4e.html#channel-167"><img src="handpicked/mixed4e-00167.png"/>Turtle shells</a>
+      <a href="googlenet/4e.html#channel-547"><img src="handpicked/mixed4e-00547.png"/>Icecream & bread</a>
+      <a href="googlenet/4e.html#channel-809"><img src="handpicked/mixed4e-00809.png"/>Cat fur</a>
+      <a href="googlenet/4e.html#channel-815"><img src="handpicked/mixed4e-00815.png"/>Sombreros</a>
+    </div>
+    <p>
       At this level, many neurons will differentiate between specific animal species or react to multiple concepts.
       These are, however, usually still visually similar, which can lead to funny situations like reacting to both satellite dishes and sombreros.
       One can also still find texture detectors, though they usually react to more complex textures such as icecream, bread and cauliflower.
       The first neuron example here predictably reacts to turtle shells, but interestingly also to fretted instruments.
-      <div class="example-images">
-        <a href="googlenet/4e.html#channel-167"><img src="handpicked/mixed4e-00167.png"/>Turtle shells</a>
-        <a href="googlenet/4e.html#channel-547"><img src="handpicked/mixed4e-00547.png"/>Icecream & bread</a>
-        <a href="googlenet/4e.html#channel-809"><img src="handpicked/mixed4e-00809.png"/>Cat fur</a>
-        <a href="googlenet/4e.html#channel-815"><img src="handpicked/mixed4e-00815.png"/>Sombreros</a>
-      </div>
-    </li>
-    <li id="5a">
+    </p>
+    
+    <h2 id="5a">
       <a href="googlenet/5a.html"><strong>Layer 5a</strong></a> <br />
+    </h2>
+    <div class="example-images">
+      <a href="googlenet/5a.html#channel-4"><img src="handpicked/mixed5a-00004.png"/>Candles</a>
+      <a href="googlenet/5a.html#channel-9"><img src="handpicked/mixed5a-00009.png"/>Balls</a>
+      <a href="googlenet/5a.html#channel-132"><img src="handpicked/mixed5a-00132.png"/>Brass instruments</a>
+      <a href="googlenet/5a.html#channel-557"><img src="handpicked/mixed5a-00557.png"/>Traffic lights</a>
+    </div>
+    <p>
       Visualizations become harder to interpret here, but the semantic concepts they target are often still quite specific. 
-      <div class="example-images">
-        <a href="googlenet/5a.html#channel-4"><img src="handpicked/mixed5a-00004.png"/>Candles</a>
-        <a href="googlenet/5a.html#channel-9"><img src="handpicked/mixed5a-00009.png"/>Balls</a>
-        <a href="googlenet/5a.html#channel-132"><img src="handpicked/mixed5a-00132.png"/>Brass instruments</a>
-        <a href="googlenet/5a.html#channel-557"><img src="handpicked/mixed5a-00557.png"/>Traffic lights</a>
-      </div>
-    </li>
-    <li id="5b">
+    </p>
+    
+    <h2 id="5b">
       <a href="googlenet/5b.html"><strong>Layer 5b</strong></a> <br />
+    </h2>
+    <div class="example-images">
+      <a href="googlenet/5b.html#channel-17"><img src="handpicked/mixed5b-00017.png"/></a>
+      <a href="googlenet/5b.html#channel-23"><img src="handpicked/mixed5b-00023.png"/></a>
+      <a href="googlenet/5b.html#channel-357"><img src="handpicked/mixed5b-00357.png"/></a>
+      <a href="googlenet/5b.html#channel-806"><img src="handpicked/mixed5b-00806.png"/></a>
+    </div>
+    <p>
       In this layer visualizations become mostly nonsensical collages. You may still identify specific subjects, but will usually need a combination of diversity and dataset examples to do so.
       Neurons do not seem to correspond to particularly meaningful semantic ideas anymore.
-      <div class="example-images">
-        <a href="googlenet/5b.html#channel-17"><img src="handpicked/mixed5b-00017.png"/></a>
-        <a href="googlenet/5b.html#channel-23"><img src="handpicked/mixed5b-00023.png"/></a>
-        <a href="googlenet/5b.html#channel-357"><img src="handpicked/mixed5b-00357.png"/></a>
-        <a href="googlenet/5b.html#channel-806"><img src="handpicked/mixed5b-00806.png"/></a>
-      </div>
-    </li>
-  </ul>
-
-</d-article>
-
-<d-appendix></d-appendix>
-
-<distill-footer></distill-footer>
-
+    </p>
+    
+  </d-article>
+  
+  <d-appendix>
+    <p>
+      This is the appendix to <a href="https://distill.pub/2017/feature-visualization/">"Feature Visualization"</a>.
+    </p>
+  </d-appendix>
+  
+  <distill-footer></distill-footer>
+  
 </body>
