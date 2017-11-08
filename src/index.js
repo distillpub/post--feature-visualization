@@ -80,7 +80,7 @@ new GoogleNetExamples({target: document.getElementById("googlenet-examples")});
         icon_x: 0,
         label_func: (n, i) => [
           "Image",
-          "<strong>L<sup>∞</sup> metric</strong> <br>used in adverserial work",
+          "<strong>L<sup>∞</sup> metric</strong> <br>used in adversarial work",
           "<strong>L<sup>2</sup> metric</strong> <br>regular gradient",
           "<strong>decorrelated space</strong>"
           ][n],
