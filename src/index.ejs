@@ -359,7 +359,7 @@
       <d-math block>
         G_{i,j} = \text{layer}_n\text{[:, :, i]} \cdot \text{layer}_n\text{[:, :, j]}
       </d-math>
-      From this, we compute the diveristy term: the negative pairwise cosine similarity of pairs of visualizations.
+      From this, we compute the diversity term: the negative pairwise cosine similarity of pairs of visualizations.
       <d-math block>
         C_{\text{diversity}} = - \sum_{a} \sum_{b\neq a} ~ \frac{\text{vec}(G_a) \cdot \text{vec}(G_b)}{||\text{vec}(G_a)||~||\text{vec}(G_b)||} 
       </d-math>
