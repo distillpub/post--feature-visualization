@@ -10,6 +10,7 @@ import LinearCombinations    from "./diagrams/LinearCombinations.html";
 import OptProgress           from "./diagrams/OptProgress.html";
 import ExamplesOptComparison from "./diagrams/ExamplesOptComparison.html";
 import RandomExamplesOpt     from "./diagrams/RandomExamplesOpt.html";
+import ColabLink     from "./diagrams/ColabLink.html";
 
 
 
@@ -209,4 +210,78 @@ const OptExploreFlex_configs = {
     const app = new OptExploreFlex({target: figure});
     app.load_spritemap("PenalizeFreq2", OptExploreFlex_configs.PenalizeFreq)
   });
+}
+
+
+
+{
+  const div = document.getElementById("");
+  var app = new ColabLink({target: div, data: {
+    url: ""
+  }});
+}
+
+
+
+{
+  const div = document.getElementById("colab-negative");
+  var app = new ColabLink({target: div, data: {
+    url: "https://colab.research.google.com/drive/1t4gfPNWzGTsVq6PB0VdvKs6b5Ri5OTSS#scrollTo=TwOurlFpFn56"
+  }});
+}
+
+{
+  const div = document.getElementById("colab-diversity");
+  var app = new ColabLink({target: div, data: {
+    url: "https://colab.research.google.com/drive/1InrR3pyWZ-TjvPgkvvJxBiXYVwzXHbte#scrollTo=ujM5RP7LGGnt"
+  }});
+}
+
+{
+  const div = document.getElementById("colab-random");
+  var app = new ColabLink({target: div, data: {
+    url: "https://colab.research.google.com/drive/1pEF8q8lZOM8aUTcUq7a7ppD4BB89jwIL#scrollTo=nxPbPfXzGWCD"
+  }});
+}
+
+{
+  const div = document.getElementById("colab-combine");
+  var app = new ColabLink({target: div, data: {
+    url: "https://colab.research.google.com/drive/1pEF8q8lZOM8aUTcUq7a7ppD4BB89jwIL#scrollTo=0x-Zi49jGULb"
+  }});
+}
+
+{
+  const div = document.getElementById("colab-interpolation");
+  var app = new ColabLink({target: div, data: {
+    url: "https://colab.research.google.com/drive/1pEF8q8lZOM8aUTcUq7a7ppD4BB89jwIL#scrollTo=MxRmLCTlGWSs"
+  }});
+}
+
+{
+  const div = document.getElementById("colab-regularization-naive");
+  var app = new ColabLink({target: div, data: {
+    url: "https://colab.research.google.com/drive/1GLX36fGbX9Dy6jFSXVhT_Lawrlcf1SmC#scrollTo=d3ZKjNizGWtD"
+  }});
+}
+
+{
+  const div = document.getElementById("colab-regularization-freq");
+  var app = new ColabLink({target: div, data: {
+    url: "https://colab.research.google.com/drive/1GLX36fGbX9Dy6jFSXVhT_Lawrlcf1SmC#scrollTo=zlIWBnagGd4q"
+  }});
+}
+
+{
+  const div = document.getElementById("colab-regularization-transform");
+  var app = new ColabLink({target: div, data: {
+    url: "https://colab.research.google.com/drive/1GLX36fGbX9Dy6jFSXVhT_Lawrlcf1SmC#scrollTo=mSDJKMf5GeZy"
+  }});
+}
+
+{
+  const div = document.getElementById("colab-regularization-preconditioner");
+  var app = new ColabLink({target: div, data: {
+    url: "https://colab.research.google.com/drive/1GLX36fGbX9Dy6jFSXVhT_Lawrlcf1SmC#scrollTo=gvF6j5h4GkDe"
+  }});
 }

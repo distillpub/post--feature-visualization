@@ -209,7 +209,7 @@ figcaption,
 <d-front-matter>
   <script type="text/json">{
   "title": "Feature Visualization",
-  "description": "How neural networks build up their understanding of images.",
+  "description": "How neural networks build up their understanding of images",
   "authors": [
     {
       "author":"Chris Olah",
@@ -241,7 +241,7 @@ figcaption,
     <div style="grid-column: screen; padding-left: 16px; padding-right: 16px;" id="googlenet-examples"></div>
     <figcaption style="grid-column: text;">
       Feature visualization allows us to see how GoogLeNet<d-cite key="szegedy2015going"></d-cite>, trained on the ImageNet<d-cite key="deng2009imagenet"></d-cite> dataset, builds up its understanding of images over many layers.
-      Visualizations of all channel are available in the <a href="appendix/">appendix</a>.
+      Visualizations of all channels are available in the <a href="appendix/">appendix</a>.
     </figcaption>
   </figure>
 </d-title>
@@ -282,7 +282,7 @@ figcaption,
 </figure>
 
 <p>
-  This article focusses on feature visualization. 
+  This article focuses on feature visualization. 
   While feature visualization is a powerful tool, actually getting it to work involves a number of details. 
   In this article, we examine the major issues and explore common approaches to solving them.
   We find that remarkably simple methods can produce high-quality visualizations. Along the way we introduce a few tricks for exploring variation in what neurons react to, how they interact, and how to improve the optimization process.
@@ -456,7 +456,7 @@ figcaption,
 </p>
 
 <p>
-  The objectives we've mentioned only scratch the surface of possibile objectives -- there are a lot more that one could try.
+  The objectives we've mentioned only scratch the surface of possible objectives -- there are a lot more that one could try.
   Of particular note are the objectives used in style transfer <d-cite key="gatys2015neural"></d-cite>, which can teach us about the kinds of style and content a network understands,
   and objectives used in optimization-based model inversion <d-cite key="mahendran2015understanding"></d-cite>, which help us understand what information a model keeps and what it throws away.
   We are only at the beginning of understanding which objectives are interesting, and there is a lot of room for more work in this area.
@@ -490,7 +490,7 @@ figcaption,
 
 <p>
   On the other hand, there are also significant challenges to visualizing features with optimization.
-  In the following sections we'll examine techniques to get diverse visualizations, understand how neurons interact, and avoid high frequency artefacts.
+  In the following sections we'll examine techniques to get diverse visualizations, understand how neurons interact, and avoid high frequency artifacts.
 </p>
 
 
@@ -517,6 +517,9 @@ figcaption,
 
 <figure style="grid-column: screen;" class="shaded-figure">
   <d-figure class="base-grid" id="optimization-and-examples"></d-figure>
+  <div class="base-grid" style="margin-top: 4px;" >
+    <div style="grid-column: text / text;" id="colab-negative"></div>
+  </div>
 </figure>
 
 
@@ -578,6 +581,8 @@ figcaption,
     <img src="images/diversity/mixed4a_97_diversity.png" />
     <figcaption>
       Optimization with diversity reveals four different, curvy facets. <i>Layer mixed4a, Unit 97</i>
+      <br />
+      <div id="colab-diversity"></div>
     </figcaption>
   </div>
   <div style="">
@@ -639,7 +644,7 @@ figcaption,
 <p>
   This simpler approach has a number of shortcomings:
   For one, the pressure to make examples different can cause unrelated artifacts (such as eyes) to appear.
-  Additionally, the optimisation may make examples be different in an unnatural way.
+  Additionally, the optimization may make examples be different in an unnatural way.
   For example, in the above example one might want to see examples of soccer balls clearly separated from other types of balls like golf or tennis balls.
   Dataset based approaches such as <d-cite key="mneuron2015">Wei <i>et al.</i></d-cite> can split features apart more naturally -- however they may not be as helpful in understanding how the model will behave on different data.
 </p>
@@ -686,7 +691,8 @@ figcaption,
 
 <figure class="base-grid" >
   <figcaption style="grid-column: kicker;">
-    Dataset examples and optimized examples of <strong>random directions</strong> in activation space. The directions shown here were hand-picked for interpretability.
+    <p>Dataset examples and optimized examples of <strong>random directions</strong> in activation space. The directions shown here were hand-picked for interpretability.</p>
+    <div id="colab-random"></div>
   </figcaption>
   <d-figure style="grid-column: text-start / page-end;" id="random-optimization-and-examples"></d-figure>
 </figure>
@@ -699,7 +705,8 @@ figcaption,
 
 <figure class="base-grid shaded-figure">
   <figcaption style="grid-column: kicker;">
-    By jointly optimizing two neurons we can get a sense of how they interact.
+    <p>By jointly optimizing two neurons we can get a sense of how they interact.</p>
+    <div id="colab-combine"></div>
   </figcaption>
   <d-figure style="grid-column: text-start / screen-end; overflow: visible; contain: unset;" id="linear-combinations"></d-figure>
 </figure>
@@ -712,6 +719,9 @@ figcaption,
 </p>
 
 <figure class="base-grid shaded-figure">
+  <figcaption style="grid-column: kicker;">
+    <div id="colab-interpolation"></div>
+  </figcaption>
   <d-figure style="grid-column: text-start / page-end;" id="interpolation"></d-figure>
 </figure>
 
@@ -735,8 +745,10 @@ figcaption,
 
 <figure class="shaded-figure base-grid">
   <figcaption style="grid-column: kicker;">
-    <p>Even if you carefully tune learning rate, you'll get noise.</p><br />
+    <p>Even if you carefully tune learning rate, you'll get noise.</p>
     <p>Optimization results are enlarged to show detail and artifacts.</p>
+    <br />
+    <div id="colab-regularization-naive"></div>
   </figcaption>
   <d-figure style="grid-column: text;" id="optimize-naive"></d-figure>
 </figure>
@@ -1037,6 +1049,7 @@ figcaption,
 <figure class="shaded-figure base-grid">
   <figcaption style="grid-column: kicker;">
     <p>Frequency penalization directly targets high frequency noise</p>
+    <div id="colab-regularization-freq"></div>
   </figcaption>
   <d-figure style="grid-column: text;" id="regularizer-playground-freq"></d-figure>
 </figure>
@@ -1060,6 +1073,7 @@ figcaption,
 <figure class="shaded-figure base-grid">
   <figcaption style="grid-column: kicker;">
     <p>Stochastically transforming the image before applying the optimization step suppresses noise</p>
+    <div id="colab-regularization-transform"></div>
   </figcaption>
   <d-figure style="grid-column: text;" id="regularizer-playground-robust"></d-figure>
 </figure>
@@ -1107,14 +1121,14 @@ figcaption,
   You can think of it as doing steepest descent to optimize the same objective, 
   but in another parameterization of the space or under a different notion of distance.
   <d-footnote>
-    Gradient blurring<d-cite key="oygard2015vis"></d-cite> is equivalent to gradient descent in a different paramaterization of image space, where high frequency dimensions are stretched to make moving in those directions slower. Gradient Laplacian Pyramid normalization <d-cite key="mordvintsev2016deepdreaming"></d-cite> is a kind of adaptive learning rate approach in the same space.
+    Gradient blurring<d-cite key="oygard2015vis"></d-cite> is equivalent to gradient descent in a different parameterization of image space, where high frequency dimensions are stretched to make moving in those directions slower. Gradient Laplacian Pyramid normalization <d-cite key="mordvintsev2016deepdreaming"></d-cite> is a kind of adaptive learning rate approach in the same space.
   </d-footnote>
   This changes which direction of descent will be steepest, and how fast the optimization moves in each direction, but it does not change what the minimums are.
   If there are many local minima, it can stretch and shrink their basins of attraction, changing which ones the optimization process falls into.
   As a result, using the right preconditioner can make an optimization problem radically easier.
 </p>
 <p>
-  How can we chose a preconditioner that will give us these benefits?
+  How can we choose a preconditioner that will give us these benefits?
   A good first guess is one that makes your data decorrelated and whitened.
   In the case of images this means doing gradient descent in the Fourier basis,
   <d-footnote>
@@ -1171,6 +1185,7 @@ figcaption,
 <figure class="shaded-figure base-grid">
   <figcaption style="grid-column: kicker;">
     <p>Combining the preconditioning and transformation robustness improves quality even further</p>
+    <div id="colab-regularization-preconditioner"></div>
   </figcaption>
   <d-figure style="grid-column: text;" id="opt-explore2"></d-figure>
 </figure>
@@ -1180,7 +1195,7 @@ figcaption,
   <d-footnote>
     Images were optimized for 2560 steps in a color-decorrelated fourier-transformed space, using Adam at a learning rate of 0.05.
     We used each of following transformations in the given order at each step of the optimization:<br /><br />
-    • Padding the input by 16 pixels to avoid edge artefacts<br />
+    • Padding the input by 16 pixels to avoid edge artifacts<br />
     • Jittering by up to 16 pixels<br />
     • Scaling by a factor randomly selected from this list: 1, 0.975, 1.025, 0.95, 1.05<br />
     • Rotating by an angle randomly selected from this list; in degrees: -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5<br />
@@ -1221,13 +1236,34 @@ figcaption,
   Some issues that stand out include understanding neuron interaction, finding which units are most meaningful for understanding neural net activations, and giving a holistic view of the facets of a feature.
 </p>
 
+<!--
 <p>
-  In the meantime, curious readers are invited to explore <a href="appendix/">visualizations of all GoogLeNet channels</a>.
+  In the meantime, curious readers are invited to explore 
+  <a href="appendix/">visualizations of all GoogLeNet channels</a>,
+  and our <a href="https://github.com/tensorflow/lucid">open-source implementation, lucid</a>.
+  Readers may also wish to look at our follow-up paper, <a href="https://distill.pub/2018/building-blocks/">The Building Blocks of Interpretability</a>, which explores how feature visualization can be combined with other techniques to interrogate the behavior of neural networks.
 </p>
+-->
 
 </d-article>
 
 <d-appendix>
+  
+  
+  <h3 id="additional-resources">Additional Resources</h3>
+  <p>
+    <a href="appendix/"><b>Appendix:</b> GoogLeNet Visualizations</a><br>
+    Visualizations of every channel in GoogLeNet
+  </p>
+  <p>
+    <a href="https://github.com/tensorflow/lucid"><b>Code:</b> tensorflow/lucid</a><br>
+    Open-source implementation of our techniques
+  </p>
+  <p>
+    <a href="https://distill.pub/2018/building-blocks/"><b>Follow-up:</b> The Building Blocks of Interpretability</a><br>
+    Exploration of how feature visualization and other techniques can be combined.
+  </p>
+  
   <h3 id="acknowledgements">Acknowledgments</h3>
   <p>
     We are extremely grateful to Shan Carter and Ian Goodfellow.
@@ -1260,7 +1296,7 @@ figcaption,
     <strong>Research Contributions.</strong> The biggest technical contribution of this work is likely the section on preconditioning. Alex discovered in prior work that normalizing gradient frequencies had a radical effect on visualizing neurons. Chris reframed this as adaptive gradient descent in a different basis. Together, they iterated on a number of ways of parameterizing images. Similarly, Alex originally introduced the use of diversity term, and Chris reﬁned using it. Chris did the exploration of interpolating between neurons. 
   </p>
   <p>
-    <strong>Infrastructure Contributions.</strong> All experiments are based on code written by Alex, some of which was <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/deepdream/deepdream.ipynb">published previously</a>. Alex, Chris and Ludwig all contributed significantly to refining this into the present code base. Alex and Chris introduced particularly important abstractions.
+    <strong>Infrastructure Contributions.</strong> All experiments are based on code written by Alex, some of which was <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/deepdream/deepdream.ipynb">published previously</a>. Alex, Chris and Ludwig all contributed significantly to refining this into the present library, <a href="https://github.com/tensorflow/lucid">Lucid</a>. Alex and Chris introduced particularly important abstractions.
   </p>
   
   <h3 id="discussion-review">Discussion and Review</h3>
