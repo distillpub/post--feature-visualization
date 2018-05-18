@@ -226,62 +226,62 @@ const OptExploreFlex_configs = {
 {
   const div = document.getElementById("colab-negative");
   var app = new ColabLink({target: div, data: {
-    url: "https://colab.research.google.com/drive/1t4gfPNWzGTsVq6PB0VdvKs6b5Ri5OTSS#scrollTo=TwOurlFpFn56"
+    url: "https://colab.research.google.com/github/tensorflow/lucid/blob/master/notebooks/feature-visualization/negative_neurons.ipynb"
   }});
 }
 
 {
   const div = document.getElementById("colab-diversity");
   var app = new ColabLink({target: div, data: {
-    url: "https://colab.research.google.com/drive/1InrR3pyWZ-TjvPgkvvJxBiXYVwzXHbte#scrollTo=ujM5RP7LGGnt"
+    url: "https://colab.research.google.com/github/tensorflow/lucid/blob/master/notebooks/feature-visualization/neuron_diversity.ipynb"
   }});
 }
 
 {
   const div = document.getElementById("colab-random");
   var app = new ColabLink({target: div, data: {
-    url: "https://colab.research.google.com/drive/1pEF8q8lZOM8aUTcUq7a7ppD4BB89jwIL#scrollTo=nxPbPfXzGWCD"
+    url: "https://colab.research.google.com/github/tensorflow/lucid/blob/master/notebooks/feature-visualization/neuron_interaction.ipynb#scrollTo=nxPbPfXzGWCD"
   }});
 }
 
 {
   const div = document.getElementById("colab-combine");
   var app = new ColabLink({target: div, data: {
-    url: "https://colab.research.google.com/drive/1pEF8q8lZOM8aUTcUq7a7ppD4BB89jwIL#scrollTo=0x-Zi49jGULb"
+    url: "https://colab.research.google.com/github/tensorflow/lucid/blob/master/notebooks/feature-visualization/neuron_interaction.ipynb#scrollTo=0x-Zi49jGULb"
   }});
 }
 
 {
   const div = document.getElementById("colab-interpolation");
   var app = new ColabLink({target: div, data: {
-    url: "https://colab.research.google.com/drive/1pEF8q8lZOM8aUTcUq7a7ppD4BB89jwIL#scrollTo=MxRmLCTlGWSs"
+    url: "https://colab.research.google.com/github/tensorflow/lucid/blob/master/notebooks/feature-visualization/neuron_interaction.ipynb#scrollTo=MxRmLCTlGWSs"
   }});
 }
 
 {
   const div = document.getElementById("colab-regularization-naive");
   var app = new ColabLink({target: div, data: {
-    url: "https://colab.research.google.com/drive/1GLX36fGbX9Dy6jFSXVhT_Lawrlcf1SmC#scrollTo=d3ZKjNizGWtD"
+    url: "https://colab.research.google.com/github/tensorflow/lucid/blob/master/notebooks/feature-visualization/regularization.ipynb#scrollTo=d3ZKjNizGWtD"
   }});
 }
 
 {
   const div = document.getElementById("colab-regularization-freq");
   var app = new ColabLink({target: div, data: {
-    url: "https://colab.research.google.com/drive/1GLX36fGbX9Dy6jFSXVhT_Lawrlcf1SmC#scrollTo=zlIWBnagGd4q"
+    url: "https://colab.research.google.com/github/tensorflow/lucid/blob/master/notebooks/feature-visualization/regularization.ipynb#scrollTo=zlIWBnagGd4q"
   }});
 }
 
 {
   const div = document.getElementById("colab-regularization-transform");
   var app = new ColabLink({target: div, data: {
-    url: "https://colab.research.google.com/drive/1GLX36fGbX9Dy6jFSXVhT_Lawrlcf1SmC#scrollTo=mSDJKMf5GeZy"
+    url: "https://colab.research.google.com/github/tensorflow/lucid/blob/master/notebooks/feature-visualization/regularization.ipynb#scrollTo=mSDJKMf5GeZy"
   }});
 }
 
 {
   const div = document.getElementById("colab-regularization-preconditioner");
   var app = new ColabLink({target: div, data: {
-    url: "https://colab.research.google.com/drive/1GLX36fGbX9Dy6jFSXVhT_Lawrlcf1SmC#scrollTo=gvF6j5h4GkDe"
+    url: "https://colab.research.google.com/github/tensorflow/lucid/blob/master/notebooks/feature-visualization/regularization.ipynb#scrollTo=gvF6j5h4GkDe"
   }});
 }
