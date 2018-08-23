@@ -553,11 +553,11 @@ figcaption,
 <p>
   We find there's a very simple way to achieve diversity: adding a "diversity term"
   <d-footnote>
-      For this article we use an approach based on ideas from artistic style transfer. Following that work, we begin by computing the Gram matrix <d-math>G</d-math> of the channels, where:
+      For this article we use an approach based on ideas from artistic style transfer. Following that work, we begin by computing the Gram matrix <d-math>G</d-math> of the channels, where <d-math>G_{i,j}</d-math> is a the dot product between the (flattened) response of filter <d-math>i</d-math> and filter <d-math>j</d-math>:
       <d-math block>
-        G_{i,j} = \text{layer}_n\text{[:, :, i]} \cdot \text{layer}_n\text{[:, :, j]}
+        G_{i,j} = \sum_{x,y} \text{layer}_n\text{[x, y, i]} \cdot \text{layer}_n\text{[x, y, j]}
       </d-math>
-      From this, we compute the diveristy term: the negative pairwise cosine similarity of pairs of visualizations.
+      From this, we compute the diversity term: the negative pairwise cosine similarity of pairs of visualizations.
       <d-math block>
         C_{\text{diversity}} = - \sum_{a} \sum_{b\neq a} ~ \frac{\text{vec}(G_a) \cdot \text{vec}(G_b)}{||\text{vec}(G_a)||~||\text{vec}(G_b)||} 
       </d-math>
