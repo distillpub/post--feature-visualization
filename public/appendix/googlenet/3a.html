@@ -5,21 +5,21 @@
   <meta charset="utf8">
   <script src="https://distill.pub/template.v2.js"></script>
   <style>
-  
+
     d-article {
       line-height: 1em;
     }
-    
+
     d-byline,
     d-appendix {
       display: none;
     }
-  
+
     h4 {
       display: block;
       width: 100%;
     }
-    
+
     d-figure {
       display: flex;
       flex-flow: row;
@@ -31,7 +31,7 @@
       margin-bottom: 1em;
       justify-content: center;
     }
-    
+
     .positive,
     .negative {
       display: flex;
@@ -40,7 +40,7 @@
       align-content: flex-start;
       max-width: 370px;
     }
-    
+
     .positive {
       padding-left: 1em;
       padding-right: 1em;
@@ -50,14 +50,14 @@
       border-right: 1px solid rgba(0,0,0,0.1);
       justify-content: space-between;
     }
-    
+
     .figcaption {
       display: block;
       color: rgba(0, 0, 0, 0.6);
       font-size: 12px;
       line-height: 1.5em;
     }
-    
+
     .diversity {
       display: flex;
       flex-flow: row;
@@ -65,61 +65,61 @@
       width: 148px;
       height: 147px
     }
-    
+
     .diversity > div {
       zoom: 0.496598639;
     }
-    
+
     .channel {
       margin-right: 1em;
     }
-    
+
     .channels {
       grid-column: screen;
       list-style: none;
       padding-left: 0;
     }
-    
+
     .channels li {
       contain: content;
       overflow: hidden;
     }
-    
+
     .sprite {
       display: inline-block;
       margin: 1px;
       width: 147px;
       height: 147px;
     }
-    
+
     .sprite.neuron {
       background-position-x: 0px;
     }
-    
+
     .sprite.channel {
       background-position-x: -147px;
     }
-    
+
     .sprite.channel-negative {
       background-position-x: -294px;
     }
-    
+
     .sprite.channel-diversity-0 {
       background-position-x: -441px;
     }
-    
+
     .sprite.channel-diversity-1 {
       background-position-x: -588px;
     }
-    
+
     .sprite.channel-diversity-2 {
       background-position-x: -735px;
     }
-    
+
     .sprite.channel-diversity-3 {
       background-position-x: -882px;
     }
-    
+
     .dataset-examples {
       display: flex;
       flex-flow: row;
@@ -127,7 +127,7 @@
       width: 375px;
       height: 147px
     }
-    
+
     .dataset-examples .sprite {
       height: 73px;
       width: 73px;
@@ -136,16 +136,16 @@
       margin-bottom: 0;
       margin-right: 0;
     }
-    
-    
+
+
       .channels .sprite.dataset-index-0 {
         background-position-x: -1029px !important;
       }
-      
+
       .channels .sprite.index-0 {
         background-position-y: -0px;
       }
-      
+
       .channels .dataset-negative .sprite.index-0 {
         background-position-y: -74px !important;
       }
@@ -153,11 +153,11 @@
       .channels .sprite.dataset-index-1 {
         background-position-x: -1103px !important;
       }
-      
+
       .channels .sprite.index-1 {
         background-position-y: -147px;
       }
-      
+
       .channels .dataset-negative .sprite.index-1 {
         background-position-y: -221px !important;
       }
@@ -165,11 +165,11 @@
       .channels .sprite.dataset-index-2 {
         background-position-x: -1177px !important;
       }
-      
+
       .channels .sprite.index-2 {
         background-position-y: -294px;
       }
-      
+
       .channels .dataset-negative .sprite.index-2 {
         background-position-y: -368px !important;
       }
@@ -177,11 +177,11 @@
       .channels .sprite.dataset-index-3 {
         background-position-x: -1251px !important;
       }
-      
+
       .channels .sprite.index-3 {
         background-position-y: -441px;
       }
-      
+
       .channels .dataset-negative .sprite.index-3 {
         background-position-y: -515px !important;
       }
@@ -189,11 +189,11 @@
       .channels .sprite.dataset-index-4 {
         background-position-x: -1325px !important;
       }
-      
+
       .channels .sprite.index-4 {
         background-position-y: -588px;
       }
-      
+
       .channels .dataset-negative .sprite.index-4 {
         background-position-y: -662px !important;
       }
@@ -201,11 +201,11 @@
       .channels .sprite.dataset-index-5 {
         background-position-x: -1399px !important;
       }
-      
+
       .channels .sprite.index-5 {
         background-position-y: -735px;
       }
-      
+
       .channels .dataset-negative .sprite.index-5 {
         background-position-y: -809px !important;
       }
@@ -213,11 +213,11 @@
       .channels .sprite.dataset-index-6 {
         background-position-x: -1473px !important;
       }
-      
+
       .channels .sprite.index-6 {
         background-position-y: -882px;
       }
-      
+
       .channels .dataset-negative .sprite.index-6 {
         background-position-y: -956px !important;
       }
@@ -225,11 +225,11 @@
       .channels .sprite.dataset-index-7 {
         background-position-x: -1547px !important;
       }
-      
+
       .channels .sprite.index-7 {
         background-position-y: -1029px;
       }
-      
+
       .channels .dataset-negative .sprite.index-7 {
         background-position-y: -1103px !important;
       }
@@ -237,11 +237,11 @@
       .channels .sprite.dataset-index-8 {
         background-position-x: -1621px !important;
       }
-      
+
       .channels .sprite.index-8 {
         background-position-y: -1176px;
       }
-      
+
       .channels .dataset-negative .sprite.index-8 {
         background-position-y: -1250px !important;
       }
@@ -249,20 +249,20 @@
       .channels .sprite.dataset-index-9 {
         background-position-x: -1695px !important;
       }
-      
+
       .channels .sprite.index-9 {
         background-position-y: -1323px;
       }
-      
+
       .channels .dataset-negative .sprite.index-9 {
         background-position-y: -1397px !important;
       }
-    
-    
+
+
     .article-nav {
       grid-column: page;
     }
-    
+
     .navlist li {
       display: inline;
       list-style-type: none;
@@ -300,17 +300,17 @@
     <h1>Layer 3a</h1>
   </d-title>
   <d-article>
-  
+
   <nav class="article-nav">
-  
-    
+
+
     <ul class="navlist">
       <li><a href="https://distill.pub/2017/feature-visualization/appendix/">Appendix overview</a></li>
       <li><a href="https://distill.pub/2017/feature-visualization/">Main article</a></li>
     </ul>
     <ul class="navlist">
       <li>
-        <a href="3a.html">Layer 3a</a>
+        <a href="3a.html"><b>Layer 3a</b></a>
       </li>
       <li>
         <a href="3b.html">Layer 3b</a>
@@ -337,14 +337,21 @@
         <a href="5b.html">Layer 5b</a>
       </li>
     </ul>
-  
+
+    <ul class="navlist">
+      <li> <a href="3a.html#3a-0">3a 1x1</a> <span style="color: #777;"> (0:64)</span> </li>
+      <li> <a href="3a.html#3a-64">3a 3x3</a> <span style="color: #777;"> (64:192)</span> </li>
+      <li> <a href="3a.html#3a-192">3a 5x5</a> <span style="color: #777;"> (192:224)</span> </li>
+      <li> <a href="3a.html#3a-224">3a pool</a> <span style="color: #777;"> (224:256)</span> </li>
+    </ul>
+
   </nav>
-  
+
   <hr style="margin-top: 20px;"/>
-  
+
   <ul class="channels">
     <!--mixed3a-00000--mixed3a-00009.jpg-->
-    
+
       <li id="channel-0">
       <d-figure id="3a-0">
       <style data-img-src="images/mixed3a-00000--mixed3a-00009.jpg" data-channel="0"></style>
@@ -359,7 +366,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -369,7 +376,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -426,7 +433,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -436,7 +443,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -493,7 +500,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -503,7 +510,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -560,7 +567,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -570,7 +577,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -627,7 +634,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -637,7 +644,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -694,7 +701,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -704,7 +711,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -761,7 +768,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -771,7 +778,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -828,7 +835,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -838,7 +845,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -895,7 +902,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -905,7 +912,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -962,7 +969,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -972,7 +979,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -1014,9 +1021,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00010--mixed3a-00019.jpg-->
-    
+
 
 
 
@@ -1041,7 +1048,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -1051,7 +1058,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -1108,7 +1115,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -1118,7 +1125,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -1175,7 +1182,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -1185,7 +1192,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -1242,7 +1249,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -1252,7 +1259,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -1309,7 +1316,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -1319,7 +1326,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -1376,7 +1383,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -1386,7 +1393,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -1443,7 +1450,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -1453,7 +1460,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -1510,7 +1517,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -1520,7 +1527,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -1577,7 +1584,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -1587,7 +1594,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -1644,7 +1651,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -1654,7 +1661,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -1696,9 +1703,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00020--mixed3a-00029.jpg-->
-    
+
 
 
 
@@ -1733,7 +1740,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -1743,7 +1750,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -1800,7 +1807,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -1810,7 +1817,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -1867,7 +1874,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -1877,7 +1884,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -1934,7 +1941,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -1944,7 +1951,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -2001,7 +2008,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -2011,7 +2018,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -2068,7 +2075,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -2078,7 +2085,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -2135,7 +2142,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -2145,7 +2152,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -2202,7 +2209,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -2212,7 +2219,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -2269,7 +2276,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -2279,7 +2286,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -2336,7 +2343,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -2346,7 +2353,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -2388,9 +2395,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00030--mixed3a-00039.jpg-->
-    
+
 
 
 
@@ -2435,7 +2442,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -2445,7 +2452,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -2502,7 +2509,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -2512,7 +2519,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -2569,7 +2576,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -2579,7 +2586,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -2636,7 +2643,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -2646,7 +2653,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -2703,7 +2710,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -2713,7 +2720,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -2770,7 +2777,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -2780,7 +2787,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -2837,7 +2844,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -2847,7 +2854,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -2904,7 +2911,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -2914,7 +2921,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -2971,7 +2978,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -2981,7 +2988,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -3038,7 +3045,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -3048,7 +3055,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -3090,9 +3097,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00040--mixed3a-00049.jpg-->
-    
+
 
 
 
@@ -3147,7 +3154,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -3157,7 +3164,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -3214,7 +3221,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -3224,7 +3231,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -3281,7 +3288,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -3291,7 +3298,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -3348,7 +3355,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -3358,7 +3365,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -3415,7 +3422,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -3425,7 +3432,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -3482,7 +3489,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -3492,7 +3499,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -3549,7 +3556,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -3559,7 +3566,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -3616,7 +3623,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -3626,7 +3633,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -3683,7 +3690,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -3693,7 +3700,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -3750,7 +3757,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -3760,7 +3767,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -3802,9 +3809,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00050--mixed3a-00059.jpg-->
-    
+
 
 
 
@@ -3869,7 +3876,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -3879,7 +3886,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -3936,7 +3943,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -3946,7 +3953,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -4003,7 +4010,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -4013,7 +4020,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -4070,7 +4077,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -4080,7 +4087,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -4137,7 +4144,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -4147,7 +4154,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -4204,7 +4211,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -4214,7 +4221,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -4271,7 +4278,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -4281,7 +4288,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -4338,7 +4345,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -4348,7 +4355,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -4405,7 +4412,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -4415,7 +4422,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -4472,7 +4479,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -4482,7 +4489,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -4524,9 +4531,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00060--mixed3a-00069.jpg-->
-    
+
 
 
 
@@ -4601,7 +4608,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -4611,7 +4618,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -4668,7 +4675,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -4678,7 +4685,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -4735,7 +4742,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -4745,7 +4752,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -4802,7 +4809,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -4812,7 +4819,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -4869,7 +4876,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -4879,7 +4886,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -4936,7 +4943,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -4946,7 +4953,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -5003,7 +5010,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -5013,7 +5020,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -5070,7 +5077,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -5080,7 +5087,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -5137,7 +5144,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -5147,7 +5154,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -5204,7 +5211,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -5214,7 +5221,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -5256,9 +5263,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00070--mixed3a-00079.jpg-->
-    
+
 
 
 
@@ -5343,7 +5350,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -5353,7 +5360,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -5410,7 +5417,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -5420,7 +5427,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -5477,7 +5484,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -5487,7 +5494,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -5544,7 +5551,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -5554,7 +5561,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -5611,7 +5618,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -5621,7 +5628,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -5678,7 +5685,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -5688,7 +5695,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -5745,7 +5752,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -5755,7 +5762,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -5812,7 +5819,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -5822,7 +5829,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -5879,7 +5886,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -5889,7 +5896,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -5946,7 +5953,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -5956,7 +5963,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -5998,9 +6005,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00080--mixed3a-00089.jpg-->
-    
+
 
 
 
@@ -6095,7 +6102,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -6105,7 +6112,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -6162,7 +6169,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -6172,7 +6179,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -6229,7 +6236,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -6239,7 +6246,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -6296,7 +6303,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -6306,7 +6313,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -6363,7 +6370,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -6373,7 +6380,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -6430,7 +6437,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -6440,7 +6447,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -6497,7 +6504,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -6507,7 +6514,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -6564,7 +6571,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -6574,7 +6581,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -6631,7 +6638,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -6641,7 +6648,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -6698,7 +6705,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -6708,7 +6715,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -6750,9 +6757,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00090--mixed3a-00099.jpg-->
-    
+
 
 
 
@@ -6857,7 +6864,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -6867,7 +6874,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -6924,7 +6931,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -6934,7 +6941,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -6991,7 +6998,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -7001,7 +7008,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -7058,7 +7065,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -7068,7 +7075,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -7125,7 +7132,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -7135,7 +7142,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -7192,7 +7199,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -7202,7 +7209,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -7259,7 +7266,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -7269,7 +7276,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -7326,7 +7333,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -7336,7 +7343,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -7393,7 +7400,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -7403,7 +7410,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -7460,7 +7467,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -7470,7 +7477,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -7512,9 +7519,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00100--mixed3a-00109.jpg-->
-    
+
 
 
 
@@ -7629,7 +7636,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -7639,7 +7646,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -7696,7 +7703,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -7706,7 +7713,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -7763,7 +7770,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -7773,7 +7780,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -7830,7 +7837,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -7840,7 +7847,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -7897,7 +7904,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -7907,7 +7914,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -7964,7 +7971,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -7974,7 +7981,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -8031,7 +8038,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -8041,7 +8048,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -8098,7 +8105,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -8108,7 +8115,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -8165,7 +8172,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -8175,7 +8182,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -8232,7 +8239,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -8242,7 +8249,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -8284,9 +8291,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00110--mixed3a-00119.jpg-->
-    
+
 
 
 
@@ -8411,7 +8418,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -8421,7 +8428,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -8478,7 +8485,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -8488,7 +8495,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -8545,7 +8552,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -8555,7 +8562,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -8612,7 +8619,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -8622,7 +8629,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -8679,7 +8686,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -8689,7 +8696,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -8746,7 +8753,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -8756,7 +8763,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -8813,7 +8820,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -8823,7 +8830,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -8880,7 +8887,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -8890,7 +8897,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -8947,7 +8954,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -8957,7 +8964,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -9014,7 +9021,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -9024,7 +9031,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -9066,9 +9073,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00120--mixed3a-00129.jpg-->
-    
+
 
 
 
@@ -9203,7 +9210,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -9213,7 +9220,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -9270,7 +9277,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -9280,7 +9287,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -9337,7 +9344,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -9347,7 +9354,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -9404,7 +9411,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -9414,7 +9421,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -9471,7 +9478,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -9481,7 +9488,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -9538,7 +9545,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -9548,7 +9555,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -9605,7 +9612,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -9615,7 +9622,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -9672,7 +9679,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -9682,7 +9689,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -9739,7 +9746,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -9749,7 +9756,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -9806,7 +9813,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -9816,7 +9823,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -9858,9 +9865,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00130--mixed3a-00139.jpg-->
-    
+
 
 
 
@@ -10005,7 +10012,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -10015,7 +10022,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -10072,7 +10079,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -10082,7 +10089,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -10139,7 +10146,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -10149,7 +10156,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -10206,7 +10213,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -10216,7 +10223,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -10273,7 +10280,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -10283,7 +10290,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -10340,7 +10347,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -10350,7 +10357,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -10407,7 +10414,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -10417,7 +10424,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -10474,7 +10481,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -10484,7 +10491,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -10541,7 +10548,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -10551,7 +10558,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -10608,7 +10615,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -10618,7 +10625,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -10660,9 +10667,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00140--mixed3a-00149.jpg-->
-    
+
 
 
 
@@ -10817,7 +10824,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -10827,7 +10834,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -10884,7 +10891,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -10894,7 +10901,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -10951,7 +10958,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -10961,7 +10968,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -11018,7 +11025,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -11028,7 +11035,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -11085,7 +11092,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -11095,7 +11102,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -11152,7 +11159,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -11162,7 +11169,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -11219,7 +11226,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -11229,7 +11236,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -11286,7 +11293,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -11296,7 +11303,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -11353,7 +11360,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -11363,7 +11370,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -11420,7 +11427,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -11430,7 +11437,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -11472,9 +11479,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00150--mixed3a-00159.jpg-->
-    
+
 
 
 
@@ -11639,7 +11646,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -11649,7 +11656,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -11706,7 +11713,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -11716,7 +11723,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -11773,7 +11780,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -11783,7 +11790,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -11840,7 +11847,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -11850,7 +11857,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -11907,7 +11914,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -11917,7 +11924,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -11974,7 +11981,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -11984,7 +11991,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -12041,7 +12048,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -12051,7 +12058,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -12108,7 +12115,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -12118,7 +12125,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -12175,7 +12182,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -12185,7 +12192,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -12242,7 +12249,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -12252,7 +12259,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -12294,9 +12301,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00160--mixed3a-00169.jpg-->
-    
+
 
 
 
@@ -12471,7 +12478,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -12481,7 +12488,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -12538,7 +12545,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -12548,7 +12555,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -12605,7 +12612,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -12615,7 +12622,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -12672,7 +12679,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -12682,7 +12689,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -12739,7 +12746,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -12749,7 +12756,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -12806,7 +12813,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -12816,7 +12823,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -12873,7 +12880,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -12883,7 +12890,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -12940,7 +12947,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -12950,7 +12957,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -13007,7 +13014,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -13017,7 +13024,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -13074,7 +13081,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -13084,7 +13091,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -13126,9 +13133,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00170--mixed3a-00179.jpg-->
-    
+
 
 
 
@@ -13313,7 +13320,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -13323,7 +13330,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -13380,7 +13387,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -13390,7 +13397,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -13447,7 +13454,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -13457,7 +13464,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -13514,7 +13521,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -13524,7 +13531,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -13581,7 +13588,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -13591,7 +13598,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -13648,7 +13655,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -13658,7 +13665,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -13715,7 +13722,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -13725,7 +13732,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -13782,7 +13789,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -13792,7 +13799,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -13849,7 +13856,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -13859,7 +13866,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -13916,7 +13923,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -13926,7 +13933,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -13968,9 +13975,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00180--mixed3a-00189.jpg-->
-    
+
 
 
 
@@ -14165,7 +14172,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -14175,7 +14182,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -14232,7 +14239,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -14242,7 +14249,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -14299,7 +14306,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -14309,7 +14316,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -14366,7 +14373,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -14376,7 +14383,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -14433,7 +14440,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -14443,7 +14450,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -14500,7 +14507,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -14510,7 +14517,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -14567,7 +14574,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -14577,7 +14584,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -14634,7 +14641,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -14644,7 +14651,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -14701,7 +14708,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -14711,7 +14718,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -14768,7 +14775,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -14778,7 +14785,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -14820,9 +14827,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00190--mixed3a-00199.jpg-->
-    
+
 
 
 
@@ -15027,7 +15034,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -15037,7 +15044,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -15094,7 +15101,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -15104,7 +15111,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -15161,7 +15168,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -15171,7 +15178,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -15228,7 +15235,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -15238,7 +15245,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -15295,7 +15302,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -15305,7 +15312,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -15362,7 +15369,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -15372,7 +15379,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -15429,7 +15436,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -15439,7 +15446,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -15496,7 +15503,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -15506,7 +15513,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -15563,7 +15570,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -15573,7 +15580,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -15630,7 +15637,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -15640,7 +15647,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -15682,9 +15689,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00200--mixed3a-00209.jpg-->
-    
+
 
 
 
@@ -15899,7 +15906,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -15909,7 +15916,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -15966,7 +15973,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -15976,7 +15983,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -16033,7 +16040,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -16043,7 +16050,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -16100,7 +16107,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -16110,7 +16117,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -16167,7 +16174,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -16177,7 +16184,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -16234,7 +16241,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -16244,7 +16251,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -16301,7 +16308,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -16311,7 +16318,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -16368,7 +16375,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -16378,7 +16385,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -16435,7 +16442,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -16445,7 +16452,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -16502,7 +16509,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -16512,7 +16519,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -16554,9 +16561,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00210--mixed3a-00219.jpg-->
-    
+
 
 
 
@@ -16781,7 +16788,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -16791,7 +16798,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -16848,7 +16855,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -16858,7 +16865,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -16915,7 +16922,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -16925,7 +16932,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -16982,7 +16989,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -16992,7 +16999,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -17049,7 +17056,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -17059,7 +17066,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -17116,7 +17123,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -17126,7 +17133,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -17183,7 +17190,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -17193,7 +17200,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -17250,7 +17257,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -17260,7 +17267,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -17317,7 +17324,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -17327,7 +17334,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -17384,7 +17391,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -17394,7 +17401,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -17436,9 +17443,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00220--mixed3a-00229.jpg-->
-    
+
 
 
 
@@ -17673,7 +17680,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -17683,7 +17690,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -17740,7 +17747,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -17750,7 +17757,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -17807,7 +17814,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -17817,7 +17824,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -17874,7 +17881,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -17884,7 +17891,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -17941,7 +17948,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -17951,7 +17958,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -18008,7 +18015,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -18018,7 +18025,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -18075,7 +18082,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -18085,7 +18092,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -18142,7 +18149,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -18152,7 +18159,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -18209,7 +18216,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -18219,7 +18226,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -18276,7 +18283,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -18286,7 +18293,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -18328,9 +18335,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00230--mixed3a-00239.jpg-->
-    
+
 
 
 
@@ -18575,7 +18582,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -18585,7 +18592,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -18642,7 +18649,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -18652,7 +18659,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -18709,7 +18716,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -18719,7 +18726,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -18776,7 +18783,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -18786,7 +18793,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -18843,7 +18850,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -18853,7 +18860,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -18910,7 +18917,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -18920,7 +18927,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -18977,7 +18984,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -18987,7 +18994,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -19044,7 +19051,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -19054,7 +19061,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -19111,7 +19118,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -19121,7 +19128,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -19178,7 +19185,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -19188,7 +19195,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -19230,9 +19237,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00240--mixed3a-00249.jpg-->
-    
+
 
 
 
@@ -19487,7 +19494,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -19497,7 +19504,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -19554,7 +19561,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -19564,7 +19571,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -19621,7 +19628,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -19631,7 +19638,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -19688,7 +19695,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -19698,7 +19705,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -19755,7 +19762,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -19765,7 +19772,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -19822,7 +19829,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -19832,7 +19839,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -19889,7 +19896,7 @@
           <div class="sprite channel index-6"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-6"></div>
@@ -19899,7 +19906,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-6 dataset-index-0"></div>
@@ -19956,7 +19963,7 @@
           <div class="sprite channel index-7"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-7"></div>
@@ -19966,7 +19973,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-7 dataset-index-0"></div>
@@ -20023,7 +20030,7 @@
           <div class="sprite channel index-8"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-8"></div>
@@ -20033,7 +20040,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-8 dataset-index-0"></div>
@@ -20090,7 +20097,7 @@
           <div class="sprite channel index-9"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-9"></div>
@@ -20100,7 +20107,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-9 dataset-index-0"></div>
@@ -20142,9 +20149,9 @@
       </div>
       </d-figure>
       </li>
-  
+
     <!--mixed3a-00250--mixed3a-00255.jpg-->
-    
+
 
 
 
@@ -20409,7 +20416,7 @@
           <div class="sprite channel index-0"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-0"></div>
@@ -20419,7 +20426,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-0 dataset-index-0"></div>
@@ -20476,7 +20483,7 @@
           <div class="sprite channel index-1"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-1"></div>
@@ -20486,7 +20493,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-1 dataset-index-0"></div>
@@ -20543,7 +20550,7 @@
           <div class="sprite channel index-2"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-2"></div>
@@ -20553,7 +20560,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-2 dataset-index-0"></div>
@@ -20610,7 +20617,7 @@
           <div class="sprite channel index-3"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-3"></div>
@@ -20620,7 +20627,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-3 dataset-index-0"></div>
@@ -20677,7 +20684,7 @@
           <div class="sprite channel index-4"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-4"></div>
@@ -20687,7 +20694,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-4 dataset-index-0"></div>
@@ -20744,7 +20751,7 @@
           <div class="sprite channel index-5"></div>
           <span class="figcaption">Channel Objective</span>
         </div>
-        
+
         <div>
           <div class="diversity">
             <div class="sprite channel-diversity-0 index-5"></div>
@@ -20754,7 +20761,7 @@
           </div>
           <span class="figcaption">Diversity</span>
         </div>
-        
+
         <div>
           <div class="dataset-examples dataset-positive">
             <div class="sprite index-5 dataset-index-0"></div>
@@ -20796,9 +20803,8 @@
       </div>
       </d-figure>
       </li>
-  
+
   </ul>
   </d-article>
   <distill-footer></distill-footer>
 </body>
-  
