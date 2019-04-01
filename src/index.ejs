@@ -485,12 +485,16 @@
 <p>
   If neurons are not the right way to understand neural nets, what is?
   In real life, combinations of neurons work together to represent images in neural networks.
-  Individual neurons are the basis directions of activation space, and it is not clear that these should be any more special than any other direction.
+  A helpful way to think about these combinations is geometrically: let's define <em>activation space</em> to be all possible combinations of neuron activations.
+  We can then think of individual neuron activations as the <em>basis vectors</em> of this activation space. Conversely, a combination of neuron activations is then just a vector in this space.
+</p>
+<p>
+  This framing unifies the concepts "neurons" and "combinations of neurons" as "vectors in activation space". It allows us to ask: Should we expect the directions of the basis vectors to be any more interpretable than the directions of other vectors in this space?
 </p>
 
 <p>
-  <d-cite key="szegedy2013intriguing">Szegedy <i>et al.</i></d-cite> found that random directions seem just as meaningful as the basis directions.
-  More recently <d-cite key="netdissect2017">Bau, Zhou <i>et al.</i></d-cite> found basis directions to be interpretable more often than random directions.
+  Szegedy <i>et al.</i><d-cite key="szegedy2013intriguing"></d-cite> found that random directions seem just as meaningful as the directions of the basis vectors.
+  More recently Bau, Zhou <i>et al.</i><d-cite key="netdissect2017"></d-cite> found the directions of the basis vectors to be interpretable more often than random directions.
   Our experience is broadly consistent with both results; we find that random directions often seem interpretable, but at a lower rate than basis directions.
 </p>
 
