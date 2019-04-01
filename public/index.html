@@ -247,7 +247,7 @@ figcaption,
 </d-title>
 
 <d-article>
-  
+
 <p>
   There is a growing sense that neural networks need to be interpretable to humans.
   The field of neural network interpretability has formed in response to these concerns.
@@ -273,7 +273,7 @@ figcaption,
     <figcaption>
     <strong>Attribution</strong>
       <d-footnote>
-        As a young field, neural network interpretability does not yet have standardized terminology. 
+        As a young field, neural network interpretability does not yet have standardized terminology.
         Attribution has gone under many different names in the literature -- including "feature visualization"! -- but recent work seems to prefer terms like "attribution" and "saliency maps".
       </d-footnote>
     studies what part of an example is responsible for the network activating a particular way.
@@ -282,18 +282,18 @@ figcaption,
 </figure>
 
 <p>
-  This article focuses on feature visualization. 
-  While feature visualization is a powerful tool, actually getting it to work involves a number of details. 
+  This article focuses on feature visualization.
+  While feature visualization is a powerful tool, actually getting it to work involves a number of details.
   In this article, we examine the major issues and explore common approaches to solving them.
   We find that remarkably simple methods can produce high-quality visualizations. Along the way we introduce a few tricks for exploring variation in what neurons react to, how they interact, and how to improve the optimization process.
 </p>
 
-<!-- 
+<!--
 <p>
   Neural network feature visualization is a powerful technique. It can answer questions about what a network -- or parts of a network -- are looking for by generating idealized examples of what the network is trying to find.
   Along with attribution it forms one of the two main threads of research in neural network interpretability.
 </p> -->
-<!-- 
+<!--
 <p>
   Over the last few years, the field has made great strides in feature visualization. Actually getting it to work, however, involves a number of details. In this article, we examine the major issues and explore common approaches to solving them.
 </p>
@@ -336,33 +336,33 @@ figcaption,
       grid-column: text;
       grid-template-columns: repeat(1, 1fr);
     }
-    
+
     #optimization-objectives .objective {
       display: grid;
       grid-template-columns: repeat(2, 1fr) 1.1fr;
     }
-    
+
     #optimization-objectives .objectives figcaption {
       padding: 4px 8px;
       word-wrap: break-word;
       word-break: break-word;
     }
-    
+
     #optimization-objectives .objective .objective-icon {
-      padding: 8px;    
+      padding: 8px;
     }
-    
+
     @media (min-width: 512px) {
       #optimization-objectives .objectives {
         grid-template-columns: repeat(5, 1fr);
         grid-column-gap: 16px;
       }
-      
+
       #optimization-objectives .objective {
         display: flex;
         flex-flow: column;
       }
-      
+
       #optimization-objectives .objectives figcaption {
         padding: 0;
         padding-top: 4px;
@@ -371,7 +371,7 @@ figcaption,
       }
     }
   </style>
-  
+
   <figcaption style="grid-column: kicker;">
     <p>Different <strong>optimization objectives</strong> show what different parts of a network are looking for.</p>
     <br>
@@ -380,7 +380,7 @@ figcaption,
       <code><strong>z</strong></code> channel index <br />
       <code><strong>k</strong></code> class index</p>
   </figcaption>
-  
+
   <div class="objectives grid">
     <div class="objective">
       <div class="objective-icon">
@@ -389,7 +389,7 @@ figcaption,
       <img class="objective-opt" src="images/objectives/neuron.png">
       <figcaption><strong>Neuron</strong><br/><code>layer<sub>n</sub>[x,y,z]</code></figcaption>
     </div>
-    
+
     <div class="objective">
       <div class="objective-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><g id="Page-1-Copy" fill="none" fill-rule="evenodd" transform="translate(27)"><path id="Rectangle-Copy-3" fill="#888" d="M40 0l50 28.8V144l-50-28.8z" opacity=".2"/><path id="Rectangle-Copy-2" fill="#F5A623" d="M20 0l50 28.8V144l-50-28.8z"/><path id="Rectangle-Copy" fill="#AAA" d="M0 0l50 28.8V144L0 115.2z"/></g></svg>
@@ -397,7 +397,7 @@ figcaption,
       <img class="objective-opt" src="images/objectives/channel.png">
       <figcaption><strong>Channel</strong><br/><code>layer<sub>n</sub>[:,:,z]</code></figcaption>
     </div>
-    
+
     <div class="objective">
       <div class="objective-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><g id="Page-1-Copy" fill="#F5A623" fill-rule="evenodd" transform="translate(27)"><path id="Rectangle-Copy-3" d="M40 0l50 28.8V144l-50-28.8z" opacity=".2"/><path id="Rectangle-Copy-2" d="M20 0l50 28.8V144l-50-28.8z" opacity=".4"/><path id="Rectangle-Copy" d="M0 0l50 28.8V144L0 115.2z"/></g></svg>
@@ -405,7 +405,7 @@ figcaption,
       <img class="objective-opt" src="images/objectives/layer.png">
       <figcaption><strong>Layer</strong>/DeepDream<br/><code>layer<sub>n</sub>[:,:,:]<sup>2</sup></code></figcaption>
     </div>
-    
+
     <div class="objective">
       <div class="objective-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><g id="Page-1-Copy" fill="none" fill-rule="evenodd"><g id="objectives_logits_pre" transform="translate(9 9)"><circle id="Oval-Copy-17" cx="115" cy="29" r="11" fill="#FFF" stroke="#D7D7D7" transform="matrix(-1 0 0 1 230 0)"/><circle id="Oval-Copy-18" cx="115" cy="64" r="11" fill="#FFF" stroke="#D7D7D7" transform="matrix(-1 0 0 1 230 0)"/><circle id="Oval-Copy-19" cx="115" cy="99" r="11" fill="#FFF" stroke="#D7D7D7" transform="matrix(-1 0 0 1 230 0)"/><path id="Line-3-Copy-15" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 97.5l-50.272-86" opacity=".428"/><path id="Line-3-Copy-16" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 97.5l-50.272-53" opacity=".428"/><path id="Line-3-Copy-17" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 97.5l-50.272-18" opacity=".428"/><path id="Line-3-Copy-18" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 97.5l-50.272 17" opacity=".428"/><g id="Group-2-Copy" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" opacity=".428" transform="matrix(1 0 0 -1 11 115)"><path id="Line-3-Copy-8" d="M50.636 86.5L.364.5"/><path id="Line-3-Copy-7" d="M50.636 86.5L.364 33.5"/><path id="Line-3-Copy-3" d="M50.636 86.5L.364 68.5"/><path id="Line-3-Copy-6" d="M50.636 86.5l-50.272 17"/></g><path id="Line-3-Copy-19" stroke="#9B9B9B" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 64.5l-50.272-53"/><path id="Line-3-Copy-20" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 64.5l-50.272-18"/><path id="Line-3-Copy-21" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 64.5l-50.272 17"/><path id="Line-3-Copy-22" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M60.638 64.5l-49.276 53"/><circle id="Oval-Copy-5" cx="11" cy="11" r="11" fill="#FFF" stroke="#D7D7D7"/><circle id="Oval-Copy-20" cx="59" cy="29" r="11" fill="#D8D8D8"/><circle id="Oval-Copy-6" cx="11" cy="46" r="11" fill="#FFF" stroke="#D7D7D7"/><circle id="Oval-Copy-21" cx="59" cy="64" r="11" fill="#F5A623"/><circle id="Oval-Copy-7" cx="11" cy="81" r="11" fill="#FFF" stroke="#D7D7D7"/><circle id="Oval-Copy-22" cx="59" cy="99" r="11" fill="#D8D8D8"/><circle id="Oval-Copy-8" cx="11" cy="116" r="11" fill="#FFF" stroke="#D7D7D7"/><path id="Line-3-Copy-23" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M74.958 29.5h-5.874" opacity=".428"/><path id="Line-3-Copy-24" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M102.958 29.5h-5.874" opacity=".428"/><path id="Line-3-Copy-25" stroke="#9B9B9B" stroke-dasharray="1,2" stroke-linecap="square" d="M74.958 64.5h-5.874" opacity=".4"/><path id="Line-3-Copy-26" stroke="#9B9B9B" stroke-dasharray="1,2" stroke-linecap="square" d="M102.958 64.5h-5.874" opacity=".4"/><path id="Line-3-Copy-27" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M74.958 99.5h-5.874" opacity=".428"/><path id="Line-3-Copy-28" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M102.958 99.5h-5.874" opacity=".428"/><rect id="Rectangle-3-Copy" width="21" height="103" x="76.5" y="13.5" stroke="#9B9B9B" opacity=".4" rx="3"/><text id="softmax-copy" fill="#979797" font-family="SFProText-Light, SF Pro Text" font-size="14" font-weight="300" opacity=".673" transform="rotate(-90 86 64.5)"><tspan x="59.818" y="69.5">softmax</tspan></text></g></g></svg>
@@ -413,7 +413,7 @@ figcaption,
       <img class="objective-opt" src="images/objectives/logits.png">
       <figcaption><strong>Class Logits</strong><br/><code>pre_softmax[k]</code></figcaption>
     </div>
-    
+
     <div class="objective">
       <div class="objective-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><g id="Page-1-Copy" fill="none" fill-rule="evenodd"><g id="objectives_logits_post" transform="translate(9 9)"><circle id="Oval-Copy-14" cx="115" cy="29" r="11" fill="#D8D8D8" transform="matrix(-1 0 0 1 230 0)"/><circle id="Oval-Copy-15" cx="115" cy="64" r="11" fill="#F5A623" transform="matrix(-1 0 0 1 230 0)"/><circle id="Oval-Copy-16" cx="115" cy="99" r="11" fill="#D8D8D8" transform="matrix(-1 0 0 1 230 0)"/><path id="Line-3" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 97.5l-50.272-86" opacity=".428"/><path id="Line-3-Copy" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 97.5l-50.272-53" opacity=".428"/><path id="Line-3-Copy-2" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 97.5l-50.272-18" opacity=".428"/><path id="Line-3-Copy-4" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 97.5l-50.272 17" opacity=".428"/><g id="Group-2" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" opacity=".428" transform="matrix(1 0 0 -1 11 115)"><path id="Line-3-Copy-8" d="M50.636 86.5L.364.5"/><path id="Line-3-Copy-7" d="M50.636 86.5L.364 33.5"/><path id="Line-3-Copy-3" d="M50.636 86.5L.364 68.5"/><path id="Line-3-Copy-6" d="M50.636 86.5l-50.272 17"/></g><path id="Line-3-Copy" stroke="#9B9B9B" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 64.5l-50.272-53"/><path id="Line-3-Copy-2" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 64.5l-50.272-18"/><path id="Line-3-Copy-4" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M61.636 64.5l-50.272 17"/><path id="Line-3-Copy-5" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M60.638 64.5l-49.276 53"/><circle id="Oval-Copy" cx="11" cy="11" r="11" fill="#FFF" stroke="#D7D7D7"/><circle id="Oval-Copy-9" cx="59" cy="29" r="11" fill="#FFF" stroke="#D7D7D7"/><circle id="Oval-Copy-2" cx="11" cy="46" r="11" fill="#FFF" stroke="#D7D7D7"/><circle id="Oval-Copy-10" cx="59" cy="64" r="11" fill="#FFF" stroke="#D7D7D7"/><circle id="Oval-Copy-3" cx="11" cy="81" r="11" fill="#FFF" stroke="#D7D7D7"/><circle id="Oval-Copy-11" cx="59" cy="99" r="11" fill="#FFF" stroke="#D7D7D7"/><circle id="Oval-Copy-4" cx="11" cy="116" r="11" fill="#FFF" stroke="#D7D7D7"/><path id="Line-3-Copy-9" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M74.958 29.5h-5.874" opacity=".428"/><path id="Line-3-Copy-12" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M102.958 29.5h-5.874" opacity=".428"/><path id="Line-3-Copy-10" stroke="#9B9B9B" stroke-dasharray="1,2" stroke-linecap="square" d="M74.958 64.5h-5.874"/><path id="Line-3-Copy-13" stroke="#9B9B9B" stroke-dasharray="1,2" stroke-linecap="square" d="M102.958 64.5h-5.874"/><path id="Line-3-Copy-11" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M74.958 99.5h-5.874" opacity=".428"/><path id="Line-3-Copy-14" stroke="#979797" stroke-dasharray="1,2" stroke-linecap="square" d="M102.958 99.5h-5.874" opacity=".428"/><rect id="Rectangle-3" width="21" height="103" x="76.5" y="13.5" stroke="#9B9B9B" rx="3"/><text id="softmax" fill="#979797" font-family="SFProText-Regular, SF Pro Text" font-size="14" transform="rotate(-90 87 65.5)"><tspan x="60.494" y="70.5">softmax</tspan></text></g></g></svg>
@@ -428,7 +428,7 @@ figcaption,
   If we want to understand individual features, we can search for examples where they have high values -- either for a <em>neuron</em> at an individual position, or for an entire <em>channel</em>.
   We used the channel objective to create most of the images in this article.
 </p>
-    
+
 <p>
   If we want to understand a <em>layer</em> as a whole, we can use the DeepDream objective <d-cite key="mordvintsev2015inceptionism"></d-cite>, searching for images the layer finds "interesting."
 </p>
@@ -500,7 +500,7 @@ figcaption,
 
 <!-- TODO: improve las sentence -->
 <p>
-  Do our examples show us the full picture? 
+  Do our examples show us the full picture?
   When we create examples by optimization, this is something we need to be very careful of.
   It's entirely possible for genuine examples to still mislead us by only showing us one "facet" of what a feature represents.
 </p>
@@ -531,14 +531,14 @@ figcaption,
   <img class="column" src="https://cnsviewer2.corp.google.com/cns/in-d/home/ludwigschubert/visualize_channels/diagrams/mixed4a-00492/4-max.jpg">
 </figure> -->
 <p>
-  In contrast, optimization generally gives us just one extremely positive example -- and if we're creative, a very negative example as well. 
+  In contrast, optimization generally gives us just one extremely positive example -- and if we're creative, a very negative example as well.
   Is there some way that optimization could also give us this diversity?
 </p>
 
 <h3 id="diversity-with-optimization">Achieving Diversity with Optimization</h3>
 
 <p>
-  A given feature of a network may respond to a wide range of inputs. 
+  A given feature of a network may respond to a wide range of inputs.
   On the class level, for example, a classifier that has been trained to recognize dogs should recognize both closeups of their faces as well as wider profile images -- even though those have quite different visual appearances.
   Early work by <d-cite key="mneuron2015">Wei <i>et al.</i></d-cite> attempts to demonstrate this "intra-class" diversity by recording activations over the entire training set, clustering them and optimizing for the cluster centroids, revealing the different facets of a class that were learned.
 </p>
@@ -547,7 +547,7 @@ figcaption,
   A different approach by Nguyen, Yosinski, and collaborators was to search through the dataset for diverse examples and use those as starting points for the optimization process <d-cite key="nguyen2016multifaceted"></d-cite>.
   The idea is that this initiates optimization in different facets of the feature so that the resulting example from optimization will demonstrate that facet.
   In more recent work, they combine visualizing classes with a generative model, which they can sample for diverse examples <d-cite key="nguyen2016plug"></d-cite>.
-  Their first approach had limited success, and while the generative model approach works very well -- we'll discuss it more in the section on regularization under <a href="#learned-priors">learned priors</a> -- it can be a bit tricky. 
+  Their first approach had limited success, and while the generative model approach works very well -- we'll discuss it more in the section on regularization under <a href="#learned-priors">learned priors</a> -- it can be a bit tricky.
 </p>
 
 <p>
@@ -559,7 +559,7 @@ figcaption,
       </d-math>
       From this, we compute the diversity term: the negative pairwise cosine similarity of pairs of visualizations.
       <d-math block>
-        C_{\text{diversity}} = - \sum_{a} \sum_{b\neq a} ~ \frac{\text{vec}(G_a) \cdot \text{vec}(G_b)}{||\text{vec}(G_a)||~||\text{vec}(G_b)||} 
+        C_{\text{diversity}} = - \sum_{a} \sum_{b\neq a} ~ \frac{\text{vec}(G_a) \cdot \text{vec}(G_b)}{||\text{vec}(G_a)||~||\text{vec}(G_b)||}
       </d-math>
       We then maximize the diversity term jointly with the regular optimization objective.
     </d-footnote> to one's objective that pushes multiple examples to be different from each other.
@@ -596,10 +596,10 @@ figcaption,
   Diverse feature visualizations allow us to more closely pinpoint what activates a neuron, to the degree that we can make, and -- by looking at dataset examples -- <em>check</em> predictions about what inputs will activate the neuron.
 </p>
 <p>
-  For example, let's examine this simple optimization result. 
+  For example, let's examine this simple optimization result.
 </p>
 
-<p>  
+<p>
   <span style="display: block; float: left; width: 147px; margin-right: 1em; margin-bottom: 0.5em; margin-top: 3px">
     <img src="images/diversity/mixed4a_143_optimized.png" />
     <span class="figcaption">Simple optimization</span>
@@ -651,7 +651,7 @@ figcaption,
 
 <p>
   Diversity also starts to brush on a more fundamental issue: while the examples above represent a mostly coherent idea, there are also neurons that represent strange mixtures of ideas.
-  Below, a neuron to responds to two types of animal faces, and also to car bodies.
+  Below, a neuron responds to two types of animal faces, and also to car bodies.
 </p>
 
 <figure class="grid l-page" style="grid-template-columns: repeat(6, 1fr)">
@@ -679,13 +679,17 @@ figcaption,
 
 <p>
   If neurons are not the right way to understand neural nets, what is?
-  In real life, combinations of neurons work together to represent images in neural networks. 
-  Individual neurons are the basis directions of activation space, and it is not clear that these should be any more special than any other direction.
+  In real life, combinations of neurons work together to represent images in neural networks.
+  A helpful way to think about these combinations is geometrically: let's define <em>activation space</em> to be all possible combinations of neuron activations.
+  We can then think of individual neuron activations as the <em>basis vectors</em> of this activation space. Conversely, a combination of neuron activations is then just a vector in this space.
+</p>
+<p>
+  This framing unifies the concepts "neurons" and "combinations of neurons" as "vectors in activation space". It allows us to ask: Should we expect the directions of the basis vectors to be any more interpretable than the directions of other vectors in this space?
 </p>
 
 <p>
-  <d-cite key="szegedy2013intriguing">Szegedy <i>et al.</i></d-cite> found that random directions seem just as meaningful as the basis directions.
-  More recently <d-cite key="netdissect2017">Bau, Zhou <i>et al.</i></d-cite> found basis directions to be interpretable more often than random directions.
+  Szegedy <i>et al.</i><d-cite key="szegedy2013intriguing"></d-cite> found that random directions seem just as meaningful as the directions of the basis vectors.
+  More recently Bau, Zhou <i>et al.</i><d-cite key="netdissect2017"></d-cite> found the directions of the basis vectors to be interpretable more often than random directions.
   Our experience is broadly consistent with both results; we find that random directions often seem interpretable, but at a lower rate than basis directions.
 </p>
 
@@ -697,7 +701,7 @@ figcaption,
   <d-figure style="grid-column: text-start / page-end;" id="random-optimization-and-examples"></d-figure>
 </figure>
 
-<p>  
+<p>
   We can also define interesting directions in activation space by doing arithmetic on neurons.
   For example, if we add a "black and white" neuron to a "mosaic" neuron, we obtain a black and white version of the mosaic.
   This is reminiscent of semantic arithmetic of word embeddings as seen in Word2Vec or generative models' latent spaces.
@@ -713,9 +717,9 @@ figcaption,
 
 <p>
   These examples show us how neurons jointly represent images.
-  To better understand how neurons interact, we can also interpolate between them. 
+  To better understand how neurons interact, we can also interpolate between them.
   <d-footnote>The optimization objective is a linear interpolation between the individual channel objectives. To get the interpolations to look better, we also add a small alignment objective that encourages lower layer activations to be similar. We additionally use a combination of separate and shared image parameterizations to make it easier for the optimization algorithm to cause objects to line up, while still giving it the freedom to create any image it needs to.</d-footnote>
-  This is similar to interpolating in the latent space of generative models. 
+  This is similar to interpolating in the latent space of generative models.
 </p>
 
 <figure class="base-grid shaded-figure">
@@ -726,7 +730,7 @@ figcaption,
 </figure>
 
 <p>
-  This is only starting to scratch the surface of how neurons interact. 
+  This is only starting to scratch the surface of how neurons interact.
   The truth is that we have almost no clue how to select meaningful directions, or whether there even exist particularly meaningful directions.
   Independent of finding directions, there are also questions on how directions interact--for example, interpolation can show us how a small number of directions interact, but in reality there are hundreds of directions interacting.
 </p>
@@ -780,7 +784,7 @@ figcaption,
 <h3 id="regularization">The Spectrum of Regularization</h3>
 
 <p>
-  Dealing with these high frequency noise has been one of the primary challenges and overarching threads of feature visualization research.
+  Dealing with this high frequency noise has been one of the primary challenges and overarching threads of feature visualization research.
   If you want to get useful visualizations, you need to impose a more natural structure using some kind of prior, regularizer, or constraint.
 </p>
 
@@ -793,7 +797,7 @@ figcaption,
   We can think of all of these approaches as living on a spectrum, based on how strongly they regularize the model.
   On one extreme, if we don't regularize at all, we end up with adversarial examples.
   On the opposite end, we search over examples in our dataset and run into all the limitations we discussed earlier.
-  And in the middle we have three main families of regularization options.
+  In the middle we have three main families of regularization options.
 </p>
 
 
@@ -839,25 +843,25 @@ figcaption,
     word-wrap: break-word;
     word-break: keep-all;
   }
-  
+
   #feature-vis-history .row .spacer {
     display: inline-block;
     height: 48px;
     width: 45px;
   }
-  
+
   #feature-vis-history .info p {
     margin-bottom: 4px;
   }
-  
+
   #feature-vis-history .info .paper-title {
     font-weight: bold;
-  } 
-  
-  #feature-vis-history .info .paper-text {
-    
   }
-  
+
+  #feature-vis-history .info .paper-text {
+
+  }
+
   @media (max-width: 1100px) {
     #feature-vis-history .row .spacer {
       display: inline-block;
@@ -868,7 +872,7 @@ figcaption,
       width: 750px;
     }
   }
-  
+
   #feature-vis-history .row .category-check-container {
     /*vertical-align: middle;*/
     display: inline-block;
@@ -899,7 +903,8 @@ figcaption,
 
 </style>
 
-<figure style="grid-column: page-start / screen-end; min-height: 750px; padding-bottom: 10px;" id="feature-vis-history">
+<figure style="grid-column: screen; min-height: 750px; overflow-x: scroll;" id="feature-vis-history">
+<div class="wrapper" style="min-width: 950px; width: 950px; padding: 0 1rem; margin: 0 auto;">
 <div svelte-1206690277="" class="row header-row"><div class="info"></div>
 <div class="spacer"></div>
 <div style="display: inline-block;"><div class="info" style="display: block; width: 300px;"><figcaption style="width: 200px; height: 60px;"><b>Weak Regularization</b>
@@ -908,7 +913,7 @@ figcaption,
     <figcaption><b><div>Frequency</div><div style="margin-top: 0px;">Penalization</div></b></figcaption>
     <figcaption><b><div>Transformation</div><div style="margin-top: 0px;">Robustness</div></b></figcaption></div></div>
 <div class="spacer"></div>
-<div style="display: inline-block;"><div class="info" style="display: block;"><figcaption style="width: 200px; height: 60px;"><b>Strong Regularization</b>
+<div style="display: inline-block;"><div class="" style="display: block;"><figcaption style="width: 190px; height: 60px;"><b>Strong Regularization</b>
       gives more realistic examples at risk of misleading correlations.</figcaption></div>
   <div class="sub-headers" style="display: block;"><figcaption><b><div>Learned</div><div style="margin-top: 0px;">Prior</div></b></figcaption>
   <figcaption><b><div>Dataset</div><div style="margin-top: 0px;">Examples</div></b></figcaption></div></div></div>
@@ -916,115 +921,117 @@ figcaption,
 <div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Erhan2009.png">
     <figcaption><p class="paper-title">Erhan, <i>et al.</i>, 2009<noscript></noscript> <d-cite key="erhan2009visualizing"></d-cite></p>
       <p class="paper-text">Introduced core idea. Minimal regularization.</p></figcaption></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
 <div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Szegedy2013.png">
     <figcaption><p class="paper-title">Szegedy, <i>et al.</i>, 2013<noscript></noscript> <d-cite key="szegedy2013intriguing"></d-cite></p>
       <p class="paper-text">Adversarial examples. Visualizes with dataset examples.</p></figcaption></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div></div>
 <div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Mahendran2015.png">
     <figcaption><p class="paper-title">Mahendran &amp; Vedaldi, 2015<noscript></noscript> <d-cite key="mahendran2015understanding"></d-cite></p>
       <p class="paper-text">Introduces total variation regularizer. Reconstructs input from representation.</p></figcaption></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
 <div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Nguyen2015.png">
     <figcaption><p class="paper-title">Nguyen, <i>et al.</i>, 2015<noscript></noscript> <d-cite key="nguyen2015deep"></d-cite></p>
       <p class="paper-text">Explores counterexamples. Introduces image blurring.</p></figcaption></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
 <div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Mordvintsev2015.png">
     <figcaption><p class="paper-title">Mordvintsev, <i>et al.</i>, 2015<noscript></noscript> <d-cite key="mordvintsev2015inceptionism"></d-cite></p>
       <p class="paper-text">Introduced jitter &amp; multi-scale. Explored GMM priors for classes.</p></figcaption></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
 <div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Oygard2015.png">
     <figcaption><p class="paper-title">Øygard, <i>et al.</i>, 2015<noscript></noscript> <d-cite key="oygard2015vis"></d-cite></p>
       <p class="paper-text">Introduces gradient blurring. <br />(Also uses jitter.)</p></figcaption></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check set"></div></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
 <div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Tyka2016.png">
     <figcaption><p class="paper-title">Tyka, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="tyka2016bilateral"></d-cite></p>
       <p class="paper-text">Regularizes with bilateral filters. <br />(Also uses jitter.)</p></figcaption></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check set"></div></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
 <div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Mordvintsev2016.png">
     <figcaption><p class="paper-title">Mordvintsev, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="mordvintsev2016deepdreaming"></d-cite></p>
       <p class="paper-text">Normalizes gradient frequencies. <br />(Also uses jitter.)</p></figcaption></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check set"></div></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
 <div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Nguyen2016a.png">
     <figcaption><p class="paper-title">Nguyen, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="nguyen2016synthesizing"></d-cite></p>
       <p class="paper-text">Paramaterizes images with GAN generator.</p></figcaption></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
 <div svelte-1206690277="" class="line"></div><div svelte-1206690277="" class="row"><div class="info"><img src="images/prior_vis_icons/Nguyen2016b.png">
     <figcaption><p class="paper-title">Nguyen, <i>et al.</i>, 2016<noscript></noscript> <d-cite key="nguyen2016plug"></d-cite></p>
       <p class="paper-text">Uses denoising autoencoder prior to make a generative model.</p></figcaption></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div><div class="category-check-container"><div class="category-check "></div></div>
-  
+
   <div class="spacer"></div>
-  
+
   <div class="category-check-container"><div class="category-check set"></div></div><div class="category-check-container"><div class="category-check "></div></div></div>
 <div svelte-1206690277="" class="line"></div><!---->
+</div>
 </figure>
+
 <!-- <d-figure id="feature-vis-history"></d-figure> -->
 
 <h3 id="regularization-families">Three Families of Regularization</h3>
@@ -1062,7 +1069,7 @@ figcaption,
 
 <p>
   <b>Transformation robustness</b> tries to find examples that still activate the optimization target highly even if we slightly transform them.
-  Even a small amount seems to be very effective in the case of images <d-cite key="mordvintsev2015inceptionism"></d-cite>, 
+  Even a small amount seems to be very effective in the case of images <d-cite key="mordvintsev2015inceptionism"></d-cite>,
   especially when combined with a more general regularizer for high-frequencies <d-cite key="oygard2015vis,mordvintsev2016deepdreaming"></d-cite>.
   Concretely, this means that we stochastically jitter, rotate or scale the image before applying the optimization step.
 </p>
@@ -1093,11 +1100,11 @@ figcaption,
 <p>
   One approach is to learn a generator that maps points in a latent space to examples of your data,
   such as a GAN or VAE,
-  and optimize within that latent space <d-cite key="nguyen2016synthesizing"></d-cite>. 
+  and optimize within that latent space <d-cite key="nguyen2016synthesizing"></d-cite>.
   An alternative approach is to learn a prior that gives you access to the gradient of probability;
   this allows you to jointly optimize for the prior along with your objective <d-cite key="nguyen2016plug,mordvintsev2015inceptionism"></d-cite>.
   When one optimizes for the prior and the probability of a class, one recovers a generative model of the data conditioned on that particular class.
-  Finally, <d-cite key="mneuron2015">Wei <i>et al.</i></d-cite> approximate a generative model prior, at least for the color distribution, by penalizing distance between patches of the output and the nearest patches retrieved from a database of image patches collected from the training data. 
+  Finally, <d-cite key="mneuron2015">Wei <i>et al.</i></d-cite> approximate a generative model prior, at least for the color distribution, by penalizing distance between patches of the output and the nearest patches retrieved from a database of image patches collected from the training data.
 </p>
 
 
@@ -1118,7 +1125,7 @@ figcaption,
 
 <p>
   Transforming the gradient like this is actually quite a powerful tool -- it's called "preconditioning" in optimization.
-  You can think of it as doing steepest descent to optimize the same objective, 
+  You can think of it as doing steepest descent to optimize the same objective,
   but in another parameterization of the space or under a different notion of distance.
   <d-footnote>
     Gradient blurring<d-cite key="oygard2015vis"></d-cite> is equivalent to gradient descent in a different parameterization of image space, where high frequency dimensions are stretched to make moving in those directions slower. Gradient Laplacian Pyramid normalization <d-cite key="mordvintsev2016deepdreaming"></d-cite> is a kind of adaptive learning rate approach in the same space.
@@ -1149,16 +1156,16 @@ figcaption,
           </span>
         </span>
         <span style="display: inline-block;">
-          <img style="height: 112px; width: 112px; display: block;" src="images/decorrelated_colors.jpeg"/>    
+          <img style="height: 112px; width: 112px; display: block;" src="images/decorrelated_colors.jpeg"/>
           <span class="figcaption">
             Decorrelated Colors
-          </span>  
+          </span>
         </span>
       </span>
   </d-footnote>
 </p>
 <p>
-  Let's see how using different measures of distance changes the direction of steepest descent. 
+  Let's see how using different measures of distance changes the direction of steepest descent.
   The regular L<sup>2</sup> gradient can be quite different from the directions of steepest descent in the L<sup>∞</sup> metric or in the decorrelated space:
 </p>
 
@@ -1173,7 +1180,7 @@ figcaption,
   All of these directions are valid descent directions for the same objective,
   but we can see they're radically different.
   Notice that optimizing in the decorrelated space reduces high frequencies,
-  while using L<sup>∞</sup> increases them. 
+  while using L<sup>∞</sup> increases them.
 </p>
 
 <p>
@@ -1216,11 +1223,11 @@ figcaption,
 <!-- =================================================== -->
 <hr/>
 <h2 id="conclusion">Conclusion</h2>
-  
+
 <p class="">
   Neural feature visualization has made great progress over the last few years.
-  As a community, we've developed principled ways to create compelling visualizations. 
-  We've mapped out a number of important challenges and found ways of a addressing them.
+  As a community, we've developed principled ways to create compelling visualizations.
+  We've mapped out a number of important challenges and found ways of addressing them.
 </p>
 
 <p class="">
@@ -1238,7 +1245,7 @@ figcaption,
 
 <!--
 <p>
-  In the meantime, curious readers are invited to explore 
+  In the meantime, curious readers are invited to explore
   <a href="appendix/">visualizations of all GoogLeNet channels</a>,
   and our <a href="https://github.com/tensorflow/lucid">open-source implementation, lucid</a>.
   Readers may also wish to look at our follow-up paper, <a href="https://distill.pub/2018/building-blocks/">The Building Blocks of Interpretability</a>, which explores how feature visualization can be combined with other techniques to interrogate the behavior of neural networks.
@@ -1248,8 +1255,8 @@ figcaption,
 </d-article>
 
 <d-appendix>
-  
-  
+
+
   <h3 id="additional-resources">Additional Resources</h3>
   <p>
     <a href="appendix/"><b>Appendix:</b> GoogLeNet Visualizations</a><br>
@@ -1263,28 +1270,28 @@ figcaption,
     <a href="https://distill.pub/2018/building-blocks/"><b>Follow-up:</b> The Building Blocks of Interpretability</a><br>
     Exploration of how feature visualization and other techniques can be combined.
   </p>
-  
+
   <h3 id="acknowledgements">Acknowledgments</h3>
   <p>
     We are extremely grateful to Shan Carter and Ian Goodfellow.
     Shan gave thoughtful feedback, especially on the design of the article.
     Ian generously stepped in to handle the review process of this article -- we would not have been able to publish it without him.
   </p>
-  
+
   <p>
     We're also grateful for the comments, thoughts and support of
     Arvind Satyanarayan, Ian Johnson,
     Greg Corrado, Blaise Aguera y Arcas,
-    Katherine Ye, Michael Nielsen, Emma Pierson, Dario Amodei, 
+    Katherine Ye, Michael Nielsen, Emma Pierson, Dario Amodei,
     Mike Tyka,
     Andrea Vedaldi, Ruth Fong, Jason Freidenfelds,
     Geoffrey Hinton,
-    Timon Ruban, 
+    Timon Ruban,
     Been Kim, Martin Wattenberg, and Fernanda Viegas.
   </p>
-  
+
   <p>
-    This work was made possible by many open source tools, for which we are grateful. 
+    This work was made possible by many open source tools, for which we are grateful.
     In particular, all of our experiments were based on Tensorflow<d-cite key="abadi2016tensorflow"></d-cite>.
   </p>
 
@@ -1293,12 +1300,12 @@ figcaption,
     <strong>Writing, Exposition, and Diagram Contributions.</strong> Chris drafted most of the text of the article and made the original version of most interactive diagrams. Ludwig made the neuron addition, dataset examples, and interpolation diagrams, as well as refined the others. Ludwig also created the appendix that visualizes all of GoogLeNet.
   </p>
   <p>
-    <strong>Research Contributions.</strong> The biggest technical contribution of this work is likely the section on preconditioning. Alex discovered in prior work that normalizing gradient frequencies had a radical effect on visualizing neurons. Chris reframed this as adaptive gradient descent in a different basis. Together, they iterated on a number of ways of parameterizing images. Similarly, Alex originally introduced the use of diversity term, and Chris reﬁned using it. Chris did the exploration of interpolating between neurons. 
+    <strong>Research Contributions.</strong> The biggest technical contribution of this work is likely the section on preconditioning. Alex discovered in prior work that normalizing gradient frequencies had a radical effect on visualizing neurons. Chris reframed this as adaptive gradient descent in a different basis. Together, they iterated on a number of ways of parameterizing images. Similarly, Alex originally introduced the use of diversity term, and Chris reﬁned using it. Chris did the exploration of interpolating between neurons.
   </p>
   <p>
     <strong>Infrastructure Contributions.</strong> All experiments are based on code written by Alex, some of which was <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/deepdream/deepdream.ipynb">published previously</a>. Alex, Chris and Ludwig all contributed significantly to refining this into the present library, <a href="https://github.com/tensorflow/lucid">Lucid</a>. Alex and Chris introduced particularly important abstractions.
   </p>
-  
+
   <h3 id="discussion-review">Discussion and Review</h3>
   <p>
     <a href="https://github.com/distillpub/post--feature-visualization/issues/1">Review 1 - Anonymous</a><br>
