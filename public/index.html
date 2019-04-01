@@ -540,7 +540,7 @@ figcaption,
 <p>
   A given feature of a network may respond to a wide range of inputs.
   On the class level, for example, a classifier that has been trained to recognize dogs should recognize both closeups of their faces as well as wider profile images -- even though those have quite different visual appearances.
-  Early work by <d-cite key="mneuron2015">Wei <i>et al.</i></d-cite> attempts to demonstrate this "intra-class" diversity by recording activations over the entire training set, clustering them and optimizing for the cluster centroids, revealing the different facets of a class that were learned.
+  Early work by Wei <i>et al.</i><d-cite key="mneuron2015"></d-cite> attempts to demonstrate this "intra-class" diversity by recording activations over the entire training set, clustering them and optimizing for the cluster centroids, revealing the different facets of a class that were learned.
 </p>
 
 <p>
@@ -646,7 +646,7 @@ figcaption,
   For one, the pressure to make examples different can cause unrelated artifacts (such as eyes) to appear.
   Additionally, the optimization may make examples be different in an unnatural way.
   For example, in the above example one might want to see examples of soccer balls clearly separated from other types of balls like golf or tennis balls.
-  Dataset based approaches such as <d-cite key="mneuron2015">Wei <i>et al.</i></d-cite> can split features apart more naturally -- however they may not be as helpful in understanding how the model will behave on different data.
+  Dataset based approaches such as Wei <i>et al.</i><d-cite key="mneuron2015"></d-cite> can split features apart more naturally -- however they may not be as helpful in understanding how the model will behave on different data.
 </p>
 
 <p>
@@ -1104,7 +1104,7 @@ figcaption,
   An alternative approach is to learn a prior that gives you access to the gradient of probability;
   this allows you to jointly optimize for the prior along with your objective <d-cite key="nguyen2016plug,mordvintsev2015inceptionism"></d-cite>.
   When one optimizes for the prior and the probability of a class, one recovers a generative model of the data conditioned on that particular class.
-  Finally, <d-cite key="mneuron2015">Wei <i>et al.</i></d-cite> approximate a generative model prior, at least for the color distribution, by penalizing distance between patches of the output and the nearest patches retrieved from a database of image patches collected from the training data.
+  Finally, Wei <i>et al.</i><d-cite key="mneuron2015"></d-cite> approximate a generative model prior, at least for the color distribution, by penalizing distance between patches of the output and the nearest patches retrieved from a database of image patches collected from the training data.
 </p>
 
 
