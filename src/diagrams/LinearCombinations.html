@@ -14,9 +14,9 @@
   limitations under the License.
 -->
 <div class="linear-combinations">
-  
+
   <div class="frow">
-      
+
     <div id="icons-first" class="fcolumn">
       <div class="icons">
         {{#each range(6) as i}}
@@ -26,20 +26,20 @@
         {{/each}}
       </div>
     </div>
-    
+
     <div id="sprite-first" class="fcolumn">
       <Sprite src_class={{sprite_class}} size=180 sprite_size=180 y=0 x={{x}} sprite_scale=1/>
       <span class="figcaption">Neuron 1</span>
     </div>
-    
+
     <div class="operator">
     </div>
-    
+
     <div id="sprite-second" class="fcolumn">
       <Sprite src_class={{sprite_class}} size=180 sprite_size=180 y={{y}} x=0 sprite_scale=1/>
       <span class="figcaption">Neuron 2</span>
     </div>
-  
+
     <div id="icons-second" class="fcolumn">
       <div class="icons">
         {{#each range(6) as i}}
@@ -49,9 +49,9 @@
         {{/each}}
       </div>
     </div>
-    
+
   </div>
-  
+
   <div class="frow" style="">
     <div class="result c fcolumn">
       <Sprite src_class={{sprite_class}} size=180 sprite_size=180 y={{y}} x={{x}} sprite_scale=1/>
@@ -104,7 +104,7 @@
     cursor: pointer;
     padding-bottom: 6px;
     margin-bottom: 11px;
-    
+
     /*margin-left: 3px;*/
     margin-right: 6px;
     border-bottom: 1px solid #dddddd;
@@ -125,18 +125,18 @@
     opacity: 1;
   }
 
-  
+
   /* linear Combinations */
 
   .linear_combinations_sprite {
     background-image: url('images/linear_combinations.jpg')
   }
 
-  
+
   #caption {
     max-width: 200px;
   }
-  
+
   #icons-first {
     order: 1
   }
@@ -149,21 +149,21 @@
   #icons-second {
     order: 4
   }
-  
+
   .result {
     z-index: 3;
   }
-  
+
   .operator {
     display: none;
   }
-  
+
   @media (min-width: 1024px) {
-    
+
     .fcolumn {
       margin-left: 10px;
     }
-    
+
     .fcolumn:first-of-type {
       margin-left: 0;
     }
@@ -171,7 +171,7 @@
     .fcolumn:last-of-type {
       margin-right: 0;
     }
-    
+
     #icons-first {
       order: 1
     }
@@ -186,7 +186,7 @@
     #icons-second {
       order: 5
     }
-    
+
     .operator {
       display: block;
       background-image: url(images/join_arrow.svg);
@@ -199,35 +199,35 @@
       order: 3;
       opacity: 0.33;
     }
-    
+
     .result.c {
       top: -64px;
       margin-left: 240px;
       position: relative;
     }
-    
+
     .result.c > div {
       border: 2px solid white;
       box-shadow: 0px 5px 20px hsla(0,0%,0%,0.3);
     }
-    
+
     #sprite-second > span {
       text-align: right;
     }
-    
+
     .linear-combinations {
       margin-bottom: -84px;
     }
   }
 
-  
+
 </style>
 
 
 <script>
   import Sprite from './Sprite.html';
   // const join_svg = require('svg-inline-loader?classPrefix!../join.svg');
-  
+
   function range(n){
     return Array(n).fill().map((_, i) => i);
   }
@@ -236,7 +236,7 @@
     data() {
       return {
         sprite_class: 'linear_combinations_sprite',
-        x: 5,
+        x: 4,
         y: 1,
         // svg: join_svg
       }
